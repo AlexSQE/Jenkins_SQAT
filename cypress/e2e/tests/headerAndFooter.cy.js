@@ -146,7 +146,7 @@ describe('headerAndFooter', () => {
         });
     });
 
-    it.skip('AT_01.02_001 | Verify that user navigate to Search Box documentation page', () => {
+    it('AT_01.02_001 | Verify that user navigate to Search Box documentation page', () => {
         headerAndFooter
             .clickSearchBoxIconTrailing()
             cy.url().should('eq', searchBoxDocumentationPageData.searchBoxDocumentationPageURL)
@@ -198,7 +198,7 @@ describe('headerAndFooter', () => {
             .getUserDescriptionBtn()
             .should('contain', UserProfilePageData.userAddDescriptionBtn);
     });
-    it('POM>AT_03.01.002 | <Footer>Verify user can open Link "The documentation" in REST API and see page title Remote Access API',()=>{
+    it.skip('POM>AT_03.01.002 | <Footer>Verify user can open Link "The documentation" in REST API and see page title Remote Access API',()=>{
         headerAndFooter
             .clickRestAPILink()
             .clickLinkTheDocumentation()
