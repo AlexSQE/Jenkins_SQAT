@@ -21,5 +21,11 @@
         "/configure", 
         "/my-views/view/all/",
         "/credentials/"
+    ],
+    "title": [
+        "[Jenkins]",
+        "Configuration [Jenkins]",
+        "Dashboard [Jenkins]",
+        "Credentials [Jenkins]"
     ]
 }

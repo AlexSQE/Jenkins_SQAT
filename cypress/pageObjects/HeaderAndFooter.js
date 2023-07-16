@@ -28,10 +28,10 @@ class HeaderAndFooter {
     getHeadIcon = () => cy.get('#jenkins-head-icon');
     getHeadIconName = () => cy.get('#jenkins-name-icon');
     getUserCredentialsMenu = () => cy.get('#breadcrumb-menu li a[href*="credentials"] span');
-    getPageBody = () => cy.get('#page-body');
     getSearchBoxIconTrailing = () => cy.get('.main-search__icon-trailing');
     getUserDropDownMenuCredentials = () => cy.get('#yui-gen4');
     getCurrentUserName = () => cy.get('.login .model-link span');
+    getTitle = () => cy.get('head title');
 
     clickJenkinsVersionLink() {
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()

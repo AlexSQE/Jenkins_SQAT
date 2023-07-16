@@ -137,12 +137,12 @@ describe('headerAndFooter', () => {
 
     headerAndFooterData.userDropdownMenuItems.forEach((pageName, idx) => {
         it(`AT_01.03_029 | Header | User icon - Verify dropdown menu links redirect to the ${pageName} pages`, function () {
-            headerAndFooter  
+            headerAndFooter
                 .clickUserDropDownBtn()
                 .clickEachDropdownMenuItems(idx)
                 .verifyPagesUrl(headerAndFooterData.userDropdownMenuItemsUrl[idx])
-                .getPageBody()
-                .should('be.visible')
+                .getTitle()
+                .should('contain', headerAndFooterData.title[idx])
         });
     });
 
