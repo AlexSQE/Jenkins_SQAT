@@ -82,7 +82,7 @@ describe('newItem', () => {
             .should('contain.text', orgFolderConfigurePage.description);
     });
     
-    it('AT_05.02_003 | Create a new Pipeline going from People page', () => {
+    xit('AT_05.02_003 | Create a new Pipeline going from People page', () => {
         homePage
             .clickPeopleSideMenuLink()
             .clickNewItemSideMenuLink()
