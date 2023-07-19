@@ -97,4 +97,13 @@ describe('folder', () => {
             .getDescriptionPreview()
                 .should('have.text', folderPageData.folderNewDescription);
       });
+
+      it('AT_15.01.03| The down arrow appears near the end of the Folder name', () => {
+        cy.createFolderProject(newItemPageData.folderName);
+        homePage
+            .hoverProjectNameLink()
+            .getProjectDrpDwnBtn()
+            .should('be.visible')
+            .and('exist')
+      });
 });
