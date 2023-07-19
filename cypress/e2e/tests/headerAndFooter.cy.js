@@ -198,13 +198,7 @@ describe('headerAndFooter', () => {
             .getUserDescriptionBtn()
             .should('contain', UserProfilePageData.userAddDescriptionBtn);
     });
-    it.skip('POM>AT_03.01.002 | <Footer>Verify user can open Link "The documentation" in REST API and see page title Remote Access API',()=>{
-        headerAndFooter
-            .clickRestAPILink()
-            .clickLinkTheDocumentation()
-            .getRestApiDocPageTitle().should('contain',restApiDocPageData.restApiDocPageTitle)
-            
-    });
+
     it('AT 03.01.003 <Footer>Verify user can open Link The documentation in REST API and can see 10 modules per page',()=>{
         headerAndFooter
             .clickRestAPILink()
