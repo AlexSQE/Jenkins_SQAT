@@ -80,20 +80,7 @@ describe('newItem', () => {
             .clickSaveBtnAndGoOrgFolder()
             .getDescription()
             .should('contain.text', orgFolderConfigurePage.description);
-    });
-    
-    xit('AT_05.02_003 | Create a new Pipeline going from People page', () => {
-        homePage
-            .clickPeopleSideMenuLink()
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPageData.pipelineName)
-            .selectPipelineItem()
-            .clickOkBtnAndGoPipelineConfig()
-            .clickSaveBtnAndGoPipeline()
-            .clickGoToDashboard()
-            .getMainPanel()
-            .should('contain.text', newItemPageData.pipelineName);
-    });
+    });    
 
     it('AT_05.07_004 | New item page has Input field for text data', () => {
         homePage
