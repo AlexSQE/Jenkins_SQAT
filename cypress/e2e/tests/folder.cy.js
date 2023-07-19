@@ -98,6 +98,15 @@ describe('folder', () => {
                 .should('have.text', folderPageData.folderNewDescription);
       });
 
+    it('AT_15.01.02 | Folder is visible on the Homepage', () => {
+        cy.createFolderProject(newItemPageData.folderName);
+        
+        homePage
+            .getProjectNameLink()
+            .should('be.visible')
+            .and('have.text', newItemPageData.folderName)
+    });
+
       it('AT_15.01.03| The down arrow appears near the end of the Folder name', () => {
         cy.createFolderProject(newItemPageData.folderName);
         homePage
@@ -106,4 +115,5 @@ describe('folder', () => {
             .should('be.visible')
             .and('exist')
       });
+
 });
