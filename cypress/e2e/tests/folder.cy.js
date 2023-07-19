@@ -116,4 +116,17 @@ describe('folder', () => {
             .and('exist')
       });
 
+    it('AT_15.01.04 | The drop down menu appears with 7 items', () => {
+        cy.createFolderProject(newItemPageData.folderName);
+        
+        homePage
+            .hoverAndClickProjectDrpDwn(newItemPageData.folderName)
+            .getProjectNameDrpDwnItems()
+            .should('have.length', 7)
+            .should('be.visible')
+            .each((el, index) => {
+                expect(el.text()).contain(folderPageData.folderDropdownItems[index])
+            })
+    })
+
 });
