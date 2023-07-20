@@ -6,7 +6,6 @@ import multibranchPipelineConfigPageData from "../../fixtures/pom_fixtures/multi
 import multibranchPipelinePageData from "../../fixtures/pom_fixtures/multibranchPipelinePage.json";
 import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
 import MultibranchPipelineConfigurePage from "../../pageObjects/MultibranchPipelineConfigurePage";
-import multibranchPipline from "../../fixtures/multibranchPipeline.json";
 
 describe('multibranchPipelineConfigure', () => {
 
