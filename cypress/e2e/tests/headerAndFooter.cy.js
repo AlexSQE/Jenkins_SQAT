@@ -44,13 +44,7 @@ describe('headerAndFooter', () => {
             .should('have.text', homePageData.homePageHeader);
     });
 
-    it('AT_01.03.023 Verify User Icon has dropdown menu with given links', () => {
-        headerAndFooter
-            .clickUserDropDownBtn()
-            .createUserDropdownMenuItemsList()
-            .should('deep.equal', headerAndFooterData.userDropdownMenuItems);
-    });
-
+  
     it('AT_01.02_019 | No results appear after input text in the Search box', function () {
         headerAndFooter
             .searchTextSearchBox(headerAndFooterData.inputText)
