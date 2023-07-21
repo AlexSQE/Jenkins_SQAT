@@ -201,5 +201,20 @@ describe('headerAndFooter', () => {
             .each(($el,idx)=>{
                 expect($el.text()).to.contain(restApiDocPageData.RestApiDocPageItemsList[idx])
             })
-    })
+    });
+
+    it('AT_01.05.16 | <Header> Verify that the Configure Tab in Left Side panel is highlighted after clicking on Dropdown Profile Configure option', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserConfigureMenu()
+            .getUserBuildsSidePanelConfigureLink()
+            .within(($el) => {
+                cy.window().then((win) => {
+                    const beforeElement = win.getComputedStyle($el[0], "::before");
+                    const background = beforeElement.getPropertyValue("background-color");
+                    expect(background).to.equal("rgba(175, 175, 207, 0.224)");
+                })
+            })
+    });
+
 })

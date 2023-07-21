@@ -4,7 +4,8 @@ import HomePage from "../pageObjects/HomePage";
 class UserConfigurePage {
     getFullNameInputField = () => cy.get('input[name="_.fullName"]');
     getUserConfigSaveBtn = () => cy.get('button[name="Submit"]');
-    getUserConfigDescription = () => cy.get('textarea[name="_.description"]')
+    getUserConfigDescription = () => cy.get('textarea[name="_.description"]');
+    getUserBuildsSidePanelConfigureLink = () => cy.get('a[href$="/configure"]');
 
     typeFullNameInputField(name) {
         this.getFullNameInputField().clear().type(name);
