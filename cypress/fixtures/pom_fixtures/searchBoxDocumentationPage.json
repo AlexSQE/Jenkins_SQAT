@@ -1,3 +1,6 @@
 {
-    "searchBoxDocumentationPageURL": "http://www.jenkins.io/doc/book/using/searchbox/"
+    "searchBoxDocumentationPageURL": "http://www.jenkins.io/doc/book/using/searchbox/",
+
+    "dataCapCase": ["Log", "LOG", "lOg"],
+    "testdata": "All Jenkins Logs"
 }

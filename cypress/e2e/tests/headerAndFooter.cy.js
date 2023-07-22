@@ -13,11 +13,13 @@ import searchBoxDocumentationPageData from "../../fixtures/pom_fixtures/searchBo
 import userBuildsPageData from "../../fixtures/pom_fixtures/userBuildsPage.json";
 import UserProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
 import restApiDocPageData from "..//..//fixtures/pom_fixtures/restApiDocPage.json";
+import SystemLogPage from "../../pageObjects/SystemLogPage";
 
 describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
     const homePage = new HomePage();
+    const systemLogPage = new SystemLogPage();
 
     it('AT_03.02_008 | <Footer> Verify the Link "Jenkins" in the footer', () => {
         headerAndFooter
@@ -217,4 +219,12 @@ describe('headerAndFooter', () => {
             })
     });
 
+    it('AT_01.02.28 | <Header> Verify Search box is case insensitive by default', () => {
+            searchBoxDocumentationPageData.dataCapCase.forEach(($el,idx) => {      
+            headerAndFooter
+                .typeSearchBoxInputFieldAndGoSystemLog(searchBoxDocumentationPageData.dataCapCase[idx])
+                .getAllLogsLinks()
+                .should('have.text', searchBoxDocumentationPageData.testdata);            
+        })
+    })
 })

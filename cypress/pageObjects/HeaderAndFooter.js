@@ -9,6 +9,7 @@ import UserConfigurePage from "../pageObjects/UserConfigurePage";
 import UserCredentialsPage from './UserCredentialsPage';
 import UserProfilePage from "./UserProfilePage";
 import searchBoxDocumentationPage from "./SearchBoxDocumentationPage";
+import SystemLogPage from "./SystemLogPage";
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -32,7 +33,7 @@ class HeaderAndFooter {
     getUserDropDownMenuCredentials = () => cy.get('#yui-gen4');
     getCurrentUserName = () => cy.get('.login .model-link span');
     getTitle = () => cy.get('head title');
-
+   
     clickJenkinsVersionLink() {
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
         return new JenkinsPage;
@@ -82,7 +83,7 @@ class HeaderAndFooter {
     }
 
     typeSearchBoxInputField(text) {
-        this.getSearchBoxInputField().type(text);
+        this.getSearchBoxInputField().clear().type(text);
         return this;
     }
 
@@ -136,6 +137,10 @@ class HeaderAndFooter {
         return new HomePage();
     }
 
+    typeSearchBoxInputFieldAndGoSystemLog(text) {
+        this.getSearchBoxInputField().clear().type(text + '{enter}');
+        return new SystemLogPage();
+    }
 }
 
 export default HeaderAndFooter;
