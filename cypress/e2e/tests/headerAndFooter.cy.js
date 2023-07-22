@@ -176,7 +176,7 @@ describe('headerAndFooter', () => {
             .should('have.text', UserProfilePageData.editDescription);
     });
 
-    it('AT_01.07_004 | The users name should be visible in the header', () => {
+    it('AT_01.03.04 | The users name should be visible in the header', () => {
         headerAndFooter
             .getCurrentUserName()
             .should('be.visible');
