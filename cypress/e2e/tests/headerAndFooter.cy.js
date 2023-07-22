@@ -148,11 +148,12 @@ describe('headerAndFooter', () => {
             cy.url().should('eq', searchBoxDocumentationPageData.searchBoxDocumentationPageURL)
     });
 
-    it('AT_03.02.005 | Footer>Verify the Link Jenkins', () => {
+    it('AT_03.02.005 | Footer Verify user is redirected to the correct page after clicking the Link Jenkins', () => {
         headerAndFooter
             .clickJenkinsVersionLink()
-            .getJenkinsPageUrl()
-            .should("equal", headerAndFooterData.version.link);
+            .verifyJenkinsioPageUrl(headerAndFooterData.version.link)
+            .getPageTitle()
+            .should('contain', headerAndFooterData.pageTitle);
     });
 
     it('AT_01.04.009 Header>Verify User Builds link  is clickable and redirects to the “Builds for ‘User’ “ page.', () => {
