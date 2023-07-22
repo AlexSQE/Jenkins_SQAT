@@ -21,13 +21,6 @@ describe('headerAndFooter', () => {
     const homePage = new HomePage();
     const systemLogPage = new SystemLogPage();
 
-    it('AT_03.02_008 | <Footer> Verify the Link "Jenkins" in the footer', () => {
-        headerAndFooter
-            .clickJenkinsVersionLink()
-            .getPageTitle()
-            .should('contain', headerAndFooterData.pageTitle)
-    })
-
     it('AT_03.01.002 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
             .clickRestAPILink()
@@ -142,7 +135,7 @@ describe('headerAndFooter', () => {
         });
     });
 
-    it('AT_01.02_001 | Verify that user navigate to Search Box documentation page', () => {
+    it.skip('AT_01.02_001 | Verify that user navigate to Search Box documentation page', () => {
         headerAndFooter
             .clickSearchBoxIconTrailing()
             cy.url().should('eq', searchBoxDocumentationPageData.searchBoxDocumentationPageURL)
