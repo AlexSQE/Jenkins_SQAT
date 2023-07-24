@@ -8,7 +8,7 @@ describe('folder', () => {
 
     const homePage = new HomePage();
     
-    it('AT_15.02.001 | Verify possibility to add folder description', () => {
+    it('AT_15.02.01 | Verify possibility to add folder description', () => {
         homePage
             .clickNewItemSideMenuLink()
             .selectFolderItem()
@@ -44,7 +44,7 @@ describe('folder', () => {
             .should('contain', `${newItemPageData.folderName}/${newItemPageData.freestyleProjectName}`);
       });
 
-    it('AT_15.03.04 | Verify possibility to edit folder description', () => {
+    it('AT_15.02.04 | Verify possibility to edit folder description', () => {
         cy.createFolderProject(newItemPageData.folderName);
         cy.addFolderDescription(folderPageData.folderDescription);
         homePage 
@@ -86,7 +86,7 @@ describe('folder', () => {
             .should('eq', folderPageData.folderName)             
     });
 
-    it('AT_15.03.05 | Folder > Prewiew description text matches the new description', () => { 
+    it('AT_15.02.05 | Folder > Preview description text matches the new description', () => { 
         cy.createFolderProject(newItemPageData.folderName);
         cy.addFolderDescription(folderPageData.folderDescription);
         homePage 
