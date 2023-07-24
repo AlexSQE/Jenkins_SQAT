@@ -79,7 +79,7 @@ describe('headerAndFooter', () => {
             .should('be.visible');
     });
 
-    it('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () => {
+    it('AT_01.06.09 | Header> “Verify Breadcrumb should be including "My Views" in the trail after clicking on Dropdown Profile My Views option', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserMyViewsMenu()
