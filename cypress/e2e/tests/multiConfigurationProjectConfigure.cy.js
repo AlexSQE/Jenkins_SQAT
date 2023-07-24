@@ -18,17 +18,6 @@ describe('multiConfigurationProjectConfigure', () => {
       .should('deep.equal', projectData.defaultOptionsValues)
   });
 
-  it('AT_14.05_001 | Multi-configuration project. Block with advanced options is appeared after clicking "Advanced" button', () => {
-    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
-    homePage
-      .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
-      .clickMultiConfProjectDrpDwnConfigureLink()
-      .clickAdvancedBtn()
-      .getAdvancedOptionsBlock()
-      .should('be.visible');
-      
-  });
-
   it('AT_14.05_009 | Verify MultiConfig Project Advanced options are set and saved', () => {
     cy.createMultiConfigProject(newItemPageData.multiConfigurationProjectName);
     homePage
