@@ -41,7 +41,7 @@ describe('userBuilds', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserBuildsMenu()
-            .getUserBuildsSigePanelTaskLinks().each(($el, index) => {
+            .getUserBuildsSidePanelTaskLinks().each(($el, index) => {
                 cy.wrap($el).should('be.visible')
                 cy.wrap($el).should('have.attr', 'href')
             })

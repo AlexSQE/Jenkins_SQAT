@@ -5,7 +5,8 @@ class UserBuildsPage {
     getPageHeading = () => cy.get('h1');
     getUserBuildsHeader = () => cy.get('#main-panel  h1');
     getUserBuildsSidePanel = () => cy.get('#side-panel');
-    getUserBuildsSigePanelTaskLinks = () => cy.get('#tasks span.task-link-wrapper a');
+    getUserBuildsSidePanelTaskLinks = () => cy.get('#tasks span.task-link-wrapper a')
+    getBuildsMenuLink = () => cy.get('a[href$="/builds"]');
 
     clickUserBuildsTableSizeBtns(size) {
         this.getUserBuildsTableSizeBtns().contains(size).click();
