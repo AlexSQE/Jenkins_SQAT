@@ -194,4 +194,17 @@ describe('freestyleProject', () => {
             .getFreestyleProjectHeader()
             .should('have.text', freestyleProjectPageData.headerText + freestyleProjectPageData.freestyleProjectNewName)
     });
+
+    it('AT_12.03.08 | Freestyle Project > Rename project from Project page using breadcrumbs dropdown menu', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .clickFreestyleProjectNameLink()
+            .clickBreadcrumbsFreestyleProjectDrpDwnBtn()
+            .selectRenameBreadcrumbsFreestyleProjectDrpDwnLink()
+            .typeNewNameInputFild(freestyleProjectPageData.freestyleProjectNewName)
+            .clickRenameBtn()
+            .getFreestyleProjectHeader()
+            .should('have.text', freestyleProjectPageData.headerText + freestyleProjectPageData.freestyleProjectNewName)
+    });
 });

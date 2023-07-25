@@ -28,6 +28,8 @@ class FreestyleProjectPage {
     getBuildsHistoryTableRows = () => cy.get('table tr');
     getLastBuildLink = () => cy.get('#main-panel a[href="lastBuild/"]');
     getHeadIconName = () => cy.get('#jenkins-name-icon');
+    getBreadcrumbsFreestyleProjectDrpDwnBtn = () => cy.get('a[href*="/job/"] .jenkins-menu-dropdown-chevron');
+    getBreadcrumbsFreestyleProjectDrpDwnRenameLink = () => cy.get('#breadcrumb-menu li a[href$="rename"]');
 
 
     clickConfigureSideMenuLink() {
@@ -114,6 +116,17 @@ class FreestyleProjectPage {
         this.getHeadIconName().click();
         return new HeaderAndFooter()
     }
+
+    clickBreadcrumbsFreestyleProjectDrpDwnBtn() {
+        this.getBreadcrumbsFreestyleProjectDrpDwnBtn().realHover().click('right');
+        return this;
+    };
+
+    selectRenameBreadcrumbsFreestyleProjectDrpDwnLink() {
+        this.getBreadcrumbsFreestyleProjectDrpDwnRenameLink().click();
+        return new FreestyleProjectRenamePage();
+    };
+
 }
 
 export default FreestyleProjectPage;
