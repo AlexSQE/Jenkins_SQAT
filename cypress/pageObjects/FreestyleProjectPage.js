@@ -4,6 +4,7 @@ import HomePage from "./HomePage";
 import GitHubPage from "./GitHubPage";
 import FreestyleProjectPageData from '../fixtures/pom_fixtures/freestyleProjectPage.json'
 import BuildStatusPage from "./BuildStatusPage";
+import HeaderAndFooter from "./HeaderAndFooter";
 
 class FreestyleProjectPage {
     getConfigureSideMenuLink = () => cy.get('a[href$="configure"]')
@@ -26,6 +27,7 @@ class FreestyleProjectPage {
     getPermalinksHeader = () => cy.get('.permalinks-header');
     getBuildsHistoryTableRows = () => cy.get('table tr');
     getLastBuildLink = () => cy.get('#main-panel a[href="lastBuild/"]');
+    getHeadIconName = () => cy.get('#jenkins-name-icon');
 
 
     clickConfigureSideMenuLink() {
@@ -108,6 +110,10 @@ class FreestyleProjectPage {
         return new BuildStatusPage();
     }
 
+    clickHeadIconName() {
+        this.getHeadIconName().click();
+        return new HeaderAndFooter()
+    }
 }
 
 export default FreestyleProjectPage;

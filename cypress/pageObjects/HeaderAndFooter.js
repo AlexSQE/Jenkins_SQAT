@@ -10,6 +10,7 @@ import UserCredentialsPage from './UserCredentialsPage';
 import UserProfilePage from "./UserProfilePage";
 import searchBoxDocumentationPage from "./SearchBoxDocumentationPage";
 import SystemLogPage from "./SystemLogPage";
+import FreestyleProjectPage from "./FreestyleProjectPage";
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -33,6 +34,7 @@ class HeaderAndFooter {
     getUserDropDownMenuCredentials = () => cy.get('#yui-gen4');
     getCurrentUserName = () => cy.get('.login .model-link span');
     getTitle = () => cy.get('head title');
+    getListSearchResult = () => cy.get('.yui-ac-bd li').not('li[style="display: none;"]');
    
     clickJenkinsVersionLink() {
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
@@ -140,6 +142,15 @@ class HeaderAndFooter {
     typeSearchBoxInputFieldAndGoSystemLog(text) {
         this.getSearchBoxInputField().clear().type(text + '{enter}');
         return new SystemLogPage();
+    }
+
+    selectSearchResult(text) {
+        this.getListSearchResult().each($el => {
+            if ($el.text() === text) {
+                cy.wrap($el).click().type('{enter}')
+            }
+        })
+        return new FreestyleProjectPage();
     }
 }
 

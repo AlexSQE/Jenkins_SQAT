@@ -221,4 +221,21 @@ describe('headerAndFooter', () => {
                 .should('have.text', searchBoxDocumentationPageData.testdata);            
         })
     })
+
+    it('AT_01.02.35 < Header > Search box | Verify that user can select the item from the context menu and be redirected to Serch Result Page', () => {
+        searchBoxDocumentationPageData.setNamesForNewProject.forEach((obj) => {
+            homePage
+                .clickNewItemSideMenuLink()
+                .typeNewItemNameInputField(`${obj.name}`)
+                .selectFreestyleProjectItem()
+                .clickOkBtnAndGoFreestyleProjectConfig()
+                .clickSaveBtnAndGoFreestyleProject()
+                .clickHeadIconName() 
+        })
+            headerAndFooter
+                .typeSearchBoxInputField(searchBoxDocumentationPageData.searchBoxInput)
+                .selectSearchResult(searchBoxDocumentationPageData.setNamesForNewProject[0].name)
+                .getFreestyleProjectHeader()
+                .should('contain', `Project ${searchBoxDocumentationPageData.setNamesForNewProject[0].name}`)
+      })
 })
