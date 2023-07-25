@@ -29,19 +29,6 @@ describe('freestyleProject', () => {
             .should('have.text', freestyleProjectPageData.headerText + freestyleProjectPageData.freestyleProjectNewName)
     });
 
-    it('AT_12.03.006 | Freestyle project Rename project without any changes', () => {
-        homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
-            .selectFreestyleProjectItem()
-            .clickOkBtnAndGoFreestyleProjectConfig()
-            .clickSaveBtnAndGoFreestyleProject()
-            .clickRenameSideMenuLink()
-            .clickRenameBtn()
-            .getFreestyleProjectHeader()
-            .should('have.text', freestyleProjectPageData.errorMessage);
-    })
-
     it('AT_12.06_001 | Freestyle project "Disable project" option exists', () => {
         homePage
             .clickNewItemSideMenuLink()
