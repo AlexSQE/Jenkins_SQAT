@@ -16,7 +16,7 @@ describe('dashboardBreadcrumbs', () => {
          .and('have.length', dashboardBreadcrumbsData.dashboardDropdownMenu.length);
    });
 
-   it('AT_04.02_003 | Verify Dashboard Dropdown menu has subfolders of the Dashboard page', () => {
+   it('AT_04.04.03 | Verify Dashboard Dropdown menu has subfolders of the Dashboard page', () => {
       dashboardBreadcrumbs
          .clickDashboardDropdownBtn()
          .getDashboardDropdownMenuItemsList().each(($el, idx) => {
