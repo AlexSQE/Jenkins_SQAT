@@ -148,4 +148,16 @@ describe('newItem', () => {
         .should('have.text', newItemPageData.pipelineName)
         .and('be.visible')
     })
+    it('AT 05.02.09 Create a new Pipelineby in"New Item" and to see on dashboard page',()=>{
+        homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(newItemPageData.pipelineName)
+        .selectPipelineItem()
+        .clickOkBtnAndGoPipelineConfig()
+        dashboardBreadcrumbs
+        .clickDashboardLinkAndGoHomePage()
+        homePage
+        .getProjectNameLink()
+        .should('have.text', newItemPageData.pipelineName)
+    })
 });
