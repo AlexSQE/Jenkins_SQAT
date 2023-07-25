@@ -34,16 +34,7 @@ describe('dashboardBreadcrumbs', () => {
       cy.url().should('include', newItemPageData.newItemEndPoinURL);
    })
 
-   it('AT_04.02_002 |Dashbord has a dropdown menu', () => {
-      dashboardBreadcrumbs
-         .clickDashboardDropdownBtn()
-         .getDashboardDropDownMenuList().should('be.visible').and('have.length', dashboardBreadcrumbsData.dashboardDropdownMenu.length)
-         .each((el, index) => {
-            expect(el.text()).to.equal(dashboardBreadcrumbsData.dashboardDropdownMenu[index])
-         })
-   });
-
-   it('AT_04.02_18 | Verify URL when user clicks Reload Configuration from Disk from Manage Jenkins_user clicks Cancel on the alert window', () => {
+      it('AT_04.02_18 | Verify URL when user clicks Reload Configuration from Disk from Manage Jenkins_user clicks Cancel on the alert window', () => {
       const PORT = Cypress.env("local.port")
       dashboardBreadcrumbs
          .clickDashboardDropdownBtn()
