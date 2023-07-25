@@ -21,6 +21,7 @@ class BuildHistoryPage {
     getTimeLineProjectNameAndBuild = () => cy.get('.label-event-blue') 
     getSortHeaderTimeSince = () => cy.get('#projectStatus thead th:nth-child(3) a.sortheader')
     getProjectStatusTableTimeSinceElements = () => cy.get('table#projectStatus tbody tr td:nth-child(3)')
+    getBuilHistoryTimeLine = () => cy.get('#resizeContainer');
 
     clickBuildInBuildHistoryCalendar() {
         this.getBuildInBuildHistoryCalendar().click();

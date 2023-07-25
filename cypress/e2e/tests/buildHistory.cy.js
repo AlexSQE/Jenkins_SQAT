@@ -156,4 +156,11 @@ describe('buildHistory', () => {
         .clickTimeSinceBtn()
         .verifySortBuildsByTimeSience()
     })
+
+    it('AT_07.01.07 | Build History calendar is visible',()=>{
+        homePage
+          .clickBuildHistoryLink()
+          .getBuilHistoryTimeLine()
+          .should('be.visible');       
+    })
 });
