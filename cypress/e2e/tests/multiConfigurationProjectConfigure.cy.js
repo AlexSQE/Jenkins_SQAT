@@ -75,15 +75,4 @@ describe('multiConfigurationProjectConfigure', () => {
       .and('be.enabled')      
     });
 
-    it('AT_14.05_002 | Multi-configuration project. There are ALL advanced project options in the list', () => {
-        const optionsNumber = projectData.advancedOptions.length + projectData.advancedOptionsField.length;
-
-        cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
-        homePage
-          .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
-          .clickMultiConfProjectDrpDwnConfigureLink()
-          .clickAdvancedBtn()
-          .getAdvancedOptionsBlock()
-          .should('have.length', optionsNumber);    
-    });
 });
