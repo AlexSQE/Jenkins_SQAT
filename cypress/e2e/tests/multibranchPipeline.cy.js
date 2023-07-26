@@ -25,7 +25,7 @@ describe('multibranchPipeline', () => {
             .should('not.exist');
     });
 
-    it('AT_16.02.006 | Verify user can rename Multibranch Pipeline inside the selected Multibranch Pipeline', () => {
+    it('AT_16.02.06 | Verify user can rename Multibranch Pipeline inside the selected Multibranch Pipeline', () => {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
 
         headerAndFooter
