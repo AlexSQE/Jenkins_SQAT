@@ -42,7 +42,7 @@ describe('freestyleProjectConfigure', () => {
     })
 
     freestyleProjectConfigData.postBuildActions.forEach((actionName, idx) => {
-        it(`AT_12.05_008 | Verify user can choose ${actionName} from the dropdown menu list <Post-build Actions> while configuring the freestyle project`, () => {
+        it(`AT_12.14.01 | Verify user can choose ${actionName} from the dropdown menu list <Post-build Actions> while configuring the freestyle project`, () => {
             homePage
                 .clickFreestyleProjectNameLink()
                 .clickConfigureSideMenuLink()
