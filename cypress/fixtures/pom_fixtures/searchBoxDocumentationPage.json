@@ -11,5 +11,9 @@
 		  "name": "freestyle2"
 		}
 	  ],
-	  "searchBoxInput" : "freestyle"
+	  "searchBoxInput" : "freestyle",
+	  "multibranchPipeline": {
+		"name": "Multibranch Pipeline1",
+		"searchPage": "Search for 'Multibranch Pipeline1'"
+	}
 }

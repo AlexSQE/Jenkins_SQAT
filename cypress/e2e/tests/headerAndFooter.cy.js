@@ -14,12 +14,14 @@ import userBuildsPageData from "../../fixtures/pom_fixtures/userBuildsPage.json"
 import UserProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
 import restApiDocPageData from "..//..//fixtures/pom_fixtures/restApiDocPage.json";
 import SystemLogPage from "../../pageObjects/SystemLogPage";
+import ResultSearchBoxPage from "../../pageObjects/ResultSearchBoxPage";
 
 describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
     const homePage = new HomePage();
     const systemLogPage = new SystemLogPage();
+    const resultSearchBoxPage = new ResultSearchBoxPage();
 
     it('AT_03.01.002 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
@@ -252,4 +254,15 @@ describe('headerAndFooter', () => {
                 })
             })
     });
+
+      it('AT_01.02_004 | User is able to get Search Box by a keyboard shortcut (Ctrl+K)', function () {
+          homePage
+            .openSearchByShortCut()
+            .typeSearchBoxInputField(searchBoxDocumentationPageData.multibranchPipeline.name + '{enter}')
+        
+          resultSearchBoxPage
+            .getHeader()
+            .should('have.text', searchBoxDocumentationPageData.multibranchPipeline.searchPage)
+            .and('be.visible');
+      });
 })

@@ -30,6 +30,7 @@ import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 import ConfigureCloudsPage from "./ConfigureCloudsPage";
 import OrgFolderDeletePage from "./OrgFolderDeletePage";
 import DistributedBuildsLinkPage from "./DistributedBuildsLinkPage";
+import HeaderAndFooter from "./HeaderAndFooter";
 
 class HomePage {
 
@@ -70,7 +71,6 @@ class HomePage {
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
     getCreateJobLink = () => cy.get('a[href="newJob"]');
     getProjectNameLink = () => cy.get('td>a[href*="job/"] span');
-    getPageBody = () => cy.get("#page-body");
     getMainPanel = () => cy.get("#main-panel");
     getProjectDrpDwnBtn = () =>
         cy.get("table#projectstatus button.jenkins-menu-dropdown-chevron");
@@ -464,6 +464,11 @@ class HomePage {
             cy.wait(1000);
     }
     return this
+    }
+
+    openSearchByShortCut() {
+        this.getPageBody().trigger('keydown', { ctrlKey: true, keyCode: 75 });
+        return new HeaderAndFooter();
     }
 
 }
