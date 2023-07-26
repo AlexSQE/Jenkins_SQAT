@@ -55,7 +55,7 @@ describe('multibranchPipeline', () => {
             .should('have.text', newItemPageData.multibranchPipelineName)
     });
 
-    it('AT_16.02_001 | Rename Multibranch Pipeliner using dropdown menu', () => {
+    it('AT_16.02.01 | Rename Multibranch Pipeliner using dropdown menu', () => {
         cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
 
         homePage
