@@ -59,7 +59,7 @@ describe('freestyleProjectConfigure', () => {
     });
 
     freestyleProjectConfigData.buildSteps.forEach((buildStep, idx) => {
-        it(`AT_12.05_005 | Verify user can choose ${buildStep} from the dropdown menu list <Add build step> while configuring the freestyle project`, () => {
+        it(`AT_12.13.01 | Verify user can choose ${buildStep} from the dropdown menu list <Add build step> while configuring the freestyle project`, () => {
             homePage
                 .clickFreestyleProjectNameLink()
                 .clickConfigureSideMenuLink()
