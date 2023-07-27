@@ -23,5 +23,6 @@
             "url": "job/FolderNewName/",
             "name": "FolderNewName"
         }
-    ]
+    ],
+    "editDescriptionButton": "Edit description"
 }

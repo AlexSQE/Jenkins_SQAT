@@ -27,7 +27,6 @@ class MyViewPage {
   getInputDescriptionField = () => cy.get('.jenkins-input');
   getDescriprionSaveBtn = () => cy.get('button[name="Submit"]');
   getDescriptionText = () => cy.get('#description>div:nth-child(1)');
-  getEditDescriptionLink = () => cy.get('#description-link');
   getBuildstatusIcon = () => cy.get('.build-status-icon__outer');
   getNotBuiltTooltip = () => cy.get('svg[tooltip="Not built"]');
   getLastSuccesStatus = () => cy.get('td:nth-child(4)');

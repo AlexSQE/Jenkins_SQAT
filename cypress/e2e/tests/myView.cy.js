@@ -219,6 +219,16 @@ describe('myView', () => {
         .should('contain', myViewData.addDescription)
   });
 
+  it('AT_09.03.001 | Edit description button is visible', () => {
+    homePage
+        .clickMyViewSideMenuLink()
+        .clickAddDescriptionBtn()
+        .typeDescriptionIntoInputField(myViewData.addDescription)
+        .getEditDescriptionLink()
+        .should('contain', myViewData.editDescriptionButton)
+        .and('have.attr', 'href')
+  })
+
   it('AT_09.07.001|Verify that "Edit View" tab is displayed', () => {
       cy.createFreestyleProject(newItemPageData.freestyleProjectName);
       homePage
