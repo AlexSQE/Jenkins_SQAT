@@ -3,68 +3,78 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import resultSearchBoxData from "../../fixtures/pom_fixtures/resultSearchBox.json"
 
-describe('orgFolderConfigure', () => {
+describe('orgFolder', () => {
 
     const homePage = new HomePage();
-    const headerAndFooter = new HeaderAndFooter(); 
+    const headerAndFooter = new HeaderAndFooter();
 
-    it ('AT_17.04_004 | Verify the moved Organization Folder existence on the Jenkins dashboard', function () {
+    it('AT_17.05.01|<Organization Folder> Verify possibility to disable Organization Folder', function () {
+        cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+            .clickOrgFolderNameLink(newItemPageData.orgFolderName)
+            .clickDisableOrgFolderBtn()
+            .getEnableProjectForm()
+            .should('contain.text', newItemPageData.disabledMessage)
+    })
+
+    it('AT_17.04.04 | Verify the moved Organization Folder existence on the Jenkins dashboard', function () {
         cy.createFolderProject(newItemPageData.folderName)
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
 
         homePage
-        .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
-        .clickProjectNameDropdownMoveLink()
-        .selectDestinationMoveJob(newItemPageData.folderName)
-        .clickMoveButton()
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
+            .clickProjectNameDropdownMoveLink()
+            .selectDestinationMoveJob(newItemPageData.folderName)
+            .clickMoveButton()
 
         headerAndFooter
-        .clickJenkinsHomeLink()
+            .clickJenkinsHomeLink()
 
         homePage
-        .getgetDashboardMainPanel()
-        .should('not.contain.text', newItemPageData.orgFolderName)
+            .getgetDashboardMainPanel()
+            .should('not.contain.text', newItemPageData.orgFolderName)
     })
 
-    it('AT_17.04_002 | Move Organization Folder into Folder', () => {
+    it('AT_17.04.02 | Move Organization Folder into Folder', () => {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
         cy.createFolderProject(newItemPageData.folderName);
         homePage
-        .clickOrgFolderNameLink(newItemPageData.orgFolderName)
-        .clickMoveInSideMenuLink()
-        .selectDestinationMoveJob(newItemPageData.folderName)
-        .clickMoveButton()
+            .clickOrgFolderNameLink(newItemPageData.orgFolderName)
+            .clickMoveInSideMenuLink()
+            .selectDestinationMoveJob(newItemPageData.folderName)
+            .clickMoveButton()
         headerAndFooter
-        .clickJenkinsHomeLink()
-        .clickFolderNameLink(newItemPageData.folderName)
-        .checkJobMoveInsideFolder(newItemPageData.orgFolderName)
+            .clickJenkinsHomeLink()
+            .clickFolderNameLink(newItemPageData.folderName)
+            .checkJobMoveInsideFolder(newItemPageData.orgFolderName)
     })
 
-    it('AT_17.03_001| Delete organization folder within the selected organization folder', () => {
+    it('AT_17.03.01| Delete organization folder within the selected organization folder', () => {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
         homePage
-        .clickProjectDrpDwnBtn()
-        .clickDeleteOrgFolderDrpDwnMenuBtn()
-        .clickDeleteButton()
+            .clickProjectDrpDwnBtn()
+            .clickDeleteOrgFolderDrpDwnMenuBtn()
+            .clickDeleteButton()
         headerAndFooter
-        .searchTextSearchBox(newItemPageData.orgFolderName)
-        .getResultNoMatch()
-        .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)
+            .searchTextSearchBox(newItemPageData.orgFolderName)
+            .getResultNoMatch()
+            .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)
     });
 
-    it('AT_17.04_001 | Verify that user can move the organization folder through the Jenkins dashboard', function () {
+    it('AT_17.04.01 | Verify that user can move the organization folder through the Jenkins dashboard', function () {
         cy.createFolderProject(newItemPageData.folderName)
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
 
         homePage
-        .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
-        .clickProjectNameDropdownMoveLink()
-        .selectDestinationMoveJob(newItemPageData.folderName)
-        .clickMoveButton()
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
+            .clickProjectNameDropdownMoveLink()
+            .selectDestinationMoveJob(newItemPageData.folderName)
+            .clickMoveButton()
 
         headerAndFooter
-        .clickJenkinsHomeLink()
-        .clickFolderNameLink(newItemPageData.folderName)
-        .checkJobMoveInsideFolder(newItemPageData.orgFolderName)
+            .clickJenkinsHomeLink()
+            .clickFolderNameLink(newItemPageData.folderName)
+            .checkJobMoveInsideFolder(newItemPageData.orgFolderName)
     })
 })

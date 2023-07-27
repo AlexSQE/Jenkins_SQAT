@@ -8,6 +8,8 @@
     "folderName": "FolderJob",
     "newpipelineName": "NewPipelineJob",
 
+    "disabledMessage": "This Organization Folder is currently disabled",
+
     "newItemNames": [
         "Freestyle project",
         "Pipeline",

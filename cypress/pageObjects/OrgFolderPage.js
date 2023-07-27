@@ -9,6 +9,12 @@ class OrgFolderPage {
     getDescription = () => cy.get('#view-message');
     getMoveInSideMenulink = () => cy.get('#side-panel a[href*="move"]')
     getOrgFolderHeader = () => cy.get('#main-panel h1')
+    getDisableOrgFolderBtn = () => cy.get('#disable-project button').contains("Disable Organization Folder")
+
+    clickDisableOrgFolderBtn(){
+        this.getDisableOrgFolderBtn().click();
+        return this
+    }
 
     clickGoToDashboard() {
         this.getDashboard().click();
