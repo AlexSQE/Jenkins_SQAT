@@ -31,7 +31,7 @@ describe('folder', () => {
             .should('not.exist');
     });
 
-    it('AT_15.05.003| Verify user can create a new job inside a folder', () => {
+    it('AT_15.05.03| Verify user can create a new job inside a folder', () => {
         cy.createFolderProject(newItemPageData.folderName);
         homePage
             .clickProjectNameLink(newItemPageData.folderName)
