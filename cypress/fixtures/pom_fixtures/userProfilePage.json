@@ -9,5 +9,6 @@
         "description": "Created first time a new description",
         "dashboard": "Dashboard"
     }, 
-    "userAddDescriptionBtn": "Add description"
+    "userAddDescriptionBtn": "Add description",
+    "editDescriptionBtnText": "Edit description"
 }

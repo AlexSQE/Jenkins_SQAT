@@ -8,14 +8,12 @@ describe('people', () => {
 
     const homePage = new HomePage();
     
-    it('AT_06.04_005 | Edit User description', () => {
+    it('AT_06.04.05 | Edit User description', () => {
+        cy.createUserDescription(userProfilePageData.description);
         homePage
             .clickPeopleSideMenuLink()
             .clickUserNameLink()
-            .clickUserDescriptionBtn()
-            .typeUserDescriptionInputField(userProfilePageData.description)
-            .clickUserDescriptionSaveBtn()
-            .clickUserDescriptionBtn()
+            .clickEditUserDescriptionBtn(userProfilePageData.editDescriptionBtnText)
             .typeUserDescriptionInputField(userProfilePageData.editDescription)
             .clickUserDescriptionSaveBtn()
             .getUserDescriptionText()

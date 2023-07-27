@@ -73,5 +73,10 @@ class UserProfilePage {
         this.getUserDescriptionText().should("be.empty");
         return this;
     };
+
+    clickEditUserDescriptionBtn(btnName){
+        this.getUserDescriptionBtn().contains(btnName).click();
+        return this;
+    }
 }
 export default UserProfilePage;

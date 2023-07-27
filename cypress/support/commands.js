@@ -215,3 +215,13 @@ Cypress.Commands.add('openFreestyleProjectConfigurePage', () => {
         .clickConfigureSideMenuLink()
         .getPageHeader().should("equal", configurePageHeader);
 });
+
+Cypress.Commands.add('createUserDescription', (description) => {
+    headerAndFooter
+        .clickUserNameLink()
+        .clickUserDescriptionBtn()
+        .typeUserDescriptionInputField(description)
+        .clickUserDescriptionSaveBtn();
+    headerAndFooter
+        .clickJenkinsHomeLink();        
+})
