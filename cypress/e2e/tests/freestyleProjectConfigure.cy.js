@@ -18,7 +18,7 @@ describe('freestyleProjectConfigure', () => {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName);
     })
 
-    it('AT_12.05_004 | Add link on GitHub and verify it', () => {
+    it('AT_12.08.02 | Add link on GitHub and verify it', () => {
         homePage
             .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
             .clickProjectNameDropdownConfigureLink()
