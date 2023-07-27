@@ -7,7 +7,7 @@ import projectData from "../../fixtures/pom_fixtures/multiConfigurationProjectCo
 describe('multiConfigurationProjectConfigure', () => {
   const homePage = new HomePage();
 
-  it('AT_14.05_010 | Multi-configuration project. Advanced project options default values', () => {
+  it('AT_14.05.10 | Multi-configuration project. Advanced project options default values', () => {
     cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
     homePage
       .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
@@ -18,7 +18,7 @@ describe('multiConfigurationProjectConfigure', () => {
       .should('deep.equal', projectData.defaultOptionsValues)
   });
 
-  it('AT_14.05_009 | Verify MultiConfig Project Advanced options are set and saved', () => {
+  it('AT_14.05.09 | Verify MultiConfig Project Advanced options are set and saved', () => {
     cy.createMultiConfigProject(newItemPageData.multiConfigurationProjectName);
     homePage
       .clickProjectDropdownMenuBtn()
@@ -64,7 +64,7 @@ describe('multiConfigurationProjectConfigure', () => {
       .assertAdvancedOptionsCheckboxesUnChecked()    
   });
 
-  it('AT_14.05_003 | Multi-configuration project. Advanced options are enabled to select it', () => {
+  it('AT_14.05.03 | Multi-configuration project. Advanced options are enabled to select it', () => {
     cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
     homePage
       .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
@@ -74,5 +74,4 @@ describe('multiConfigurationProjectConfigure', () => {
       .should('be.visible')
       .and('be.enabled')      
     });
-
 });
