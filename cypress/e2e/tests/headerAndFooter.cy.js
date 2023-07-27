@@ -265,4 +265,13 @@ describe('headerAndFooter', () => {
             .should('have.text', searchBoxDocumentationPageData.multibranchPipeline.searchPage)
             .and('be.visible');
       });
+
+      it('AT_01.02.36 | Entering an empty field redirects to built-in node', function () {
+        homePage
+          .openSearchByShortCut()
+          .typeEnterEmptySearch()
+          .getBuiltInNodeHeader()
+          .should('be.visible')
+          .and('have.text', searchBoxDocumentationPageData.builtInNodeText)
+    });
 })

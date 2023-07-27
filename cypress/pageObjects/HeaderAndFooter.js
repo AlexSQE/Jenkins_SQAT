@@ -11,6 +11,7 @@ import UserProfilePage from "./UserProfilePage";
 import searchBoxDocumentationPage from "./SearchBoxDocumentationPage";
 import SystemLogPage from "./SystemLogPage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
+import BuiltInNodePage from "./BuiltInNodePage";
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -152,6 +153,11 @@ class HeaderAndFooter {
         })
         return new FreestyleProjectPage();
     }
+
+    typeEnterEmptySearch() {
+        this.getSearchBoxInputField().type('{enter}');
+        return new BuiltInNodePage ();
+        }
 }
 
 export default HeaderAndFooter;
