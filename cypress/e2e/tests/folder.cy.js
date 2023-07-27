@@ -129,4 +129,16 @@ describe('folder', () => {
             })
     })
 
+    it('AT_15.02.02 | “Edit description” button is visible and clickable', () => {
+        cy.createFolderProject(newItemPageData.folderName);
+        cy.addFolderDescription(folderPageData.folderDescription);
+        
+        homePage 
+            .clickFolderNameLink(newItemPageData.folderName) 
+            .clickAddEditDescriptionBtn()
+            .getFolderDescriptionInputField()
+            .should('be.visible')
+            .and('have.text', folderPageData.folderDescription)
+    });
+
 });
