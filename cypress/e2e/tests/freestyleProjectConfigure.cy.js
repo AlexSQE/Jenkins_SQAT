@@ -31,7 +31,7 @@ describe('freestyleProjectConfigure', () => {
             .should('include.text', gitHubPageData.gitHubHeaderAuthor);
     });
 
-    it('AT_12.05_001 | Freestyle project > Add description to Freestyle project through Congure in side menu', () => {
+    it('AT_12.08.01 | Freestyle project > Add description to Freestyle project through Congure in side menu', () => {
         homePage
             .clickFreestyleProjectNameLink()
             .clickConfigureSideMenuLink()
