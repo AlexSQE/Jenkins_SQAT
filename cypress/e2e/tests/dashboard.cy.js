@@ -3,6 +3,7 @@
 import pipelinePageData from "../../fixtures/pom_fixtures/pipelinePage.json";
 import HomePage from "../../pageObjects/HomePage";
 import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
+import homePageData from "../../fixtures/pom_fixtures/homePage.json"
 
 describe('dashboard', () => {
 
@@ -21,21 +22,21 @@ describe('dashboard', () => {
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
         homePage
         .clickTableSizeBtnS()
-        .verifyTableSizeS()
+        .verifyTableSize(homePageData.sRem)
     })
 
     it('AT20.01.007.2|DashbordVerify size of project table M',() => {
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
         homePage
         .clickTableSizeBtnM()
-        .verifyTableSizeM()
+        .verifyTableSize(homePageData.mRem)
     })
 
     it('AT20.01.007.3|DashbordVerify size of project table L',() => {
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
         homePage
         .clickTableSizeBtnL()
-        .verifyTableSizeL()
+        .verifyTableSize(homePageData.lRem)
     })
 })
 

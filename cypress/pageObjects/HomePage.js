@@ -24,7 +24,6 @@ import BuildPage from "./BuildPage";
 import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
 import PipelinePage from "./PipelinePage";
 import MultibranchPipelineRenamePage from "./MultibranchPipelineRenamePage"
-import homePageData from "../fixtures/pom_fixtures/homePage.json"
 import ManageJenkinsPage from "./ManageJenkinsPage";
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 import ConfigureCloudsPage from "./ConfigureCloudsPage";
@@ -355,28 +354,8 @@ class HomePage {
         return this
     }
 
-    verifyTableSizeS() {
-        this.getTable().then((obj) => {
-            cy.document().then(() => {
-                cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-                    .should('eq', homePageData.sRem)
-            })
-        })
-        return this
-    }
-
     clickTableSizeBtnM() {
         this.getTableSizeBtnM().click()
-        return this
-    }
-
-    verifyTableSizeM() {
-        this.getTable().then((obj) => {
-            cy.document().then(() => {
-                cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-                    .should('eq', homePageData.mRem)
-            })
-        })
         return this
     }
 
@@ -385,12 +364,9 @@ class HomePage {
         return this
     }
 
-    verifyTableSizeL() {
-        this.getTable().then((obj) => {
-            cy.document().then(() => {
-                cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-                    .should('eq', homePageData.lRem)
-            })
+    verifyTableSize(size) {
+        this.getTable().then(($el) => {
+            cy.wrap(window.getComputedStyle($el[0]).getPropertyValue('--table-padding')).should('eq', size)
         })
         return this
     };
