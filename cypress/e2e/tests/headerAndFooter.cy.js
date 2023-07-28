@@ -227,7 +227,7 @@ describe('headerAndFooter', () => {
                 .selectSearchResult(searchBoxDocumentationPageData.setNamesForNewProject[0].name)
                 .getFreestyleProjectHeader()
                 .should('contain', `Project ${searchBoxDocumentationPageData.setNamesForNewProject[0].name}`)
-      })
+    })
 
     it('AT_01.04.10 | <Header> Verify that the Builds Tab in Left Side panel should be highlighted after clicking on Dropdown Profile Builds option', () => {
         headerAndFooter
@@ -243,23 +243,37 @@ describe('headerAndFooter', () => {
             })
     });
 
-      it('AT_01.02_004 | User is able to get Search Box by a keyboard shortcut (Ctrl+K)', function () {
-          homePage
+    it('AT_01.02_004 | User is able to get Search Box by a keyboard shortcut (Ctrl+K)', function () {
+        homePage
             .openSearchByShortCut()
             .typeSearchBoxInputField(searchBoxDocumentationPageData.multibranchPipeline.name + '{enter}')
         
-          resultSearchBoxPage
+        resultSearchBoxPage
             .getHeader()
             .should('have.text', searchBoxDocumentationPageData.multibranchPipeline.searchPage)
             .and('be.visible');
-      });
+    });
 
-      it('AT_01.02.36 | Entering an empty field redirects to built-in node', function () {
+    it('AT_01.02.36 | Entering an empty field redirects to built-in node', function () {
         homePage
           .openSearchByShortCut()
           .typeEnterEmptySearch()
           .getBuiltInNodeHeader()
           .should('be.visible')
           .and('have.text', searchBoxDocumentationPageData.builtInNodeText)
+    });
+
+    it('AT_01.02.029 | Verify configure of case sensitive option in the Search box', () => {
+        headerAndFooter
+          .clickUserDropDownBtn()
+          .selectUserConfigureMenu() 
+          .clickSensitiveSearchCheckbox()
+          .clickUserConfigSaveBtn()
+        searchBoxDocumentationPageData.dataCapCase.forEach(($el,idx) => {      
+           headerAndFooter
+                .searchTextSearchBox(searchBoxDocumentationPageData.dataCapCase[idx])
+          .getResultNoMatch()
+          .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg);
+        })
     });
 })

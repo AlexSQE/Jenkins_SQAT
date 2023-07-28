@@ -36,7 +36,7 @@ class HeaderAndFooter {
     getCurrentUserName = () => cy.get('.login .model-link span');
     getTitle = () => cy.get('head title');
     getListSearchResult = () => cy.get('.yui-ac-bd li').not('li[style="display: none;"]');
-   
+    
     clickJenkinsVersionLink() {
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
         return new JenkinsPage;
@@ -76,7 +76,7 @@ class HeaderAndFooter {
     }
 
     searchTextSearchBox(text) {
-        this.getSearchBoxInputField().type(text + '{enter}');
+        this.getSearchBoxInputField().clear().type(text + '{enter}');
         return new ResultSearchBoxPage();
     }
 

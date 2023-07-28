@@ -6,6 +6,7 @@ class UserConfigurePage {
     getUserConfigSaveBtn = () => cy.get('button[name="Submit"]');
     getUserConfigDescription = () => cy.get('textarea[name="_.description"]');
     getUserBuildsSidePanelConfigureLink = () => cy.get('a[href$="/configure"]');
+    getSensitiveSearchCheckbox = () => cy.get('div.setting-main label');
 
     typeFullNameInputField(name) {
         this.getFullNameInputField().clear().type(name);
@@ -22,5 +23,10 @@ class UserConfigurePage {
         this.getUserConfigDescription().clear().type(description);
         return this;
     };
+
+    clickSensitiveSearchCheckbox() {
+        this.getSensitiveSearchCheckbox().click();
+        return this;
+    }
 }
 export default UserConfigurePage;
