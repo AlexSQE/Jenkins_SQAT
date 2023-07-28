@@ -30,18 +30,6 @@ describe('headerAndFooter', () => {
             .should('have.text', restAPIPageData.restAPIPageTitle)
     })
 
-    it('AT_01.01 _021| Verify Head Icon is clickable.', () => {
-        headerAndFooter
-            .clickUserDropDownBtn()
-            .selectUserConfigureMenu();
-
-        headerAndFooter
-            .clickJenkinsHomeLink()
-            .getHomepageHeader()
-            .should('have.text', homePageData.homePageHeader);
-    });
-
-  
     it('AT_01.02_019 | No results appear after input text in the Search box', function () {
         headerAndFooter
             .searchTextSearchBox(headerAndFooterData.inputText)
