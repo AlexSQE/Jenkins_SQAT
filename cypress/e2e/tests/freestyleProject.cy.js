@@ -194,4 +194,14 @@ describe('freestyleProject', () => {
             .getFreestyleProjectHeader()
             .should('have.text', freestyleProjectPageData.headerText + freestyleProjectPageData.freestyleProjectNewName)
     });
+
+    it('AT_12.03.09 | <Freestyle project> "Rename page" contains input field with the current name of the project', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .clickFreestyleProjectNameLink()
+            .clickRenameSideMenuLink()
+            .getNewNameInputFild().should('have.attr', 'value', newItemPageData.freestyleProjectName)
+    });
+
 });
