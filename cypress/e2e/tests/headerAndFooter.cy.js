@@ -76,7 +76,7 @@ describe('headerAndFooter', () => {
             .getDashboardMyViewsLink().should('have.text', dashboardBreadcrumbsData.dashboardDropdownMenu[4])
     });
 
-    it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () => {
+    it('AT_03.02.01 | Footer>Verify Link Jenkins ver number is correct', () => {
         headerAndFooter
             .getJenkinsLinkVerNumber()
             .should('be.visible')
