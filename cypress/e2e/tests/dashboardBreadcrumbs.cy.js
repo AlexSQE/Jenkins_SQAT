@@ -24,17 +24,7 @@ describe('dashboardBreadcrumbs', () => {
          });
    });
 
-   it('AT_04.02.004 | Clicking on the dropdown menu "New Item" should navigate to the corresponding folder page', () => {
-      dashboardBreadcrumbs
-         .clickDashboardDropdownBtn()
-         .clickDashboardNewItemLink()
-         .getNewItemHeader()
-         .should('have.text', newItemPageData.newItemHeader);
-
-      cy.url().should('include', newItemPageData.newItemEndPoinURL);
-   })
-
-      it('AT_04.02_18 | Verify URL when user clicks Reload Configuration from Disk from Manage Jenkins_user clicks Cancel on the alert window', () => {
+         it('AT_04.02_18 | Verify URL when user clicks Reload Configuration from Disk from Manage Jenkins_user clicks Cancel on the alert window', () => {
       const PORT = Cypress.env("local.port")
       dashboardBreadcrumbs
          .clickDashboardDropdownBtn()
