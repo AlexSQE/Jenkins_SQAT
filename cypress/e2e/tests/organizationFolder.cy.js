@@ -8,6 +8,17 @@ describe('orgFolder', () => {
     const homePage = new HomePage();
     const headerAndFooter = new HeaderAndFooter();
 
+    it('AT_17.05.02|<Organization Folder> Verify possibility to enable Organization Folder', function () {
+        cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+            .clickOrgFolderNameLink(newItemPageData.orgFolderName)
+            .clickDisableOrgFolderBtn()
+            .clickEnableOrgFolderBtn()
+            .getDisableOrgFolderBtn()
+            .should('exist')
+    })
+
     it('AT_17.05.01|<Organization Folder> Verify possibility to disable Organization Folder', function () {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
 

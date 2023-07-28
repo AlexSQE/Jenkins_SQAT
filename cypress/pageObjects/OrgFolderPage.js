@@ -10,9 +10,15 @@ class OrgFolderPage {
     getMoveInSideMenulink = () => cy.get('#side-panel a[href*="move"]')
     getOrgFolderHeader = () => cy.get('#main-panel h1')
     getDisableOrgFolderBtn = () => cy.get('#disable-project button').contains("Disable Organization Folder")
+    getEnableOrgFolderBtn = () => cy.get('#enable-project button[name="Submit"]')
 
-    clickDisableOrgFolderBtn(){
+    clickDisableOrgFolderBtn() {
         this.getDisableOrgFolderBtn().click();
+        return this
+    }
+
+    clickEnableOrgFolderBtn() {
+        this.getEnableOrgFolderBtn().click();
         return this
     }
 
