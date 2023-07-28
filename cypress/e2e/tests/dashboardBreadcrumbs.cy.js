@@ -24,7 +24,7 @@ describe('dashboardBreadcrumbs', () => {
          });
    });
 
-         it('AT_04.02_18 | Verify URL when user clicks Reload Configuration from Disk from Manage Jenkins_user clicks Cancel on the alert window', () => {
+   it('AT_04.04.18 | Verify URL when user clicks Reload Configuration from Disk from Manage Jenkins_user clicks Cancel on the alert window', () => {
       const PORT = Cypress.env("local.port")
       dashboardBreadcrumbs
          .clickDashboardDropdownBtn()
