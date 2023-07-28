@@ -93,4 +93,15 @@ describe("multiConfigurationProject", () => {
         multiConfigurationProjectPage
         .getDisableProjectBtn().should('be.visible').and('have.text', multiConfProjectPageData.disableBtnText);
     })
+
+    it('AT_14.07.04 | Delete Multi-configuration project within breadcrums menu', () => {
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName);
+        
+        homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickMultiConfigProjectDropdwnBreadcrumb() 
+        .selectDeleteBtnMultiConfigProjectDropdownBreadcrumb()
+        .getProjectTable()
+        .should('not.exist');
+    })
 })
