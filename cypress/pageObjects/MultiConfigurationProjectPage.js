@@ -3,7 +3,7 @@ import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectC
 
 class MultiConfigurationProjectPage {
     getDeleteSideMenuLink = () => cy.get('a[data-message^="Delete"]');
-    getMultiConfigurationProjectHeader = () => cy.get('#main-panel h1'); 
+    getMultiConfigurationProjectHeader = () => cy.get('#main-panel h1');
     getConfigureSideMenuLink = () => cy.get('[href$="configure"]');
     getDeleteMultiConfProject = () => cy.get('a[data-url$=doDelete]');
     getDescriptionField = () => cy.get('#description div:first-child');
@@ -12,8 +12,10 @@ class MultiConfigurationProjectPage {
     getEnableBtn = () => cy.get('.warning form [name ="Submit"]');
     getMultiConfigProjectDropdwnBreadcrumb = () => cy.get('a[href*="job"] button.jenkins-menu-dropdown-chevron');
     getMultiConfigProjectBreadcrumb = () => cy.get('#breadcrumb-menu-target li ');
-    getDeleteBtnConfigProjectBreadcrumd = () => cy.get('#breadcrumb-menu .icon-edit-delete')
-
+    getDeleteBtnConfigProjectBreadcrumd = () => cy.get('#breadcrumb-menu .icon-edit-delete');
+    getAddDescriptionBtn = () => cy.get('a#description-link.jenkins-button.jenkins-button--tertiary');
+    getDescriptionInputField = () => cy.get('#description textarea.jenkins-input');
+    getSaveDescriptionBtn = () => cy.get('button.jenkins-button.jenkins-button--primary ');
 
     clickDeleteSideMenuLink() {
         this.getDeleteSideMenuLink().click();
@@ -48,6 +50,21 @@ class MultiConfigurationProjectPage {
     selectDeleteBtnMultiConfigProjectDropdownBreadcrumb () {
         this.getDeleteBtnConfigProjectBreadcrumd().click()
         return new HomePage;
+    };
+
+    clickAddDescriptionBtn() {
+        this.getAddDescriptionBtn().click();
+        return this;
+    };
+
+    typeDescriptionInputField(text) {
+        this.getDescriptionInputField().clear().type(text);
+        return this;
+    };
+
+    clickSaveDescriptionBtn() {
+        this.getSaveDescriptionBtn().click();
+        return this;
     };
 }
 export default MultiConfigurationProjectPage;

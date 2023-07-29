@@ -104,4 +104,15 @@ describe("multiConfigurationProject", () => {
         .getProjectTable()
         .should('not.exist');
     })
+
+    it('AT_14.03.01 | <Multi-configuration project> Verify possibility to add description by clicking Add Description', () => {
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName);
+
+        homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickAddDescriptionBtn()
+        .typeDescriptionInputField(multiConfigurationProjectConfigurePage.descriptionText)
+        .clickSaveDescriptionBtn()
+        .getDescriptionField().should('have.text', multiConfigurationProjectConfigurePage.descriptionText)
+    })
 })
