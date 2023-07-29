@@ -12,5 +12,16 @@
         "Build History",
         "Rename", 
         "Credentials"
-        ]
+        ],
+
+    "endPointsUrl": [  
+        "/configure",
+        "/newJob",
+        "/delete",
+        "/asynchPeople/",
+        "/view/All/builds",
+        "/confirm-rename",
+        "/credentials/"
+    ]
+
 }

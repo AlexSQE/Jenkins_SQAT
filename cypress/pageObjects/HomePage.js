@@ -123,6 +123,8 @@ class HomePage {
     getLearnMoreAboutDistributedBuildsLink = () => cy.get('.content-block__help-link');
     getgetDashboardMainPanel = () => cy.get('#main-panel');
     getProjectNameDrpDwnItems = () => cy.get('#breadcrumb-menu li');
+    getFolderDrpDwnMenuList = () => cy.get('#breadcrumb-menu li[index]');
+    
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {
@@ -446,6 +448,11 @@ class HomePage {
         this.getPageBody().trigger('keydown', { ctrlKey: true, keyCode: 75 });
         return new HeaderAndFooter();
     }
+
+    clickFolderDrpDwnMenuItem(index) {
+        this.getFolderDrpDwnMenuList().eq(index).click()
+        return cy.url()
+    };
 
 }
 export default HomePage;

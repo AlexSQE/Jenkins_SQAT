@@ -141,4 +141,15 @@ describe('folder', () => {
             .and('have.text', folderPageData.folderDescription)
     });
 
+    folderPageData.folderDropdownItems.forEach((folderDropdownItems, index) => {
+        it(`AT_15.01.05 | Button "${folderDropdownItems}" in the dropdown-menu redirect to the target page`, () => {
+            cy.createFolderProject(newItemPageData.folderName);
+
+            homePage
+                .hoverAndClickProjectDrpDwn(newItemPageData.folderName)
+                .clickFolderDrpDwnMenuItem(index)
+                .should('contain', folderPageData.endPointsUrl[index]);
+        })
+    })
+
 });
