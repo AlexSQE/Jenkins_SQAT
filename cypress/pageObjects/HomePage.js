@@ -30,6 +30,7 @@ import ConfigureCloudsPage from "./ConfigureCloudsPage";
 import OrgFolderDeletePage from "./OrgFolderDeletePage";
 import DistributedBuildsLinkPage from "./DistributedBuildsLinkPage";
 import HeaderAndFooter from "./HeaderAndFooter";
+import NodesPage from "./NodesPage";
 
 class HomePage {
 
@@ -124,6 +125,7 @@ class HomePage {
     getgetDashboardMainPanel = () => cy.get('#main-panel');
     getProjectNameDrpDwnItems = () => cy.get('#breadcrumb-menu li');
     getFolderDrpDwnMenuList = () => cy.get('#breadcrumb-menu li[index]');
+    getBuildExecutorStatusLink = () => cy.get('a[href*="/computer/"]');
     
 
     verifyPipeLineDrpDwnMenu() {
@@ -454,5 +456,9 @@ class HomePage {
         return cy.url()
     };
 
+    clickBuildExecutorStatusLink() {
+        this.getBuildExecutorStatusLink().click()
+        return new NodesPage();
+    }
 }
 export default HomePage;
