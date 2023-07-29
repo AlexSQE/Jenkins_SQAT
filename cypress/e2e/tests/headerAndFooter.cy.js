@@ -23,7 +23,7 @@ describe('headerAndFooter', () => {
     const systemLogPage = new SystemLogPage();
     const resultSearchBoxPage = new ResultSearchBoxPage();
 
-    it('AT_03.01.002 | Verify link Rest Api redirected to the page with correct header', () => {
+    it('AT_03.01.02 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
             .clickRestAPILink()
             .getRestApiTitle()
