@@ -11,5 +11,13 @@
         "Reload Configuration from Disk: are you sure?"
    ],
 
-   "dashboardBtn": "Dashboard"
+   "dashboardBtn": "Dashboard",
+
+   "endPointUrl": [
+        "/all/newJob",
+        "/asynchPeople/",
+        "/builds",
+        "/manage/",
+        "/my-views/view/all/"
+    ]
 }

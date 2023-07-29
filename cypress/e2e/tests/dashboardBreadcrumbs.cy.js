@@ -44,5 +44,13 @@ describe('dashboardBreadcrumbs', () => {
       });
    });
 
+   dashboardBreadcrumbsData.dashboardDropdownMenu.forEach((page, ind) => {
+     it(`AT_04.04.11 |Breadcrumbs| Dropdown menu ${page} are clickable and redirect to the corresponding page`, () => {
+       dashboardBreadcrumbs
+         .clickDashboardDropdownBtn()
+         .clickEachDashboardDropDownMenuList(ind);
+       cy.url().should("include", dashboardBreadcrumbsData.endPointUrl[ind]);
+     });
+   });
 })
 
