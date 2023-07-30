@@ -163,4 +163,19 @@ describe('buildHistory', () => {
           .getBuilHistoryTimeLine()
           .should('be.visible');       
     })
+
+    it('AT_07.03.01 | <Build History> Verify user can delete build from drop-down menu next to build name', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .clickOnScheduleBuildBtn()
+            .clickBuildHistoryLink()
+            .clickBuildNameBtn()
+            .selectDeleteBuildLink()
+            .clickConfirmDeleteBtn()
+        headerandFooter
+            .clickJenkinsHomeLink()
+            .clickBuildHistoryLink()
+            .getBuildLink().should('not.exist');
+    })
 });
