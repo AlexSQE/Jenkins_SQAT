@@ -157,7 +157,12 @@ class HeaderAndFooter {
     typeEnterEmptySearch() {
         this.getSearchBoxInputField().type('{enter}');
         return new BuiltInNodePage ();
-        }
+    }
+
+    hoverRestAPILink() {
+        this.getRestAPILink().realHover();
+        return this
+    }
 }
 
 export default HeaderAndFooter;

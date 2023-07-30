@@ -27,5 +27,6 @@
         "Configuration [Jenkins]",
         "Dashboard [Jenkins]",
         "Credentials [Jenkins]"
-    ]
+    ],
+    "colorLink" : "rgb(5, 135, 212)"
 }

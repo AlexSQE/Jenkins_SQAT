@@ -276,4 +276,11 @@ describe('headerAndFooter', () => {
           .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg);
         })
     });
+
+    it.only('AT_03.01.08 Link REST API changes color', () => {
+        headerAndFooter
+            .hoverRestAPILink()
+            .getRestAPILink()
+            .should('have.css', 'color', headerAndFooterData.colorLink)
+    })
 })
