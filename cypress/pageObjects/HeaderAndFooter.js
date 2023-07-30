@@ -163,6 +163,12 @@ class HeaderAndFooter {
         this.getRestAPILink().realHover();
         return this
     }
+
+    verifySearchBoxResultDropDownList(data) {
+        this.getSearchBoxResultDropDownList().each(($el) => {
+            cy.wrap($el.text().trim()).should('include', data)
+        })
+    }
 }
 
 export default HeaderAndFooter;

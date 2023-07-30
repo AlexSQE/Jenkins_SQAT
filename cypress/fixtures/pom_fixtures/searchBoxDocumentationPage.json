@@ -16,5 +16,6 @@
 		"name": "Multibranch Pipeline1",
 		"searchPage": "Search for 'Multibranch Pipeline1'"
 	},
-	"builtInNodeText": "Built-In Node"
+	"builtInNodeText": "Built-In Node",
+	"singleCharacter": "e"
 }

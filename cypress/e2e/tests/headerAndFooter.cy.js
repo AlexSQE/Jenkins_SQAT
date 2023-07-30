@@ -271,8 +271,8 @@ describe('headerAndFooter', () => {
           .clickUserConfigSaveBtn()
         searchBoxDocumentationPageData.dataCapCase.forEach(($el,idx) => {      
            headerAndFooter
-                .searchTextSearchBox(searchBoxDocumentationPageData.dataCapCase[idx])
-          .getResultNoMatch()
+            .searchTextSearchBox(searchBoxDocumentationPageData.dataCapCase[idx])
+            .getResultNoMatch()
           .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg);
         })
     });
@@ -282,5 +282,12 @@ describe('headerAndFooter', () => {
             .hoverRestAPILink()
             .getRestAPILink()
             .should('have.css', 'color', headerAndFooterData.colorLink)
+    })
+
+    it('AT_01.02.37 | Entering a single character brings up a context menu that contains the entered character', function () {
+        homePage
+          .openSearchByShortCut()
+          .typeSearchBoxInputField(searchBoxDocumentationPageData.singleCharacter)
+          .verifySearchBoxResultDropDownList(searchBoxDocumentationPageData.singleCharacter)
     })
 })
