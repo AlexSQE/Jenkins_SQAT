@@ -277,7 +277,7 @@ describe('headerAndFooter', () => {
         })
     });
 
-    it.only('AT_03.01.08 Link REST API changes color', () => {
+    it('AT_03.01.08 | Footer Verify that Link REST API changes color', () => {
         headerAndFooter
             .hoverRestAPILink()
             .getRestAPILink()
