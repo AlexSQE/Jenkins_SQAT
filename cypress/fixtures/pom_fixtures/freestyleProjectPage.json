@@ -26,5 +26,15 @@
         "Configure" ,
         "Delete Project",
         "Rename"
-        ]
+        ],
+
+        "arrows":{
+            "arrowUp": "↑",
+            "arrowDown": "↓"
+        },
+        
+        "buildsNumbers":{
+            "build_1": "#1",
+            "build_2": "#2"
+        }
 }

@@ -2,12 +2,16 @@
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import userBuildsPageData from "../../fixtures/pom_fixtures/userBuildsPage.json";
-import freestyleProjectPage from "../../fixtures/pom_fixtures/freestyleProjectPage";
+import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage";
 import HomePage from "../../pageObjects/HomePage";
+import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
+import UserBuildsPage from "../../pageObjects/UserBuildsPage";
 
 describe('userBuilds', () => {
     const headerAndFooter = new HeaderAndFooter();
     const homePage = new HomePage();
+    const freestyleProjectPage = new FreestyleProjectPage();
+    const userBuildsPage = new UserBuildsPage();
     
 
     it('AT_04.06.008 | Breadcrumbs Verify user can see his username in the title', () => {
@@ -21,7 +25,7 @@ describe('userBuilds', () => {
 
     userBuildsPageData.tableSize.forEach((size) => {
         it(`AT_04.06.002 Verify clicking on ${size.size} icon will change the icon size`, function() {
-            cy.createFreestyleProject(freestyleProjectPage.freestyleProjectNewName)
+            cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
             homePage
                 .clickOnScheduleBuildBtn()
             headerAndFooter
@@ -52,4 +56,24 @@ describe('userBuilds', () => {
             })
             .should('deep.equal', userBuildsPageData.SidePanelTasks)
       });
+      it('AT_04.06.007 | Verify sort the builds list by status',()=>{
+        cy.createAndSaveFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
+        freestyleProjectPage
+           .clickGetBuildNowLink()
+           .clickJobStatus()
+           .clickGetBuildNowLink()
+           .clickJobStatus()
+        headerAndFooter
+           .clickUserNameLink()
+           .clickOnBuildsSubMenuLink()
+        userBuildsPage
+          .clickStatusBuilds()
+          .getStatusBuildsUpp().should('be.visible').and('contain', freestyleProjectPageData.arrows.arrowUp)
+          userBuildsPage
+          .getOddRowBuilds().should('contain', freestyleProjectPageData.buildsNumbers.build_2)
+          userBuildsPage
+          .getEvenRowBuilds().should('contain', freestyleProjectPageData.buildsNumbers.build_1)                 
+
+      })
+
 })

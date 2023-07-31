@@ -223,5 +223,16 @@ Cypress.Commands.add('createUserDescription', (description) => {
         .typeUserDescriptionInputField(description)
         .clickUserDescriptionSaveBtn();
     headerAndFooter
-        .clickJenkinsHomeLink();        
-})
+        .clickJenkinsHomeLink();      
+             
+        
+});
+
+Cypress.Commands.add('createAndSaveFreestyleProject', (freestyleProjectName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .selectFreestyleProjectItem()
+        .typeNewItemNameInputField(freestyleProjectName)
+        .clickOkBtnAndGoFreestyleProjectConfig()
+        .clickSaveBtnAndGoFreestyleProject();
+   });

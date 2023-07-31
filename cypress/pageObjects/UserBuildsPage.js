@@ -7,10 +7,19 @@ class UserBuildsPage {
     getUserBuildsSidePanel = () => cy.get('#side-panel');
     getUserBuildsSidePanelTaskLinks = () => cy.get('#tasks span.task-link-wrapper a')
     getBuildsMenuLink = () => cy.get('a[href$="/builds"]');
+    getStatusBuilds = () => cy.get('#projectStatus th:nth-child(4) a');
+    getStatusBuildsUpp = () => cy.get('th:nth-child(4) .sortarrow');
+    getOddRowBuilds = () => cy.get('#projectStatus tbody>tr:nth-child(odd)');
+    getEvenRowBuilds = () => cy.get('#projectStatus tbody>tr:nth-child(even)');
 
     clickUserBuildsTableSizeBtns(size) {
         this.getUserBuildsTableSizeBtns().contains(size).click();
         return this;
     };
+    clickStatusBuilds(){
+        this.getStatusBuilds().click();
+        return this;
+    };
+     
 }
 export default UserBuildsPage;
