@@ -108,7 +108,7 @@ describe('multibranchPipelineConfigure', () => {
         .should('have.length', 4)
     })
 
-    it('AT_16.01_013 | Multibranch Pipeline > Verify visibility of help message > Scan Multibranch Pipeline Triggers', function () {
+    it('AT_16.01.13 | Multibranch Pipeline > Verify visibility of help message > Scan Multibranch Pipeline Triggers', function () {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
 
         multibranchPipelineConfigurePage

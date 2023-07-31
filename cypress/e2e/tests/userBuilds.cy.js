@@ -8,13 +8,15 @@ import HomePage from "../../pageObjects/HomePage";
 describe('userBuilds', () => {
     const headerAndFooter = new HeaderAndFooter();
     const homePage = new HomePage();
+    
 
     it('AT_04.06.008 | Breadcrumbs Verify user can see his username in the title', () => {
+        const USERID = Cypress.env('local.admin.username').toLowerCase();
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserBuildsMenu()
-            .getUserBuildsTitle()
-            .should('eq', `${Cypress.env('local.admin.username')} ${userBuildsPageData.titleText}`);
+            .getPageHeading()
+            .should('have.text', `Builds for ${USERID}`)
     });
 
     userBuildsPageData.tableSize.forEach((size) => {
