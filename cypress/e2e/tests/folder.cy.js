@@ -152,4 +152,13 @@ describe('folder', () => {
         })
     })
 
+    it(`AT_15.01.01 | Folder is visible on 'My Views” page , endpoint /user/…/my-views/view/all/`, () => {
+        cy.createFolderProject(newItemPageData.folderName);
+        
+        homePage
+            .clickMyViewSideMenuLink()
+            .getFolderNameLink()
+            .should('be.visible')
+            .and('have.text', newItemPageData.folderName)
+    });
 });
