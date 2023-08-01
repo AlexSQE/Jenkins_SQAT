@@ -1,5 +1,6 @@
 import HomePage from "./HomePage";
 import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
+import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 
 class MultiConfigurationProjectPage {
     getDeleteSideMenuLink = () => cy.get('a[data-message^="Delete"]');
@@ -16,6 +17,7 @@ class MultiConfigurationProjectPage {
     getAddDescriptionBtn = () => cy.get('a#description-link.jenkins-button.jenkins-button--tertiary');
     getDescriptionInputField = () => cy.get('#description textarea.jenkins-input');
     getSaveDescriptionBtn = () => cy.get('button.jenkins-button.jenkins-button--primary ');
+    getRenameBtnMultiConfPrj = () => cy.get('a[href*="rename"]')
 
     clickDeleteSideMenuLink() {
         this.getDeleteSideMenuLink().click();
@@ -66,5 +68,10 @@ class MultiConfigurationProjectPage {
         this.getSaveDescriptionBtn().click();
         return this;
     };
+
+    clickRenameBtnMultiConfPrj() {
+        this.getRenameBtnMultiConfPrj().click();
+        return new MultiConfProjectRenamePage
+    }
 }
 export default MultiConfigurationProjectPage;

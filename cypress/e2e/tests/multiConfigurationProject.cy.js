@@ -39,7 +39,7 @@ describe("multiConfigurationProject", () => {
             .selectRenameMultiConfProjectDrpDwnMenuBtn()
             .typeMultiConfProjectNameInputField(newItemPageData.multiConfigurationProjectName)
             .clickMultiConfProjectRenameBtn()
-            .getCurrentNameMessage()
+            .getErrorTextMessage()
             .should('contain.text', multiConfProjectPageData.currentNameMsg)
     })
 
@@ -115,4 +115,19 @@ describe("multiConfigurationProject", () => {
         .clickSaveDescriptionBtn()
         .getDescriptionField().should('have.text', multiConfigurationProjectConfigurePage.descriptionText)
     })
+
+    multiConfProjectPageData.invalidCharacters.forEach((invalidCharacters) =>{
+    it(`AT_14.06.01 | Rename Multi-configuration project by entering invalid symbols ${invalidCharacters}`, () => {     
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName);
+        
+        homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickRenameBtnMultiConfPrj()
+        .typeMultiConfProjectNameInputField(invalidCharacters)
+        .clickMultiConfProjectRenameBtn()
+        .getErrorTextMessage()
+        .should('contain', multiConfProjectPageData.invalidCharactersMsg)
+    })
+ }) 
+
 })
