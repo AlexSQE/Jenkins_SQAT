@@ -4,14 +4,20 @@ import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multibranchPipelineConfigPageData from "../../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
 import multibranchPipelinePageData from "../../fixtures/pom_fixtures/multibranchPipelinePage.json";
-import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
+import multibranchPipelinePage from "../../fixtures/pom_fixtures/multibranchPipelinePage.json";
 import MultibranchPipelineConfigurePage from "../../pageObjects/MultibranchPipelineConfigurePage";
+import MultibranchPipelineStatusPage from "../../pageObjects/MultibranchPipelineStatusPage";
+
+
+import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
+
 
 describe('multibranchPipelineConfigure', () => {
 
     const homePage = new HomePage();
     const multibranchPipelineConfigurePage = new MultibranchPipelineConfigurePage();
-    const multibranchPiplinePage = new MultibranchPipelinePage();
+    const multibranchPipelineStatusPage = new MultibranchPipelineStatusPage();
+    const multibranchPiplinePage = new MultibranchPipelinePage();   
 
     it('AT_16.01_07 | Verify the "add metrics" are exist and visible', () => {
         homePage
@@ -131,4 +137,19 @@ describe('multibranchPipelineConfigure', () => {
           .getScriptPathHelpText()
           .should('not.be.visible')
     })
+    it('AT_16.01.15 | Multibranch Pipeline Configure Adding a display name and description', () => {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+        
+        homePage
+        .clickProjectDropdownMenuBtn()
+        .selectConfigPipelineDrpDwnMenuBtn()
+        multibranchPipelineConfigurePage
+        .clearAndTypeMultibranchPipelineName()
+        .clearAndTypeMultibranchPipelineDescription()
+        .clickSaveBtnAndGoMultiPipeline()
+        multibranchPipelineStatusPage
+        .checkMultibranchPipelineTitle()
+        .checkMultibranchPipelineDescription()
+       
+    });   
 });

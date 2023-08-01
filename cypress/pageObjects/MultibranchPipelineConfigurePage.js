@@ -1,5 +1,7 @@
 import MultibranchPipelinePage from "./MultibranchPipelinePage";
 import {addSourceItemsList, intervalTimeItemsList, PeriodicallyQstMarkText, ScriptPathQstMarkText} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
+import multibranchPipelinePage from "../fixtures/pom_fixtures/multibranchPipelinePage.json"
+
 
 
 class MultibranchPipelineConfigurePage {
@@ -20,6 +22,10 @@ class MultibranchPipelineConfigurePage {
     getScriptPathQstMark = () => cy.get('[width="100%"] > .jenkins-form-item > .jenkins-form-label > a');
     getScriptPathPopUpQstMark = () => cy.get('#tippy-3 div.tippy-box div.tippy-content');
     getScriptPathHelpText = () => cy.get('div[class$="container tr"] div[class="help"] div:nth-child(1)');
+    getDisplayNameField = () => cy.get('[name="_.displayNameOrNull"]');
+    getDescriptionField = () => cy.get('[name="_.description"]');
+    
+
 
     clickSaveBtnAndGoMultiPipeline() {
         this.getProjectConfigSaveBtn().click();
@@ -112,6 +118,15 @@ class MultibranchPipelineConfigurePage {
         .should('be.visible')
         return this;
     }
-}
+    clearAndTypeMultibranchPipelineName() {
+        this. getDisplayNameField().clear().type(multibranchPipelinePage.multibranchPipelineName);
+        return this;
+    };
+    clearAndTypeMultibranchPipelineDescription() {
+        this. getDescriptionField().clear().type(multibranchPipelinePage.multibranchPiplineDescription);
+        return this;
+    };
+
+  }
 
 export default MultibranchPipelineConfigurePage;
