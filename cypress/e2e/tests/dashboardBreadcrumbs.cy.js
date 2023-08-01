@@ -52,5 +52,18 @@ describe('dashboardBreadcrumbs', () => {
        cy.url().should("include", dashboardBreadcrumbsData.endPointUrl[ind]);
      });
    });
+
+   dashboardBreadcrumbsData.manageJenkinsDropdownItems.forEach((page, ind) => {
+      it(`AT_04.04.19 |Breadcrumbs Verify Dashboard Manage Jenkins dropdown menu link ${page} redirects to corresponding page`, () => {
+         dashboardBreadcrumbs
+            .clickDashboardDropdownBtn()
+            .moveMouseOverManageJenkins()
+            .clickEachManageJenkinsDropDownMenuList(ind);
+         cy.url().should(
+           "include",
+           dashboardBreadcrumbsData.manageJenkinsDropdownEndpoint[ind]
+         );
+      });
+   });
 })
 

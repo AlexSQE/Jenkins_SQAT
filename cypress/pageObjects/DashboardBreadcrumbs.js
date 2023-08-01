@@ -12,6 +12,7 @@ class DashboardBreadcrumbs {
    getDashboardManageJenkinsLink = () => cy.get('#breadcrumb-menu a[href="/manage"]')
    getReloadConfigurationFromDiskBtn = () => cy.get('#submenu0 li:nth-child(19) span')
    getFirstDashboardDropdownBtn = () => cy.get('#breadcrumbs li a').first();
+   getDashboardManageJenkinsMenuList = () => cy.get("#submenu0 ul li:not(.yuimenuitem-disabled)");
 
    clickDashboardDropdownBtn() {
       this.getDashboardDropdownBtn().realHover().click('right');
@@ -47,6 +48,11 @@ class DashboardBreadcrumbs {
       return this;
    };
 
+   clickEachManageJenkinsDropDownMenuList(ind) {
+    this.getDashboardManageJenkinsMenuList().as("manageJenkinsMenuLinks");
+    cy.get("@manageJenkinsMenuLinks").eq(ind).click();
+    return this;
+   }
 }
 
 export default DashboardBreadcrumbs;

@@ -19,5 +19,45 @@
         "/builds",
         "/manage/",
         "/my-views/view/all/"
-    ]
+    ],
+
+    "manageJenkinsDropdownItems": [
+    "Configure System",
+    "Global Tool Configuration",
+    "Manage Plugins",
+    "Manage Nodes and Clouds",
+    "Configure Global Security",
+    "Credentials",
+    "Credential Providers",
+    "Manage Users",
+    "System Information",
+    "System Log",
+    "Load Statistics",
+    "About Jenkins",
+    "Manage Old Data",
+    "Reload Configuration from Disk",
+    "Jenkins CLI",
+    "Script Console",
+    "Prepare for Shutdown"
+  ],
+
+  "manageJenkinsDropdownEndpoint": [
+    "/manage/configure",
+    "/manage/configureTools/",
+    "/manage/pluginManager/",
+    "/manage/computer/",
+    "/manage/configureSecurity/",
+    "/manage/credentials/",
+    "/manage/configureCredentials/",
+    "/manage/securityRealm/",
+    "/manage/systemInfo",
+    "/manage/log/",
+    "/manage/load-statistics",
+    "/manage/about/",
+    "/manage/administrativeMonitor/OldData/manage",
+    "",
+    "/manage/cli/",
+    "/manage/script",
+    "/manage/prepareShutdown/"
+  ]
 }
