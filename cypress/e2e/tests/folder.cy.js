@@ -21,7 +21,7 @@ describe('folder', () => {
             .getFolderDescription().should('have.text', folderPageData.folderDescription);
     });
 
-    it('AT_15.04_003 | Folder | Delete folder from dashboard', () => {
+    it('AT_15.04.03 | Delete folder from Dashboard breadcrumbs dropdown menu inside Folder', () => {
         cy.createFolderProject(newItemPageData.folderName)
         homePage
             .hoverAndClickProjectDrpDwnBtn(newItemPageData.folderName)
@@ -55,7 +55,7 @@ describe('folder', () => {
             .getFolderDescription().should('have.text', folderPageData.folderNewDescription);
     });
 
-    it('AT_15.04.001 | <Folder>Delete folder within itself', () => {
+    it('AT_15.04.01 | Delete folder within left side panel inside Folder', () => {
         cy.createFolderProject(newItemPageData.folderName);
         homePage
             .clickFolderNameLink(newItemPageData.folderName)
