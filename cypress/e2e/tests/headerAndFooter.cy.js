@@ -15,6 +15,7 @@ import UserProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.jso
 import restApiDocPageData from "..//..//fixtures/pom_fixtures/restApiDocPage.json";
 import SystemLogPage from "../../pageObjects/SystemLogPage";
 import ResultSearchBoxPage from "../../pageObjects/ResultSearchBoxPage";
+import myViewData from "../../fixtures/pom_fixtures/myView.json";
 
 describe('headerAndFooter', () => {
 
@@ -69,7 +70,7 @@ describe('headerAndFooter', () => {
             .should('be.visible');
     });
 
-    it('AT_01.06.09 | Header> “Verify Breadcrumb should be including "My Views" in the trail after clicking on Dropdown Profile My Views option', () => {
+    it('AT_01.06.09 | Header> Verify Breadcrumb should be including "My Views" in the trail after clicking on Dropdown Profile My Views option', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserMyViewsMenu()
@@ -290,4 +291,12 @@ describe('headerAndFooter', () => {
           .typeSearchBoxInputField(searchBoxDocumentationPageData.singleCharacter)
           .verifySearchBoxResultDropDownList(searchBoxDocumentationPageData.singleCharacter)
     })
+
+    it('AT_01.06.02 | Header > Verify redirection to the “My Views“ Page with endpoint /my-views/view/all/ after ckicking on Dropdown Profile My Views option', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserMyViewsMenu()
+            .getAllMyViewsPageLink()
+            .should('contain', myViewData.allMyViewsPageURL)
+    });
 })

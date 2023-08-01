@@ -38,6 +38,7 @@ class MyViewPage {
   getActiveTabViewInTabBar = () => cy.get('.tabBar .tab.active');
   getViewsTabBar = () => cy.get('.tabBar');
   getCreateAJobLink = () => cy.get('a[href="newJob"]');
+  getAllMyViewsPageLink = () => cy.url();
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();

@@ -24,5 +24,6 @@
             "name": "FolderNewName"
         }
     ],
-    "editDescriptionButton": "Edit description"
+    "editDescriptionButton": "Edit description",
+    "allMyViewsPageURL": "/my-views/view/all/"
 }
