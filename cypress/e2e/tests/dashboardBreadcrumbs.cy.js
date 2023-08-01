@@ -65,5 +65,14 @@ describe('dashboardBreadcrumbs', () => {
          );
       });
    });
+
+   it("AT_04.04.09 |Breadcrumbs Dashboard page link check Manage Jenkins dropdown subfolder", () => {
+     dashboardBreadcrumbs
+       .clickDashboardDropdownBtn()
+       .moveMouseOverManageJenkins()
+       .getDashboardManageJenkinsMenuList()
+       .each(($el, idx) => {expect($el.text()).contain(dashboardBreadcrumbsData.manageJenkinsDropdownItems[idx])});
+   });
+     
 })
 
