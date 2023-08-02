@@ -227,12 +227,3 @@ Cypress.Commands.add('createUserDescription', (description) => {
              
         
 });
-
-Cypress.Commands.add('createAndSaveFreestyleProject', (freestyleProjectName) => {
-    homePage
-        .clickNewItemSideMenuLink()
-        .selectFreestyleProjectItem()
-        .typeNewItemNameInputField(freestyleProjectName)
-        .clickOkBtnAndGoFreestyleProjectConfig()
-        .clickSaveBtnAndGoFreestyleProject();
-   });
