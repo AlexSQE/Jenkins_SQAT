@@ -25,5 +25,10 @@
         }
     ],
     "editDescriptionButton": "Edit description",
-    "allMyViewsPageURL": "/my-views/view/all/"
+    "allMyViewsPageURL": "/my-views/view/all/",
+    "leftSidePanelItemsForAllViews": [
+        "New Item",
+        "People",
+        "Build History"
+    ]
 }

@@ -39,6 +39,7 @@ class MyViewPage {
   getViewsTabBar = () => cy.get('.tabBar');
   getCreateAJobLink = () => cy.get('a[href="newJob"]');
   getAllMyViewsPageLink = () => cy.url();
+  getLeftSideMenuPanelForAllViews = () => cy.get('#tasks .task');
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
@@ -178,5 +179,11 @@ clickMultiBranchPipelineNameLink(){
     this.getCreateAJobLink().click();
     return new NewItemPage();
   }
+
+  createLeftSidePanelItemsListForAllViews() {
+    return this.getLeftSideMenuPanelForAllViews().then(($els) => {
+      return Cypress.$.makeArray($els).map(($elem) => $elem.innerText);
+    });
+  };
 }
 export default MyViewPage;

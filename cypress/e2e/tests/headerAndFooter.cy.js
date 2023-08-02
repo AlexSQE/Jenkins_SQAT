@@ -299,4 +299,12 @@ describe('headerAndFooter', () => {
             .getAllMyViewsPageLink()
             .should('contain', myViewData.allMyViewsPageURL)
     });
+
+    it('AT_01.06.05 | Header > Verify Left Side panel contains “New Item”, “People” and “Build History” after clicking on Dropdown Profile My Views option', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserMyViewsMenu()
+            .createLeftSidePanelItemsListForAllViews()
+            .should('deep.equal', myViewData.leftSidePanelItemsForAllViews)
+    })
 })
