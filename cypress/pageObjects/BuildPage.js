@@ -1,4 +1,5 @@
 import BuildDeletionPage from "./BuildDeletionPage";
+import EditBuildInformationPage from "./EditBuildInformationPage";
 
 class BuildPage {
     getDeleteBuildBtn = () => cy.get('.task:last-child');
@@ -8,6 +9,7 @@ class BuildPage {
     getPreviewTextarea = () => cy.get('div.textarea-preview');
     getSaveDescriptionBtn = () => cy.get("#description button");
     getDescriptionText = () => cy.get("#description div:first-child");
+    getEditBuildInfoSideMenuLink = () => cy.get('a[href$="/configure"]');
 
     clickDeleteBuildBtn() {
         this.getDeleteBuildBtn().click();
@@ -44,6 +46,10 @@ class BuildPage {
         return this;
     };
 
+    clickEditBuildInfoSideMenuLink() {
+        this.getEditBuildInfoSideMenuLink().click();
+        return new EditBuildInformationPage();
+    };
 }
 
 export default BuildPage;

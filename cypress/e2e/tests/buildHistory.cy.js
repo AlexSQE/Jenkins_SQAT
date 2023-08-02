@@ -178,4 +178,18 @@ describe('buildHistory', () => {
             .clickBuildHistoryLink()
             .getBuildLink().should('not.exist');
     })
+
+    it('AT_07.04.02 | Build History > Verify user can add DisplayName by clicking on "Edit Build Information" inside the build', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .clickOnScheduleBuildBtn()
+            .clickBuildHistoryLink()
+            .clickBuildLink()
+            .clickEditBuildInfoSideMenuLink()
+            .typeDisplayName(editBuildInformationPageData.displayName)
+            .clickEditBuildInformationSaveBtn()
+            .getBuildName()
+            .should('contain', editBuildInformationPageData.displayName);
+    });
 });
