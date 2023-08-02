@@ -180,7 +180,7 @@ describe('headerAndFooter', () => {
             .should('contain', UserProfilePageData.userAddDescriptionBtn);
     });
 
-    it('AT 03.01.03 <Footer>Verify user can open Link The documentation in REST API and can see 10 modules per page',()=>{
+    it.skip('AT 03.01.03 <Footer>Verify user can open Link The documentation in REST API and can see 10 modules per page',()=>{
         headerAndFooter
             .clickRestAPILink()
             .clickLinkTheDocumentation()

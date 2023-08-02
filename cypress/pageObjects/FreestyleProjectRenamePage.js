@@ -5,6 +5,7 @@ class FreestyleProjectRenamePage {
     getRenameBtn = () => cy.get('button[name=Submit]');
     getErrorTitle = () => cy.get('#main-panel h1');
     getErrorMessage = () => cy.get('#main-panel p');
+    getRenameWarningMessage = () => cy.get('div .warning');
 
     typeNewNameInputFild (name) {
         this.getNewNameInputFild().clear().type(name);

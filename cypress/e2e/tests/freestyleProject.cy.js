@@ -7,6 +7,7 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
+import freestyleProjectRenamePageData from "../../fixtures/pom_fixtures/freestyleProjectRenamePage.json";
 
 describe('freestyleProject', () => {
 
@@ -202,6 +203,16 @@ describe('freestyleProject', () => {
             .clickFreestyleProjectNameLink()
             .clickRenameSideMenuLink()
             .getNewNameInputFild().should('have.attr', 'value', newItemPageData.freestyleProjectName)
+    });
+
+    it('AT_12.03.10 | <Freestyle project> "Rename page" contains the text “The new name is the same as the current name.”', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .clickFreestyleProjectNameLink()
+            .clickRenameSideMenuLink()
+            .getRenameWarningMessage()
+            .should('be.visible').and('have.text', freestyleProjectRenamePageData.freestyleProjectRenameWarningMessage)
     });
 
 });
