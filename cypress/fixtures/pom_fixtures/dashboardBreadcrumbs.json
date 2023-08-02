@@ -59,5 +59,15 @@
     "/manage/cli/",
     "/manage/script",
     "/manage/prepareShutdown/"
-  ]
+    ],
+
+    "breadcrumbscFolderDropdown": [
+        "Configure",
+        "New Item",
+        "Delete Folder",
+        "People",
+        "Build History",
+        "Rename",
+        "Credentials"
+  ] 
 }

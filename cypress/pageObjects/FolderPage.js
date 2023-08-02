@@ -17,6 +17,9 @@ class FolderPage {
     getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
     getDescriptionPreview = () => cy.get(".textarea-preview");
     getMoveBtnLeftSidebar = () => cy.get('a[href$=move]');
+    getBreadcrumbsFolderBtn = () => cy.get("#breadcrumbBar a[href*=job]")
+    getBreadcrumbsFolderDropDownMenu = () => cy.get("a[href*=job] .jenkins-menu-dropdown-chevron")
+    getBreadcrumbsFolderItemsList = () => cy.get("ul.first-of-type li a span")   
     
     clickAddEditDescriptionBtn() {
         this.getAddEditDescriptiotBtn().click();
@@ -74,6 +77,15 @@ class FolderPage {
     clickMoveBtnLeftSidebar() {
         this.getMoveBtnLeftSidebar().click()
         return new OrgFolderMoveChoicePage;
+    }
+
+    hoverBreadcrumbsFolderBtn(){
+        this.getBreadcrumbsFolderBtn().realHover()
+        return this
+    }
+    clickBreadcrumbsFolderDropDownMenu(){
+        this.getBreadcrumbsFolderDropDownMenu().click()
+        return this
     }
 };
 

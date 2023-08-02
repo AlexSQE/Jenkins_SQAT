@@ -3,10 +3,14 @@
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 import dashboardBreadcrumbsData from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import HomePage from "../../pageObjects/HomePage";
+import FolderPage from "../../pageObjects/FolderPage";
 
 describe('dashboardBreadcrumbs', () => {
 
    const dashboardBreadcrumbs = new DashboardBreadcrumbs();
+   const folderPage = new FolderPage();
+   const homePage = new HomePage();
 
    it('AT_04.04.12 Verify Dashboard Dropdown Menu Length', () => {
       dashboardBreadcrumbs
@@ -74,5 +78,20 @@ describe('dashboardBreadcrumbs', () => {
        .each(($el, idx) => {expect($el.text()).contain(dashboardBreadcrumbsData.manageJenkinsDropdownItems[idx])});
    });
      
-})
+
+   it('AT_04.07.01 | Verify Breadcrumbs Folder Dropdown menu has list of items', () => {
+      cy.createFolderProject(newItemPageData.folderName)
+      homePage
+      .clickFolderNameLink(newItemPageData.folderName)
+      .hoverBreadcrumbsFolderBtn()
+      .clickBreadcrumbsFolderDropDownMenu()
+      .getBreadcrumbsFolderItemsList().each(($el, idx) => {
+         expect($el.text()).contain(dashboardBreadcrumbsData.breadcrumbscFolderDropdown[idx])
+       });
+      });
+
+   })
+   
+   
+   
 

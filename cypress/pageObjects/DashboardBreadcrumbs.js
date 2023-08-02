@@ -13,6 +13,7 @@ class DashboardBreadcrumbs {
    getReloadConfigurationFromDiskBtn = () => cy.get('#submenu0 li:nth-child(19) span')
    getFirstDashboardDropdownBtn = () => cy.get('#breadcrumbs li a').first();
    getDashboardManageJenkinsMenuList = () => cy.get("#submenu0 ul li:not(.yuimenuitem-disabled)");
+   
 
    clickDashboardDropdownBtn() {
       this.getDashboardDropdownBtn().realHover().click('right');
