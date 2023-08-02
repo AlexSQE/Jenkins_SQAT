@@ -99,4 +99,16 @@ describe('multibranchPipeline', () => {
             .should('have.text', newItemPageData.multibranchPipelineName)
     });
 
+    it("AT_16.03.04 | Multibranch Pipeline Verify Delete Multibranch Pipeline using 'Delete Multibranch Pipeline' button on the left sidebar", function () {
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+
+        headerAndFooter
+             .clickJenkinsHomeLink()
+             .clickMultibranchPipelineProjectNameLink(newItemPageData.multibranchPipelineName)
+             .clickDeleteMultibranchPipelineSideBarBtn()
+             .verifyConfirmDeleteMultibranchPipelineMessage()
+             .clickConfirmDeleteMultibranchPipelineBtn()
+             .getProjectTable()
+             .should("not.exist");
+    });
 });
