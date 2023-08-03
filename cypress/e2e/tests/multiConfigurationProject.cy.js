@@ -110,10 +110,11 @@ describe("multiConfigurationProject", () => {
 
         homePage
         .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
-        .clickAddDescriptionBtn()
+        .clickAddEditDescriptionBtn()
         .typeDescriptionInputField(multiConfigurationProjectConfigurePage.descriptionText)
         .clickSaveDescriptionBtn()
-        .getDescriptionField().should('have.text', multiConfigurationProjectConfigurePage.descriptionText)
+        .getDescriptionField()
+        .should('have.text', multiConfigurationProjectConfigurePage.descriptionText)
     })
 
     multiConfProjectPageData.invalidCharacters.forEach((invalidCharacters) =>{

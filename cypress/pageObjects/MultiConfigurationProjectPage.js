@@ -14,11 +14,10 @@ class MultiConfigurationProjectPage {
     getMultiConfigProjectDropdwnBreadcrumb = () => cy.get('a[href*="job"] button.jenkins-menu-dropdown-chevron');
     getMultiConfigProjectBreadcrumb = () => cy.get('#breadcrumb-menu-target li ');
     getDeleteBtnConfigProjectBreadcrumd = () => cy.get('#breadcrumb-menu .icon-edit-delete');
-    getAddDescriptionBtn = () => cy.get('a#description-link.jenkins-button.jenkins-button--tertiary');
     getDescriptionInputField = () => cy.get('#description textarea.jenkins-input');
     getSaveDescriptionBtn = () => cy.get('button.jenkins-button.jenkins-button--primary ');
     getRenameBtnMultiConfPrj = () => cy.get('a[href*="rename"]')
-    getAddEditDescriptionBnt = () => cy.get('a#description-link.jenkins-button--tertiary');
+    getAddEditDescriptionBtn = () => cy.get('a#description-link.jenkins-button--tertiary');
 
     clickDeleteSideMenuLink() {
         this.getDeleteSideMenuLink().click();
@@ -55,11 +54,6 @@ class MultiConfigurationProjectPage {
         return new HomePage;
     };
 
-    clickAddDescriptionBtn() {
-        this.getAddDescriptionBtn().click();
-        return this;
-    };
-
     typeDescriptionInputField(text) {
         this.getDescriptionInputField().clear().type(text);
         return this;
@@ -76,7 +70,7 @@ class MultiConfigurationProjectPage {
     };
 
     clickAddEditDescriptionBtn() {
-        this.getAddEditDescriptionBnt().click();
+        this.getAddEditDescriptionBtn().click();
         return this;
     };
 }
