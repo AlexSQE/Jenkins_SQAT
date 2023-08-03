@@ -18,6 +18,7 @@ class MultiConfigurationProjectPage {
     getDescriptionInputField = () => cy.get('#description textarea.jenkins-input');
     getSaveDescriptionBtn = () => cy.get('button.jenkins-button.jenkins-button--primary ');
     getRenameBtnMultiConfPrj = () => cy.get('a[href*="rename"]')
+    getAddEditDescriptionBnt = () => cy.get('a#description-link.jenkins-button--tertiary');
 
     clickDeleteSideMenuLink() {
         this.getDeleteSideMenuLink().click();
@@ -72,6 +73,11 @@ class MultiConfigurationProjectPage {
     clickRenameBtnMultiConfPrj() {
         this.getRenameBtnMultiConfPrj().click();
         return new MultiConfProjectRenamePage
-    }
+    };
+
+    clickAddEditDescriptionBtn() {
+        this.getAddEditDescriptionBnt().click();
+        return this;
+    };
 }
 export default MultiConfigurationProjectPage;

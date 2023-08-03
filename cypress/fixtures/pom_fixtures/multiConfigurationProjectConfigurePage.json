@@ -48,5 +48,7 @@
 
     "defaultOptionsValues":  ["5", "0", "", "${COMBINATION}", ""],
 
-    "descriptionText": "New Configuration Project Job"
+    "descriptionText": "New Configuration Project Job",
+
+    "newDescriptionText": "Description was edited"
 }

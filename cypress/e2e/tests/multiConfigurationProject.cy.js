@@ -130,4 +130,21 @@ describe("multiConfigurationProject", () => {
     })
  }) 
 
+
+    it('AT_14.03.02 | <Multi-configuration project> Verify possibility to edit description by clicking Edit Description', () => {
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName); 
+                
+        homePage
+            .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+            .clickAddEditDescriptionBtn()
+            .typeDescriptionInputField(multiConfigurationProjectConfigurePage.descriptionText)
+            .clickSaveDescriptionBtn()
+            .clickAddEditDescriptionBtn()
+            .typeDescriptionInputField(multiConfigurationProjectConfigurePage.newDescriptionText)
+            .clickSaveDescriptionBtn()
+            .getDescriptionField()
+            .should('have.text', multiConfigurationProjectConfigurePage.newDescriptionText)
+    })  
+
+
 })
