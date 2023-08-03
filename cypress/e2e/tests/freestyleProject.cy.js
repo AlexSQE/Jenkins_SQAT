@@ -215,4 +215,20 @@ describe('freestyleProject', () => {
             .should('be.visible').and('have.text', freestyleProjectRenamePageData.freestyleProjectRenameWarningMessage)
     });
 
+    freestyleProjectRenamePageData.invalidCharacters.forEach((invalidCharacters) => {
+        it('AT_12.03.11 | <Freestyle project> Unable to rename project using invalid symbols', () => {
+            cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+            homePage
+                .clickFreestyleProjectNameLink()
+                .clickRenameSideMenuLink()
+                .typeNewNameInputFild(invalidCharacters)
+                .clickRenameBtn();
+
+            freestyleProjectRenamePage
+                .getErrorMessage()
+                .should('be.visible').and('contain', freestyleProjectRenamePageData.invalidCharacterMessage)
+        });
+    });
+
 });
