@@ -71,5 +71,14 @@
     "Configure",
     "Delete Project",
     "Rename"
-  ]
+  ],
+  "breadcrumbscMulticonfigurationprojectDropdow":[
+    "Changes",
+    "Workspace",
+    "Build Now",
+    "Configure",
+    "Delete Multi-configuration project",
+    "Rename"
+    
+   ]
 }

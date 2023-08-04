@@ -6,6 +6,9 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import HomePage from "../../pageObjects/HomePage";
 import FolderPage from "../../pageObjects/FolderPage";
 import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
+import MultiConfigurationProjectPage from "../../pageObjects/MultiConfigurationProjectPage";
+ 
+
 
 describe('dashboardBreadcrumbs', () => {
 
@@ -13,7 +16,8 @@ describe('dashboardBreadcrumbs', () => {
    const folderPage = new FolderPage();
    const homePage = new HomePage();
    const freestyleProjectPage = new FreestyleProjectPage();
-
+   const multiConfigurationProjectPage = new MultiConfigurationProjectPage()
+  
    it('AT_04.04.12 Verify Dashboard Dropdown Menu Length', () => {
       dashboardBreadcrumbs
          .clickDashboardDropdownBtn()
@@ -50,6 +54,16 @@ describe('dashboardBreadcrumbs', () => {
       });
    });
 
+   it('AT_04.07.04 | Verify Breadcrumbs Multi-configuration project Dropdown menu has list of items', () => {
+      cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName)
+      homePage
+      .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+      .hoverBreadcrumbsMultiConfigBtn()
+      .clickBreadcrumbsMultiConfigDropDownMenu()
+      .getBreadcrumbsMultuConfigItemsList().each(($el, idx) => {
+         expect($el.text()).contain(dashboardBreadcrumbsData.breadcrumbscMulticonfigurationprojectDropdow[idx])
+       });
+      });
    dashboardBreadcrumbsData.dashboardDropdownMenu.forEach((page, ind) => {
      it(`AT_04.04.11 |Breadcrumbs| Dropdown menu ${page} are clickable and redirect to the corresponding page`, () => {
        dashboardBreadcrumbs
