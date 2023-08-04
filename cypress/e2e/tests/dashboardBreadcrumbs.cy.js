@@ -5,12 +5,14 @@ import dashboardBreadcrumbsData from "../../fixtures/pom_fixtures/dashboardBread
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import HomePage from "../../pageObjects/HomePage";
 import FolderPage from "../../pageObjects/FolderPage";
+import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 
 describe('dashboardBreadcrumbs', () => {
 
    const dashboardBreadcrumbs = new DashboardBreadcrumbs();
    const folderPage = new FolderPage();
    const homePage = new HomePage();
+   const freestyleProjectPage = new FreestyleProjectPage();
 
    it('AT_04.04.12 Verify Dashboard Dropdown Menu Length', () => {
       dashboardBreadcrumbs
@@ -87,6 +89,17 @@ describe('dashboardBreadcrumbs', () => {
       .clickBreadcrumbsFolderDropDownMenu()
       .getBreadcrumbsFolderItemsList().each(($el, idx) => {
          expect($el.text()).contain(dashboardBreadcrumbsData.breadcrumbscFolderDropdown[idx])
+       });
+      });
+
+      it('AT_04.07.03 | Verify Breadcrumbs Freestyle project Dropdown menu has list of items', () => {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+      homePage
+      .clickFreestyleProjectNameLink(newItemPageData.freestyleProjectName)
+      .hoverBreadcrumbsFreestyleProjectBtn()
+      .clickBreadcrumbsFreesyleProjectDropDownMenu()
+      .getBreadcrumbsFreestyleProjectItemLst().each(($el, idx) => {
+         expect($el.text()).contain(dashboardBreadcrumbsData.breadcrumbscFreestyleProjectDropdown[idx])
        });
       });
 

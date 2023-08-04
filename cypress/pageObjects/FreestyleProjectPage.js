@@ -33,6 +33,9 @@ class FreestyleProjectPage {
     getBuildNowLink = () => cy.get('.task a[onclick*=build]');
     getBreadcrumbsJobName =() => cy.get('.jenkins-breadcrumbs__list-item a[href*="/job/"] ').click()
     getJobStatus =() =>cy.get('#tasks .task-link-wrapper .task-link--active')
+    getBreadcrumbsFreestyleProjectItemLst = () => cy.get('ul.first-of-type li a span')
+    getBreadcrumbsFreestyleProjectDropDownMenu = () => cy.get("a[href*=job] .jenkins-menu-dropdown-chevron")
+    getBreadcrumbsFreestyleProjectBtn = () => cy.get("#breadcrumbBar a[href*=job]")
 
 
     clickConfigureSideMenuLink() {
@@ -139,6 +142,14 @@ class FreestyleProjectPage {
         return this;
     };
 
+    clickBreadcrumbsFreesyleProjectDropDownMenu() {
+    this.getBreadcrumbsFreestyleProjectDropDownMenu().click()
+    return this
+    }
+    hoverBreadcrumbsFreestyleProjectBtn(){
+    this.getBreadcrumbsFreestyleProjectBtn().realHover()
+    return this
+    }
 
 }
 
