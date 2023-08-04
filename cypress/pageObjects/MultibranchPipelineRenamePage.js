@@ -19,6 +19,11 @@ class MultibranchPipelineRenamePage{
         this. getMultibranchPipelineRenameBtn().click();
         return new MultibranchPipelinePage();
 
-    }
+    };
+
+    cleareNewPiplineName() {
+        this. getInputField().clear();
+        return this;
+    };
 }
 export default MultibranchPipelineRenamePage;

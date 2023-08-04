@@ -6,12 +6,15 @@ import FolderPage from "../../pageObjects/FolderPage";
 
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multibranchPipelineConfirmRenamePageData from "../../fixtures/pom_fixtures/multibranchPipelineConfirmRenamePage.json";
+import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
+import multibranchPipelinePageData from "../../fixtures/pom_fixtures/multiConfProjectPage.json";
 
 describe('multibranchPipeline', () => {
 
     const headerAndFooter = new HeaderAndFooter();
     const homePage = new HomePage();
     const folderPage = new FolderPage();
+    const multibranchPipelinePage = new MultibranchPipelinePage()
 
     it('AT_16.03.001 | Delete the Multibranch Pipeline using dropdown menu', function () {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
@@ -111,4 +114,21 @@ describe('multibranchPipeline', () => {
              .getProjectTable()
              .should("not.exist");
     });
+    it('AT_16.02.03 <Multibranch Pipeline>Rename using dropdown menu with empty name field',()=>{
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+        homePage
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
+            .selectRenameMultiBrPipelineDrpDwnMenuBtn()
+            .cleareNewPiplineName()
+            .clickRenameSubmitBtn()
+        multibranchPipelinePage
+            .getMultiBranchPipelineError().should('be.visible')
+            .and('contain',multibranchPipelinePageData.error)
+        multibranchPipelinePage  
+            .getMultiBranchPipelineErrorMessage()
+            .should('be.visible')
+            .and('contain',multibranchPipelinePageData.errorMessage)
+           
+    })
+
 });

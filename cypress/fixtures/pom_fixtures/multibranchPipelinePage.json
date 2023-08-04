@@ -9,6 +9,8 @@
      "multibranchPiplineDescription": "Multibranch Pipeline", 
      "multibranchPipelineTitle": "Multibranch Pipeline",
      "multibranchPipelineDescription": "Multibranch Pipeline",
-     "ConfirmDeleteMultibranchPipelineMessage": "Delete the Multibranch Pipeline"
+     "ConfirmDeleteMultibranchPipelineMessage": "Delete the Multibranch Pipeline",
+     "error": "Error",
+     "errorMessage" : "No name is specified"
   
 }
