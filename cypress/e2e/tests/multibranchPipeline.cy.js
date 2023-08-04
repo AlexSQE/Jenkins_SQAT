@@ -3,7 +3,6 @@
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import HomePage from "../../pageObjects/HomePage";
 import FolderPage from "../../pageObjects/FolderPage";
-
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multibranchPipelineConfirmRenamePageData from "../../fixtures/pom_fixtures/multibranchPipelineConfirmRenamePage.json";
 import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
@@ -129,6 +128,17 @@ describe('multibranchPipeline', () => {
             .should('be.visible')
             .and('contain',multibranchPipelinePageData.errorMessage)
            
-    })
+    });
+    it('AT 16.05.02 Verify to disable Multibranch Pipeline',()=>{
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+        homePage
+            .clickMultibranchPipelineProjectNameLink(newItemPageData.multibranchPipelineName)
+        multibranchPipelinePage 
+            .clickDisableButton()
+            .getMultibranchPiplineWarning()
+            .should('be.visible')
+            .and('contain',multibranchPipelinePageData.currentDisableMsg)
+            .and('have.css', 'color', 'rgb(254, 130, 10)')
+    });
 
 });

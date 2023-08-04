@@ -6,5 +6,6 @@
     "disableBtnText": "Disable Project",
     "invalidCharactersMsg": "is an unsafe character",
     "invalidCharacters": ["@", "#", "$", "%", "^", "&", "*", "?", ">", "<", "/", ";", "|"],
-    "errorMessage" : "No name is specified"
+    "errorMessage" : "No name is specified",
+    "currentDisableMsg": "This Multibranch Pipeline is currently disabled"
 }

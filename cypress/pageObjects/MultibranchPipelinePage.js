@@ -12,8 +12,9 @@ class MultibranchPipelinePage {
     getConfirmDeleteMultibranchPipelineBtn = () => cy.get('form[action="doDelete"] button[name="Submit"]');
     getConfirmDeleteMultibranchPipelineMessage = () => cy.get("#main-panel form[action='doDelete']")
     getMultiBranchPipelineError = () => cy.get('div h1');
-    getMultiBranchPipelineErrorMessage = () => cy.get('div p')
-
+    getMultiBranchPipelineErrorMessage = () => cy.get('div p');
+    getDisableButton = () => cy.get('#disable-project button');
+  
     clickConfigureTheProjectLink() {
         this.getConfigureTheProjectLink().click();
         return new MultibranchPipelineConfigurePage();
@@ -44,6 +45,11 @@ class MultibranchPipelinePage {
     clickConfirmDeleteMultibranchPipelineBtn() {
         this.getConfirmDeleteMultibranchPipelineBtn().click();
         return new HomePage()
+    }
+
+    clickDisableButton(){
+        this.getDisableButton().click();
+        return this
     }
 }
 
