@@ -74,4 +74,17 @@ describe('multiConfigurationProjectConfigure', () => {
       .should('be.visible')
       .and('be.enabled')      
     });
+
+    it('AT_14.04.06 | <Multi-configuration project> Configure | Verify possibility to disable MCPr through left side panel', () => {
+      cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+      homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickConfigureSideMenuLink()
+        .clickEnableDisableSwitch()
+        .clickSaveButton()
+        .getWarningText()
+        .should('be.visible')
+        .and('contain', projectData.warningMessage)
+        .and('have.css', 'color', projectData.colorWarningMessage)
+    })
 });

@@ -50,5 +50,9 @@
 
     "descriptionText": "New Configuration Project Job",
 
-    "newDescriptionText": "Description was edited"
+    "newDescriptionText": "Description was edited",
+
+    "warningMessage": "This project is currently disabled",
+
+    "colorWarningMessage": "rgb(254, 130, 10)"
 }

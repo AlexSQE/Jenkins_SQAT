@@ -18,10 +18,10 @@ class MultiConfigurationProjectPage {
     getSaveDescriptionBtn = () => cy.get('button.jenkins-button.jenkins-button--primary ');
     getRenameBtnMultiConfPrj = () => cy.get('a[href*="rename"]')
     getAddEditDescriptionBtn = () => cy.get('a#description-link.jenkins-button--tertiary');
-    getBreadcrumbsMultiConfigBtn = () => cy.get("#breadcrumbBar a[href*=job]")
-    getBreadcrumbsMultiConfigDropDownMenu = () => cy.get("a[href*=job] .jenkins-menu-dropdown-chevron")
-    getBreadcrumbsMultuConfigItemsList = () => cy.get("ul.first-of-type li a span")
-  
+    getBreadcrumbsMultiConfigBtn = () => cy.get("#breadcrumbBar a[href*=job]");
+    getBreadcrumbsMultiConfigDropDownMenu = () => cy.get("a[href*=job] .jenkins-menu-dropdown-chevron");
+    getBreadcrumbsMultuConfigItemsList = () => cy.get("ul.first-of-type li a span");
+    getWarningText = () => cy.get('form#enable-project');
 
     clickDeleteSideMenuLink() {
         this.getDeleteSideMenuLink().click();
@@ -77,6 +77,7 @@ class MultiConfigurationProjectPage {
         this.getAddEditDescriptionBtn().click();
         return this;
     };
+
     hoverBreadcrumbsMultiConfigBtn(){
         this.getBreadcrumbsMultiConfigBtn().realHover()
         return this
