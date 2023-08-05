@@ -2,6 +2,7 @@
     "multibranchPipelineName": "MultibranchPipelineJob",
     "freestyleProjectName": "FreestyleProjectJob",
     "orgFolderName": "OrganizationFolderJob",
+    "newOrgFolderName": "New Name For Organization Folder",
     "pipelineName": "PipelineJob",
     "multiConfigurationProjectName": "Multi-configurationProjectJob",
     "newMultiConfigurationProjectName": "New Name For Multiconfiguration Project",

@@ -126,7 +126,13 @@ class HomePage {
     getProjectNameDrpDwnItems = () => cy.get('#breadcrumb-menu li');
     getFolderDrpDwnMenuList = () => cy.get('#breadcrumb-menu li[index]');
     getBuildExecutorStatusLink = () => cy.get('a[href*="/computer/"]');
-    
+    getRenameOrgFolderDrpDwnBtn = () => cy.get('.first-of-type li:nth-child(7) span');   
+
+
+    clickRenameOrgFolderDrpDwnBtn() {
+        this.getRenameOrgFolderDrpDwnBtn().contains('Rename').click();
+        return this;
+    } 
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {

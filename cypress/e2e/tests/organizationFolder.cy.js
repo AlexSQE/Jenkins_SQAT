@@ -2,11 +2,33 @@ import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import resultSearchBoxData from "../../fixtures/pom_fixtures/resultSearchBox.json"
+import OrgFolderRenamePage from "../../pageObjects/OrgFolderRenamePage";
 
 describe('orgFolder', () => {
 
     const homePage = new HomePage();
     const headerAndFooter = new HeaderAndFooter();
+    const orgFolderRenamePage = new OrgFolderRenamePage();
+ 
+    it('AT_17.02.01 |<Organization Folder> Rename Organization Folder on the Jenkins dashboard', function() {
+        cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+          .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
+          .clickRenameOrgFolderDrpDwnBtn()
+
+        orgFolderRenamePage
+          .clearNewNameInputField()
+          .typeNewOrgFolderName()
+          .clickRenameOrgFolderBtn()
+
+        headerAndFooter
+            .clickJenkinsHomeLink()
+
+        homePage
+            .getgetDashboardMainPanel()
+            .should('contain.text', newItemPageData.newOrgFolderName)
+    })
 
     it('AT_17.05.02|<Organization Folder> Verify possibility to enable Organization Folder', function () {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
