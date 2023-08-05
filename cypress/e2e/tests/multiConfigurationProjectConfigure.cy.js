@@ -87,4 +87,13 @@ describe('multiConfigurationProjectConfigure', () => {
         .and('contain', projectData.warningMessage)
         .and('have.css', 'color', projectData.colorWarningMessage)
     })
+
+    it('AT_14.01.01 | Verify Build Environment items', () => {
+      cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+  
+      homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickConfigureSideMenuLink()
+        .verifyBuildEnviromentListItems(projectData.buildEnvironmentList)
+    });
 });

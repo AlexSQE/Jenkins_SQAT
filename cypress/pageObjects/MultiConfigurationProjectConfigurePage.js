@@ -31,6 +31,7 @@ class MultiConfigurationProjectConfigurePage {
   getAdvancedOptionsBlock = () => cy.get('div.jenkins-section:has(#advanced-project-options) div input:is([type="checkbox"], [name="_.displayNameOrNull"])');
   getDescriptionInputField = () => cy.get('div.setting-main textarea[name="description"]');
   getEnableDisableSwitch = () => cy.get('span#toggle-switch-enable-disable-project');
+  getBuildEnviromentLink = () => cy.get('#build-environment').siblings('.optionalBlock-container');
 
   clickSaveButton() {
     this.getSaveButton().click();
@@ -131,6 +132,13 @@ class MultiConfigurationProjectConfigurePage {
   clickEnableDisableSwitch (){
     this.getEnableDisableSwitch().click()
     return this
-  }
+  };
+
+  verifyBuildEnviromentListItems(items) {
+    this.getBuildEnviromentLink().each(($el, idx) => {
+      expect($el.text()).contain(items[idx])
+    })
+  };
+
 }
 export default MultiConfigurationProjectConfigurePage;
