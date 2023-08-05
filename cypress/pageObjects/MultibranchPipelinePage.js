@@ -51,6 +51,7 @@ class MultibranchPipelinePage {
         this.getDisableButton().click();
         return this
     }
+    
 }
 
 export default MultibranchPipelinePage;

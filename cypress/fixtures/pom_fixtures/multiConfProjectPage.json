@@ -7,5 +7,6 @@
     "invalidCharactersMsg": "is an unsafe character",
     "invalidCharacters": ["@", "#", "$", "%", "^", "&", "*", "?", ">", "<", "/", ";", "|"],
     "errorMessage" : "No name is specified",
-    "currentDisableMsg": "This Multibranch Pipeline is currently disabled"
+    "currentDisableMsg": "This Multibranch Pipeline is currently disabled",
+    "disableMultiBrPipelineBtnText": "Disable Multibranch Pipeline"
 }

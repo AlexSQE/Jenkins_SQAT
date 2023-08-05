@@ -7,6 +7,8 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multibranchPipelineConfirmRenamePageData from "../../fixtures/pom_fixtures/multibranchPipelineConfirmRenamePage.json";
 import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
 import multibranchPipelinePageData from "../../fixtures/pom_fixtures/multiConfProjectPage.json";
+import MultibranchPipelineConfigurePage from "../../pageObjects/MultibranchPipelineConfigurePage";
+
 
 describe('multibranchPipeline', () => {
 
@@ -14,6 +16,7 @@ describe('multibranchPipeline', () => {
     const homePage = new HomePage();
     const folderPage = new FolderPage();
     const multibranchPipelinePage = new MultibranchPipelinePage()
+    const multibranchPipelineConfigurePage = new MultibranchPipelineConfigurePage();
 
     it('AT_16.03.001 | Delete the Multibranch Pipeline using dropdown menu', function () {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
@@ -139,6 +142,18 @@ describe('multibranchPipeline', () => {
             .should('be.visible')
             .and('contain',multibranchPipelinePageData.currentDisableMsg)
             .and('have.css', 'color', 'rgb(254, 130, 10)')
+    });
+
+    it('AT_16.05.03 Verify possibility to enable Multibranch Pipeline', () => {
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+ 
+        multibranchPipelineConfigurePage
+        .clickDisableBtn()
+        .clickSaveBtnAndGoMultiPipeline()
+        .clickMultibranchPiplineEnableBtn()
+        .getDisableButton()
+        .should('be.visible')
+        .and('have.text' , multibranchPipelinePageData.disableMultiBrPipelineBtnText)
     });
 
 });
