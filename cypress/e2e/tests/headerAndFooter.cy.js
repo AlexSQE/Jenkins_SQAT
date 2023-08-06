@@ -307,4 +307,12 @@ describe('headerAndFooter', () => {
             .createLeftSidePanelItemsListForAllViews()
             .should('deep.equal', myViewData.leftSidePanelItemsForAllViews)
     })
+
+    it('AT_03.02.09 | Verify The Link Jenkins change color when hovering mouse over it', () => {
+        headerAndFooter
+            .hoverJenkinsVersionLink()
+            .getJenkinsVersionLink()
+            .should('have.css', 'color', headerAndFooterData.colorLink)
+    });
+
 })

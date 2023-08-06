@@ -169,6 +169,12 @@ class HeaderAndFooter {
             cy.wrap($el.text().trim()).should('include', data)
         })
     }
+
+    hoverJenkinsVersionLink() {
+        this.getJenkinsVersionLink().realHover();
+        return this;
+    };
+    
 }
 
 export default HeaderAndFooter;
