@@ -1,4 +1,5 @@
 import NodeConfigurePage from "./NodeConfigurePage";
+import BuildInNodePage from "./BuiltInNodePage";
 
 class NodesPage {
     getBuiltInNodeGearBtn = () => cy.get('a[href*="(built-in)/configure"]');
@@ -21,5 +22,11 @@ class NodesPage {
         this.getNodeDropdownConfigureLink(nodeName).click();
         return new NodeConfigurePage();
     }
+
+    clickBuildInNodeName(buildInNode) {
+        this.getNodeName(buildInNode).click();
+        return new BuildInNodePage();
+    };
 }
+
 export default NodesPage;
