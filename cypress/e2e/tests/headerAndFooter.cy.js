@@ -315,4 +315,10 @@ describe('headerAndFooter', () => {
             .should('have.css', 'color', headerAndFooterData.colorLink)
     });
 
+    it('AT_03.02.10 | Verify The Link Jenkins has text "Jenkins 2.387.2"', () => {
+        headerAndFooter
+            .getJenkinsVersionLink()
+            .should('have.text', headerAndFooterData.version.number)
+    });
+
 })
