@@ -147,5 +147,13 @@ describe("multiConfigurationProject", () => {
             .should('have.text', multiConfigurationProjectConfigurePage.newDescriptionText)
     })  
 
-
+    it('AT_14.08.01| The down arrow appears near the end of the MC project name by hovering the mouse on the MC project name', () => {
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName);
+        homePage
+            .hoverProjectNameLink()
+            .getProjectDrpDwnBtn()
+            .should('be.visible')
+            .and('exist')
+      });
+      
 })
