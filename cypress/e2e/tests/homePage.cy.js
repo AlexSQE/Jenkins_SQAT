@@ -8,6 +8,7 @@ import {endPointUrl} from "../../fixtures/pom_fixtures/homePage.json";
 import buildHistoryPageData from "../../fixtures/pom_fixtures/buildHistoryPage.json";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import {configureCloudsHeader} from "../../fixtures/pom_fixtures/configureCloudsPage.json"
+import {distributedBuildsLinkPageUrl} from "../../fixtures/pom_fixtures/distributedBuildsLinkPageData.json"
 
 describe("homePage", () => {
     const homePage = new HomePage()
@@ -94,5 +95,11 @@ describe("homePage", () => {
       .clickDescriptionPreviewLink()
       .clickHideDescriptionPreviewLink()
       .getHideDescriptionPreview().should("not.be.visible")
-  })
+    })
+
+    it('AT_02.05.09 | Verify Link Learn more about distributed builds is redirected to the new window', () => {
+      homePage
+        .clickLearnMoreAboutDistributedBuildsLink()
+        .getDistributedBuildsLinkPageUrl().should('contain', distributedBuildsLinkPageUrl)
+    })
 })
