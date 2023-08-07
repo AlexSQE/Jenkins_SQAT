@@ -318,4 +318,13 @@ describe('headerAndFooter', () => {
             .should('have.text', headerAndFooterData.version.number)
     });
 
+    it('AT_01.03.24 | Verify that after clicking on the User icon/User name User redirect to Profile page', () => {
+        headerAndFooter
+            .clickUserNameLink()
+            .verifyUserPagesUrl(Cypress.env('local.admin.username'))
+            .verifyStatusBtn()
+            .getUserId()            
+            .should('contain', Cypress.env('local.admin.username'));
+    });
+
 })
