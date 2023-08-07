@@ -117,6 +117,13 @@ describe('dashboardBreadcrumbs', () => {
        });
       });
 
+      it('AT_04.02.15 | <Breadcrumbs> Dashboard page link is redirected to the Jenkins home page', () => {
+         dashboardBreadcrumbs
+         .getDashboardLink()
+         .should('be.visible')
+         .and('have.attr', 'href', '/')
+      });
+
    })
    
    
