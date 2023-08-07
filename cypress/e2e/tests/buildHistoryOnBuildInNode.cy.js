@@ -24,4 +24,13 @@ describe('buildHistoryOnBuildInNode', () => {
             .getPageHeader().should('have.text', buildHistoryOnBuildInNodePageData.pageHeader)
     });
 
+    it('AT_11.04.03 | Build Executor Status > Verify possibility to get to the "Build History on Build-In Node" page from breadcrumbs dropdown menu inside "Build-In Node" page', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuildInNodeName(nodePageData.nodeBuiltInName)
+            .clickBreadcrumbsBuildInNodeDrpDwnBtn()
+            .selectBreadcrumbsBuildHistoryDrpDwnLink()
+            .getPageHeader().should('have.text', buildHistoryOnBuildInNodePageData.pageHeader)
+    });
+
 });
