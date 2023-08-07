@@ -15,4 +15,13 @@ describe('buildHistoryOnBuildInNode', () => {
             .clickBuildHistoryLink()
             .getPageHeader().should('have.text', buildHistoryOnBuildInNodePageData.pageHeader)
     });
+
+    it('AT_11.04.02 | Build Executor Status > Verify possibility to get to the "Build History on Build-In Node" page from the Build-In Node dropdown menu', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .hoverAndClickNodeDrpDwn(nodePageData.nodeBuiltInName)
+            .selectBuildHistoryDrpDwnLink(nodePageData.nodeBuiltInName)
+            .getPageHeader().should('have.text', buildHistoryOnBuildInNodePageData.pageHeader)
+    });
+
 });
