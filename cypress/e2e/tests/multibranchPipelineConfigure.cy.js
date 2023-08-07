@@ -52,11 +52,11 @@ describe('multibranchPipelineConfigure', () => {
         multibranchPipelineConfigurePage
             .clickDisableBtn()
             .clickSaveBtnAndGoMultiPipeline()
-            .trimMultibranchPiplineDisabledText()
+            .trimMultibranchPipelineDisabledText()
             .should('contain', multibranchPipelinePageData.disabledMessage)
 
         multibranchPiplinePage
-            .getMultibranchPiplineWarning()
+            .getMultibranchPipelineWarning()
             .should('have.css', 'color', multibranchPipelinePageData.disabledMessageColor)
 
         multibranchPiplinePage
@@ -88,7 +88,7 @@ describe('multibranchPipelineConfigure', () => {
          multibranchPipelineConfigurePage
             .clickDisableBtn()
             .clickSaveBtnAndGoMultiPipeline()
-            .clickMultibranchPiplineEnableBtn()
+            .clickMultibranchPipelineEnableBtn()
             .getEnableButton()
             .should('contain', multibranchPipelinePageData.disableButton)
             .should('have.css', 'color', multibranchPipelinePageData.enableButtonColor)

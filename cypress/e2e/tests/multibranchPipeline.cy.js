@@ -66,7 +66,7 @@ describe('multibranchPipeline', () => {
         homePage
             .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
             .selectRenameMultiBrPipelineDrpDwnMenuBtn()
-            .clearAndTypeNewPiplineName(newItemPageData.newpipelineName)
+            .clearAndTypeNewPipelineName(newItemPageData.newpipelineName)
             .clickRenameSubmitBtn()
             .getMultiBranchPipelineHeader()
             .should('contain', newItemPageData.newpipelineName)
@@ -121,7 +121,7 @@ describe('multibranchPipeline', () => {
         homePage
             .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
             .selectRenameMultiBrPipelineDrpDwnMenuBtn()
-            .cleareNewPiplineName()
+            .clearNewPipelineName()
             .clickRenameSubmitBtn()
         multibranchPipelinePage
             .getMultiBranchPipelineError().should('be.visible')
@@ -138,7 +138,7 @@ describe('multibranchPipeline', () => {
             .clickMultibranchPipelineProjectNameLink(newItemPageData.multibranchPipelineName)
         multibranchPipelinePage 
             .clickDisableButton()
-            .getMultibranchPiplineWarning()
+            .getMultibranchPipelineWarning()
             .should('be.visible')
             .and('contain',multibranchPipelinePageData.currentDisableMsg)
             .and('have.css', 'color', 'rgb(254, 130, 10)')
@@ -150,7 +150,7 @@ describe('multibranchPipeline', () => {
         multibranchPipelineConfigurePage
         .clickDisableBtn()
         .clickSaveBtnAndGoMultiPipeline()
-        .clickMultibranchPiplineEnableBtn()
+        .clickMultibranchPipelineEnableBtn()
         .getDisableButton()
         .should('be.visible')
         .and('have.text' , multibranchPipelinePageData.disableMultiBrPipelineBtnText)

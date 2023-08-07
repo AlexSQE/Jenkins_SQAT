@@ -5,7 +5,7 @@ import multibranchPipelinwPageData from "../fixtures/pom_fixtures/multibranchPip
 class MultibranchPipelinePage {
     getConfigureTheProjectLink = () => cy.get('.content-block [href="./configure"]');
     getMultibranchPipelineTitle = () => cy.get('[class="icon-folder icon-xlg"]');
-    getMultibranchPiplineWarning = () => cy.get('#enable-project');
+    getMultibranchPipelineWarning = () => cy.get('#enable-project');
     getEnableButton = () => cy.get('button[formnovalidate]');
     getMultiBranchPipelineHeader = () => cy.get('#main-panel h1');
     getDeleteMultibranchPipelineSideBarBtn = () => cy.get('#side-panel div a[href*="/delete"]');
@@ -20,13 +20,13 @@ class MultibranchPipelinePage {
         return new MultibranchPipelineConfigurePage();
     };
 
-    trimMultibranchPiplineDisabledText() {
-        return this.getMultibranchPiplineWarning().then($el => {
+    trimMultibranchPipelineDisabledText() {
+        return this.getMultibranchPipelineWarning().then($el => {
             return $el.text().trimStart();
         });
     };
 
-    clickMultibranchPiplineEnableBtn() {
+    clickMultibranchPipelineEnableBtn() {
         this.getEnableButton().click();
         return this;
       }; 
