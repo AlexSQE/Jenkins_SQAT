@@ -158,4 +158,13 @@ describe('freestyleProjectConfigure', () => {
                     .should("equal", `${data.startedByUser}${this.currentUserName}`);
            });
     })
+
+    it('AT_12.10.02 | Verify GiT tooltip text box is visible and displays correct information when User is hovering over tooltip', function (){
+      cy.openFreestyleProjectConfigurePage()
+
+        configPage
+        .clickSourceCodeManagementBtn()
+        .hoverTooltipGitHelpBtn()
+        .checkTooltipTextBox()
+    })
 })

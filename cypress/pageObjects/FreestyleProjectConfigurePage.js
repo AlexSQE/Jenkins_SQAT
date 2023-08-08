@@ -1,4 +1,5 @@
 import FreestyleProjectPage from "./FreestyleProjectPage";
+import freestyleProjectConfigure from "../fixtures/pom_fixtures/freestyleProjectConfigure.json";
 
 class FreestyleProjectConfigurePage {
     getProjectConfigSaveBtn = () => cy.get('button[name=Submit]');
@@ -40,6 +41,9 @@ class FreestyleProjectConfigurePage {
     getScriptCodeInputField = () => cy.get('.CodeMirror textarea');
     getApplyBtn = () => cy.get('button[name="Apply"]');
     getNotificationMessage = () => cy.get('#notification-bar span');
+    getSourceCodeManagementBtn = () => cy.get('#tasks button[data-section-id="source-code-management"]');
+    getGitTooltipHelpBtn = () => cy.get('a[tooltip="Help for feature: Git"]');
+    getTooltipTextBox = () => cy.get('div .tippy-box')
 
     clickSaveBtnAndGoFreestyleProject() {
         this.getProjectConfigSaveBtn().click();
@@ -185,6 +189,22 @@ class FreestyleProjectConfigurePage {
             .selectScriptOption(scriptOption)
             .typeScriptCodeInputField(scriptText)
             .clickApplyBtn()
+    }
+
+    clickSourceCodeManagementBtn(){
+        this.getSourceCodeManagementBtn().click();
+        return this;
+    }
+
+    hoverTooltipGitHelpBtn(){
+        this.getGitTooltipHelpBtn().realHover().trigger('focus')
+        return this;
+    }
+
+    checkTooltipTextBox(){
+        this.getTooltipTextBox()
+            .should('have.text', freestyleProjectConfigure.sourceCodeManagement.tooltips.git)
+            .and('be.visible')  
     }
 }
 
