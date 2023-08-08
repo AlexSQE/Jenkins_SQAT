@@ -111,4 +111,18 @@ describe('multiConfigurationProjectConfigure', () => {
     })
   });
 
+  it('AT_14.04.08 | <MC Project> Configure | Verify possibilty to disable MCPr through Configure in dropdown in Jenkins table', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+      homePage
+        .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+        .clickMultiConfProjectDrpDwnConfigureLink()
+        .clickEnableDisableSwitch()
+        .clickSaveButton()
+        .getWarningText()
+        .should('be.visible')
+        .and('contain', projectData.warningMessage)
+        .and('have.css', 'color', projectData.colorWarningMessage)
+  })
+
 });
