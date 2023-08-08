@@ -5,6 +5,7 @@ import GitHubPage from "./GitHubPage";
 import FreestyleProjectPageData from '../fixtures/pom_fixtures/freestyleProjectPage.json'
 import BuildStatusPage from "./BuildStatusPage";
 import HeaderAndFooter from "./HeaderAndFooter";
+import newItemPageData from "../fixtures/pom_fixtures/newItemPage.json";
 
 class FreestyleProjectPage {
     getConfigureSideMenuLink = () => cy.get('a[href$="configure"]')
@@ -151,6 +152,10 @@ class FreestyleProjectPage {
     return this
     }
 
+    verifyFreestyleProjectStatusPageURL() {
+        cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/job/${newItemPageData.freestyleProjectName}/`);
+        return this;
+    }
 }
 
 export default FreestyleProjectPage;

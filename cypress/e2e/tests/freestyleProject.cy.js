@@ -231,4 +231,13 @@ describe('freestyleProject', () => {
         });
     });
 
+    it('AT_12.01.01 | Freestyle project > Navigate to project Status page from Homepage', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .clickFreestyleProjectNameLink()
+            .verifyFreestyleProjectStatusPageURL()
+            .getFreestyleProjectHeader()
+            .should('have.text', freestyleProjectPageData.headerText + newItemPageData.freestyleProjectName)
+    });
 });
