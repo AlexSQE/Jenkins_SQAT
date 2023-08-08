@@ -23,5 +23,13 @@
 
     "messages" :{
         "windowConfirm" : "Delete Project: are you sure?"
-    }
+    },
+    "HeadersTableJobs":[
+        "S",
+        "W",
+        "Name",
+        "Last Success",
+        "Last Failure",
+        "Last Duration"
+    ]
 }
