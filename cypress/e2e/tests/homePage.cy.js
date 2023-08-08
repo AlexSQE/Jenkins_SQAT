@@ -102,4 +102,11 @@ describe("homePage", () => {
         .clickLearnMoreAboutDistributedBuildsLink()
         .getDistributedBuildsLinkPageUrl().should('contain', distributedBuildsLinkPageUrl)
     })
+    
+    it('AT_02.05.11 | Verify Link Learn more about distributed builds is visible', () => {
+      homePage
+        .getLearnMoreAboutDistributedBuildsLink()
+        .should('be.visible')
+        .and('contain.text', homePageData.learnMoreAboutDistributedBuildsLinkName)
+    })
 })

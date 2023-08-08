@@ -24,6 +24,9 @@
     "messages" :{
         "windowConfirm" : "Delete Project: are you sure?"
     },
+
+    "learnMoreAboutDistributedBuildsLinkName" : "Learn more about distributed builds",
+
     "HeadersTableJobs":[
         "S",
         "W",
@@ -32,4 +35,5 @@
         "Last Failure",
         "Last Duration"
     ]
+
 }
