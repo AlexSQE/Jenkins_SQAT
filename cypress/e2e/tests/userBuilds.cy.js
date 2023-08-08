@@ -34,14 +34,7 @@ describe('userBuilds', () => {
         });
     });
 
-    it('AT_01.04_006| User builds link| Verify the side panel', () =>{
-       headerAndFooter
-       .clickUserDropDownBtn() 
-       .selectUserBuildsMenu()
-       .getUserBuildsSidePanel().should('be.visible')
-    });
-
-    it('AT_01.04.04 | User Builds link | Verify tasks links on the side panel', () => {
+   it('AT_01.04.04 | User Builds link | Verify tasks links on the side panel', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserBuildsMenu()
@@ -54,6 +47,7 @@ describe('userBuilds', () => {
             })
             .should('deep.equal', userBuildsPageData.SidePanelTasks)
       });
+    
     it('AT_04.06.007 | Verify sort the builds list by status',()=>{
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
         homePage
