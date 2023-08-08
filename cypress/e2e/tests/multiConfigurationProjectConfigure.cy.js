@@ -96,4 +96,19 @@ describe('multiConfigurationProjectConfigure', () => {
         .clickConfigureSideMenuLink()
         .verifyBuildEnviromentListItems(projectData.buildEnvironmentList)
     });
+
+  projectData.buildEnvironmentList.forEach((text, idx) => {
+    it(`AT_14.01.02 | Verify that ${text} button in Build Environment are checkable`, () => {
+      cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+      homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickConfigureSideMenuLink()
+        .clickBuildEnviromentBtn()
+        .checkBuildEnviromentCheckbox(idx)
+        .getBuildEnviromentCheckbox(idx)
+        .should('be.checked')
+    })
+  });
+
 });

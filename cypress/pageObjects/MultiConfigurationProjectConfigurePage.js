@@ -32,6 +32,8 @@ class MultiConfigurationProjectConfigurePage {
   getDescriptionInputField = () => cy.get('div.setting-main textarea[name="description"]');
   getEnableDisableSwitch = () => cy.get('span#toggle-switch-enable-disable-project');
   getBuildEnviromentLink = () => cy.get('#build-environment').siblings('.optionalBlock-container');
+  getBuildEnviromentCheckbox = (idx) => cy.get('#build-environment').siblings('.optionalBlock-container').find('input.optional-block-control').eq(idx);
+  getBuildEnviromentBtn = () => cy.get('button[data-section-id="build-environment"]')
 
   clickSaveButton() {
     this.getSaveButton().click();
@@ -138,6 +140,16 @@ class MultiConfigurationProjectConfigurePage {
     this.getBuildEnviromentLink().each(($el, idx) => {
       expect($el.text()).contain(items[idx])
     })
+  };
+
+  clickBuildEnviromentBtn(){
+    this.getBuildEnviromentBtn().click()
+    return this
+  };
+
+  checkBuildEnviromentCheckbox(idx){
+    this.getBuildEnviromentCheckbox(idx).check({force:true})
+    return this
   };
 
 }
