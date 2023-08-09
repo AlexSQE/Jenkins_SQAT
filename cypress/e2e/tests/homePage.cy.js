@@ -114,4 +114,17 @@ describe("homePage", () => {
         .getAddEditDescriptionBtn()
         .should('be.visible')
     })
-})
+
+
+    it('AT_02.06.18 | Verification the button Save of adding description on main page', () =>{
+      homePage
+      .clickAddDescriptionLink()
+      .typeDescriptionIntoField(homePageData.descriptionText)
+      .clickSaveDescriptionBtn()
+      .getSavedDescriptionField()
+      .should('contain', homePageData.descriptionText)
+    })
+
+    })
+
+
