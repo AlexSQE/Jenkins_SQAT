@@ -31,6 +31,7 @@ import OrgFolderDeletePage from "./OrgFolderDeletePage";
 import DistributedBuildsLinkPage from "./DistributedBuildsLinkPage";
 import HeaderAndFooter from "./HeaderAndFooter";
 import NodesPage from "./NodesPage";
+import IconLegendsPage from "../pageObjects/IconLegendsPage";
 
 class HomePage {
 
@@ -130,7 +131,7 @@ class HomePage {
     getHeadersTableJobs = () => cy.get('thead tr th'); 
     getHeadersTableJobsIconS = () => cy.get('[tooltip*="Status of the last build"]') 
     getToolTipsIconS = () => cy.get('.tippy-content')
-
+    getIconLegendButton = () => cy.get('#rss-bar [href="/legend"]');
 
     clickRenameOrgFolderDrpDwnBtn() {
         this.getRenameOrgFolderDrpDwnBtn().contains('Rename').click();
@@ -473,6 +474,11 @@ class HomePage {
     hoverHeadersTableJobsIconS() {
         this.getHeadersTableJobsIconS().realHover()
         return this
+    }
+
+    clickIconLegendButton() { 
+        this.getIconLegendButton().click();
+        return new IconLegendsPage();
     }
 }
 export default HomePage;

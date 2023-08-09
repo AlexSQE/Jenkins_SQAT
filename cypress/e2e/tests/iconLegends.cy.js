@@ -2,7 +2,7 @@
 import HomePage from '../../pageObjects/HomePage'
 import BuildHistoryPage from '../../pageObjects/BuildHistoryPage'
 import IconLegendsPage from '../../pageObjects/IconLegendsPage'
-
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import iconLegendsData from '../../fixtures/pom_fixtures/iconLegends.json'
 
 describe('iconLegends', () => {
@@ -63,4 +63,14 @@ describe('iconLegends', () => {
                 cy.wrap($el).should('be.visible');
             })
     })
+
+    it("AT_20.05.01 | Dashboard Icon legend | Verify Icon legend button redirects to Icon legend Page", () => {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+      homePage
+        .clickIconLegendButton()
+        .verifyIconLegendPageTitle()
+        .getIconLegendPageUrl()
+        .should("contain", iconLegendsData.iconLegendPageUrl);
+    });
 });
