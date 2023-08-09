@@ -4,6 +4,7 @@ import BuildHistoryPage from '../../pageObjects/BuildHistoryPage'
 import IconLegendsPage from '../../pageObjects/IconLegendsPage'
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import iconLegendsData from '../../fixtures/pom_fixtures/iconLegends.json'
+import homePageData from "../../fixtures/pom_fixtures/homePage.json"
 
 describe('iconLegends', () => {
     const homePage = new HomePage();
@@ -73,4 +74,14 @@ describe('iconLegends', () => {
         .getIconLegendPageUrl()
         .should("contain", iconLegendsData.iconLegendPageUrl);
     });
+
+    it("AT_20.05.07 | Dashboard Icon legend | Verify visibility of The Icon legend button on the Dashboard", () => {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+      homePage
+        .getIconLegendButton()
+        .should("be.visible")
+        .and("have.text", homePageData.IconLegendName)
+    });
+
 });
