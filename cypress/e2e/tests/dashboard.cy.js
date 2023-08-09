@@ -47,6 +47,16 @@ describe('dashboard', () => {
         homePage
        .getHeadersTableJobs().eq(0)
        .should('contain',homePageData.HeadersTableJobs[0]);           
-     })
+     });
+
+     it('AT 20.07.02 Dashboard| hover over the icon S , should be visible tooltip',()=>{
+        cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName);
+        cy.createPipeline(pipelinePageData.pipelineName);
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+        homePage
+        .hoverHeadersTableJobsIconS()
+        .getToolTipsIconS()
+        .should('have.text', 'Status of the last build')          
+     });
 })
 

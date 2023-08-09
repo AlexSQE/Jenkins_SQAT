@@ -127,7 +127,9 @@ class HomePage {
     getFolderDrpDwnMenuList = () => cy.get('#breadcrumb-menu li[index]');
     getBuildExecutorStatusLink = () => cy.get('a[href*="/computer/"]');
     getRenameOrgFolderDrpDwnBtn = () => cy.get('.first-of-type li:nth-child(7) span'); 
-    getHeadersTableJobs = () => cy.get('thead tr th');  
+    getHeadersTableJobs = () => cy.get('thead tr th'); 
+    getHeadersTableJobsIconS = () => cy.get('[tooltip*="Status of the last build"]') 
+    getToolTipsIconS = () => cy.get('.tippy-content')
 
 
     clickRenameOrgFolderDrpDwnBtn() {
@@ -466,6 +468,11 @@ class HomePage {
     clickBuildExecutorStatusLink() {
         this.getBuildExecutorStatusLink().click()
         return new NodesPage();
+    };
+
+    hoverHeadersTableJobsIconS() {
+        this.getHeadersTableJobsIconS().realHover()
+        return this
     }
 }
 export default HomePage;
