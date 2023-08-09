@@ -84,4 +84,12 @@ describe('iconLegends', () => {
         .and("have.text", homePageData.IconLegendName)
     });
 
+    it("AT_20.05.08 | Dashboard Icon legend | Verify The Icon legend button is hoverable", () => {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .getIconLegendButton()
+            .should("have.css", "cursor", "pointer");
+    });
+
 });
