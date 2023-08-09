@@ -34,4 +34,18 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .getNodeConfigurePageUrl()
             .should('include', nodeConfigurePageData.nodeConfigurePageUrl);
     });
+
+    it('AT 11.03.03 | Clicking Configure side menu on NodeStatusPage navigates to the NodeConfigure page', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuildInNodeName(nodePageData.nodeBuiltInName)
+            .clickConfigureSideMenuLink()
+            .getNodePropertiesTitle()
+            .then((actualText) => {
+                expect(actualText).to.equal(nodeConfigurePageData.nodePropertiesSectionTitle);
+            });
+        nodeConfigurePage
+            .getNodeConfigurePageUrl()
+            .should('include', nodeConfigurePageData.nodeConfigurePageUrl);
+    });
 })

@@ -1,10 +1,12 @@
 import BuildHistoryOnBuildInNodePage from "./BuildHistoryOnBuildInNodePage";
+import NodeConfigurePage from "./NodeConfigurePage";
 
 class BuiltInNodePage {
     getBuiltInNodeHeader = () => cy.get('.jenkins-app-bar__content');
     getBuildHistoryLink = () => cy.get('#side-panel a[href$="/builds"]');
     getBreadcrumbsBuildInNodeDrpDwnBtn = () => cy.get('a[href$="/(built-in)/"] .jenkins-menu-dropdown-chevron');
     getBreadcrumbsBuildHistoryDrpDwnLink = () => cy.get('#breadcrumb-menu-target a[href$="/builds"] > span');
+    getConfigureSideMenuLink = () => cy.get('a[href$="configure"]')
 
     clickBuildHistoryLink() {
         this.getBuildHistoryLink().click();
@@ -21,5 +23,9 @@ class BuiltInNodePage {
         return new BuildHistoryOnBuildInNodePage();
     };
 
+    clickConfigureSideMenuLink(){
+        this.getConfigureSideMenuLink().click();
+        return new NodeConfigurePage();
+    }
 }
 export default BuiltInNodePage;
