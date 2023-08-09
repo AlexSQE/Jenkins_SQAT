@@ -92,4 +92,17 @@ describe('iconLegends', () => {
             .should("have.css", "cursor", "pointer");
     });
 
-});
+    it("AT_20.05.04| Dashboard Icon legend | Verify number of Icon legend", () => {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+      homePage
+        .clickIconLegendButton()
+        .getAllIconLegendList()
+        .should(
+          "have.length",
+          iconLegendsData.statusDescriptions.concat(
+            iconLegendsData.projectHealthDescriptions
+          ).length
+        );
+    });
+})
