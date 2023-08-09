@@ -23,25 +23,16 @@ describe('iconLegends', () => {
             .should('have.length', iconLegendsData.projectHealthDescriptions.length)
     })
 
-    it("AT_20.05.005 | Verify User is able to see Project Health statuses", function () {
-        homePage.clickBuildHistoryLink();
-        buildHistory.clickIconLegendsButton();
+    it("AT_20.05.05 | Dashboard Icon legend | Verify the subtitle Project Health is visible on the Icon legend Page", function () {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
 
-        iconLegends
-            .getProjectHealthGroupHeader()
-            .should("be.visible")
-            .and("have.text", iconLegendsData.headers[1]);
-
-        iconLegends.getProjectHealthStatuses().each(($el, idx) => {
-            cy.wrap($el)
-                .invoke("text")
-                .then((text) => {
-                    expect(text.trim()).to.includes(
-                        iconLegendsData.projectHealthDescriptions[idx]
-                    );
-                });
-        });
+      homePage
+        .clickIconLegendButton()
+        .getIconLegendPageSubtitles()
+        .contains(iconLegendsData.headers[1])
+        .should("be.visible");
     });
+
 
     it("AT_20.05.006.01 | Icons visibility verification - Status", function () {
         homePage

@@ -12,7 +12,8 @@ class IconLegendsPage {
     getIconLegendPageUrl = () => cy.url();
     getIconLegendPageTitle = () => cy.get('#main-panel h1');
     getAllIconLegendList = () => cy.get("#main-panel > .app-icon-legend dt");
-  
+    getIconLegendPageSubtitles = () => cy.get("#main-panel>h2");
+
     verifyIconLegendPageTitle() {
       this.getIconLegendPageTitle().should("have.text", iconLegendsData.pageName);
       return this
