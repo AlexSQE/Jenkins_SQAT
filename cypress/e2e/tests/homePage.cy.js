@@ -109,4 +109,9 @@ describe("homePage", () => {
         .should('be.visible')
         .and('contain.text', homePageData.learnMoreAboutDistributedBuildsLinkName)
     })
+    it('AT_02.06.17 | Home page > The"Add description" button is visible', () => {
+      homePage
+        .getAddEditDescriptionBtn()
+        .should('be.visible')
+    })
 })
