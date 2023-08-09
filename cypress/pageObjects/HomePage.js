@@ -132,6 +132,7 @@ class HomePage {
     getHeadersTableJobsIconS = () => cy.get('[tooltip*="Status of the last build"]') 
     getToolTipsIconS = () => cy.get('.tippy-content')
     getIconLegendButton = () => cy.get('#rss-bar [href="/legend"]');
+    getHeadersTableJobName = () => cy.get('th[initialsortdir]');
 
     clickRenameOrgFolderDrpDwnBtn() {
         this.getRenameOrgFolderDrpDwnBtn().contains('Rename').click();
@@ -479,6 +480,11 @@ class HomePage {
     clickIconLegendButton() { 
         this.getIconLegendButton().click();
         return new IconLegendsPage();
+    }
+
+    clicktHeadersTableJobsIconName() {
+        this.getHeadersTableJobName().click()
+        return this
     }
 }
 export default HomePage;

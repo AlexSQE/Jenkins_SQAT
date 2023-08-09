@@ -5,7 +5,7 @@ import HomePage from "../../pageObjects/HomePage";
 import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
-
+import folderPageData from "../../fixtures/pom_fixtures/folderPage.json";
 
 describe('dashboard', () => {
 
@@ -58,5 +58,11 @@ describe('dashboard', () => {
         .getToolTipsIconS()
         .should('have.text', 'Status of the last build')          
      });
-})
 
+     it('AT_20.07.03|Dashboard Verify that table head Name should be visible', () => {
+        cy.createFolderProject(folderPageData.folderName);
+        homePage
+        .getHeadersTableJobName()
+        .should('contain', homePageData.HeadersTableJobs[2])
+     })
+})
