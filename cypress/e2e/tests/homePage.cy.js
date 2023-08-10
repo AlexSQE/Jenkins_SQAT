@@ -7,6 +7,7 @@ import { permanentAgentRadioBtn } from "../../fixtures/pom_fixtures/newNodePageD
 import {endPointUrl} from "../../fixtures/pom_fixtures/homePage.json";
 import buildHistoryPageData from "../../fixtures/pom_fixtures/buildHistoryPage.json";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import peoplePageData from "../../fixtures/pom_fixtures/peoplePage.json";
 import {configureCloudsHeader} from "../../fixtures/pom_fixtures/configureCloudsPage.json"
 import {distributedBuildsLinkPageUrl} from "../../fixtures/pom_fixtures/distributedBuildsLinkPageData.json"
 
@@ -130,6 +131,13 @@ describe("homePage", () => {
         .getSideMenuPanel()
         .should('have.length', sidePanelItems.length)
     })
+
+    it('AT_02.04.05 | Homepage > Verify "People" redirection', () => {
+      homePage
+          .clickPeopleSideMenuLink()
+          .getPeoplePageUrl()
+          .should('include', peoplePageData.peopleEndPointURL)   
+  });
 
   })
 

@@ -1,4 +1,7 @@
 {
-    "peoplePageHeader" : "People"
- }
+    "peoplePageHeader" : "People",
+ 
+
+ "peopleEndPointURL":  "/asynchPeople/"
+}
  

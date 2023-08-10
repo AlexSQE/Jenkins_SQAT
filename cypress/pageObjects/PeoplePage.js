@@ -6,6 +6,7 @@ class PeoplePage {
     getPeoplePageHeader = () => cy.get('.jenkins-app-bar__content h1')
     getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getCreatedUserLink = () => cy.get('#people a[href*="/user/"]');
+    getPeoplePageUrl = () => cy.url()
 
     clickUserNameLink() {
         this.getUserNameLink().click();
