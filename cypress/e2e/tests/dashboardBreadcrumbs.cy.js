@@ -124,6 +124,13 @@ describe('dashboardBreadcrumbs', () => {
          .and('have.attr', 'href', '/')
       });
 
+         it ('AT_04.02.16 | <Breadcrumbs> Dashboard page link has black colored text “Dashboard”', () => {
+         dashboardBreadcrumbs
+         .getDashboardLink()
+         .should('have.text', dashboardBreadcrumbsData.dashboardBtn)
+         .and('have.css', 'color', 'rgb(20, 20, 31)')
+      })
+
    })
    
    
