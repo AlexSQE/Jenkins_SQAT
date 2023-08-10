@@ -125,6 +125,12 @@ describe("homePage", () => {
       .should('contain', homePageData.descriptionText)
     })
 
+    it('AT_02.04.02 | Homepage > Check the quantity of the submenu-items on the side panel', () => {
+      homePage
+        .getSideMenuPanel()
+        .should('have.length', sidePanelItems.length)
     })
+
+  })
 
 
