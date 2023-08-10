@@ -65,4 +65,12 @@ describe('dashboard', () => {
         .getHeadersTableJobName()
         .should('contain', homePageData.HeadersTableJobs[2])
      })
+
+    it('AT_20.07.05 | Verify the table head W is visible', () => {
+        cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName);
+        homePage
+            .getHeadersTableJobs().eq(1)
+            .should('be.visible');
+    });
+
 })
