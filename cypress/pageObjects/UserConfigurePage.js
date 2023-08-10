@@ -8,7 +8,6 @@ class UserConfigurePage {
     getUserBuildsSidePanelConfigureLink = () => cy.get('a[href$="/configure"]');
     getSensitiveSearchCheckbox = () => cy.get('div.setting-main label');
     getBreadcrumbsConfigure = () => cy.get("li[aria-current='page']");
-
     typeFullNameInputField(name) {
         this.getFullNameInputField().clear().type(name);
         return this;

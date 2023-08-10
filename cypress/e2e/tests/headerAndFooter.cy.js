@@ -18,6 +18,7 @@ import ResultSearchBoxPage from "../../pageObjects/ResultSearchBoxPage";
 import myViewData from "../../fixtures/pom_fixtures/myView.json";
 import UserCredentialsPage from "../../pageObjects/UserCredentialsPage";
 
+
 describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
@@ -329,6 +330,15 @@ describe('headerAndFooter', () => {
             .should('contain', Cypress.env('local.admin.username'));
     });
 
+
+    it('AT_01.05.09 | Header>Redirect to User Configure Page(check Breadcrumbs', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserConfigureMenu()
+            .getBreadcrumbsConfigure()
+            .should("have.text", userConfigurePageData.sidePanelNameLink)
+    });
+
     it('AT_01.05.11 | Header>Redirect to User Configure Page (check URL)', () => {
         headerAndFooter
             .clickUserDropDownBtn()
@@ -337,4 +347,5 @@ describe('headerAndFooter', () => {
             .getCredentialsPageUrl()
             .should("contain", userConfigurePageData.url)
     })
+
 })
