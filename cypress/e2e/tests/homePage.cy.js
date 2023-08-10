@@ -56,7 +56,7 @@ describe("homePage", () => {
         .should("have.text", permanentAgentRadioBtn);
     });
 
-    it('AT_02.04.006 | Verify that link "Build History" is clickable', () => {
+    it('AT_02.04.06 | Homepage > Verify "Build History" redirection', () => {
       homePage
           .clickBuildHistoryLink()
           .getBuildHistoryPageUrl()
