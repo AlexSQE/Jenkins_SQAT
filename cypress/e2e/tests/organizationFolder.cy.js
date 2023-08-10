@@ -9,18 +9,38 @@ describe('orgFolder', () => {
     const homePage = new HomePage();
     const headerAndFooter = new HeaderAndFooter();
     const orgFolderRenamePage = new OrgFolderRenamePage();
+
+    it('AT_17.02.03 |<Organization Folder> Rename Organization Folder inside of selected Organization folder', function() {
+        cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+            .clickOrgFolderNameLink(newItemPageData.orgFolderName)
+            .clickRenameOrgFolderBtn()
+
+        orgFolderRenamePage
+            .clearNewNameInputField()
+            .typeNewOrgFolderName()
+            .clickRenameOrgFolderBtn()
+
+        headerAndFooter
+            .clickJenkinsHomeLink()
+
+        homePage
+            .getgetDashboardMainPanel()
+            .should('contain.text', newItemPageData.newOrgFolderName)
+    })
  
     it('AT_17.02.01 |<Organization Folder> Rename Organization Folder on the Jenkins dashboard', function() {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
 
         homePage
-          .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
-          .clickRenameOrgFolderDrpDwnBtn()
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
+            .clickRenameOrgFolderDrpDwnBtn()
 
         orgFolderRenamePage
-          .clearNewNameInputField()
-          .typeNewOrgFolderName()
-          .clickRenameOrgFolderBtn()
+            .clearNewNameInputField()
+            .typeNewOrgFolderName()
+            .clickRenameOrgFolderBtn()
 
         headerAndFooter
             .clickJenkinsHomeLink()
@@ -83,7 +103,7 @@ describe('orgFolder', () => {
             .checkJobMoveInsideFolder(newItemPageData.orgFolderName)
     })
 
-    it('AT_17.03.01| Delete organization folder within the selected organization folder', () => {
+    it('AT_17.03.01| Delete Organization Folder from the Jenkins dashboard', () => {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
         homePage
             .clickProjectDrpDwnBtn()

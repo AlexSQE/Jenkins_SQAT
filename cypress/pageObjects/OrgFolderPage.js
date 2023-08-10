@@ -1,6 +1,7 @@
 import HomePage from "./HomePage";
 import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
 import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
+import OrgFolderRenamePage from "./OrgFolderRenamePage";
 
 class OrgFolderPage {
     getDashboard = () => cy.get('#breadcrumbs a').contains("Dashboard");
@@ -12,6 +13,12 @@ class OrgFolderPage {
     getDisableOrgFolderBtn = () => cy.get('#disable-project button').contains("Disable Organization Folder")
     getEnableOrgFolderBtn = () => cy.get('#enable-project button[name="Submit"]')
     getConfigureInSideMenuLinkOrgFolder = () => cy.get('span a[href*="configure"]')
+    getRenameOrgFolderBtn = () => cy.get('#tasks > div:nth-child(8)>span').contains("Rename")
+
+    clickRenameOrgFolderBtn() {
+        this.getRenameOrgFolderBtn().click()
+        return new OrgFolderRenamePage()
+    }
 
     clickConfigureInSideMenuLinkOrgFolder() {
         this.getConfigureInSideMenuLinkOrgFolder().click();
