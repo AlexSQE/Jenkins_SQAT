@@ -16,6 +16,7 @@ import restApiDocPageData from "..//..//fixtures/pom_fixtures/restApiDocPage.jso
 import SystemLogPage from "../../pageObjects/SystemLogPage";
 import ResultSearchBoxPage from "../../pageObjects/ResultSearchBoxPage";
 import myViewData from "../../fixtures/pom_fixtures/myView.json";
+import UserCredentialsPage from "../../pageObjects/UserCredentialsPage";
 
 describe('headerAndFooter', () => {
 
@@ -23,7 +24,8 @@ describe('headerAndFooter', () => {
     const homePage = new HomePage();
     const systemLogPage = new SystemLogPage();
     const resultSearchBoxPage = new ResultSearchBoxPage();
-
+    const userCredentialsPage = new UserCredentialsPage();
+ 
     it('AT_03.01.02 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
             .clickRestAPILink()
@@ -327,4 +329,12 @@ describe('headerAndFooter', () => {
             .should('contain', Cypress.env('local.admin.username'));
     });
 
+    it('AT_01.05.11 | Header>Redirect to User Configure Page (check URL)', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserConfigureMenu() 
+        userCredentialsPage
+            .getCredentialsPageUrl()
+            .should("contain", userConfigurePageData.url)
+    })
 })
