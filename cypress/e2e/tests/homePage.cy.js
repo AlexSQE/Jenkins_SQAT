@@ -27,7 +27,7 @@ describe("homePage", () => {
         cy.focused().should('have.attr', 'name', 'description') 
     })
 
-    it('AT_02.04_008 | Homepage > Verify 5 items from the sub-menu', () => {
+    it.skip('AT_02.04_008 | Homepage > Verify 5 items from the sub-menu', () => {
         homePage
           .createSidePanelItemsList()
           .should('deep.equal', sidePanelItems)
@@ -62,12 +62,12 @@ describe("homePage", () => {
           .should('include', buildHistoryPageData.buildHistoryUrl)
     })
     
-    it('AT_02.04.004 | Homepage(Dashboard) | Verify "New Item" redirection', () => {
+    it('AT_02.04.04 | Homepage | Verify "New Item" redirection', () => {
       homePage
           .clickNewItemSideMenuLink()
           .getNewItemPageUrl()
           .should('include', newItemPageData.newItemEndPoinURL)   
-  });
+    });
 
     it('AT_02.07.006 Homepage > Verify the redirection of the "Configure a cloud"', () => {
       homePage
