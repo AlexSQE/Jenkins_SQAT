@@ -16,13 +16,13 @@ describe('freestyleProject', () => {
     const freestyleProjectRenamePage = new FreestyleProjectRenamePage();
     const dashboardBreadcrumbs = new DashboardBreadcrumbs();
 
+    beforeEach('Create Freestyle project', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+    })
+
     it('AT_12.03_007 | Rename freestyle project using side menu', () => {
         homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
-            .selectFreestyleProjectItem()
-            .clickOkBtnAndGoFreestyleProjectConfig()
-            .clickSaveBtnAndGoFreestyleProject()
+            .clickFreestyleProjectNameLink()
             .clickRenameSideMenuLink()
             .typeNewNameInputFild(freestyleProjectPageData.freestyleProjectNewName)
             .clickRenameBtn()
@@ -32,15 +32,7 @@ describe('freestyleProject', () => {
 
     it('AT_12.06_001 | Freestyle project "Disable project" option exists', () => {
         homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
-            .selectFreestyleProjectItem()
-            .clickOkBtnAndGoFreestyleProjectConfig()
-            .clickSaveBtnAndGoFreestyleProject()
-            .getFreestyleProjectHeader()
-            .should('include.text', newItemPageData.freestyleProjectName)
-
-        freestyleProjectPage
+            .clickFreestyleProjectNameLink()
             .getDisableProjectBtn()
             .should('have.text', 'Disable Project')
             .and('be.visible')
@@ -48,7 +40,6 @@ describe('freestyleProject', () => {
     });
 
     it('AT_12.03_002 | Verify that using the same name an error message is appeared', function () {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
         homePage
             .clickFreestyleProjectNameLink()
             .clickRenameSideMenuLink()
@@ -68,8 +59,6 @@ describe('freestyleProject', () => {
     });
 
     it('AT 12.02.006 | Delete Freestyle project using dropdown menu', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
-
         homePage
             .clickProjectDrpDwnBtn()
             .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
@@ -78,18 +67,9 @@ describe('freestyleProject', () => {
             .should('not.exist');
     });
 
-    it('AT_12.06_002 | Freestyle project. "This project is currently disabled" notification appears after clicking "Disable project" button in the project profile', () => {
-        
+    it('AT_12.06_002 | Freestyle project. "This project is currently disabled" notification appears after clicking "Disable project" button in the project profile', () => {        
         homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
-            .selectFreestyleProjectItem()
-            .clickOkBtnAndGoFreestyleProjectConfig()
-            .clickSaveBtnAndGoFreestyleProject()
-            .getFreestyleProjectHeader()
-            .should('include.text', newItemPageData.freestyleProjectName)
-
-        freestyleProjectPage
+            .clickFreestyleProjectNameLink()
             .clickDisableProjectBtn()
             .getDisabledProgectWarning()
             .should('be.visible')
@@ -98,14 +78,7 @@ describe('freestyleProject', () => {
 
     it('AT_12.06_003 | Freestyle project. Project Status is changed to "Disabled" on Dashboard after clicking "Disable project" button', () => {
         homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
-            .selectFreestyleProjectItem()
-            .clickOkBtnAndGoFreestyleProjectConfig()
-            .clickSaveBtnAndGoFreestyleProject()
-            .getFreestyleProjectHeader()
-            .should('include.text', newItemPageData.freestyleProjectName)
-        freestyleProjectPage
+            .clickFreestyleProjectNameLink()
             .clickDisableProjectBtn()
         dashboardBreadcrumbs
             .clickDashboardLinkAndGoHomePage()
@@ -115,9 +88,6 @@ describe('freestyleProject', () => {
     });
 
     it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
-  
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
-
         homePage
             .clickFreestyleProjectNameLink()
             .clickAddAndEditDescriptoinBtn()
@@ -131,7 +101,6 @@ describe('freestyleProject', () => {
     });
         
     it('AC_12.01_007 | Freestyle project>check that the options is visible of the left side panel', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
         homePage
             .clickFreestyleProjectNameLink(newItemPageData.freestyleProjectName)
             .checkLengthOfOptionsSidePanel()
@@ -140,8 +109,6 @@ describe('freestyleProject', () => {
     });
 
     it('AT_12.02_008 | Delete created project with inside menu', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
-
         homePage
             .clickFreestyleProjectNameLink()
             .clickDeleteSideMenuLink()
@@ -150,8 +117,6 @@ describe('freestyleProject', () => {
     });
 
     it('AT_20.03_006 | Verify length and name items of dropdown menu of the Freestyle project', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
-
         freestyleProjectPage
             .clickFreestyleProjectDrpDwnMenu()
             .checkFreestyleProjectDrpDwnMenuItemsName()
@@ -160,8 +125,6 @@ describe('freestyleProject', () => {
     })
 
     it('AT_12.02_005| Delete Freestyle project using dropdown menu_User_clicks_Cancel', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
-
         homePage
             .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
             .selectDeleteDrpDwnLink()
@@ -172,8 +135,6 @@ describe('freestyleProject', () => {
     });
 
     it('AT_12.03_001 | Verify renaming freestyle project using dropdown menu', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
-
         homePage
             .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
             .clickProjectNameDropdownRenameLink()
@@ -184,8 +145,6 @@ describe('freestyleProject', () => {
     });
 
     it('AT_12.03.08 | Freestyle Project > Rename project from Project page using breadcrumbs dropdown menu', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
-
         homePage
             .clickFreestyleProjectNameLink()
             .clickBreadcrumbsFreestyleProjectDrpDwnBtn()
@@ -197,17 +156,13 @@ describe('freestyleProject', () => {
     });
 
     it('AT_12.03.09 | <Freestyle project> "Rename page" contains input field with the current name of the project', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
-
-        homePage
+            homePage
             .clickFreestyleProjectNameLink()
             .clickRenameSideMenuLink()
             .getNewNameInputFild().should('have.attr', 'value', newItemPageData.freestyleProjectName)
     });
 
     it('AT_12.03.10 | <Freestyle project> "Rename page" contains the text “The new name is the same as the current name.”', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
-
         homePage
             .clickFreestyleProjectNameLink()
             .clickRenameSideMenuLink()
@@ -217,8 +172,6 @@ describe('freestyleProject', () => {
 
     freestyleProjectRenamePageData.invalidCharacters.forEach((invalidCharacters) => {
         it('AT_12.03.11 | <Freestyle project> Unable to rename project using invalid symbols', () => {
-            cy.createFreestyleProject(newItemPageData.freestyleProjectName);
-
             homePage
                 .clickFreestyleProjectNameLink()
                 .clickRenameSideMenuLink()
@@ -232,8 +185,6 @@ describe('freestyleProject', () => {
     });
 
     it('AT_12.01.01 | Freestyle project > Navigate to project Status page from Homepage', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
-
         homePage
             .clickFreestyleProjectNameLink()
             .verifyFreestyleProjectStatusPageURL()
