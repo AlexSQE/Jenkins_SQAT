@@ -22,6 +22,7 @@ class MultiConfigurationProjectPage {
     getBreadcrumbsMultiConfigDropDownMenu = () => cy.get("a[href*=job] .jenkins-menu-dropdown-chevron");
     getBreadcrumbsMultuConfigItemsList = () => cy.get("ul.first-of-type li a span");
     getWarningText = () => cy.get('form#enable-project');
+    getBreadcrumbsMcPrConfigureBtn = () => cy.get(".first-of-type [index = '3']")
 
     clickDeleteSideMenuLink() {
         this.getDeleteSideMenuLink().click();
@@ -85,6 +86,11 @@ class MultiConfigurationProjectPage {
     clickBreadcrumbsMultiConfigDropDownMenu(){
       this.getBreadcrumbsMultiConfigDropDownMenu().click()
       return this
+    }
+
+    clickBreadcrumbsMcPrConfigureBtn() {
+        this.getBreadcrumbsMcPrConfigureBtn().click()
+        return new MultiConfigurationProjectConfigurePage;
     }
 }
 export default MultiConfigurationProjectPage;

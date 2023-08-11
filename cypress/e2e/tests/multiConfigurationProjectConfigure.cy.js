@@ -3,9 +3,11 @@
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import projectData from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json";
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 
 describe('multiConfigurationProjectConfigure', () => {
   const homePage = new HomePage();
+  const headerAndFooter = new HeaderAndFooter();
 
   it('AT_14.05.10 | Multi-configuration project. Advanced project options default values', () => {
     cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
@@ -123,6 +125,26 @@ describe('multiConfigurationProjectConfigure', () => {
         .should('be.visible')
         .and('contain', projectData.warningMessage)
         .and('have.css', 'color', projectData.colorWarningMessage)
+  })
+
+  it('AT_14.04.09 | <MC Project> Configure | Verify possibility to enable disabled project through configure in breadcrumbs', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+    homePage
+      .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfigProjectDropdwnBreadcrumb()
+      .clickBreadcrumbsMcPrConfigureBtn()
+      .clickEnableDisableSwitch()
+      .clickSaveButton()
+
+    headerAndFooter
+      .clickJenkinsHomeLink()
+
+    homePage
+      .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+      .clickEnableBtn()
+      .getWarningText()
+      .should('not.exist', projectData.warningMessage)      
   })
 
 });
