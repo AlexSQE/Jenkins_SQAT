@@ -10,7 +10,7 @@ describe('orgFolder', () => {
     const headerAndFooter = new HeaderAndFooter();
     const orgFolderRenamePage = new OrgFolderRenamePage();
 
-    it('AT_17.02.03 |<Organization Folder> Rename Organization Folder inside of selected Organization folder', function() {
+    it('AT_17.02.03 |<Organization Folder> Rename Organization Folder inside of selected Organization Folder', function() {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
 
         homePage
@@ -92,11 +92,13 @@ describe('orgFolder', () => {
     it('AT_17.04.02 | Move Organization Folder into Folder', () => {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
         cy.createFolderProject(newItemPageData.folderName);
+
         homePage
             .clickOrgFolderNameLink(newItemPageData.orgFolderName)
             .clickMoveInSideMenuLink()
             .selectDestinationMoveJob(newItemPageData.folderName)
             .clickMoveButton()
+            
         headerAndFooter
             .clickJenkinsHomeLink()
             .clickFolderNameLink(newItemPageData.folderName)
@@ -105,10 +107,26 @@ describe('orgFolder', () => {
 
     it('AT_17.03.01| Delete Organization Folder from the Jenkins dashboard', () => {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+
         homePage
             .clickProjectDrpDwnBtn()
             .clickDeleteOrgFolderDrpDwnMenuBtn()
             .clickDeleteButton()
+
+        headerAndFooter
+            .searchTextSearchBox(newItemPageData.orgFolderName)
+            .getResultNoMatch()
+            .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)
+    });
+
+    it('AT_17.03.08| Delete Organization Folder from the selected Organization Folder itself', () => {
+        cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+            .clickOrgFolderNameLink(newItemPageData.orgFolderName)
+            .clickDeleteOrgFolderBtn()
+            .clickDeleteButton()
+
         headerAndFooter
             .searchTextSearchBox(newItemPageData.orgFolderName)
             .getResultNoMatch()

@@ -1,5 +1,6 @@
 import HomePage from "./HomePage";
 import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
+import OrgFolderDeletePage from "./OrgFolderDeletePage";
 import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
 import OrgFolderRenamePage from "./OrgFolderRenamePage";
 
@@ -14,6 +15,13 @@ class OrgFolderPage {
     getEnableOrgFolderBtn = () => cy.get('#enable-project button[name="Submit"]')
     getConfigureInSideMenuLinkOrgFolder = () => cy.get('span a[href*="configure"]')
     getRenameOrgFolderBtn = () => cy.get('#tasks > div:nth-child(8)>span').contains("Rename")
+    getDeleteOrgFolderBtn = () => cy.get('#tasks > div:nth-child(5)>span').contains("Delete Organization Folder")
+
+
+    clickDeleteOrgFolderBtn() {
+        this.getDeleteOrgFolderBtn().click()
+        return new OrgFolderDeletePage()
+    }
 
     clickRenameOrgFolderBtn() {
         this.getRenameOrgFolderBtn().click()
