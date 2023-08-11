@@ -111,6 +111,7 @@ describe("homePage", () => {
         .and('contain.text', homePageData.learnMoreAboutDistributedBuildsLinkName)
     })
 
+
     it('AT_02.06.17 | Home page > The"Add description" button is visible', () => {
       homePage
         .getAddEditDescriptionBtn()
@@ -144,6 +145,13 @@ describe("homePage", () => {
       .getConfigureACloudLink()
       .should('be.visible')
       .and('contain.text', homePageData.configureCloudLinkName)
+  })
+
+  it('AT_02.07.01 | Verify the header in the main panel', () => {
+    homePage
+      .getHomepageHeader()
+      .should('be.visible')
+      .and('contain.text', homePageData.homePageHeader)
   })
 
   })
