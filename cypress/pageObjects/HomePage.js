@@ -126,7 +126,7 @@ class HomePage {
     getgetDashboardMainPanel = () => cy.get('#main-panel');
     getProjectNameDrpDwnItems = () => cy.get('#breadcrumb-menu li');
     getFolderDrpDwnMenuList = () => cy.get('#breadcrumb-menu li[index]');
-    getBuildExecutorStatusLink = () => cy.get('a[href*="/computer/"]');
+    getBuildExecutorStatusLink = () => cy.get('.pane-header-title a[href*="/computer/"]');
     getRenameOrgFolderDrpDwnBtn = () => cy.get('.first-of-type li:nth-child(7) span'); 
     getHeadersTableJobs = () => cy.get('thead tr th'); 
     getHeadersTableJobsIconS = () => cy.get('[tooltip*="Status of the last build"]') 
