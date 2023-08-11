@@ -134,6 +134,7 @@ class HomePage {
     getIconLegendButton = () => cy.get('#rss-bar [href="/legend"]');
     getHeadersTableJobName = () => cy.get('th[initialsortdir]');
     getMulBranPipelineName = () => cy.get('a[href*="job"] span');
+    getSubSectionOfMainPanelNames = () => cy.get('.empty-state-block > section > h2');
 
     clickRenameOrgFolderDrpDwnBtn() {
         this.getRenameOrgFolderDrpDwnBtn().contains('Rename').click();

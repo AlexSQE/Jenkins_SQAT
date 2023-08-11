@@ -154,6 +154,14 @@ describe("homePage", () => {
       .and('contain.text', homePageData.homePageHeader)
   })
 
+  it('AT_02.07.02 | Main panel should contain 2 sections', () => {
+    homePage
+      .getSubSectionOfMainPanelNames()
+      .should('have.length', 2).each(($el, ind) => {
+        expect($el.text()).to.be.equal(homePageData.subSectionOfMainPanelNames[ind])
+      })
+  })
+
   })
 
 

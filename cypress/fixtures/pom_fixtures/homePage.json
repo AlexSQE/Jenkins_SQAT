@@ -38,6 +38,11 @@
 
     "IconLegendName": "Icon legend",
 
-    "configureCloudLinkName": "Configure a cloud"
+    "configureCloudLinkName": "Configure a cloud",
+
+    "subSectionOfMainPanelNames" : [
+        "Start building your software project",
+        "Set up a distributed build"
+    ]
 
 }
