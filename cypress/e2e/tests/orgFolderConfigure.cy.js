@@ -67,5 +67,19 @@ describe('orgFolderConfigure', () => {
             .clickSaveBtnAndGoOrgFolder()
         orgFolderPage
             .verifyDissableOrgFolderBtn()
+    });
+
+    it('AT_17.01.06 | <Organization folder > Verify the list of items in the left side-panel menu', () => {
+        cy.createOrgFolderProject(newItemPageData.orgFolderName)  
+        
+        homePage
+            .clickOrgFolderNameLink(newItemPageData.orgFolderName)
+        orgFolderPage
+            .clickConfigureInSideMenuLinkOrgFolder()
+
+        orgFolderConfigurePage
+            .getSidePanelMenuItemsOrgFolderConfig().each(($el, idx) => {
+                expect($el.text()).contain(OrgFolderConfigurePageData.sidePanelMenuItemsOrgFolderConfig[idx]);
+            });  
     })
 });

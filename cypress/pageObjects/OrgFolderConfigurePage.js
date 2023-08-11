@@ -4,7 +4,8 @@ class OrgFolderConfigurePage {
     getProjectConfigSaveBtn = () => cy.get('button[name=Submit]');
     getEnableDisabledToggle = () => cy.get('.jenkins-toggle-switch__label');
     getDescriptionField = () => cy.get('textarea[name="_.description');
-    getOrgFolderHeaderField = () => cy.get('input[name="_.displayNameOrNull"]')
+    getOrgFolderHeaderField = () => cy.get('input[name="_.displayNameOrNull"]');
+    getSidePanelMenuItemsOrgFolderConfig = () => cy.get('#tasks .task');
 
     clickSaveBtnAndGoOrgFolder() {
         this.getProjectConfigSaveBtn().click();
