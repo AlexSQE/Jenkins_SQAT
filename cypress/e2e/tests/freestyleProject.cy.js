@@ -30,7 +30,7 @@ describe('freestyleProject', () => {
             .should('have.text', freestyleProjectPageData.headerText + freestyleProjectPageData.freestyleProjectNewName)
     });
 
-    it('AT_12.06_001 | Freestyle project "Disable project" option exists', () => {
+    it('AT_12.06.01 | <Freestyle project> "Disable project" button is visible and enabled on project Status page for enabled project', () => {
         homePage
             .clickFreestyleProjectNameLink()
             .getDisableProjectBtn()
