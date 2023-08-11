@@ -36,6 +36,8 @@
         "Last Duration"
     ],
 
-    "IconLegendName": "Icon legend"
+    "IconLegendName": "Icon legend",
+
+    "configureCloudLinkName": "Configure a cloud"
 
 }

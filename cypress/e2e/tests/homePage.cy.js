@@ -110,12 +110,12 @@ describe("homePage", () => {
         .should('be.visible')
         .and('contain.text', homePageData.learnMoreAboutDistributedBuildsLinkName)
     })
+
     it('AT_02.06.17 | Home page > The"Add description" button is visible', () => {
       homePage
         .getAddEditDescriptionBtn()
         .should('be.visible')
     })
-
 
     it('AT_02.06.18 | Verification the button Save of adding description on main page', () =>{
       homePage
@@ -138,6 +138,13 @@ describe("homePage", () => {
           .getPeoplePageUrl()
           .should('include', peoplePageData.peopleEndPointURL)   
   });
+
+  it('AT_02.03.07 | Verify visibility of "Configure a cloud" link', () => {
+    homePage
+      .getConfigureACloudLink()
+      .should('be.visible')
+      .and('contain.text', homePageData.configureCloudLinkName)
+  })
 
   })
 
