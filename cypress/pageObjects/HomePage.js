@@ -133,6 +133,7 @@ class HomePage {
     getToolTipsIconS = () => cy.get('.tippy-content')
     getIconLegendButton = () => cy.get('#rss-bar [href="/legend"]');
     getHeadersTableJobName = () => cy.get('th[initialsortdir]');
+    getMulBranPipelineName = () => cy.get('a[href*="job"] span');
 
     clickRenameOrgFolderDrpDwnBtn() {
         this.getRenameOrgFolderDrpDwnBtn().contains('Rename').click();

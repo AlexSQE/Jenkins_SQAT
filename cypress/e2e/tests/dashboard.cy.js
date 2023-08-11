@@ -6,6 +6,7 @@ import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProje
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import folderPageData from "../../fixtures/pom_fixtures/folderPage.json";
+import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
 
 describe('dashboard', () => {
 
@@ -72,5 +73,14 @@ describe('dashboard', () => {
             .getHeadersTableJobs().eq(1)
             .should('be.visible');
     });
+
+    it("AT_20.10.01 | <Dashboard> Jenkins Table: Multibranch pipeline project's name is visible", () => {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+        homePage
+            .getMulBranPipelineName()
+            .should('be.visible')
+            .and('contain',
+            newItemPageData.multibranchPipelineName)
+    })
 
 })
