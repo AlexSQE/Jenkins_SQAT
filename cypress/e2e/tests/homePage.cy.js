@@ -70,7 +70,7 @@ describe("homePage", () => {
           .should('include', newItemPageData.newItemEndPoinURL)   
     });
 
-    it('AT_02.07.006 Homepage > Verify the redirection of the "Configure a cloud"', () => {
+    it('AT_02.03.06 Homepage > Verify the redirection of the "Configure a cloud"', () => {
       homePage
       .clickConfigureACloudLink()
       .getConfigureCloudsHeader()
