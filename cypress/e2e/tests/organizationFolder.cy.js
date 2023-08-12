@@ -50,7 +50,7 @@ describe('orgFolder', () => {
             .should('contain.text', newItemPageData.newOrgFolderName)
     })
 
-    it('AT_17.05.02|<Organization Folder> Verify possibility to enable Organization Folder', function () {
+    it('AT_17.05.02 |<Organization Folder> Verify possibility to enable Organization Folder', function () {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
 
         homePage
@@ -61,7 +61,7 @@ describe('orgFolder', () => {
             .should('exist')
     })
 
-    it('AT_17.05.01|<Organization Folder> Verify possibility to disable Organization Folder', function () {
+    it('AT_17.05.01 |<Organization Folder> Verify possibility to disable Organization Folder', function () {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
 
         homePage
@@ -105,7 +105,7 @@ describe('orgFolder', () => {
             .checkJobMoveInsideFolder(newItemPageData.orgFolderName)
     })
 
-    it('AT_17.03.01| Delete Organization Folder from the Jenkins dashboard', () => {
+    it('AT_17.03.01 | Delete Organization Folder from the Jenkins dashboard', () => {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
 
         homePage
@@ -117,9 +117,9 @@ describe('orgFolder', () => {
             .searchTextSearchBox(newItemPageData.orgFolderName)
             .getResultNoMatch()
             .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)
-    });
+    })
 
-    it('AT_17.03.08| Delete Organization Folder from the selected Organization Folder itself', () => {
+    it('AT_17.03.08 | Delete Organization Folder from the selected Organization Folder itself', () => {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
 
         homePage
@@ -131,9 +131,18 @@ describe('orgFolder', () => {
             .searchTextSearchBox(newItemPageData.orgFolderName)
             .getResultNoMatch()
             .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)
-    });
+    })
 
-    it('AT_17.04.01 | Verify that user can move the organization folder through the Jenkins dashboard', function () {
+    it('AT_17.03.06 | Verify <Delete Organization Folder> button in the dropdown menu', () => {
+        cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+            .clickProjectDrpDwnBtn()
+            .getDeleteOrgFolderDrpDwnMenuBtn()
+            .should('be.visible')        
+    })
+
+    it('AT_17.04.01 | Verify that user can move the Organization Folder through the Jenkins dashboard', function () {
         cy.createFolderProject(newItemPageData.folderName)
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
 
