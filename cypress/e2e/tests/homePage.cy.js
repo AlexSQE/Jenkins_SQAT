@@ -49,7 +49,7 @@ describe("homePage", () => {
           .should('have.text', homePageData.descriptionText) 
     });
     
-    it("AT_02.07.009 | Homepage Verify the 'Set up an agent' link on the main page when no jobs have been created", () => {
+    it("AT_02.02.01 | Homepage > Verify the 'Set up an agent' link redirection", () => {
       homePage
         .clickSetUpAgentLink()
         .getPermanentAgentBtn()
