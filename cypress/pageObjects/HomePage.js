@@ -135,6 +135,8 @@ class HomePage {
     getHeadersTableJobName = () => cy.get('th[initialsortdir]');
     getMulBranPipelineName = () => cy.get('a[href*="job"] span');
     getSubSectionOfMainPanelNames = () => cy.get('.empty-state-block > section > h2');
+    getHeaderTableJobW = () => cy.get('[tooltip^="Weather"]');
+    getHeaderTableJobWTooltip = () => cy.get('#tippy-3');
 
     clickRenameOrgFolderDrpDwnBtn() {
         this.getRenameOrgFolderDrpDwnBtn().contains('Rename').click();
@@ -488,5 +490,11 @@ class HomePage {
         this.getHeadersTableJobName().click()
         return this
     }
+
+    hoverHeaderTableJobW() {
+        this.getHeaderTableJobW().realHover()
+        return this;
+    };
+
 }
 export default HomePage;

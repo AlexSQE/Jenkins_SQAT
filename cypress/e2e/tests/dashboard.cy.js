@@ -83,4 +83,12 @@ describe('dashboard', () => {
             newItemPageData.multibranchPipelineName)
     })
 
+    it('AT_20.07.06 | Verify table head W should be hoverable: the background color should change and tooltip should appear', () => {
+        cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName);
+        homePage
+            .hoverHeaderTableJobW()
+            .getHeaderTableJobWTooltip()
+            .should('have.text', homePageData.tooltipWtext);
+    });
+
 })
