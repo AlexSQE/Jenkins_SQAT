@@ -2,5 +2,15 @@
     "userFullName": "Ivan Ivanov",
     "userDescription": "I am the best QA",
     "sidePanelNameLink": "Configure",
-    "url": "configure"
+    "url": "configure",
+    "SidePanelTasks": {
+        "Names": [
+            "People",
+            "Status",
+            "Builds",
+            "Configure",
+            "My Views",
+            "Credentials"
+        ]
+    }
 }

@@ -18,7 +18,6 @@ import ResultSearchBoxPage from "../../pageObjects/ResultSearchBoxPage";
 import myViewData from "../../fixtures/pom_fixtures/myView.json";
 import UserCredentialsPage from "../../pageObjects/UserCredentialsPage";
 
-
 describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
@@ -346,6 +345,14 @@ describe('headerAndFooter', () => {
         userCredentialsPage
             .getCredentialsPageUrl()
             .should("contain", userConfigurePageData.url)
+    })
+
+    it('AT_01.05.06 | User should see all available "tasks" in a side panel', function () {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserConfigureMenu()
+            .listUserSidePanelItems()
+            .should('deep.equal', userConfigurePageData.SidePanelTasks.Names)
     })
 
 })

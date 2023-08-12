@@ -1,5 +1,6 @@
 import UserProfilePage from "../pageObjects/UserProfilePage"
 import HomePage from "../pageObjects/HomePage";
+import userConfigurePageData from "../fixtures/pom_fixtures/userConfigurePage.json" 
 
 class UserConfigurePage {
     getFullNameInputField = () => cy.get('input[name="_.fullName"]');
@@ -8,6 +9,8 @@ class UserConfigurePage {
     getUserBuildsSidePanelConfigureLink = () => cy.get('a[href$="/configure"]');
     getSensitiveSearchCheckbox = () => cy.get('div.setting-main label');
     getBreadcrumbsConfigure = () => cy.get("li[aria-current='page']");
+    getUserSidePanelItems = () => cy.get(".task-link-text");
+
     typeFullNameInputField(name) {
         this.getFullNameInputField().clear().type(name);
         return this;
@@ -28,5 +31,12 @@ class UserConfigurePage {
         this.getSensitiveSearchCheckbox().click();
         return this;
     }
+
+     listUserSidePanelItems() {
+        return this.getUserSidePanelItems()
+        .then(($els) => {
+            return Cypress.$.makeArray($els).map($el => $el.innerText);
+        })
+     }
 }
 export default UserConfigurePage;
