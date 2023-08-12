@@ -3,6 +3,7 @@
 import HomePage from "../../pageObjects/HomePage";
 import nodePageData from "../../fixtures/pom_fixtures/nodePage.json";
 import buildHistoryOnBuildInNodePageData from "../../fixtures/pom_fixtures/buildHistoryOnBuildInNodePage.json";
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 
 describe('buildHistoryOnBuildInNode', () => {
 
@@ -31,6 +32,17 @@ describe('buildHistoryOnBuildInNode', () => {
             .clickBreadcrumbsBuildInNodeDrpDwnBtn()
             .selectBreadcrumbsBuildHistoryDrpDwnLink()
             .getPageHeader().should('have.text', buildHistoryOnBuildInNodePageData.pageHeader)
+    });
+
+    it('AT_11.04.04 | Build Executor Status > On the "Build History on Built-In Node" page verify possibility to see builds that were scheduled', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .clickOnScheduleBuildBtn()
+            .clickBuildExecutorStatusLink()
+            .clickBuildInNodeName(nodePageData.nodeBuiltInName)
+            .clickBuildHistoryLink()
+            .getProjectBuild().should('exist')
     });
 
 });
