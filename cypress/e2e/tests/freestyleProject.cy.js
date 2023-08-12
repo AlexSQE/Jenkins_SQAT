@@ -191,4 +191,11 @@ describe('freestyleProject', () => {
             .getFreestyleProjectHeader()
             .should('have.text', freestyleProjectPageData.headerText + newItemPageData.freestyleProjectName)
     });
+
+    it('AT_12.07.01 | <Freestyle project> "Add description" button is visible', () => {
+        homePage
+        .clickFreestyleProjectNameLink()
+        .getAddAndEditDescriptoinBtn()
+        .should('be.visible')
+    })
 });
