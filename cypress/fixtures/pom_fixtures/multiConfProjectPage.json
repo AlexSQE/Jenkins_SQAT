@@ -8,5 +8,6 @@
     "invalidCharacters": ["@", "#", "$", "%", "^", "&", "*", "?", ">", "<", "/", ";", "|"],
     "errorMessage" : "No name is specified",
     "currentDisableMsg": "This Multibranch Pipeline is currently disabled",
-    "disableMultiBrPipelineBtnText": "Disable Multibranch Pipeline"
+    "disableMultiBrPipelineBtnText": "Disable Multibranch Pipeline",
+    "emptyNameErrorMsg": "No name is specified"
 }

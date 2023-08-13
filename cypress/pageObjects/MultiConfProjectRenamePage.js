@@ -24,5 +24,10 @@ class MultiConfProjectRenamePage {
         this.getGoHome().click();
         return new HomePage();
     }
+
+    clearMultiConfProjectNameInputField() {
+        this.getMultiConfProjectNameInputField().clear();
+        return this
+    }
 }
 export default MultiConfProjectRenamePage;

@@ -156,4 +156,15 @@ describe("multiConfigurationProject", () => {
             .and('exist')
       });
       
+      it('AT_14.06.02 | Rename Multi-configuration project with empty input field', () => {
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName);
+        
+        homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickRenameBtnMultiConfPrj()
+        .clearMultiConfProjectNameInputField()
+        .clickMultiConfProjectRenameBtn()
+        .getErrorTextMessage()
+        .should('contain', multiConfProjectPageData.emptyNameErrorMsg)
+      }); 
 })
