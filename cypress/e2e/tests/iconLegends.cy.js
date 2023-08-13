@@ -96,4 +96,14 @@ describe('iconLegends', () => {
           ).length
         );
     });
+
+    it("AT_20.05.09 | Dashboard Icon legend | Verify the subtitle Status is visible on the Icon legend Page", function () {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+      homePage
+        .clickIconLegendButton()
+        .getIconLegendPageSubtitles()
+        .contains(iconLegendsData.headers[0])
+        .should("be.visible");
+    });
 })
