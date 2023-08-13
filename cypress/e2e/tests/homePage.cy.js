@@ -10,6 +10,7 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import peoplePageData from "../../fixtures/pom_fixtures/peoplePage.json";
 import {configureCloudsHeader} from "../../fixtures/pom_fixtures/configureCloudsPage.json"
 import {distributedBuildsLinkPageUrl} from "../../fixtures/pom_fixtures/distributedBuildsLinkPageData.json"
+import {freestyleProjectNewName} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 
 describe("homePage", () => {
     const homePage = new HomePage()
@@ -155,6 +156,19 @@ describe("homePage", () => {
   })
 
   it('AT_02.07.02 | Main panel should contain 2 sections', () => {
+    homePage
+      .getSubSectionOfMainPanelNames()
+      .should('have.length', 2).each(($el, ind) => {
+        expect($el.text()).to.be.equal(homePageData.subSectionOfMainPanelNames[ind])
+      })
+  })
+
+  it ('AT_02.08.01 | <Homepage> Reset to initial state when all jobs deleted', () => {
+    cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+    homePage
+      .clickProjectDropdownMenuBtn()
+      .selectDeleteDrpDwnLink()
+      .clickWindowConfirmOk(homePageData.messages.windowConfirm)
     homePage
       .getSubSectionOfMainPanelNames()
       .should('have.length', 2).each(($el, ind) => {

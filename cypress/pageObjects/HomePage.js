@@ -496,5 +496,11 @@ class HomePage {
         return this;
     };
 
+    clickWindowConfirmOk(windowConfirmText) {
+        cy.on('window:confirm', (str) => {
+            expect(str).to.eq(windowConfirmText)
+            return true
+        })
+    };
 }
 export default HomePage;
