@@ -106,4 +106,15 @@ describe('iconLegends', () => {
         .contains(iconLegendsData.headers[0])
         .should("be.visible");
     });
+
+    it("AT_20.05.10 | Dashboard Icon legend | Verify the description list with subtitle Status includes list of descriptions of icons", () => {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+      homePage
+        .clickIconLegendButton()
+        .getIconLegendPageStatusDescriptionList()
+        .each(($el, idx) => {
+          expect($el.text()).contain(iconLegendsData.statusDescriptions[idx]);
+        });
+    });
 })
