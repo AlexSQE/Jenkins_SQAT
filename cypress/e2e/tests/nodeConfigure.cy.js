@@ -10,7 +10,8 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
     const nodeConfigurePage = new NodeConfigurePage();
 
     it('AT 11.03.01 | Clicking Gear Icon on NodesPage navigates to the Node Configure page', () => {
-        homePage.clickBuildExecutorStatusLink()
+        homePage
+            .clickBuildExecutorStatusLink()
             .clickBuiltInNodeGearBtn()
             .getNodePropertiesTitle()
             .then((actualText) => {
@@ -47,5 +48,14 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
         nodeConfigurePage
             .getNodeConfigurePageUrl()
             .should('include', nodeConfigurePageData.nodeConfigurePageUrl);
+    });
+
+    it('AT 11.07.01 | Save Button is visible on Node Configure page', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .getNodeConfigSaveBtn()
+            .should('be.visible')
+            .and('have.text', 'Save')
     });
 })
