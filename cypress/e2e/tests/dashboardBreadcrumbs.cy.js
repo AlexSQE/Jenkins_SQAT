@@ -131,6 +131,17 @@ describe('dashboardBreadcrumbs', () => {
          .and('have.css', 'color', 'rgb(20, 20, 31)')
       })
 
+      it('AT_04.07.02 | <Breadcrumbs> Verify Breadcrumbs Pipeline Dropdown menu has list of items', () => {
+         cy.createPipeline(newItemPageData.pipelineName)
+         homePage
+         .clickPipelineProjectName(newItemPageData.pipelineName)
+         .hoverBreadcrumbsPipelineProjectBtn()
+         .clickBreadcrumbsPipelineProjectDropDownMenu()
+         .getBreadcrumbsPipelineMenuItemsList().each(($el, idx) => {
+            expect($el.text()).contain(dashboardBreadcrumbsData.breadcrumbsPipelineProjectDropdown[idx])
+          });
+         });
+
    })
    
    

@@ -14,6 +14,7 @@ class PipelinePage {
     getBreadcrumbsPipelineName = () => cy.get ('.jenkins-breadcrumbs__list-item > a[href^="/job/"]');
     getBreadcrumbsPipelineMenuListButton = () => cy.get ('.jenkins-breadcrumbs__list-item > a[href^="/job/"] button');
     getBreadcrumbsPipelineMenuListItems = () => cy.get('.yuimenuitem a[href^="#"]');
+    getBreadcrumbsPipelineMenuItemsList = () => cy.get('ul.first-of-type li a span');
 
     clickGoToDashboard() {
         this.getDashboard().click();
@@ -74,6 +75,16 @@ class PipelinePage {
         cy.url().should('contain', `${pipelinePageData.pipelinePageUrl}${newItemPageData.pipelineName}`);
         return this;
     };
+
+    hoverBreadcrumbsPipelineProjectBtn(){
+        this.getBreadcrumbsPipelineName().realHover()
+        return this
+        }
+    
+    clickBreadcrumbsPipelineProjectDropDownMenu() {
+    this.getBreadcrumbsPipelineMenuListButton().click()
+    return this
+    }    
 };
 
 export default PipelinePage;

@@ -80,5 +80,15 @@
     "Delete Multi-configuration project",
     "Rename"
     
+   ],
+   "breadcrumbsPipelineProjectDropdown":[
+    "Changes",
+    "Build Now",
+    "Configure",
+    "Delete Pipeline",
+    "Full Stage View",
+    "Rename",
+    "Pipeline Syntax"
    ]
+
 }
