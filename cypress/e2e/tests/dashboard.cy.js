@@ -91,4 +91,13 @@ describe('dashboard', () => {
             .should('have.text', homePageData.tooltipWtext);
     });
 
+    it("AT_20.03.07 | <Dashboard> Jenkins Table: Verify Freestyle Project's name down chevron button and background color change", () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+        homePage
+            .hoverProjectNameLink()
+            .getProjectDrpDwnBtn()
+            .should('be.visible')
+            .and('not.have.css', 'background-color', '#FFFFFF')
+        });
+
 })
