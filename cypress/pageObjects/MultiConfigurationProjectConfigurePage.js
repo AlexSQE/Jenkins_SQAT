@@ -66,7 +66,7 @@ class MultiConfigurationProjectConfigurePage {
   }  
 
   clickUseCustomWorkspaceCheckBox() {
-    this.getUseCustomWorkspaceCheckBox().click();
+    this.getUseCustomWorkspaceCheckBox().click({force: true});
     return this;
   }
 
