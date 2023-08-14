@@ -11,9 +11,11 @@ import peoplePageData from "../../fixtures/pom_fixtures/peoplePage.json";
 import {configureCloudsHeader} from "../../fixtures/pom_fixtures/configureCloudsPage.json"
 import {distributedBuildsLinkPageUrl} from "../../fixtures/pom_fixtures/distributedBuildsLinkPageData.json"
 import {freestyleProjectNewName} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
+import NewItemPage from "../../pageObjects/NewItemPage";
 
 describe("homePage", () => {
     const homePage = new HomePage()
+    const newItemPage = new NewItemPage()
 
     sidePanelItems.forEach((item, idx) => {
       it(`AT_02.04_009 | <Homepage> Verify all ${item} of the sub-menu redirect to the proper pages`, function () {
@@ -174,6 +176,17 @@ describe("homePage", () => {
       .should('have.length', 2).each(($el, ind) => {
         expect($el.text()).to.be.equal(homePageData.subSectionOfMainPanelNames[ind])
       })
+  })
+  
+  it('AT_02.01.11| Homepage > Verify "Create a job" link redirection', () => {
+    homePage
+        .clickCreateJobLink()        
+        .getNewItenHeader()
+        .should('have.text', newItemPageData.newItemHeader)
+    newItemPage
+        .getNewItemPageUrl()
+        .should('include', newItemPageData.newItemNewJobEndPoinURL)
+
   })
 
   })

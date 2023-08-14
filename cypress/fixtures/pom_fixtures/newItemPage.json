@@ -32,6 +32,7 @@
     "newItemEndPoinURL" :  "/all/newJob", 
     "newItemPageTitle": "New Item [Jenkins]",
     "newItemHeader" : "Enter an item name",
+    "newItemNewJobEndPoinURL" :  "/newJob",
 
     "character" : "LooongName",
     "number" : 26,
