@@ -7,6 +7,7 @@ import ErrorMessagePage from "../../pageObjects/ErrorMessagePage"
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 import orgFolderConfigurePage from '../../fixtures/pom_fixtures/orgFolderConfigurePage.json';
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
+import FreestyleProjectConfigurePage from "../../pageObjects/FreestyleProjectConfigurePage";
 
 describe('newItem', () => {
 
@@ -15,6 +16,7 @@ describe('newItem', () => {
     const dashboardBreadcrumbs = new DashboardBreadcrumbs();
     const headerAndFooter = new HeaderAndFooter
     const newItemPage = new NewItemPage();
+    const freestyleProjectConfigurePage = new FreestyleProjectConfigurePage();
 
     it('AT_05.08.011 | Verify New Item Names', () => {
         homePage
@@ -159,5 +161,21 @@ describe('newItem', () => {
         homePage
         .getProjectNameLink()
         .should('have.text', newItemPageData.pipelineName)
+    })
+    it('AT_05.01.01 | Create a new Freestyle Project by clicking "New Item" on Dashboard page', () => {
+        homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
+        .selectFreestyleProjectItem()
+        .clickOkBtnAndGoFreestyleProjectConfig()
+        .clickSaveBtnAndGoFreestyleProjectPage()
+        .getFreestyleProjectHeader()
+        .contains(newItemPageData.freestyleProjectName)
+        
+        headerAndFooter
+        .clickJenkinsHomeLink()
+        .getProjectNameLink()
+        .should('have.text', newItemPageData.freestyleProjectName)
+        .and('be.visible')
     })
 });
