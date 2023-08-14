@@ -189,6 +189,13 @@ describe("homePage", () => {
 
   })
 
+  it('AT_02.01.13 | Homepage > "Create a job" link is visible', () => {
+    homePage
+      .getCreateJobLink()
+      .should('be.visible')
+      .and('contain.text', homePageData.createJobLinkName)
+  })
+
   })
 
 
