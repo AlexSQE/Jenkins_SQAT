@@ -100,4 +100,12 @@ describe('dashboard', () => {
             .and('not.have.css', 'background-color', '#FFFFFF')
         });
 
-})
+    it('AT_20.11.01 | <Dashboard> Jenkins Table: Verify Dropdown menu of Folder Project name', () => {
+        cy.createFolderProject(newItemPageData.folderName)
+        homePage
+            .hoverAndClickProjectDrpDwn(newItemPageData.folderName)
+            .verifyFolderDrpDwnMenu()
+            .should('deep.equal', folderPageData.folderDropdownItems)
+       });
+
+    })
