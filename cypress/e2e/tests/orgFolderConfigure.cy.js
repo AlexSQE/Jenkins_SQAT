@@ -12,6 +12,21 @@ describe('orgFolderConfigure', () => {
     const orgFolderPage = new OrgFolderPage();
     const orgFolderConfigurePage = new OrgFolderConfigurePage();
 
+    it('AT_17.01.12 |<Organization Folder> Verify "Health metrics" drop-down menu is visible', () => {
+        cy.createOrgFolderProject(newItemPageData.orgFolderName)
+        
+        homePage
+        .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
+        .selectConfigureDrpDwnLink()
+        .clickHealthMetricsSidePanelMenuItem()
+        .clickHealthMetricsItem()
+        .clickAddMetric()
+        .getHealthMetricsType()
+        .should('be.visible')
+        
+        })
+        
+
     it('AT_17.01.001 | Change status folder to disable', () => {
         cy.createOrgFolderProject(newItemPageData.orgFolderName)
          

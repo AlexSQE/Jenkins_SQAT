@@ -11,5 +11,7 @@
         "Appearance",
         "Health metrics",
         "Properties"
-    ]
+    ],
+
+    "healthMetricsType":"Child item with worst health"
 }

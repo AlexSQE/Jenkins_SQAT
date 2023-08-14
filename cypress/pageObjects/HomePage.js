@@ -32,6 +32,7 @@ import DistributedBuildsLinkPage from "./DistributedBuildsLinkPage";
 import HeaderAndFooter from "./HeaderAndFooter";
 import NodesPage from "./NodesPage";
 import IconLegendsPage from "../pageObjects/IconLegendsPage";
+import OrgFolderConfigurePage from "../pageObjects/OrgFolderConfigurePage"
 
 class HomePage {
 
@@ -63,10 +64,9 @@ class HomePage {
     getRenamePipelineProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getAddEditDescriptionBtn = () => cy.get("a#description-link");
     getDescriptionField = () => cy.get('#description div:first-of-type');
-    getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");  
+    getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
     getDescriptionPreview = () => cy.get(".textarea-preview");
     getHideDescriptionPreview = () => cy.get(".textarea-hide-preview");
-
     getHomepageHeader = () => cy.get(".empty-state-block h1");
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
@@ -127,9 +127,9 @@ class HomePage {
     getProjectNameDrpDwnItems = () => cy.get('#breadcrumb-menu li');
     getFolderDrpDwnMenuList = () => cy.get('#breadcrumb-menu li[index]');
     getBuildExecutorStatusLink = () => cy.get('.pane-header-title a[href*="/computer/"]');
-    getRenameOrgFolderDrpDwnBtn = () => cy.get('.first-of-type li:nth-child(7) span'); 
-    getHeadersTableJobs = () => cy.get('thead tr th'); 
-    getHeadersTableJobsIconS = () => cy.get('[tooltip*="Status of the last build"]') 
+    getRenameOrgFolderDrpDwnBtn = () => cy.get('.first-of-type li:nth-child(7) span');
+    getHeadersTableJobs = () => cy.get('thead tr th');
+    getHeadersTableJobsIconS = () => cy.get('[tooltip*="Status of the last build"]')
     getToolTipsIconS = () => cy.get('.tippy-content')
     getIconLegendButton = () => cy.get('#rss-bar [href="/legend"]');
     getHeadersTableJobName = () => cy.get('th[initialsortdir]');
@@ -137,11 +137,17 @@ class HomePage {
     getSubSectionOfMainPanelNames = () => cy.get('.empty-state-block > section > h2');
     getHeaderTableJobW = () => cy.get('[tooltip^="Weather"]');
     getHeaderTableJobWTooltip = () => cy.get('#tippy-3');
+    getConfigOrgFolderDrpDwnLink = () => cy.get('.first-of-type li:nth-child(1) span').contains("Configure");
+
+    selectConfigureDrpDwnLink() {
+        this.getConfigOrgFolderDrpDwnLink().click();
+        return new OrgFolderConfigurePage();
+    }
 
     clickRenameOrgFolderDrpDwnBtn() {
         this.getRenameOrgFolderDrpDwnBtn().contains('Rename').click();
         return this;
-    } 
+    }
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {
@@ -190,7 +196,7 @@ class HomePage {
     }
 
     clickProjectDrpDwnBtn() {
-        this.getProjectDrpDwnBtn().click({force: true});
+        this.getProjectDrpDwnBtn().click({ force: true });
         return this;
     }
 
@@ -433,9 +439,9 @@ class HomePage {
         return new OrgFolderDeletePage();
     }
 
-    selectConfigPipelineDrpDwnMenuBtn(){
-      this.getProjectNameDropdownConfigureLink().click()
-      return new PipelineProjectConfigurePage()
+    selectConfigPipelineDrpDwnMenuBtn() {
+        this.getProjectNameDropdownConfigureLink().click()
+        return new PipelineProjectConfigurePage()
     }
 
     clickNewViewLink() {
@@ -444,8 +450,8 @@ class HomePage {
     }
 
     clickLearnMoreAboutDistributedBuildsLink() {
-        this.getLearnMoreAboutDistributedBuildsLink().invoke('removeAttr','target').click();
-        return new DistributedBuildsLinkPage(); 
+        this.getLearnMoreAboutDistributedBuildsLink().invoke('removeAttr', 'target').click();
+        return new DistributedBuildsLinkPage();
     }
 
     clickHideDescriptionPreviewLink() {
@@ -454,11 +460,11 @@ class HomePage {
     }
 
     createBuildsOfNewProject(projectName, buildsNumber) {
-        for(let i = 1; i <= buildsNumber; i++){
+        for (let i = 1; i <= buildsNumber; i++) {
             this.getScheduleBuildBtn(projectName).click();
             cy.wait(1000);
-    }
-    return this
+        }
+        return this
     }
 
     openSearchByShortCut() {
@@ -481,7 +487,7 @@ class HomePage {
         return this
     }
 
-    clickIconLegendButton() { 
+    clickIconLegendButton() {
         this.getIconLegendButton().click();
         return new IconLegendsPage();
     }
