@@ -1,3 +1,7 @@
 {
-  "nodeBuiltInName": "(built-in)"
+  "nodeBuiltInName": "(built-in)",
+  "buildInHeader": "Built-In Node",
+  "buildBuiltInUrl": "/manage/computer/(built-in)/",
+  "labelsHeading" : "Labels",
+  "projectsTiedToBuiltInNodeHeading": "Projects tied to Built-In Node"
 }

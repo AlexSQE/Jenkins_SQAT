@@ -58,4 +58,14 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .should('be.visible')
             .and('have.text', 'Save')
     });
+
+    it('AT 11.07.02 | Save Button is clickable', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .clickNodeConfigureSaveBtn()
+            .getBuiltInNodeHeader()
+            .should('be.visible')
+            .and('have.text', nodePageData.buildInHeader)
+    });
 })

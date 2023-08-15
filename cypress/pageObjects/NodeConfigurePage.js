@@ -1,3 +1,5 @@
+import BuiltInNodePage from "./BuiltInNodePage";
+
 class NodeConfigurePage {
 
     getNodeConfigurePageUrl = () => cy.url();
@@ -11,8 +13,9 @@ class NodeConfigurePage {
             .then((text) => text.trim());
     };
 
-    getNodeSaveBtn() {
-        return this.getNodeConfigSaveBtn().click();
+    clickNodeConfigureSaveBtn() {
+        this.getNodeConfigSaveBtn().click();
+        return new BuiltInNodePage();
     };
 }
 
