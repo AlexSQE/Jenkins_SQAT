@@ -92,7 +92,7 @@ describe('dashboard', () => {
             .should('have.text', homePageData.tooltipWtext);
     });
 
-    it.only('AT_20.10.03 | <Dashboard> Jenkins Table: Multibranch pipeline project names dropdown menu has list of items', () => {
+    it('AT_20.10.03 | <Dashboard> Jenkins Table: Multibranch pipeline project names dropdown menu has list of items', () => {
         cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
         homePage
         .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
@@ -118,6 +118,14 @@ describe('dashboard', () => {
             .verifyFolderDrpDwnMenu()
             .should('deep.equal', folderPageData.folderDropdownItems)
        });
+
+    it('AT_20.04.02 | <Dashboard> Jenkins Table: Pipeline project name is visible', () => {
+        cy.createPipeline(pipelinePageData.pipelineName);
+        homePage
+            .getProjectName(pipelinePageData.pipelineName)
+            .should('be.visible')
+            .and('have.text', pipelinePageData.pipelineName)
+    })
 
     })
 
