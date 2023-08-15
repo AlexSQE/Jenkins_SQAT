@@ -43,7 +43,8 @@ class FreestyleProjectConfigurePage {
     getNotificationMessage = () => cy.get('#notification-bar span');
     getSourceCodeManagementBtn = () => cy.get('#tasks button[data-section-id="source-code-management"]');
     getGitTooltipHelpBtn = () => cy.get('a[tooltip="Help for feature: Git"]');
-    getTooltipTextBox = () => cy.get('div .tippy-box')
+    getTooltipTextBox = () => cy.get('div .tippy-box');
+    getEnableDisableProjectOption = () => cy.get('#toggle-switch-enable-disable-project');
 
     clickSaveBtnAndGoFreestyleProject() {
         this.getProjectConfigSaveBtn().click();
@@ -206,6 +207,12 @@ class FreestyleProjectConfigurePage {
             .should('have.text', freestyleProjectConfigure.sourceCodeManagement.tooltips.git)
             .and('be.visible')  
     }
+
+    clickEnableDisableProjectOption() {
+        this.getEnableDisableProjectOption().click();
+        return this;
+    };
+
 }
 
 export default FreestyleProjectConfigurePage;

@@ -6,7 +6,8 @@ import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import freestyleProjectConfigData from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json";
-import gitHubPageData from "../../fixtures/pom_fixtures/gitHubPage.json"
+import gitHubPageData from "../../fixtures/pom_fixtures/gitHubPage.json";
+import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
 
 describe('freestyleProjectConfigure', () => {
     const homePage = new HomePage();
@@ -167,4 +168,15 @@ describe('freestyleProjectConfigure', () => {
         .hoverTooltipGitHelpBtn()
         .checkTooltipTextBox()
     })
+
+    it('AT_12.16.01 | Freestyle project > Verify possibility to disable the project on the Configure page', () => {
+        cy.openFreestyleProjectConfigurePage()
+
+        configPage
+            .clickEnableDisableProjectOption()
+            .clickSaveBtnAndGoFreestyleProject()
+            .getDisabledProgectWarning()
+            .should('be.visible').and('contain', freestyleProjectPageData.disabledProjectNotify)
+    });
+
 })
