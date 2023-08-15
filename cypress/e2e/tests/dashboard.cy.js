@@ -6,7 +6,7 @@ import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProje
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import folderPageData from "../../fixtures/pom_fixtures/folderPage.json";
-import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
+import dashboardData from "../../fixtures/pom_fixtures/dashboard.json"
 
 describe('dashboard', () => {
 
@@ -19,21 +19,21 @@ describe('dashboard', () => {
             .verifyPipeLineDrpDwnMenu()
             .should('deep.equal', pipelinePageData.pipelineDropdownItems)
             .and('have.length', pipelinePageData.pipelineDropdownItems.length)
-    })
+    });
 
     it('AT20.01.007.1|DashbordVerify size of project table S', () => {
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
         homePage
         .clickTableSizeBtnS()
         .verifyTableSize(homePageData.sRem)
-    })
+    });
 
     it('AT20.01.007.2|DashbordVerify size of project table M',() => {
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
         homePage
         .clickTableSizeBtnM()
         .verifyTableSize(homePageData.mRem)
-    })
+    });
 
     it('AT20.01.007.3|DashbordVerify size of project table L',() => {
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
@@ -41,6 +41,7 @@ describe('dashboard', () => {
         .clickTableSizeBtnL()
         .verifyTableSize(homePageData.lRem)
     });
+
      it('AT 20.07.01 Dashboard|Icon S be visible in the first column of the title',()=>{
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName);
         cy.createPipeline(pipelinePageData.pipelineName);
@@ -81,7 +82,7 @@ describe('dashboard', () => {
             .should('be.visible')
             .and('contain',
             newItemPageData.multibranchPipelineName)
-    })
+    });
 
     it('AT_20.07.06 | Verify table head W should be hoverable: the background color should change and tooltip should appear', () => {
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName);
@@ -91,6 +92,16 @@ describe('dashboard', () => {
             .should('have.text', homePageData.tooltipWtext);
     });
 
+    it.only('AT_20.10.03 | <Dashboard> Jenkins Table: Multibranch pipeline project names dropdown menu has list of items', () => {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+        homePage
+        .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
+        .getMultibranchPipelineDrDwnMenuListItems()
+        .each((el, index) => {
+            expect(el.text()).contain(dashboardData.dashboardMBPipelinaDropdownMenu[index])
+        })
+    });
+    
     it("AT_20.03.07 | <Dashboard> Jenkins Table: Verify Freestyle Project's name down chevron button and background color change", () => {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName);
         homePage
@@ -109,3 +120,4 @@ describe('dashboard', () => {
        });
 
     })
+

@@ -137,6 +137,9 @@ class HomePage {
     getSubSectionOfMainPanelNames = () => cy.get('.empty-state-block > section > h2');
     getHeaderTableJobW = () => cy.get('[tooltip^="Weather"]');
     getHeaderTableJobWTooltip = () => cy.get('#tippy-3');
+    getMultibranchPipelineProjectName = () => cy.get('tr[class=" job-status-"] span');
+    getMultibranchPipelineDrDwnMenuChevron = () => cy.get('a.jenkins-table__link button');
+    getMultibranchPipelineDrDwnMenuListItems = () => cy.get('li.yuimenuitem span');
     getConfigOrgFolderDrpDwnLink = () => cy.get('.first-of-type li:nth-child(1) span').contains("Configure");
 
     selectConfigureDrpDwnLink() {
@@ -514,5 +517,6 @@ class HomePage {
           return Cypress.$.makeArray($els).map(($el) => $el.innerText);
         });
     }
+
 }
 export default HomePage;
