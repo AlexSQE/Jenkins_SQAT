@@ -46,6 +46,8 @@
     ],
     "tooltipWtext": "Weather report showing aggregated status of recent builds",
 
-    "createJobLinkName": "Create a job"
+    "createJobLinkName": "Create a job",
+    
+    "SetUpAgentLinkName": "Set up an agent"
 
 }

@@ -10,7 +10,6 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import peoplePageData from "../../fixtures/pom_fixtures/peoplePage.json";
 import {configureCloudsHeader} from "../../fixtures/pom_fixtures/configureCloudsPage.json"
 import {distributedBuildsLinkPageUrl} from "../../fixtures/pom_fixtures/distributedBuildsLinkPageData.json"
-import {freestyleProjectNewName} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import NewItemPage from "../../pageObjects/NewItemPage";
 
 describe("homePage", () => {
@@ -194,6 +193,13 @@ describe("homePage", () => {
       .getCreateJobLink()
       .should('be.visible')
       .and('contain.text', homePageData.createJobLinkName)
+  })
+
+  it('AT_02.02.02 | Homepage > "Set up an agent" link is visible', () => {
+    homePage
+      .getSetUpAgentLink()
+      .should('be.visible')
+      .and('contain.text', homePageData.SetUpAgentLinkName)
   })
 
   })
