@@ -14,6 +14,11 @@ class MultibranchPipelinePage {
     getMultiBranchPipelineError = () => cy.get('div h1');
     getMultiBranchPipelineErrorMessage = () => cy.get('div p');
     getDisableButton = () => cy.get('#disable-project button');
+    getBreadcrumbsMultibranchPipelineBtn = () => cy.get('#breadcrumbBar a[href*=job]')
+    getBreadcrumbsMultibranchPipelineDropDownMenu = () => cy.get('a[href*=job] .jenkins-menu-dropdown-chevron')
+    getBreadcrumbsMultibranchPipelineItemsList = () => cy.get('ul.first-of-type li a span')
+    
+
   
     clickConfigureTheProjectLink() {
         this.getConfigureTheProjectLink().click();
@@ -51,7 +56,16 @@ class MultibranchPipelinePage {
         this.getDisableButton().click();
         return this
     }
-    
+
+    hoverBreadcrumbsMultibranchPipelineBtn(){
+        this.getBreadcrumbsMultibranchPipelineBtn().realHover()
+        return this
+    }
+
+    clickBreadcrumbsMultibranchPipelineDropDownMenu(){
+        this.getBreadcrumbsMultibranchPipelineDropDownMenu().realHover().click({force: true})
+        return this
+    }
 }
 
 export default MultibranchPipelinePage;

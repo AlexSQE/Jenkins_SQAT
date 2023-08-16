@@ -7,7 +7,7 @@ import HomePage from "../../pageObjects/HomePage";
 import FolderPage from "../../pageObjects/FolderPage";
 import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 import MultiConfigurationProjectPage from "../../pageObjects/MultiConfigurationProjectPage";
- 
+import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
 
 
 describe('dashboardBreadcrumbs', () => {
@@ -17,6 +17,7 @@ describe('dashboardBreadcrumbs', () => {
    const homePage = new HomePage();
    const freestyleProjectPage = new FreestyleProjectPage();
    const multiConfigurationProjectPage = new MultiConfigurationProjectPage()
+   const multibranchPipelinePage = new MultibranchPipelinePage()
   
    it('AT_04.04.12 Verify Dashboard Dropdown Menu Length', () => {
       dashboardBreadcrumbs
@@ -139,6 +140,16 @@ describe('dashboardBreadcrumbs', () => {
          .clickBreadcrumbsPipelineProjectDropDownMenu()
          .getBreadcrumbsPipelineMenuItemsList().each(($el, idx) => {
             expect($el.text()).contain(dashboardBreadcrumbsData.breadcrumbsPipelineProjectDropdown[idx])
+          });
+         });
+         
+      it('AT_04.07.05 | Verify Breadcrumbs Multibranch Pipeline Dropdown menu has list of items', () => {
+         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName)
+         multibranchPipelinePage
+         .hoverBreadcrumbsMultibranchPipelineBtn()
+         .clickBreadcrumbsMultibranchPipelineDropDownMenu()
+         .getBreadcrumbsMultibranchPipelineItemsList().each(($el, idx) => {
+          expect($el.text()).contain(dashboardBreadcrumbsData.breadcrumbsMultibranchPipelineDropdown[idx])
           });
          });
 
