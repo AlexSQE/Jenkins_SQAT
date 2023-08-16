@@ -169,4 +169,19 @@ describe('multiConfigurationProjectConfigure', () => {
       .should('not.exist', projectData.warningMessage)      
   })
 
+  projectData.buildEnvironmentList.forEach((text, idx) => {
+  it(`AT_14.01.03 | Saving changes of "${text}" in Build Environment by clicking "Save" button`, () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+    homePage
+    .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+    .clickConfigureSideMenuLink()
+    .clickBuildEnviromentBtn()
+    .checkBuildEnviromentCheckbox(idx)
+    .clickSaveButton()
+    .clickConfigureSideMenuLink()
+    .getBuildEnviromentCheckbox(idx)
+    .should('be.checked')
+  })
+  })
 });
