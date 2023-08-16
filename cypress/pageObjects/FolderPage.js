@@ -19,7 +19,8 @@ class FolderPage {
     getMoveBtnLeftSidebar = () => cy.get('a[href$=move]');
     getBreadcrumbsFolderBtn = () => cy.get("#breadcrumbBar a[href*=job]")
     getBreadcrumbsFolderDropDownMenu = () => cy.get("a[href*=job] .jenkins-menu-dropdown-chevron")
-    getBreadcrumbsFolderItemsList = () => cy.get("ul.first-of-type li a span")   
+    getBreadcrumbsFolderItemsList = () => cy.get("ul.first-of-type li a span") 
+    getDeleteFolderDrpDwnLink = () => cy.get('#breadcrumb-menu li a[href*="delete"]');  
     
     clickAddEditDescriptionBtn() {
         this.getAddEditDescriptiotBtn().click();
@@ -84,8 +85,13 @@ class FolderPage {
         return this
     }
     clickBreadcrumbsFolderDropDownMenu(){
-        this.getBreadcrumbsFolderDropDownMenu().click()
+        this.getBreadcrumbsFolderDropDownMenu().realHover().click({force: true})
         return this
+    }
+
+    clickDeleteFolderDrpDwnLink() {
+        this.getDeleteFolderDrpDwnLink().click()
+        return this;
     }
 };
 

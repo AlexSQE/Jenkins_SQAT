@@ -3,10 +3,12 @@
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import folderPageData from "../../fixtures/pom_fixtures/folderPage.json";
+import FoldersAndMultibrPipelineDeletePage from "../../pageObjects/FoldersAndMultibrPipelineDeletePage";
 
 describe('folder', () => {
 
     const homePage = new HomePage();
+    const foldersAndMultibrPipelineDeletePage = new FoldersAndMultibrPipelineDeletePage();
     
     it('AT_15.02.01 | Verify possibility to add folder description', () => {
         homePage
@@ -161,4 +163,17 @@ describe('folder', () => {
             .should('be.visible')
             .and('have.text', newItemPageData.folderName)
     });
-});
+
+    it(`AT_15.04.02 | Delete folder by clicking on a "Delete Folder" in Folder's name dropdown menu on Dashboard`, () => {
+        cy.createFolderProject(newItemPageData.folderName);
+
+        homePage
+            .clickFolderNameLink(newItemPageData.folderName)
+            .clickBreadcrumbsFolderDropDownMenu()
+            .clickDeleteFolderDrpDwnLink()
+        foldersAndMultibrPipelineDeletePage
+            .clickSubmitBtn() 
+            .getProjectTable()
+            .should('not.exist');     
+        })
+   });
