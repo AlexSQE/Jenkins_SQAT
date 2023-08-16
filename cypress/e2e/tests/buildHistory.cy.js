@@ -192,4 +192,25 @@ describe('buildHistory', () => {
             .getBuildName()
             .should('contain', editBuildInformationPageData.displayName);
     });
+
+    it('AT_07.04.03 | Build History > Verify user can edit DisplayName by clicking "Edit Build Information" in a dropdown menu', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .clickOnScheduleBuildBtn()
+            .clickBuildHistoryLink()
+            .clickBuildNameBtn()
+            .clickEditBuildInformationBtn()
+            .typeDisplayName(editBuildInformationPageData.displayName)
+            .clickEditBuildInformationSaveBtn()
+        headerandFooter
+            .clickJenkinsHomeLink()
+            .clickBuildHistoryLink()
+            .clickBuildNameBtn()
+            .clickEditBuildInformationBtn()
+            .typeDisplayName(editBuildInformationPageData.newDisplayName)
+            .clickEditBuildInformationSaveBtn()
+            .getBuildName()
+            .should('contain', editBuildInformationPageData.newDisplayName);
+    });
 });
