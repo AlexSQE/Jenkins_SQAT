@@ -32,6 +32,7 @@ import DistributedBuildsLinkPage from "./DistributedBuildsLinkPage";
 import HeaderAndFooter from "./HeaderAndFooter";
 import NodesPage from "./NodesPage";
 import IconLegendsPage from "../pageObjects/IconLegendsPage";
+import NodeDeletePage from "./NodeDeletePage";
 import OrgFolderConfigurePage from "../pageObjects/OrgFolderConfigurePage"
 
 class HomePage {
@@ -135,6 +136,10 @@ class HomePage {
     getHeadersTableJobName = () => cy.get('th[initialsortdir]');
     getMulBranPipelineName = () => cy.get('a[href*="job"] span');
     getSubSectionOfMainPanelNames = () => cy.get('.empty-state-block > section > h2');
+    getNodeNameLink = (nodeName) => cy.get(`#executors .pane a[href="/manage/computer/${nodeName}/"]`);
+    getNodeNameDrpDwnLink = () => cy.get('#executors div table tr:nth-child(4) a button');
+    getDeleteAgentDrpDwnLink = () => cy.get('#breadcrumb-menu li a[href*="/delete"]');
+    getBuildExecutorTable = () => cy.get('#executors')
     getHeaderTableJobW = () => cy.get('[tooltip^="Weather"]');
     getHeaderTableJobWTooltip = () => cy.get('#tippy-3');
     getMultibranchPipelineProjectName = () => cy.get('tr[class=" job-status-"] span');
@@ -500,6 +505,17 @@ class HomePage {
         return this
     }
 
+    hoverAndClickNodeNameDrpDwn(nodeName) {
+        this.getNodeNameLink(nodeName).realHover();
+        this.getNodeNameDrpDwnLink().click();
+        return this;
+    }
+
+    selectDeleteAgentDrpDwnLink() {
+        this.getDeleteAgentDrpDwnLink().click();
+        return new NodeDeletePage();
+    }
+
     hoverHeaderTableJobW() {
         this.getHeaderTableJobW().realHover()
         return this;
@@ -517,6 +533,5 @@ class HomePage {
           return Cypress.$.makeArray($els).map(($el) => $el.innerText);
         });
     }
-
 }
 export default HomePage;
