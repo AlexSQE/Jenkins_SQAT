@@ -88,6 +88,17 @@ describe('multiConfigurationProjectConfigure', () => {
       .should('be.visible')
     })
 
+    it('AT_14.05.07 | Multi-configuration project. Advanced project options. Type "number" field is shown if "Retry count" option is selected', () => {
+      cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName)
+      homePage
+      .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfProjectDrpDwnConfigureLink()
+      .clickAdvancedBtn()
+      .clickUseCustomWorkspaceCheckBox()
+      .getDisplayNameText()
+      .should('be.visible')
+    })
+
     it('AT_14.04.06 | <Multi-configuration project> Configure | Verify possibility to disable MCPr through left side panel', () => {
       cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
       homePage
