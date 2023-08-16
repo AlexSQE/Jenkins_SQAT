@@ -34,6 +34,7 @@ class MultiConfigurationProjectConfigurePage {
   getBuildEnviromentLink = () => cy.get('#build-environment').siblings('.optionalBlock-container');
   getBuildEnviromentCheckbox = (idx) => cy.get('#build-environment').siblings('.optionalBlock-container').find('input.optional-block-control').eq(idx);
   getBuildEnviromentBtn = () => cy.get('button[data-section-id="build-environment"]')
+  getApplyButton = () => cy.get("button[name='Apply']");
 
   clickSaveButton() {
     this.getSaveButton().click();
@@ -152,5 +153,10 @@ class MultiConfigurationProjectConfigurePage {
     return this
   };
 
+  clickApplyButton() {
+    this.getApplyButton().click();
+    return this;
+  }
+  
 }
 export default MultiConfigurationProjectConfigurePage;

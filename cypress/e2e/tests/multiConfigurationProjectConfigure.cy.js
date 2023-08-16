@@ -184,4 +184,26 @@ describe('multiConfigurationProjectConfigure', () => {
     .should('be.checked')
   })
   })
+
+  projectData.buildEnvironmentList.forEach((text, idx) => {
+    it(`AT_14.01.04 | Saving changes of "${text}" in Build Environment by clicking "Apply" button`, () => {
+      cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+      homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickConfigureSideMenuLink()
+        .clickBuildEnviromentBtn()
+        .checkBuildEnviromentCheckbox(idx)
+        .clickApplyButton()
+
+      headerAndFooter
+        .clickJenkinsHomeLink()
+
+      homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickConfigureSideMenuLink()
+        .getBuildEnviromentCheckbox(idx)
+        .should('be.checked')
+    })
+  })  
 });
