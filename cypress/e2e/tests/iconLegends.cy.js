@@ -117,4 +117,17 @@ describe('iconLegends', () => {
           expect($el.text()).contain(iconLegendsData.statusDescriptions[idx]);
         });
     });
+
+    it("AT_20.05.11 | Dashboard Icon legend | Verify the description list with subtitle Project Health includes list of descriptions of icons", () => {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+      homePage
+        .clickIconLegendButton()
+        .getIconLegendPageProjectHealthDescriptionList()
+        .each(($el, idx) => {
+          expect($el.text()).contain(
+            iconLegendsData.projectHealthDescriptions[idx]
+          );
+        });
+    });
 })

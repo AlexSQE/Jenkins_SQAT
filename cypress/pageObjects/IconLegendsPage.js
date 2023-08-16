@@ -14,7 +14,8 @@ class IconLegendsPage {
     getAllIconLegendList = () => cy.get("#main-panel > .app-icon-legend dt");
     getIconLegendPageSubtitles = () => cy.get("#main-panel>h2");
     getIconLegendPageStatusDescriptionList = () => cy.get("#main-panel dl:first-of-type dd");
-
+    getIconLegendPageProjectHealthDescriptionList = () => cy.get("#main-panel dl:last-of-type dd");
+  
     verifyIconLegendPageTitle() {
       this.getIconLegendPageTitle().should("have.text", iconLegendsData.pageName);
       return this
