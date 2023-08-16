@@ -8,6 +8,7 @@ import {endPointUrl} from "../../fixtures/pom_fixtures/homePage.json";
 import buildHistoryPageData from "../../fixtures/pom_fixtures/buildHistoryPage.json";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import peoplePageData from "../../fixtures/pom_fixtures/peoplePage.json";
+import manageJenkinsData from "../../fixtures/pom_fixtures/manageJenkinsPage.json"
 import {configureCloudsHeader} from "../../fixtures/pom_fixtures/configureCloudsPage.json"
 import {distributedBuildsLinkPageUrl} from "../../fixtures/pom_fixtures/distributedBuildsLinkPageData.json"
 import NewItemPage from "../../pageObjects/NewItemPage";
@@ -65,7 +66,7 @@ describe("homePage", () => {
           .should('include', buildHistoryPageData.buildHistoryUrl)
     })
     
-    it('AT_02.04.04 | Homepage | Verify "New Item" redirection', () => {
+    it('AT_02.04.04 | Homepage > Verify "New Item" redirection', () => {
       homePage
           .clickNewItemSideMenuLink()
           .getNewItemPageUrl()
@@ -201,6 +202,13 @@ describe("homePage", () => {
       .should('be.visible')
       .and('contain.text', homePageData.SetUpAgentLinkName)
   })
+
+  it('AT_02.04.07 | Homepage > Verify "Manage Jenkins" redirection', () => {
+    homePage
+      .clickManageJenkinsSideMenuLink()
+      .getManageJenkinsPageUrl()
+      .should('include', manageJenkinsData.manageJenkinsEndPoinURL)  
+  });
 
   })
 

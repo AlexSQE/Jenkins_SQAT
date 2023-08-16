@@ -163,7 +163,7 @@ Cypress.Commands.add('addBuildDescription', (buildDescription) => {
 
 Cypress.Commands.add('createUser',  (userName, password, confirmPassword, emailAddress) =>{
     homePage
-        .clickManageJenkinsSideMenu()
+        .clickManageJenkinsSideMenuLink()
         .clickManageUsersLink()
         .clickCreateUserBtn()
         .typeUserNameInputField(userName)

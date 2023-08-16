@@ -114,7 +114,7 @@ class HomePage {
     getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
     getTable = () => cy.get('#projectstatus')
     getProjectDropdownMenuBtn = () => cy.get('td>a');
-    getManageJenkinsSideMenu = () => cy.get('a[href="/manage"]');
+    getManageJenkinsSideMenuLink = () => cy.get('a[href="/manage"]');
     getProjectNameDropdownRenameLink = () => cy.get('#breadcrumb-menu li:nth-child(6) span')
     getPipelineDrpDwnMenuItems = () => cy.get('.yuimenuitem a span')
     getConfigureACloudLink = () => cy.get('a[href="configureClouds"]');
@@ -409,8 +409,8 @@ class HomePage {
         return this;
     };
 
-    clickManageJenkinsSideMenu() {
-        this.getManageJenkinsSideMenu().click();
+    clickManageJenkinsSideMenuLink() {
+        this.getManageJenkinsSideMenuLink().click();
         return new ManageJenkinsPage();
     }
 
