@@ -29,6 +29,16 @@ describe('node', () => {
          .should('not.include.text', newNodePageData.nodeName)
     })
 
+    it('AT_11.01.02 | Verify that user is able to write Node name on the new node page', () => {
+
+        homePage
+         .clickBuildExecutorStatusLink()
+         .clickNewNodeBtn()
+         .typeNodeNameInputField(newNodePageData.nodeName)
+         .getNodeNameField()
+         .should('have.value', newNodePageData.nodeName)
+    })
+
     it('AT_11.01.01 | <Build Executor Status> Create a new Node', () => {
 
         homePage
