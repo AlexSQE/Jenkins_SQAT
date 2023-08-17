@@ -7,6 +7,7 @@ class BuiltInNodePage {
     getBreadcrumbsBuildInNodeDrpDwnBtn = () => cy.get('a[href$="/(built-in)/"] .jenkins-menu-dropdown-chevron');
     getBreadcrumbsBuildHistoryDrpDwnLink = () => cy.get('#breadcrumb-menu-target a[href$="/builds"] > span');
     getConfigureSideMenuLink = () => cy.get('a[href$="configure"]')
+    getNodePageUrl = () => cy.url();
 
     clickBuildHistoryLink() {
         this.getBuildHistoryLink().click();

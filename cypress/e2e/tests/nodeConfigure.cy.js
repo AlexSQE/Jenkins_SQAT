@@ -4,6 +4,7 @@ import HomePage from "../../pageObjects/HomePage";
 import NodeConfigurePage from "../../pageObjects/NodeConfigurePage";
 import nodeConfigurePageData from '../../fixtures/pom_fixtures/nodeConfigurePage.json';
 import nodePageData from "../../fixtures/pom_fixtures/nodePage.json";
+import BuiltInNodePage from "../../pageObjects/BuiltInNodePage";
 
 describe('Build Executor Status > Agent (Node) > Configure', () => {
     const homePage = new HomePage();
@@ -67,5 +68,14 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .getBuiltInNodeHeader()
             .should('be.visible')
             .and('have.text', nodePageData.buildInHeader)
+    });
+
+    it('AT 11.07.03 | Save Button redirects to Built-In Node Status page', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .clickNodeConfigureSaveBtn()
+            .getNodePageUrl()
+            .should('include', nodePageData.buildBuiltInUrl)
     });
 })
