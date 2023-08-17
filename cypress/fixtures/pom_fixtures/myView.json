@@ -30,5 +30,6 @@
         "New Item",
         "People",
         "Build History"
-    ]
+    ],
+    "myViewsEndPoinURL" : "/my-views/view/all/"
 }

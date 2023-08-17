@@ -40,6 +40,7 @@ class MyViewPage {
   getCreateAJobLink = () => cy.get('a[href="newJob"]');
   getAllMyViewsPageLink = () => cy.url();
   getLeftSideMenuPanelForAllViews = () => cy.get('#tasks .task');
+  getMyViewsPageUrl = () => cy.url()
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();

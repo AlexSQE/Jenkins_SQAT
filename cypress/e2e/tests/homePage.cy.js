@@ -8,7 +8,8 @@ import {endPointUrl} from "../../fixtures/pom_fixtures/homePage.json";
 import buildHistoryPageData from "../../fixtures/pom_fixtures/buildHistoryPage.json";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import peoplePageData from "../../fixtures/pom_fixtures/peoplePage.json";
-import manageJenkinsData from "../../fixtures/pom_fixtures/manageJenkinsPage.json"
+import manageJenkinsData from "../../fixtures/pom_fixtures/manageJenkinsPage.json";
+import myViewsPageData from "../../fixtures/pom_fixtures/myView.json";
 import {configureCloudsHeader} from "../../fixtures/pom_fixtures/configureCloudsPage.json"
 import {distributedBuildsLinkPageUrl} from "../../fixtures/pom_fixtures/distributedBuildsLinkPageData.json"
 import NewItemPage from "../../pageObjects/NewItemPage";
@@ -31,7 +32,7 @@ describe("homePage", () => {
         cy.focused().should('have.attr', 'name', 'description') 
     })
 
-    it.skip('AT_02.04_008 | Homepage > Verify 5 items from the sub-menu', () => {
+    it('AT_02.04_008 | Homepage > Verify 5 items from the sub-menu', () => {
         homePage
           .createSidePanelItemsList()
           .should('deep.equal', sidePanelItems)
@@ -208,6 +209,13 @@ describe("homePage", () => {
       .clickManageJenkinsSideMenuLink()
       .getManageJenkinsPageUrl()
       .should('include', manageJenkinsData.manageJenkinsEndPoinURL)  
+  })
+
+  it('AT_02.04.10 | Homepage > Verify "My views" redirection', () => {
+    homePage
+      .clickMyViewSideMenuLink()
+      .getMyViewsPageUrl()
+      .should('include', myViewsPageData.myViewsEndPoinURL)
   });
 
   })
