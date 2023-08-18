@@ -78,4 +78,14 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .getNodePageUrl()
             .should('include', nodePageData.buildBuiltInUrl)
     });
+
+    it('AT 11.08.01 | Number of executors > Verify that the field accepts valid digit input', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .typeValueNumberOfExecutorsIntoField(nodePageData.validValueNumberOfExecutors)
+            .clickLabelsField()
+            .getNumberOfExecutorsField()
+            .should("have.value", nodePageData.validValueNumberOfExecutors);
+    });
 })
