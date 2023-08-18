@@ -231,4 +231,16 @@ describe('multiConfigurationProjectConfigure', () => {
         .getDescriptionField().should('have.text', projectData.descriptionText)
    })
 
+   it('AT_14.04.03 | <MC Project> Configure | Verify possibility to add description through configure in breadcrumbs', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+    homePage
+      .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfigProjectDropdwnBreadcrumb()
+      .clickBreadcrumbsMcPrConfigureBtn()
+      .typeDescriptionInputField()
+      .clickSaveButton()
+      .getDescriptionField().should('have.text', projectData.descriptionText)
+    })
+
 });
