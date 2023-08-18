@@ -4,7 +4,7 @@ import multiConfigurationProjectConfigurePage from "../fixtures/pom_fixtures/mul
 
 class MultiConfigurationProjectConfigurePage {
   getSaveButton = () => cy.get("button[name='Submit']");
-  getAdvancedBtn = () => cy.get('#advanced-project-options+div button');  
+  getAdvancedBtn = () => cy.get('#advanced-project-options+div button');
   getQuietPeriodCheckBox = () => cy.get('#cb9+.attach-previous');
   getNumberOfSecondsText = () => cy.get('div[class="form-container tr"] .jenkins-form-description');
   getNumberOfSecondsInput = () => cy.get('div[class="form-container tr"] .jenkins-input');
@@ -64,7 +64,7 @@ class MultiConfigurationProjectConfigurePage {
   clickBlockBuildWhenDownstreamPrIsBldCheckBox() {
     this.getBlockBuildWhenDownstreamPrIsBldCheckBox().click();
     return this;
-  }  
+  }
 
   clickUseCustomWorkspaceCheckBox() {
     this.getUseCustomWorkspaceCheckBox().click({force: true});
@@ -76,58 +76,70 @@ class MultiConfigurationProjectConfigurePage {
   }
 
   clickAdvancedOptionsLabels() {
-    this.getAdvancedOptionsLabels().click({multiple:true});
+    this.getAdvancedOptionsLabels().click({ multiple: true });
     return this;
   };
 
   fillAdvancedOptionsForms() {
     this.getMultiConfigForm()
-    .then((elements) => {
-      elements['quiet_period'].value = projectData.advancedProjectOptionsFields.QuietPeriod.setValue
-      elements['scmCheckoutRetryCount'].value = projectData.advancedProjectOptionsFields.RetryCount.SCMCheckoutRetryCount.setValue
-      elements['_.customWorkspace'].value = projectData.advancedProjectOptionsFields.UseCustomWorkspace.Directory.setValue
-      elements['_.childCustomWorkspace'].value = projectData.advancedProjectOptionsFields.UseCustomChildWorkspace.ChildDirectory.setValue
-      elements['_.displayNameOrNull'].value = projectData.advancedProjectOptionsFields.DisplayName.setValue
-      }) 
-      return this;
+      .then((elements) => {
+        elements['quiet_period'].value = projectData.advancedProjectOptionsFields.QuietPeriod.setValue
+        elements['scmCheckoutRetryCount'].value = projectData.advancedProjectOptionsFields.RetryCount.SCMCheckoutRetryCount.setValue
+        elements['_.customWorkspace'].value = projectData.advancedProjectOptionsFields.UseCustomWorkspace.Directory.setValue
+        elements['_.childCustomWorkspace'].value = projectData.advancedProjectOptionsFields.UseCustomChildWorkspace.ChildDirectory.setValue
+        elements['_.displayNameOrNull'].value = projectData.advancedProjectOptionsFields.DisplayName.setValue
+      })
+    return this;
   };
 
   createAdvancedOptionsValuesList() {
     return this.getMultiConfigForm()
-    .then((elements) => { return Cypress._.map([
-      elements['quiet_period'],
-      elements['scmCheckoutRetryCount'],
-      elements['_.customWorkspace'],
-      elements['_.childCustomWorkspace'],
-      elements['_.displayNameOrNull']], 'value')
-      }) 
+      .then((elements) => {
+        return Cypress._.map([
+          elements['quiet_period'],
+          elements['scmCheckoutRetryCount'],
+          elements['_.customWorkspace'],
+          elements['_.childCustomWorkspace'],
+          elements['_.displayNameOrNull']], 'value')
+      })
   };
 
   createAdvancedOptionsCheckboxesList() {
     this.getAdvancedOptionsCheckboxes()
-        .should('be.checked');
+      .should('be.checked');
     return this;
   };
 
   assertAdvancedOptionsCheckboxesChecked() {
     return this.getAdvancedOptionsBlockCheckBoxes()
-    .within(($elem) => {
-      cy.wrap($elem)
-        .find('input[type="checkbox"]')
-        .should('be.checked');
-    })
+      .within(($elem) => {
+        cy.wrap($elem)
+          .find('input[type="checkbox"]')
+          .should('be.checked');
+      })
   };
 
   assertAdvancedOptionsCheckboxesUnChecked() {
     return this.getAdvancedOptionsBlockCheckBoxes()
-    .within(($elem) => {
-      cy.wrap($elem)
-        .find('input[type="checkbox"]')
-        .should('be.not.checked');
-    })
+      .within(($elem) => {
+        cy.wrap($elem)
+          .find('input[type="checkbox"]')
+          .should('be.not.checked');
+      })
   };
 
-  typeDescriptionInputField (){
+  assertAdvancedOptionsQuietPeriodCheckbox() {
+    return this.getAdvancedOptionsBlockCheckBoxes()
+      .within(($elem) => {
+        cy.wrap($elem)
+          .find('input[type="checkbox"][name="hasCustomQuietPeriod"]')
+          .should('be.checked')
+
+      })
+  };
+
+
+  typeDescriptionInputField() {
     this.getDescriptionInputField().type(multiConfigurationProjectConfigurePage.descriptionText)
     return this
   };

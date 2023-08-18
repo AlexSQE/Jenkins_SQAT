@@ -48,7 +48,7 @@ describe('multiConfigurationProjectConfigure', () => {
       .clickSaveButton()
       .clickConfigureSideMenuLink()
       .clickAdvancedBtn()
-      .assertAdvancedOptionsCheckboxesChecked()    
+      .assertAdvancedOptionsCheckboxesChecked()
   });
 
   it('AT_14.05_004u | Multi-configuration project. Advance project options are unchecked', () => {
@@ -65,7 +65,7 @@ describe('multiConfigurationProjectConfigure', () => {
       .clickSaveButton()
       .clickConfigureSideMenuLink()
       .clickAdvancedBtn()
-      .assertAdvancedOptionsCheckboxesUnChecked()    
+      .assertAdvancedOptionsCheckboxesUnChecked()
   });
 
   it('AT_14.05.03 | Multi-configuration project. Advanced options are enabled to select it', () => {
@@ -76,8 +76,19 @@ describe('multiConfigurationProjectConfigure', () => {
       .clickAdvancedBtn()
       .getAdvancedOptionsBlock()
       .should('be.visible')
-      .and('be.enabled')      
-    });
+      .and('be.enabled')
+  });
+
+  it('AT_14.05_005 | Multi-configuration project. Advanced project options. Type "number" field is shown if "Quiet period" option is selected', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+    homePage
+      .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfProjectDrpDwnConfigureLink()
+      .clickAdvancedBtn()
+      .clickQuietPeriodCheckBox()
+      .assertAdvancedOptionsQuietPeriodCheckbox()
+  });
+
 
     it('AT_14.05.06 | Multi-configuration project. Advanced project options. Type "number" field is shown if "Retry count" option is selected', () => {
       cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName)
