@@ -39,6 +39,17 @@ describe('node', () => {
          .should('have.value', newNodePageData.nodeName)
     })
 
+    it('AT_11.01.03 | <Build Executor Status> Verify that user is able to select type on the new node page', () => {
+
+        homePage
+         .clickBuildExecutorStatusLink()
+         .clickNewNodeBtn()
+         .typeNodeNameInputField(newNodePageData.nodeName)
+         .selectPermanentAgentRadioBtn()
+         .getPermanentAgentRadioBtn()
+         .should('be.checked')
+    })
+
     it('AT_11.01.01 | <Build Executor Status> Create a new Node', () => {
 
         homePage
