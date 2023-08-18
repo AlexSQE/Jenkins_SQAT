@@ -30,6 +30,7 @@ import HomePage from "../pageObjects/HomePage";
 import UserProfilePage from "../pageObjects/UserProfilePage";
 import { homePageHeader } from "../fixtures/pom_fixtures/homePage.json";
 import { configurePageHeader } from "../fixtures/pom_fixtures/freestyleProjectConfigure.json";
+import FreestyleProjectConfigurePage from "../pageObjects/FreestyleProjectConfigurePage";
 
 const userProfilePage = new UserProfilePage();
 
@@ -46,6 +47,7 @@ Cypress.Commands.add('clearUserStatusDescription', () => {
 const homePage = new HomePage();
 const headerAndFooter = new HeaderAndFooter();
 const dashboard = new DashboardBreadcrumbs();
+const configPage = new FreestyleProjectConfigurePage();
 
 Cypress.Commands.add('createMultiBranchPipeline', (pipelineName) => {
     homePage
@@ -226,4 +228,13 @@ Cypress.Commands.add('createUserDescription', (description) => {
         .clickJenkinsHomeLink();      
              
         
+});
+
+Cypress.Commands.add('disableFreestyleProjectOnConfigurePage', () => {
+    cy.openFreestyleProjectConfigurePage();
+
+    configPage
+            .clickEnableDisableProjectOption()
+            .clickSaveBtnAndGoFreestyleProject()
+            .clickHomePageLink();
 });

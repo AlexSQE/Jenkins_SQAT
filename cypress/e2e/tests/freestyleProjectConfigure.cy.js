@@ -179,4 +179,15 @@ describe('freestyleProjectConfigure', () => {
             .should('be.visible').and('contain', freestyleProjectPageData.disabledProjectNotify)
     });
 
+    it('AT_12.16.02 | Freestyle project > Verify possibility to enable the project on the Configure page', () => {
+        cy.disableFreestyleProjectOnConfigurePage()
+
+        cy.openFreestyleProjectConfigurePage()
+        configPage
+            .clickEnableDisableProjectOption()
+            .clickSaveBtnAndGoFreestyleProject()
+            .getDisabledProgectWarning()
+            .should('not.exist')
+    });
+
 })
