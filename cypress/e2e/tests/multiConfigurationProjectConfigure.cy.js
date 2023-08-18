@@ -5,10 +5,12 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import projectData from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 
+
 describe('multiConfigurationProjectConfigure', () => {
   const homePage = new HomePage();
   const headerAndFooter = new HeaderAndFooter();
 
+  
   it('AT_14.05.10 | Multi-configuration project. Advanced project options default values', () => {
     cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
     homePage
@@ -206,4 +208,16 @@ describe('multiConfigurationProjectConfigure', () => {
         .should('be.checked')
     })
   })  
+
+  it('AT_14.04.02 | <MC Project> Configure | Verify possibility to add description through Configure in dropdown menu on dashboard ', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+      homePage
+        .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+        .clickMultiConfProjectDrpDwnConfigureLink()
+        .typeDescriptionInputField()
+        .clickSaveButton()
+        .getDescriptionField().should('have.text', projectData.descriptionText)
+   })
+
 });
