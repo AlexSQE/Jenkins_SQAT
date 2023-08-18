@@ -176,4 +176,19 @@ describe('folder', () => {
             .getProjectTable()
             .should('not.exist');     
         })
-   });
+
+        it(`AT_15.05.04 | Create new job by clicking on a "New item"  from breadcrums dropdown menu inside Folder`, () => {
+            cy.createFolderProject(newItemPageData.folderName)
+            
+            homePage
+            .clickFolderNameLink(newItemPageData.folderName)
+            .clickBreadcrumbsFolderDropDownMenu()
+            .clickCreateAJobLink()
+            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
+            .selectFreestyleProjectItem() 
+            .clickOkBtnAndGoFreestyleProjectConfig()
+            .clickSaveBtnAndGoFreestyleProject()
+            .getFullProjectName()
+            .should('contain', `${newItemPageData.folderName}/${newItemPageData.freestyleProjectName}`);
+        })
+   }); 
