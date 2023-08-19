@@ -1,4 +1,5 @@
 {
   "permanentAgentRadioBtn": "Permanent Agent",
-  "nodeName": "Node"
+  "nodeName": "Node",
+  "nodeDescription": "Node Description"
 }

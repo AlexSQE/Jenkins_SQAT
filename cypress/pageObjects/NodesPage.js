@@ -3,6 +3,7 @@ import BuildInNodePage from "./BuiltInNodePage";
 import BuildHistoryOnBuildInNodePage from "./BuildHistoryOnBuildInNodePage";
 import NewNodePage from "./NewNodePage";
 import NodeDeletePage from "./NodeDeletePage";
+import AgentPage from "./AgentPage"
 
 class NodesPage {
     getBuiltInNodeGearBtn = () => cy.get('a[href*="(built-in)/configure"]');
@@ -52,6 +53,11 @@ class NodesPage {
         this.getDeleteDrpDwnLink().click();
         return new NodeDeletePage();
     };
+
+    clickNodeName(nodeName) {
+        this.getNodeName(nodeName).click();
+        return new AgentPage();
+    }
 }
 
 export default NodesPage;
