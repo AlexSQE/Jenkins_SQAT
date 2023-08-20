@@ -355,9 +355,17 @@ describe('headerAndFooter', () => {
             .should('deep.equal', userConfigurePageData.SidePanelTasks.Names)
     })
 
+    it('AT_01.10.04 | Header | Verify that Orange Notifications icon is Visible', function () {
+        headerAndFooter
+            .getNotificationCounter()
+            .should('be.visible')
+            .and('have.css', 'background-color', headerAndFooterData.orangeNotificationCounter)
+    })
+
     it('AT_01.10_005 | <Header> Verify Notification icon is visible', () => {
         headerAndFooter
             .getNotificationIcon()
             .should('be.visible');
     })
+    
 })

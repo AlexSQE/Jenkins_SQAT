@@ -36,6 +36,7 @@ class HeaderAndFooter {
     getCurrentUserName = () => cy.get('.login .model-link span');
     getTitle = () => cy.get('head title');
     getListSearchResult = () => cy.get('.yui-ac-bd li').not('li[style="display: none;"]');
+    getNotificationCounter = () => cy.get('#visible-am-button.am-button .am-monitor__count');
     getNotificationIcon = () => cy.get('#visible-am-button svg');
     
     clickJenkinsVersionLink() {

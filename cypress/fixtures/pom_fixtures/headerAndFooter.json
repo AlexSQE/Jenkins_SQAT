@@ -28,5 +28,6 @@
         "Dashboard [Jenkins]",
         "Credentials [Jenkins]"
     ],
-    "colorLink" : "rgb(5, 135, 212)"
+    "colorLink" : "rgb(5, 135, 212)",
+    "orangeNotificationCounter" : "rgb(255, 152, 0)"
 }
