@@ -88,4 +88,15 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .getNumberOfExecutorsField()
             .should("have.value", nodePageData.validValueNumberOfExecutors);
     });
+
+    it('AT 11.08.02 | Number of executors > Verify that the field filters digits from mixed input ' +
+        'of digits, spaces, letters, special symbols', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .typeValueNumberOfExecutorsIntoField(nodePageData.mixedInputNumberOfExecutors)
+            .clickLabelsField()
+            .getNumberOfExecutorsField()
+            .should("have.value", nodePageData.mixedValueNumberOfExecutors);
+    });
 })
