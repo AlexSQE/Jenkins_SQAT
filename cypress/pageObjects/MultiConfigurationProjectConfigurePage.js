@@ -144,6 +144,16 @@ class MultiConfigurationProjectConfigurePage {
     return this
   };
 
+  clearDescriptionInputField() {
+    this.getDescriptionInputField().clear(multiConfigurationProjectConfigurePage.descriptionText)
+    return this
+  }
+ 
+   editDescriptionInputField() {
+    this.getDescriptionInputField().type(multiConfigurationProjectConfigurePage.newDescriptionText)
+    return this
+   }
+
   clickEnableDisableSwitch (){
     this.getEnableDisableSwitch().click()
     return this

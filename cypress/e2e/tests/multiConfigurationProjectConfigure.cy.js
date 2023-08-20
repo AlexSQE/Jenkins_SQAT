@@ -4,6 +4,7 @@ import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import projectData from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
+import MultiConfigurationProjectConfigurePage from "../../pageObjects/MultiConfigurationProjectConfigurePage";
 
 
 describe('multiConfigurationProjectConfigure', () => {
@@ -242,5 +243,23 @@ describe('multiConfigurationProjectConfigure', () => {
       .clickSaveButton()
       .getDescriptionField().should('have.text', projectData.descriptionText)
     })
+
+    it('AT_14.04.04 | <MC Project> Configure | Verify possibility to edit description through the left-side panels', () => {
+      cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+      homePage
+      .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfProjectDrpDwnConfigureLink()
+      .typeDescriptionInputField()
+      .clickSaveButton()
+
+      .clickConfigureSideMenuLink()
+      .clearDescriptionInputField()
+      .editDescriptionInputField()
+      .clickSaveButton()
+      .getDescriptionField().should('have.text', projectData.newDescriptionText)
+
+    })
+   
 
 });
