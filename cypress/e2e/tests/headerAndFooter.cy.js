@@ -355,4 +355,9 @@ describe('headerAndFooter', () => {
             .should('deep.equal', userConfigurePageData.SidePanelTasks.Names)
     })
 
+    it('AT_01.10_005 | <Header> Verify Notification icon is visible', () => {
+        headerAndFooter
+            .getNotificationIcon()
+            .should('be.visible');
+    })
 })
