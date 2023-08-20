@@ -167,4 +167,20 @@ describe("multiConfigurationProject", () => {
         .getErrorTextMessage()
         .should('contain', multiConfProjectPageData.emptyNameErrorMsg)
       }); 
+
+      it('AT_14.06.05 | Rename Multi-Config Project by clicking on a "Rename" from breadcrums dropdown menu', () => {
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName);
+
+        homePage
+        .clickMultiConfigProjectNameLink(newItemPage.multiConfigurationProjectName)
+        .clickMultiConfigProjectDropdwnBreadcrumb()
+        .clickRenameBtnMultiConfigProjectBreadcrumb()
+        .clearMultiConfProjectNameInputField()
+        .typeMultiConfProjectNameInputField(multiConfigurationProjectConfigurePage.descriptionText)
+        .clickMultiConfProjectRenameBtn()
+
+        multiConfigurationProjectPage
+        .getMultiConfigurationProjectHeader()
+        .should('contain', multiConfigurationProjectConfigurePage.descriptionText);  
+      });
 })
