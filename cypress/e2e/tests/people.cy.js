@@ -37,4 +37,10 @@ describe('people', () => {
             .trimPeoplePageHeader()
             .should('eq', peoplePageData.peoplePageHeader)
     });
+
+    it('AT_06.03.01 | <People>Sort people list', () => {
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickSortHeaderMenu()
+    });
 });

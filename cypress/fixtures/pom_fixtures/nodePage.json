@@ -3,5 +3,6 @@
   "buildInHeader": "Built-In Node",
   "buildBuiltInUrl": "/manage/computer/(built-in)/",
   "labelsHeading" : "Labels",
-  "projectsTiedToBuiltInNodeHeading": "Projects tied to Built-In Node"
+  "projectsTiedToBuiltInNodeHeading": "Projects tied to Built-In Node",
+  "validValueNumberOfExecutors" : 12
 }

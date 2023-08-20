@@ -362,4 +362,10 @@ describe('headerAndFooter', () => {
             .and('have.css', 'background-color', headerAndFooterData.orangeNotificationCounter)
     })
 
+    it('AT_01.10_005 | <Header> Verify Notification icon is visible', () => {
+        headerAndFooter
+            .getNotificationIcon()
+            .should('be.visible');
+    })
+    
 })

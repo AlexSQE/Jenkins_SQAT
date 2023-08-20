@@ -127,5 +127,21 @@ describe('dashboard', () => {
             .and('have.text', pipelinePageData.pipelineName)
     })
 
+    it("AT_20.08.01 | <Dashboard> Jenkins Table: icons in the Status of the last build column match project type", () => {
+        cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+        cy.createFolderProject(newItemPageData.folderName);
+        cy.createOrgFolderProject(newItemPageData.orgFolderName);
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+        cy.createPipeline(newItemPageData.pipelineName);
+        homePage
+        .verifyStatusMultibranchPipelineIcon()
+        .verifyStatusPipelineIcon(newItemPageData.pipelineName)
+        .verifyStatusFreestyleProjectIcon(newItemPageData.freestyleProjectName)
+        .verifyStatusFolderIcon()
+        .verifyStatusOrgFolderIcon()
+        .verifyStatusMulticonfigurationProjecIcon(newItemPageData.multiConfigurationProjectName)
+        })        
+
     })
 

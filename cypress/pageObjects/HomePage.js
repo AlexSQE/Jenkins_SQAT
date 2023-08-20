@@ -146,6 +146,12 @@ class HomePage {
     getMultibranchPipelineDrDwnMenuChevron = () => cy.get('a.jenkins-table__link button');
     getMultibranchPipelineDrDwnMenuListItems = () => cy.get('li.yuimenuitem span');
     getConfigOrgFolderDrpDwnLink = () => cy.get('.first-of-type li:nth-child(1) span').contains("Configure");
+    getStatusMultibranchPipelineIcon = () => cy.get('img[title="Multibranch Pipeline"]');
+    getStatusFolderIcon = () => cy.get('svg[title="Folder"]');
+    getStatusOrgFolderIcon = () => cy.get('img[title="Organization Folder"]');
+    getStatusMulticonfigurationProjectIcon = (projectName) => cy.get(`#job_${projectName} svg[title="Not built"]`);
+    getStatusPipelineIcon = (projectName) => cy.get(`#job_${projectName} svg[title="Not built"]`);
+    getStatusFreestyleProjectIcon = (projectName) => cy.get(`#job_${projectName} svg[title="Not built"]`);
 
     selectConfigureDrpDwnLink() {
         this.getConfigOrgFolderDrpDwnLink().click();
@@ -533,5 +539,33 @@ class HomePage {
           return Cypress.$.makeArray($els).map(($el) => $el.innerText);
         });
     }
+        verifyStatusMultibranchPipelineIcon(){
+        this.getStatusMultibranchPipelineIcon().should('be.visible')
+        return this
+        }
+        verifyStatusFolderIcon(){
+        this.getStatusFolderIcon().should('be.visible')
+        return this
+        } 
+        
+        verifyStatusOrgFolderIcon(){
+        this.getStatusOrgFolderIcon().should('be.visible')
+        return this
+        }
+        
+        verifyStatusPipelineIcon(projectName){
+        this.getStatusPipelineIcon(projectName).should('be.visible') 
+        return this
+        }
+        
+        verifyStatusFreestyleProjectIcon(projectName){
+        this.getStatusFreestyleProjectIcon(projectName).should('be.visible')
+        return this
+        }
+        
+        verifyStatusMulticonfigurationProjecIcon(projectName){
+        this.getStatusMulticonfigurationProjectIcon(projectName).should('be.visible')
+        return this
+        }
 }
 export default HomePage;

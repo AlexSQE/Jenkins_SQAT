@@ -5,10 +5,12 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import projectData from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 
+
 describe('multiConfigurationProjectConfigure', () => {
   const homePage = new HomePage();
   const headerAndFooter = new HeaderAndFooter();
 
+  
   it('AT_14.05.10 | Multi-configuration project. Advanced project options default values', () => {
     cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
     homePage
@@ -46,7 +48,7 @@ describe('multiConfigurationProjectConfigure', () => {
       .clickSaveButton()
       .clickConfigureSideMenuLink()
       .clickAdvancedBtn()
-      .assertAdvancedOptionsCheckboxesChecked()    
+      .assertAdvancedOptionsCheckboxesChecked()
   });
 
   it('AT_14.05_004u | Multi-configuration project. Advance project options are unchecked', () => {
@@ -63,7 +65,7 @@ describe('multiConfigurationProjectConfigure', () => {
       .clickSaveButton()
       .clickConfigureSideMenuLink()
       .clickAdvancedBtn()
-      .assertAdvancedOptionsCheckboxesUnChecked()    
+      .assertAdvancedOptionsCheckboxesUnChecked()
   });
 
   it('AT_14.05.03 | Multi-configuration project. Advanced options are enabled to select it', () => {
@@ -74,8 +76,19 @@ describe('multiConfigurationProjectConfigure', () => {
       .clickAdvancedBtn()
       .getAdvancedOptionsBlock()
       .should('be.visible')
-      .and('be.enabled')      
-    });
+      .and('be.enabled')
+  });
+
+  it('AT_14.05_005 | Multi-configuration project. Advanced project options. Type "number" field is shown if "Quiet period" option is selected', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+    homePage
+      .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfProjectDrpDwnConfigureLink()
+      .clickAdvancedBtn()
+      .clickQuietPeriodCheckBox()
+      .assertAdvancedOptionsQuietPeriodCheckbox()
+  });
+
 
     it('AT_14.05.06 | Multi-configuration project. Advanced project options. Type "number" field is shown if "Retry count" option is selected', () => {
       cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName)
@@ -206,4 +219,28 @@ describe('multiConfigurationProjectConfigure', () => {
         .should('be.checked')
     })
   })  
+
+  it('AT_14.04.02 | <MC Project> Configure | Verify possibility to add description through Configure in dropdown menu on dashboard ', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+      homePage
+        .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+        .clickMultiConfProjectDrpDwnConfigureLink()
+        .typeDescriptionInputField()
+        .clickSaveButton()
+        .getDescriptionField().should('have.text', projectData.descriptionText)
+   })
+
+   it('AT_14.04.03 | <MC Project> Configure | Verify possibility to add description through configure in breadcrumbs', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+    homePage
+      .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfigProjectDropdwnBreadcrumb()
+      .clickBreadcrumbsMcPrConfigureBtn()
+      .typeDescriptionInputField()
+      .clickSaveButton()
+      .getDescriptionField().should('have.text', projectData.descriptionText)
+    })
+
 });

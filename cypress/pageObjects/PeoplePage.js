@@ -6,9 +6,11 @@ class PeoplePage {
     getPeoplePageHeader = () => cy.get('.jenkins-app-bar__content h1')
     getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getCreatedUserLink = () => cy.get('#people a[href*="/user/"]');
-    getPeoplePageUrl = () => cy.url()
+    getPeoplePageUrl = () => cy.url();
+    getSortHeaderMenu = () => cy.get('.sortheader');
+    getSortArrow = () => cy.get('.sortarrow');
 
-    clickUserNameLink() {
+     clickUserNameLink() {
         this.getUserNameLink().click();
         return new UserProfilePage();
     };
@@ -28,5 +30,12 @@ class PeoplePage {
         this.getCreatedUserLink().contains(userName).click();
         return new UserProfilePage();
     };
+
+    clickSortHeaderMenu() {
+        this.getSortHeaderMenu().each(($el) => {
+            cy.wrap($el).click()
+            this.getSortArrow().should('be.visible')
+        })
+    }
 }
 export default PeoplePage;

@@ -8,7 +8,7 @@ describe('node', () => {
 
     const homePage = new HomePage();
     const headerAndFooter = new HeaderAndFooter();
-
+  
     it('AT_11.02.01 | <Build Executor Status> Delete Agent from the homepage on the side panel', () => {
         homePage
         .clickBuildExecutorStatusLink()
@@ -39,6 +39,39 @@ describe('node', () => {
          .should('have.value', newNodePageData.nodeName)
     })
 
+    it('AT_11.01.03 | <Build Executor Status> Verify that user is able to select type on the new node page', () => {
+
+        homePage
+         .clickBuildExecutorStatusLink()
+         .clickNewNodeBtn()
+         .typeNodeNameInputField(newNodePageData.nodeName)
+         .selectPermanentAgentRadioBtn()
+         .getPermanentAgentRadioBtn()
+         .should('be.checked')
+    })
+
+     
+    it('AT_11.01.04 | <Build Executor Status> Verify that user is able to add description when creating a new node', () => {
+
+        homePage 
+        .clickBuildExecutorStatusLink() 
+        .clickNewNodeBtn()
+        .typeNodeNameInputField(newNodePageData.nodeName)
+        .selectPermanentAgentRadioBtn()
+        .clickCreateBtn()
+        .addDescription(newNodePageData.nodeDescription)
+        .clickSaveBtn()
+        .clickNodeName(newNodePageData.nodeName)
+        .getDescriptionField()
+        .should('contain', newNodePageData.nodeDescription)
+
+        homePage
+        .clickBuildExecutorStatusLink()
+        .hoverAndClickNodeDrpDwn(newNodePageData.nodeName)
+        .selectDeleteDrpDwnLink()
+        .clickDeleteBtn()
+    })    
+
     it('AT_11.01.01 | <Build Executor Status> Create a new Node', () => {
 
         homePage
@@ -57,5 +90,5 @@ describe('node', () => {
             .hoverAndClickNodeDrpDwn(newNodePageData.nodeName)
             .selectDeleteDrpDwnLink()
             .clickDeleteBtn()
-    });   
+    });       
 })
