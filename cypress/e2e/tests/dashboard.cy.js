@@ -141,7 +141,15 @@ describe('dashboard', () => {
         .verifyStatusFolderIcon()
         .verifyStatusOrgFolderIcon()
         .verifyStatusMulticonfigurationProjecIcon(newItemPageData.multiConfigurationProjectName)
-        })        
-
+        })   
+        
+    it('AT_20.11.02 | <Dashboard> Jenkins Table: Folder Project name is visible', () => {
+        cy.createFolderProject(newItemPageData.folderName)
+        homePage
+            .getProjectName(newItemPageData.folderName)
+            .should ('be.visible')
+            });   
+             
     })
 
+    
