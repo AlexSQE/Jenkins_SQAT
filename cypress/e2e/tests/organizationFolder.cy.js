@@ -142,6 +142,15 @@ describe('orgFolder', () => {
             .should('be.visible')        
     })
 
+    it('AT_17.03.07 | Verify <Delete Organization Folder> button in the left Side panel', () => {
+        cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+            .clickOrgFolderNameLink(newItemPageData.orgFolderName)
+            .getDeleteOrgFolderBtn()
+            .should('be.visible')        
+    })
+
     it('AT_17.04.01 | Verify that user can move the Organization Folder through the Jenkins dashboard', function () {
         cy.createFolderProject(newItemPageData.folderName)
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
