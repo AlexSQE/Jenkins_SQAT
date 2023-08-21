@@ -156,4 +156,16 @@ describe('multibranchPipeline', () => {
         .and('have.text' , multibranchPipelinePageData.disableMultiBrPipelineBtnText)
     });
 
+    it ('AT_16.02.07 | <Multibranch Pipeline>Verify user can rename Multibranch Pipeline on the left side panel inside Multibranch Pipeline.', () => {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+
+        homePage
+            .clickMultibranchPipelineProjectNameLink(newItemPageData.multibranchPipelineName)
+            .clickRenameMultibranchPipelineSideBarBtn()
+            .clearAndTypeNewPipelineName(newItemPageData.newpipelineName)
+            .clickRenameSubmitBtn()
+            .getMultiBranchPipelineHeader()
+            .should('contain', newItemPageData.newpipelineName)
+            .and('not.contain', newItemPageData.multibranchPipelineName);
+    });
 });

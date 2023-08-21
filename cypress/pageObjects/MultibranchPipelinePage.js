@@ -1,6 +1,7 @@
 import MultibranchPipelineConfigurePage from "./MultibranchPipelineConfigurePage";
 import HomePage from "../pageObjects/HomePage"
 import multibranchPipelinwPageData from "../fixtures/pom_fixtures/multibranchPipelinePage.json"
+import MultibranchPipelineRenamePage from "../pageObjects/MultibranchPipelineRenamePage"
 
 class MultibranchPipelinePage {
     getConfigureTheProjectLink = () => cy.get('.content-block [href="./configure"]');
@@ -17,7 +18,8 @@ class MultibranchPipelinePage {
     getBreadcrumbsMultibranchPipelineBtn = () => cy.get('#breadcrumbBar a[href*=job]')
     getBreadcrumbsMultibranchPipelineDropDownMenu = () => cy.get('a[href*=job] .jenkins-menu-dropdown-chevron')
     getBreadcrumbsMultibranchPipelineItemsList = () => cy.get('ul.first-of-type li a span')
-    
+    getRenameMultibranchPipelineSideBarBtn = () => cy.get('#side-panel div a[href*="/confirm-rename"]');
+
 
   
     clickConfigureTheProjectLink() {
@@ -66,6 +68,12 @@ class MultibranchPipelinePage {
         this.getBreadcrumbsMultibranchPipelineDropDownMenu().realHover().click({force: true})
         return this
     }
+
+    clickRenameMultibranchPipelineSideBarBtn(){
+        this.getRenameMultibranchPipelineSideBarBtn().click()
+        return new MultibranchPipelineRenamePage()
+    }
+
 }
 
 export default MultibranchPipelinePage;
