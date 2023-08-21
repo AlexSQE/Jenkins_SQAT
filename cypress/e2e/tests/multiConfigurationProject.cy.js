@@ -168,19 +168,34 @@ describe("multiConfigurationProject", () => {
         .should('contain', multiConfProjectPageData.emptyNameErrorMsg)
       }); 
 
-      it('AT_14.06.05 | Rename Multi-Config Project by clicking on a "Rename" from breadcrums dropdown menu', () => {
+    it('AT_14.06.05 | Rename Multi-Config Project by clicking on a "Rename" from breadcrums dropdown menu', () => {
         cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName);
 
         homePage
-        .clickMultiConfigProjectNameLink(newItemPage.multiConfigurationProjectName)
-        .clickMultiConfigProjectDropdwnBreadcrumb()
-        .clickRenameBtnMultiConfigProjectBreadcrumb()
-        .clearMultiConfProjectNameInputField()
-        .typeMultiConfProjectNameInputField(multiConfigurationProjectConfigurePage.descriptionText)
-        .clickMultiConfProjectRenameBtn()
+            .clickMultiConfigProjectNameLink(newItemPage.multiConfigurationProjectName)
+            .clickMultiConfigProjectDropdwnBreadcrumb()
+            .clickRenameBtnMultiConfigProjectBreadcrumb()
+            .clearMultiConfProjectNameInputField()
+            .typeMultiConfProjectNameInputField(multiConfigurationProjectConfigurePage.descriptionText)
+            .clickMultiConfProjectRenameBtn()
 
         multiConfigurationProjectPage
-        .getMultiConfigurationProjectHeader()
-        .should('contain', multiConfigurationProjectConfigurePage.descriptionText);  
-      });
+            .getMultiConfigurationProjectHeader()
+            .should('contain', multiConfigurationProjectConfigurePage.descriptionText);
+    });
+
+    it('AT_14.06.06 | Rename Multi-Config Project by clicking on a "Rename" on a left-side panel', () => {
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName)
+        
+        homePage
+            .clickMultiConfigProjectNameLink(newItemPage.multiConfigurationProjectName)
+            .clickRenameBtnMultiConfPrj()
+            .clearMultiConfProjectNameInputField()
+            .typeMultiConfProjectNameInputField(multiConfigurationProjectConfigurePage.descriptionText)
+            .clickMultiConfProjectRenameBtn()
+
+        multiConfigurationProjectPage
+            .getMultiConfigurationProjectHeader()
+            .should('contain', multiConfigurationProjectConfigurePage.descriptionText);
+    });
 })
