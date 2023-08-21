@@ -152,6 +152,7 @@ class HomePage {
     getStatusMulticonfigurationProjectIcon = (projectName) => cy.get(`#job_${projectName} svg[title="Not built"]`);
     getStatusPipelineIcon = (projectName) => cy.get(`#job_${projectName} svg[title="Not built"]`);
     getStatusFreestyleProjectIcon = (projectName) => cy.get(`#job_${projectName} svg[title="Not built"]`);
+    getNameMyViewList = () => cy.get('.tabBar a');
 
     selectConfigureDrpDwnLink() {
         this.getConfigOrgFolderDrpDwnLink().click();

@@ -41,6 +41,7 @@ class MyViewPage {
   getAllMyViewsPageLink = () => cy.url();
   getLeftSideMenuPanelForAllViews = () => cy.get('#tasks .task');
   getMyViewsPageUrl = () => cy.url()
+  getViewName = (viewName) => cy.get(`.tab a[href*="/view/${viewName}/"]`);
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
@@ -186,5 +187,10 @@ clickMultiBranchPipelineNameLink(){
       return Cypress.$.makeArray($els).map(($elem) => $elem.innerText);
     });
   };
+
+  clickViewName(viewName) {
+    this.getViewName(viewName).click();
+         return new NewViewPage();
+    };
 }
 export default MyViewPage;

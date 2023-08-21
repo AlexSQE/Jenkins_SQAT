@@ -5,8 +5,9 @@
         "myView": "My View"
     },
     "viewNames": {
-        "globalView": "Global view",
-        "listView": "List View",
-        "myView": "My View"
+        "globalView": "GlobalView",
+        "listView": "ListView",
+        "myView": "MyView",
+        "newView":"newView"
     }    
 }
