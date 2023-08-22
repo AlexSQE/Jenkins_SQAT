@@ -15,7 +15,7 @@ describe('freestyleProject', () => {
     const freestyleProjectPage = new FreestyleProjectPage();
     const freestyleProjectRenamePage = new FreestyleProjectRenamePage();
     const dashboardBreadcrumbs = new DashboardBreadcrumbs();
-
+    
     beforeEach('Create Freestyle project', () => {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName);
     })
@@ -198,4 +198,14 @@ describe('freestyleProject', () => {
         .getAddAndEditDescriptoinBtn()
         .should('be.visible')
     })
+
+    it('AT_12.07.02 | <Freestyle project> A short overview of the description is visible.', () => {
+        homePage
+          .clickFreestyleProjectNameLink()
+          .clickAddAndEditDescriptoinBtn()
+          .typeDescriptionToInputField(freestyleProjectPageData.description)
+          .clickSaveDescriptionBtn()
+          .getFreestyleProjectDescription()
+          .should('be.visible').and('contain',freestyleProjectPageData.description)   
+  })   
 });
