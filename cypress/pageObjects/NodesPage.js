@@ -13,6 +13,7 @@ class NodesPage {
     getBuildHistoryDrpDwnLink = () => cy.get('a[href$="/builds"] > span');
     getNewNodeBtn = () => cy.get('div a[href="new"]');
     getDeleteDrpDwnLink = () => cy.get('a[href$="/delete"] > span');
+    getConfigureBtn = (nodeName) => cy.get(`#computers #node_${nodeName} a svg`);
 
     clickBuiltInNodeGearBtn() {
         this.getBuiltInNodeGearBtn().should('be.visible').click();
@@ -57,6 +58,11 @@ class NodesPage {
     clickNodeName(nodeName) {
         this.getNodeName(nodeName).click();
         return new AgentPage();
+    }
+
+    clickConfigureBtn(nodeName) {
+        this.getConfigureBtn(nodeName).click();
+        return new NodeConfigurePage();
     }
 }
 

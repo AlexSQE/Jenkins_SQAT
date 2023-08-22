@@ -1,4 +1,5 @@
 import BuiltInNodePage from "./BuiltInNodePage";
+import NodeDeletePage from "./NodeDeletePage";
 
 class NodeConfigurePage {
 
@@ -7,6 +8,7 @@ class NodeConfigurePage {
     getNodeConfigSaveBtn = () =>  cy.get('[name="Submit"]');
     getNumberOfExecutorsField = () => cy.get('input[name="_.numExecutors"]');
     getLabelsField = () => cy.get('input[name="_.labelString"] ');
+    getDeleteAgentLink = () => cy.get('#side-panel #tasks a[href*="/Node/delete"]');
 
     getNodePropertiesTitle() {
         return this.nodePropertiesTitle()
@@ -33,6 +35,11 @@ class NodeConfigurePage {
     clickLabelsField() {
         this.getLabelsField().click();
         return this;
+    }
+
+    clickDeleteAgentLink() {
+        this.getDeleteAgentLink().click();
+        return new NodeDeletePage();
     }
 }
 

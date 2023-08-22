@@ -3,11 +3,13 @@
 import HomePage from "../../pageObjects/HomePage";
 import newNodePageData from "../../fixtures/pom_fixtures/newNodePageData.json"
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
+import NodesPage from "../../pageObjects/NodesPage";
 
 describe('node', () => {
 
     const homePage = new HomePage();
     const headerAndFooter = new HeaderAndFooter();
+    const nodesPage = new NodesPage();
   
     it('AT_11.02.01 | <Build Executor Status> Delete Agent from the homepage on the side panel', () => {
         homePage
@@ -71,6 +73,23 @@ describe('node', () => {
         .selectDeleteDrpDwnLink()
         .clickDeleteBtn()
     })    
+
+    it('AT_11.02.02 | <Build Executor Status> Verify that user is able to delete an agent from Nodes page be clicking the configure located in the table on the main panel', () => {
+         homePage
+         .clickBuildExecutorStatusLink()
+         .clickNewNodeBtn()
+         .typeNodeNameInputField(newNodePageData.nodeName)
+         .selectPermanentAgentRadioBtn()
+         .clickCreateBtn()
+         .clickSaveBtn()
+       
+         nodesPage
+         .clickConfigureBtn(newNodePageData.nodeName)
+         .clickDeleteAgentLink()
+         .clickDeleteBtn()
+         .getNodeName(newNodePageData.nodeName)
+         .should('not.exist')
+    })
 
     it('AT_11.01.01 | <Build Executor Status> Create a new Node', () => {
 
