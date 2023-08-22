@@ -190,4 +190,39 @@ describe('freestyleProjectConfigure', () => {
             .should('not.exist')
     });
 
+    it('AT_12.15.02 | Freestyle project > Configure > Save configuration updates with Save button', () => {
+        const data = freestyleProjectConfigData.buildPeriodicallyProject;
+
+        cy.openFreestyleProjectConfigurePage();
+        configPage
+            .typeDescriptionInputField(data.description)
+            .clickDiscardOldBuildsLabel()
+            .typeMaxNumberOfBuildsToKeepInputField(data.maxBuilds)
+            .clickBuildTriggersOptionLabel()
+            .typeScheduleInputField(data.schedule)
+            .selectBuildEnvironmentOption(data.buildEnvironmentOption)
+            .clickAddBuildStepBtn()
+            .selectScriptOption(data.scriptOption)
+            .typeScriptCodeInputField(data.scriptText)
+            .clickSaveBtnAndGoFreestyleProject()
+            .verifyFreestyleProjectStatusPageURL()
+            .getFreestyleProjectHeader()
+            .should('have.text', freestyleProjectPageData.headerText + newItemPageData.freestyleProjectName);
+        
+        freestyleProjectPage
+            .clickConfigureSideMenuLink();
+    
+        configPage.getProjectEnabled().should("have.attr", "value", "true");
+        configPage.getDescriptionInputField().should("have.text", data.description);
+        configPage.getDiscardOldBuildsCheck().should("be.checked");
+        configPage.getStrategy().should("have.text", data.strategyOption);
+        configPage.getMaxNumberOfBuildsToKeepInputField().should("have.attr", "value", data.maxBuilds.toString());
+        configPage.getSourceCodeNoneRadioBtn().should("have.text", data.sourceCodeManagement);
+        configPage.getBuildTriggersCheck().should("be.checked");
+        configPage.getScheduleInputField().should("have.text", data.schedule);
+        configPage.getAddTimestampsCheck().should("be.checked");
+        configPage.getBuildStepName().should("contain.text", data.scriptOption);
+        configPage.getScriptText().should("have.text", data.scriptText);
+    });    
+
 })
