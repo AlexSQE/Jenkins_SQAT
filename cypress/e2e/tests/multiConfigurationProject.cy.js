@@ -198,4 +198,14 @@ describe("multiConfigurationProject", () => {
             .getMultiConfigurationProjectHeader()
             .should('contain', multiConfigurationProjectConfigurePage.descriptionText);
     });
+
+    it('AT_14.08.02 | Verify the visibility of the six dropdown items by clicking the down arrow icon', () => {
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName)
+
+        homePage
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+            .getProjectNameDrpDwnItems()
+            .should('be.visible')
+            .and('have.length', 6);
+    });
 })
