@@ -156,6 +156,13 @@ class FreestyleProjectPage {
         cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/job/${newItemPageData.freestyleProjectName}/`);
         return this;
     }
+
+    checkAddAndEditDescriptoinBtn(){
+        return this.getAddAndEditDescriptoinBtn()
+        .should('be.visible')
+        .invoke('text')
+        .then((text) => text.trim())    
+    }
 }
 
 export default FreestyleProjectPage;

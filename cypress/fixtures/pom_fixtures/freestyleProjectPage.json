@@ -8,6 +8,7 @@
 	"disabledProjectNotify": "This project is currently disabled",
     "freestyleProjectName1": "FreestyleProjectName1",
     "freestyleProjectName2": "FreestyleProjectName2",
+    "changeNameBtnEditDescription": "Edit description",
 
   "sidePanel":[
         "Status",

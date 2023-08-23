@@ -208,4 +208,16 @@ describe('freestyleProject', () => {
           .getFreestyleProjectDescription()
           .should('be.visible').and('contain',freestyleProjectPageData.description)   
   })   
+
+    it('AT_12.07.05 | <Freestyle Project> "Add description" button has change the label on "Edit description".', () =>{
+        homePage
+        .clickFreestyleProjectNameLink()
+        .clickAddAndEditDescriptoinBtn()
+        .typeDescriptionToInputField(freestyleProjectPageData.description)
+        .clickSaveDescriptionBtn()
+        .checkAddAndEditDescriptoinBtn()
+          .then((actualText) => {
+            expect(actualText).to.deep.equal(freestyleProjectPageData.changeNameBtnEditDescription)
+          })
+    })
 });
