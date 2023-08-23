@@ -362,7 +362,7 @@ describe('headerAndFooter', () => {
             .and('have.css', 'background-color', headerAndFooterData.orangeNotificationCounter)
     })
 
-    it('AT_01.10_005 | <Header> Verify Notification icon is visible', () => {
+    it('AT_01.10.05 | <Header> Verify Notification icon is visible', () => {
         headerAndFooter
             .getNotificationIcon()
             .should('be.visible');
@@ -379,4 +379,14 @@ describe('headerAndFooter', () => {
             .and('have.css', 'z-index', '1000');        
     });
     
+    it('RF_01.10.03| <Header> Check notifications icon open pop-up window', () => {
+        headerAndFooter
+            .getNotificationPopUp().should("not.be.visible")
+        headerAndFooter
+            .clickNotificationIcon()
+            .getNotificationContainer()
+            .should('have.class', 'visible');
+        headerAndFooter
+            .getNotificationPopUp().should("be.visible")
+    });
 })
