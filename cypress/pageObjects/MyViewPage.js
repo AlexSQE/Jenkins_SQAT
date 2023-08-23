@@ -42,6 +42,7 @@ class MyViewPage {
   getLeftSideMenuPanelForAllViews = () => cy.get('#tasks .task');
   getMyViewsPageUrl = () => cy.url()
   getViewName = (viewName) => cy.get(`.tab a[href*="/view/${viewName}/"]`);
+  getMyViewsPageTitle = () => cy.get('head title')
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();

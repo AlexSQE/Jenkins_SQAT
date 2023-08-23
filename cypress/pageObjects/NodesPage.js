@@ -14,6 +14,9 @@ class NodesPage {
     getNewNodeBtn = () => cy.get('div a[href="new"]');
     getDeleteDrpDwnLink = () => cy.get('a[href$="/delete"] > span');
     getConfigureBtn = (nodeName) => cy.get(`#computers #node_${nodeName} a svg`);
+    getNodeNameSidePanLink = (nodeName) => cy.get(`#executors .pane a[href="/manage/computer/${nodeName}/"]`);
+    getNodeNameSidePanDrpDwnLink = () => cy.get('#executors div table tr:nth-child(4) a button');
+    getBuildExecutorTable = () => cy.get('#executors')
 
     clickBuiltInNodeGearBtn() {
         this.getBuiltInNodeGearBtn().should('be.visible').click();
@@ -63,6 +66,12 @@ class NodesPage {
     clickConfigureBtn(nodeName) {
         this.getConfigureBtn(nodeName).click();
         return new NodeConfigurePage();
+    }
+
+    hoverAndClickNodeNameSidePanDrpDwn(nodeName) {
+        this.getNodeNameSidePanLink(nodeName).realHover();
+        this.getNodeNameSidePanDrpDwnLink().click();
+        return this;
     }
 }
 

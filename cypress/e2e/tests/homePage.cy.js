@@ -216,8 +216,14 @@ describe("homePage", () => {
       .clickMyViewSideMenuLink()
       .getMyViewsPageUrl()
       .should('include', myViewsPageData.myViewsEndPoinURL)
-  });
-
   })
 
+  homePageData.sidePanelItems.forEach((itemName, ind) => {
+    it(`AT_02.04.${20 + ind} | Homepage > Verify the "${itemName}" item from side menu is visible`, () => {
+      homePage
+        .getSideMenuPanelItemText(ind)
+        .should('contain.text', homePageData.sidePanelItems[ind])
+    })
+  })
 
+  })
