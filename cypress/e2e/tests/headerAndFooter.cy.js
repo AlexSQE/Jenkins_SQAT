@@ -17,6 +17,7 @@ import SystemLogPage from "../../pageObjects/SystemLogPage";
 import ResultSearchBoxPage from "../../pageObjects/ResultSearchBoxPage";
 import myViewData from "../../fixtures/pom_fixtures/myView.json";
 import UserCredentialsPage from "../../pageObjects/UserCredentialsPage";
+import MyViewPage from "../../pageObjects/MyViewPage";
 
 describe('headerAndFooter', () => {
 
@@ -25,6 +26,7 @@ describe('headerAndFooter', () => {
     const systemLogPage = new SystemLogPage();
     const resultSearchBoxPage = new ResultSearchBoxPage();
     const userCredentialsPage = new UserCredentialsPage();
+    const myViewPage = new MyViewPage();
  
     it('AT_03.01.02 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
@@ -291,12 +293,15 @@ describe('headerAndFooter', () => {
           .verifySearchBoxResultDropDownList(searchBoxDocumentationPageData.singleCharacter)
     })
 
-    it('AT_01.06.02 | Header > Verify redirection to the “My Views“ Page with endpoint /my-views/view/all/ after ckicking on Dropdown Profile My Views option', () => {
+    it('AT_01.06.02 | Header > Verify redirection to the “My Views“ Page with endpoint /my-views/view/all/ and title "Dashboard [Jenkins]" after ckicking on Dropdown Profile My Views option', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserMyViewsMenu()
             .getAllMyViewsPageLink()
             .should('contain', myViewData.allMyViewsPageURL)
+        myViewPage
+            .getMyViewsPageTitle()
+            .should('have.text', myViewData.myViewsPageTitle)            
     });
 
     it('AT_01.06.05 | Header > Verify Left Side panel contains “New Item”, “People” and “Build History” after clicking on Dropdown Profile My Views option', () => {

@@ -31,5 +31,7 @@
         "People",
         "Build History"
     ],
-    "myViewsEndPoinURL" : "/my-views/view/all/"
+    "myViewsEndPoinURL" : "/my-views/view/all/",
+
+    "myViewsPageTitle": "Dashboard [Jenkins]"
 }
