@@ -367,5 +367,16 @@ describe('headerAndFooter', () => {
             .getNotificationIcon()
             .should('be.visible');
     })
+
+    it('AT_01.09.01 | <Header> Verify that the User able to can open the Security Popup Window after clicking the Security Popup Content Button', () => {
+        headerAndFooter
+            .checkSecurityNotificationListNotVisible()
+            .clickSecurityBtn()
+            .checkSecurityNotificationPopUpClass()
+            .getSecurityNotificationList()
+            .should('be.visible')
+            .and('have.css', 'opacity', '1')
+            .and('have.css', 'z-index', '1000');        
+    });
     
 })

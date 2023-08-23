@@ -38,6 +38,9 @@ class HeaderAndFooter {
     getListSearchResult = () => cy.get('.yui-ac-bd li').not('li[style="display: none;"]');
     getNotificationCounter = () => cy.get('#visible-am-button.am-button .am-monitor__count');
     getNotificationIcon = () => cy.get('#visible-am-button svg');
+    getSecurityBtn = () => cy.get('#visible-sec-am-button');
+    getSecurityNotificationPopUp = () => cy.get('#visible-sec-am-container');
+    getSecurityNotificationList = () => cy.get('#visible-sec-am-list');
     
     clickJenkinsVersionLink() {
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
@@ -176,6 +179,25 @@ class HeaderAndFooter {
         this.getJenkinsVersionLink().realHover();
         return this;
     };
+
+    clickSecurityBtn() {
+        this.getSecurityBtn().click();
+        return this;
+    };
+
+    checkSecurityNotificationListNotVisible() {
+        this.getSecurityNotificationList()
+        .should("not.be.visible")
+        .and('have.css', 'opacity', '0')
+        .and('have.css', 'z-index', '0');
+        return this;
+    }
+   
+    checkSecurityNotificationPopUpClass() {
+        this.getSecurityNotificationPopUp()
+        .should('have.class', 'visible');
+        return this;
+    }
     
 }
 
