@@ -99,4 +99,15 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .getNumberOfExecutorsField()
             .should("have.value", nodePageData.mixedValueNumberOfExecutors);
     });
+
+    it('AT 11.08.03 | Number of executors > Verify that the default value is set to 0 (zero)' +
+        'of digits, spaces, letters, special symbols', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .typeValueNumberOfExecutorsIntoField(nodePageData.defaultValueNumberOfExecutors)
+            .clickLabelsField()
+            .getNumberOfExecutorsField()
+            .should("have.value", nodePageData.defaultValueNumberOfExecutors);
+    });
 })

@@ -6,5 +6,6 @@
   "projectsTiedToBuiltInNodeHeading": "Projects tied to Built-In Node",
   "validValueNumberOfExecutors" : 12,
   "mixedInputNumberOfExecutors" : "1 2#3a4A5 ",
-  "mixedValueNumberOfExecutors" : "12345"
+  "mixedValueNumberOfExecutors" : 12345,
+  "defaultValueNumberOfExecutors" : 0
 }
