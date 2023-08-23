@@ -205,6 +205,16 @@ class HeaderAndFooter {
         this.getNotificationIcon().click();
         return this;
     };
+
+    checkNotificationPopUpNotVisible() {
+        this.getNotificationPopUp().should("not.be.visible");
+        return this;
+    };
+    
+    checkNotificationContainertVisible() {
+        this.getNotificationContainer().should('have.class', 'visible');;
+        return this;
+    };    
         
 }
 

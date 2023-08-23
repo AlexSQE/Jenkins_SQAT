@@ -381,12 +381,9 @@ describe('headerAndFooter', () => {
     
     it('AT_01.10.03| <Header> Check notifications icon open pop-up window', () => {
         headerAndFooter
-            .getNotificationPopUp().should("not.be.visible")
-        headerAndFooter
+            .checkNotificationPopUpNotVisible() 
             .clickNotificationIcon()
-            .getNotificationContainer()
-            .should('have.class', 'visible');
-        headerAndFooter
+            .checkNotificationContainertVisible()
             .getNotificationPopUp().should("be.visible")
     });
 })
