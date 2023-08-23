@@ -379,7 +379,7 @@ describe('headerAndFooter', () => {
             .and('have.css', 'z-index', '1000');        
     });
     
-    it('RF_01.10.03| <Header> Check notifications icon open pop-up window', () => {
+    it('AT_01.10.03| <Header> Check notifications icon open pop-up window', () => {
         headerAndFooter
             .getNotificationPopUp().should("not.be.visible")
         headerAndFooter
