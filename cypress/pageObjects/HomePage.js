@@ -568,5 +568,12 @@ class HomePage {
         this.getStatusMulticonfigurationProjectIcon(projectName).should('be.visible')
         return this
         }
+
+        getSideMenuPanelItemText(ind) {
+            this.getSideMenuPanel()
+                .eq(ind)
+                .should('be.visible')
+            return cy.get(`#tasks > div:nth-child(${ind + 1}) span.task-link-text`)
+        }
 }
 export default HomePage;
