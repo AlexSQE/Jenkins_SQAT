@@ -38,6 +38,8 @@ class HeaderAndFooter {
     getListSearchResult = () => cy.get('.yui-ac-bd li').not('li[style="display: none;"]');
     getNotificationCounter = () => cy.get('#visible-am-button.am-button .am-monitor__count');
     getNotificationIcon = () => cy.get('#visible-am-button svg');
+    getNotificationPopUp = () => cy.get('#visible-am-list');
+    getNotificationContainer = () => cy.get("#visible-am-container") 
     getSecurityBtn = () => cy.get('#visible-sec-am-button');
     getSecurityNotificationPopUp = () => cy.get('#visible-sec-am-container');
     getSecurityNotificationList = () => cy.get('#visible-sec-am-list');
@@ -198,7 +200,22 @@ class HeaderAndFooter {
         .should('have.class', 'visible');
         return this;
     }
+
+    clickNotificationIcon() {
+        this.getNotificationIcon().click();
+        return this;
+    };
+
+    checkNotificationPopUpNotVisible() {
+        this.getNotificationPopUp().should("not.be.visible");
+        return this;
+    };
     
+    checkNotificationContainertVisible() {
+        this.getNotificationContainer().should('have.class', 'visible');;
+        return this;
+    };    
+        
 }
 
 export default HeaderAndFooter;
