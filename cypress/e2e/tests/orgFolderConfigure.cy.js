@@ -12,6 +12,17 @@ describe('orgFolderConfigure', () => {
     const orgFolderPage = new OrgFolderPage();
     const orgFolderConfigurePage = new OrgFolderConfigurePage();
 
+    it('AT_17.01.11 |<Organization Folder> Verify "Appearance" drop-down menu of "Icon" is visible', () => {
+        cy.createOrgFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
+            .selectConfigureDrpDwnLink()
+            .clickAppearance()
+            .verifyDropDownIconeTypeMenu()
+            .should('deep.equal', OrgFolderConfigurePageData.appearanceIconOption)
+    })
+
     it('AT_17.01.12 |<Organization Folder> Verify "Health metrics" drop-down menu is visible', () => {
         cy.createOrgFolderProject(newItemPageData.orgFolderName)
         
@@ -29,7 +40,7 @@ describe('orgFolderConfigure', () => {
 
     it('AT_17.01.001 | Change status folder to disable', () => {
         cy.createOrgFolderProject(newItemPageData.orgFolderName)
-         
+
         homePage
             .clickOrgFolderNameLink(newItemPageData.orgFolderName)
             .clickConfigureTheProjectLink()
@@ -64,7 +75,7 @@ describe('orgFolderConfigure', () => {
     });
 
     it('AT_17.01.04 | <Organization folder > Verify the user`s ability to enable the current Organization folder via Configure', () => {
-        cy.createOrgFolderProject(newItemPageData.orgFolderName)  
+        cy.createOrgFolderProject(newItemPageData.orgFolderName)
         homePage
             .clickOrgFolderNameLink(newItemPageData.orgFolderName)
             .clickConfigureTheProjectLink()
@@ -85,8 +96,8 @@ describe('orgFolderConfigure', () => {
     });
 
     it('AT_17.01.06 | <Organization folder > Verify the list of items in the left side-panel menu', () => {
-        cy.createOrgFolderProject(newItemPageData.orgFolderName)  
-        
+        cy.createOrgFolderProject(newItemPageData.orgFolderName)
+
         homePage
             .clickOrgFolderNameLink(newItemPageData.orgFolderName)
         orgFolderPage
@@ -95,6 +106,6 @@ describe('orgFolderConfigure', () => {
         orgFolderConfigurePage
             .getSidePanelMenuItemsOrgFolderConfig().each(($el, idx) => {
                 expect($el.text()).contain(OrgFolderConfigurePageData.sidePanelMenuItemsOrgFolderConfig[idx]);
-            });  
+            });
     })
 });

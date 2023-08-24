@@ -11,7 +11,19 @@ class OrgFolderConfigurePage {
     getHealthMetricsItem = () => cy.get('.jenkins-section [class= "jenkins-form-item tr"] button[class="jenkins-button advanced-button advancedButton"]')
     getHealthMetricsType = () => cy.get('.yuimenuitemlabel').contains(OrgFolderConfigurePageData.healthMetricsType)
     getAddMetric = () => cy.get('#yui-gen7 button')
+    getAppearance = () => cy.get('button[data-section-id="appearance"]')
+    getDropDownIconeTypeMenu = () => cy.get('div.config-table > div:nth-child(8) > div:nth-child(2) [class="jenkins-select"] select')
 
+    clickAppearance() {
+        this.getAppearance().click()
+        return this
+    }
+
+    verifyDropDownIconeTypeMenu() {
+        return this.getDropDownIconeTypeMenu().children('option').then($options => {
+            return Cypress.$.makeArray($options).map($option => $option.innerText)
+        })
+    }
 
     clickAddMetric() {
         this.getAddMetric().click()

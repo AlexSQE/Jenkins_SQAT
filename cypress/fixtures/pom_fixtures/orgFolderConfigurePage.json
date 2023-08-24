@@ -13,5 +13,10 @@
         "Properties"
     ],
 
-    "healthMetricsType":"Child item with worst health"
+    "healthMetricsType":"Child item with worst health",
+
+    "appearanceIconOption":[
+        "Default Icon",
+        "Metadata Folder Icon"]
 }
+
