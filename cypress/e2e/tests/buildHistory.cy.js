@@ -213,4 +213,25 @@ describe('buildHistory', () => {
             .getBuildName()
             .should('contain', editBuildInformationPageData.newDisplayName);
     });
+
+    it('AT_07.04.04 | Build History > Verify user can edit DisplayName by clicking on "Edit Build Information" inside the build', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .clickOnScheduleBuildBtn()
+            .clickBuildHistoryLink()
+            .clickBuildLink()
+            .clickEditBuildInfoSideMenuLink()
+            .typeDisplayName(editBuildInformationPageData.displayName)
+            .clickEditBuildInformationSaveBtn()
+        headerandFooter
+            .clickJenkinsHomeLink()
+            .clickBuildHistoryLink()
+            .clickBuildLink()
+            .clickEditBuildInfoSideMenuLink()
+            .typeDisplayName(editBuildInformationPageData.newDisplayName)
+            .clickEditBuildInformationSaveBtn()
+            .getBuildName()
+            .should('contain', editBuildInformationPageData.newDisplayName);
+    });
 });

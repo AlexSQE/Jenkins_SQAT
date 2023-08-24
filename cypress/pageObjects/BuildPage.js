@@ -10,6 +10,8 @@ class BuildPage {
     getSaveDescriptionBtn = () => cy.get("#description button");
     getDescriptionText = () => cy.get("#description div:first-child");
     getEditBuildInfoSideMenuLink = () => cy.get('a[href$="/configure"]');
+    getBuildName = () => cy.get('.jenkins-icon-adjacent');
+    getBuildStartedBy = () => cy.get('table tr td p span');
 
     clickDeleteBuildBtn() {
         this.getDeleteBuildBtn().click();
@@ -50,6 +52,14 @@ class BuildPage {
         this.getEditBuildInfoSideMenuLink().click();
         return new EditBuildInformationPage();
     };
+
+    getBuildStartedByText() {
+        return this.getBuildStartedBy()
+            .should("be.visible")
+            .then(($el) => {
+                return $el.text();
+            })
+    }
 }
 
 export default BuildPage;

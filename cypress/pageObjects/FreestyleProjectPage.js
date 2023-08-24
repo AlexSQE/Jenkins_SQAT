@@ -3,7 +3,7 @@ import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import HomePage from "./HomePage";
 import GitHubPage from "./GitHubPage";
 import FreestyleProjectPageData from '../fixtures/pom_fixtures/freestyleProjectPage.json'
-import BuildStatusPage from "./BuildStatusPage";
+import BuildPage from "./BuildPage";
 import HeaderAndFooter from "./HeaderAndFooter";
 import newItemPageData from "../fixtures/pom_fixtures/newItemPage.json";
 
@@ -116,7 +116,7 @@ class FreestyleProjectPage {
 
     clickLastBuildLink() {
         this.getLastBuildLink().should("be.visible").click();
-        return new BuildStatusPage();
+        return new BuildPage();
     }
 
     clickHeadIconName() {

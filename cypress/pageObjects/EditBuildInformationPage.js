@@ -1,4 +1,4 @@
-import BuildStatusPage from "./BuildStatusPage";
+import BuildPage from "./BuildPage";
 
 class EditBuildInformationPage {
     getDisplayNameInputField = () => cy.get('input[name="displayName"]');
@@ -11,7 +11,7 @@ class EditBuildInformationPage {
 
     clickEditBuildInformationSaveBtn() {
         this.getEditBuildInformationSaveBtn().click();
-        return new BuildStatusPage();
+        return new BuildPage();
     };
 }
 export default EditBuildInformationPage;
