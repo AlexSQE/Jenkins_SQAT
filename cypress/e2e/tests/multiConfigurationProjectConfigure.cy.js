@@ -260,6 +260,28 @@ describe('multiConfigurationProjectConfigure', () => {
       .getDescriptionField().should('have.text', projectData.newDescriptionText)
 
     })
+
+    it('AT_14.04.05 | <MC Project> Configure | Edit description via Configure from dropdown menu on the dashboard', () => {
+      cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+      homePage
+      .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfProjectDrpDwnConfigureLink()
+      .typeDescriptionInputField()
+      .clickSaveButton()
+
+      headerAndFooter
+        .clickJenkinsHomeLink()
+
+      homePage
+      .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfProjectDrpDwnConfigureLink()
+      .clearDescriptionInputField()
+      .editDescriptionInputField()
+      .clickSaveButton()
+      .getDescriptionField().should('have.text', projectData.newDescriptionText)
+
+    })
    
 
 });
