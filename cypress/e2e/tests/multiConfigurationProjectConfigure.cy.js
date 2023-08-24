@@ -282,6 +282,31 @@ describe('multiConfigurationProjectConfigure', () => {
       .getDescriptionField().should('have.text', projectData.newDescriptionText)
 
     })
-   
+
+    it('AT_14.04.07 | <MC Project> Configure | Verify possibility to edit description through configure in breadcrumbs', () => {
+      cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+
+      homePage
+      .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfProjectDrpDwnConfigureLink()
+      .typeDescriptionInputField()
+      .clickSaveButton()
+
+      headerAndFooter
+      .clickJenkinsHomeLink()
+  
+     homePage
+      .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+      .clickMultiConfigProjectDropdwnBreadcrumb()
+      .clickBreadcrumbsMcPrConfigureBtn()
+      .clearDescriptionInputField()
+      .editDescriptionInputField()
+      .clickSaveButton()
+      .getDescriptionField().should('have.text', projectData.newDescriptionText)
+
+    })
+
+
+
 
 });
