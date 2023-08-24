@@ -391,4 +391,11 @@ describe('headerAndFooter', () => {
             .checkNotificationContainertVisible()
             .getNotificationPopUp().should("be.visible")
     });
+
+    it('AT_01.09.02 | <Header> Verify that the User able to see the Security Popup Window after clicking the Security Popup Content Button', () => {
+        headerAndFooter
+            .getSecurityBtn()
+            .should('be.visible');
+    });
+
 })
