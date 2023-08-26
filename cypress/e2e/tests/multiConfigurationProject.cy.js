@@ -8,6 +8,7 @@ import multiConfigurationProjectConfigurePage from "../../fixtures/pom_fixtures/
 import MultiConfigurationProjectPage from "../../pageObjects/MultiConfigurationProjectPage";
 import headerAndFooter from "../../pageObjects/HeaderAndFooter";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
+import dashboardBreadcrumbs from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
 
 describe("multiConfigurationProject", () => {
     const homePage = new HomePage();
@@ -207,5 +208,17 @@ describe("multiConfigurationProject", () => {
             .getProjectNameDrpDwnItems()
             .should('be.visible')
             .and('have.length', 6);
+    });
+
+    it('AT_14.08.03 | Verify the names of the six dropdown items by clicking the down arrow icon', () => {
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName)
+
+        homePage
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+            .getProjectNameDrpDwnItems()
+            .each((item, index) => {
+                cy.wrap(item).should('contain.text', dashboardBreadcrumbs.breadcrumbscMulticonfigurationprojectDropdow[index])
+            })
+
     });
 })
