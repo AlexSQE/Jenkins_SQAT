@@ -35,6 +35,7 @@ class MultiConfigurationProjectConfigurePage {
   getBuildEnviromentCheckbox = (idx) => cy.get('#build-environment').siblings('.optionalBlock-container').find('input.optional-block-control').eq(idx);
   getBuildEnviromentBtn = () => cy.get('button[data-section-id="build-environment"]')
   getApplyButton = () => cy.get("button[name='Apply']");
+  getGeneralOptionsFirstCheckBox = () => cy.get('.jenkins-checkbox #cb4');
 
   clickSaveButton() {
     this.getSaveButton().click();
@@ -180,5 +181,10 @@ class MultiConfigurationProjectConfigurePage {
     return this;
   }
   
+  checkGeneralOprionsFirstCheckbox() {
+    this.getGeneralOptionsFirstCheckBox().check({force:true})
+    return this
+  };
+
 }
 export default MultiConfigurationProjectConfigurePage;

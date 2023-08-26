@@ -305,8 +305,16 @@ describe('multiConfigurationProjectConfigure', () => {
       .getDescriptionField().should('have.text', projectData.newDescriptionText)
 
     })
-
-
-
-
+    
+    it(`AT_14.04.10 | Verify that the first checkbox under Description filed is checkable`, () => {
+      cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+  
+      homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickConfigureSideMenuLink()
+        .checkGeneralOprionsFirstCheckbox()
+        .getGeneralOptionsFirstCheckBox()
+        .should('be.checked')
+      })
+    
 });
