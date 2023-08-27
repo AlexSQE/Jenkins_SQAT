@@ -220,4 +220,18 @@ describe('freestyleProject', () => {
             expect(actualText).to.deep.equal(freestyleProjectPageData.changeNameBtnEditDescription)
           })
     })
+
+    it('AT_12.07.04 | <Freestyle project> Verify that the description can be changed and short overview is visible.', () =>{
+        homePage
+        .clickFreestyleProjectNameLink()
+        .clickAddAndEditDescriptoinBtn()
+        .typeDescriptionToInputField(freestyleProjectPageData.description)
+        .clickSaveDescriptionBtn()
+        .clickAddAndEditDescriptoinBtn()
+        .clearDescriptionInputField()
+        .typeDescriptionToInputField(freestyleProjectPageData.editDescription)
+        .clickSaveDescriptionBtn()
+        .getFreestyleProjectDescription()
+        .should('be.visible').and('contain',freestyleProjectPageData.editDescription)
+    })
 });
