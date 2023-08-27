@@ -108,6 +108,23 @@ describe('node', () => {
          .should('not.include.text', newNodePageData.nodeName)
     })
 
+    it('AT_11.02.04 | <Build Executor Status> Verify that user is able to delete the agent from Nodes page through Drp Dwn menu located on the main panel', () => {
+         homePage
+          .clickBuildExecutorStatusLink()
+          .clickNewNodeBtn()
+          .typeNodeNameInputField(newNodePageData.nodeName)
+          .selectPermanentAgentRadioBtn()
+          .clickCreateBtn()
+          .clickSaveBtn()
+
+        nodesPage
+          .hoverAndClickNodeDrpDwn(newNodePageData.nodeName)
+          .selectDeleteDrpDwnLink()
+          .clickDeleteBtn()
+          .getNodeName(newNodePageData.nodeName)
+          .should('not.exist')
+})
+
     it('AT_11.01.01 | <Build Executor Status> Create a new Node', () => {
 
         homePage
