@@ -59,7 +59,7 @@ class NodesPage {
     };
 
     clickNodeName(nodeName) {
-        this.getNodeName(nodeName).click();
+        this.getNodeName(nodeName).click({force: true});
         return new AgentPage();
     }
 
