@@ -50,7 +50,7 @@ describe('people', () => {
         homePage
             .clickPeopleSideMenuLink()
             .getPeopleTableBody()
-            .should('not.have.text', peoplePageData.newUserName);
+            .should('not.contain', peoplePageData.newUserName);
         
         headerAndFooter
             .clickJenkinsHomeLink();
@@ -73,4 +73,5 @@ describe('people', () => {
             .should("be.visible")
             .and("contain.text",peoplePageData.peopleTabText)
     });
+    
 });
