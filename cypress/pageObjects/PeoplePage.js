@@ -9,7 +9,9 @@ class PeoplePage {
     getPeoplePageUrl = () => cy.url();
     getSortHeaderMenu = () => cy.get('.sortheader');
     getSortArrow = () => cy.get('.sortarrow');
+    getPeopleTab = () => cy.get('a[href="/asynchPeople/"]');
     getPeopleTableBody = () => cy.get('#people tbody');
+
 
      clickUserNameLink() {
         this.getUserNameLink().click();
@@ -38,5 +40,18 @@ class PeoplePage {
             this.getSortArrow().should('be.visible')
         })
     }
+
+    verifyPeopleTabIsHighlighted(highlitedClassName, highlitedTabClassBackGroundColor ) {
+        return this.getPeopleTab()
+            .should("have.class", highlitedClassName)
+            .within(($el) => {
+                cy.window().then((win) => {
+                    const beforeElement = win.getComputedStyle($el[0], "::before");
+                    const bg = beforeElement.getPropertyValue("background-color"); 
+                expect(bg).to.equal(highlitedTabClassBackGroundColor);
+                })
+            })
+    };
+
 }
 export default PeoplePage;

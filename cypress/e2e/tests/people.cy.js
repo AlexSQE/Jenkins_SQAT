@@ -46,6 +46,13 @@ describe('people', () => {
             .clickSortHeaderMenu()
     });
 
+
+    it('AT_06.01.09 | People tab is highlighted after redirecting to the People page.', () => {
+        homePage
+            .clickPeopleSideMenuLink()
+            .verifyPeopleTabIsHighlighted(peoplePageData.highlitedTabClass, peoplePageData.highlitedTabClassBackGroundColor)
+    });    
+
     it('AT_06.01.08 | Verify that the User ID is displayed in the People table on the People page after creating a new User', () => {
         homePage
             .clickPeopleSideMenuLink()
@@ -73,5 +80,4 @@ describe('people', () => {
             .should("be.visible")
             .and("contain.text",peoplePageData.peopleTabText)
     });
-    
 });
