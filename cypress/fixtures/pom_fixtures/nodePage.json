@@ -7,5 +7,10 @@
   "validValueNumberOfExecutors" : 12,
   "mixedInputNumberOfExecutors" : "1 2#3a4A5 ",
   "mixedValueNumberOfExecutors" : 12345,
-  "defaultValueNumberOfExecutors" : 0
+  "defaultValueNumberOfExecutors" : 0,
+  "invalidValueNumberOfExecutors" : [-5, 1.1],
+  "errorNumberOfExecutors" : [
+    "Number may not be negative",
+    "Not a number"
+  ]
 }

@@ -9,6 +9,7 @@ class NodeConfigurePage {
     getNumberOfExecutorsField = () => cy.get('input[name="_.numExecutors"]');
     getLabelsField = () => cy.get('input[name="_.labelString"] ');
     getDeleteAgentLink = () => cy.get('#side-panel #tasks a[href*="/Node/delete"]');
+    getErrorMessage = () => cy.get('.error');
 
     getNodePropertiesTitle() {
         return this.nodePropertiesTitle()

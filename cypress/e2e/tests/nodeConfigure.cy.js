@@ -4,7 +4,6 @@ import HomePage from "../../pageObjects/HomePage";
 import NodeConfigurePage from "../../pageObjects/NodeConfigurePage";
 import nodeConfigurePageData from '../../fixtures/pom_fixtures/nodeConfigurePage.json';
 import nodePageData from "../../fixtures/pom_fixtures/nodePage.json";
-import BuiltInNodePage from "../../pageObjects/BuiltInNodePage";
 
 describe('Build Executor Status > Agent (Node) > Configure', () => {
     const homePage = new HomePage();
@@ -109,5 +108,19 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .clickLabelsField()
             .getNumberOfExecutorsField()
             .should("have.value", nodePageData.defaultValueNumberOfExecutors);
+    });
+
+    nodePageData.errorNumberOfExecutors.forEach((errors, idx) => {
+        it('AT 11.08.03 - 04 | Number of executors > Error is displayed for negative or decimal input', () => {
+            const errorMessage=nodePageData.errorNumberOfExecutors[idx].trim()
+            homePage
+                .clickBuildExecutorStatusLink()
+                .clickBuiltInNodeGearBtn()
+                .typeValueNumberOfExecutorsIntoField(nodePageData.invalidValueNumberOfExecutors[idx])
+                .clickLabelsField()
+                .getErrorMessage()
+                .should("have.text", errorMessage)
+                .and('be.visible');
+        });
     });
 })
