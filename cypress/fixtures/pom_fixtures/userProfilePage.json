@@ -2,7 +2,7 @@
     "description": "New test data",
     "editDescription": "Edited test data",
     "user": {
-        "name": "created1",
+        "name": "NewUser",
         "password": "123",
         "confirmPassword": "123",
         "emailAddress": "qa@test.com",

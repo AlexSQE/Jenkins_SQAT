@@ -1,7 +1,6 @@
 {
     "peoplePageHeader" : "People",
- 
-
- "peopleEndPointURL":  "/asynchPeople/"
+    "peopleEndPointURL":  "/asynchPeople/",
+    "newUserName": "NewUser"
 }
  

@@ -1,12 +1,14 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import userProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
-import peoplePageData from "../../fixtures/pom_fixtures/peoplePage.json"
+import peoplePageData from "../../fixtures/pom_fixtures/peoplePage.json";
 
 describe('people', () => {
 
     const homePage = new HomePage();
+    const headerAndFooter = new HeaderAndFooter();
     
     it('AT_06.04.05 | Edit User description', () => {
         cy.createUserDescription(userProfilePageData.description);
@@ -42,5 +44,26 @@ describe('people', () => {
         homePage
             .clickPeopleSideMenuLink()
             .clickSortHeaderMenu()
+    });
+
+    it('AT_06.01.08 | Verify that the User ID is displayed in the People table on the People page after creating a new User', () => {
+        homePage
+            .clickPeopleSideMenuLink()
+            .getPeopleTableBody()
+            .should('not.have.text', peoplePageData.newUserName);
+        
+        headerAndFooter
+            .clickJenkinsHomeLink();
+        cy.createUser(
+            userProfilePageData.user.name,
+            userProfilePageData.user.password,
+            userProfilePageData.user.confirmPassword,
+            userProfilePageData.user.emailAddress
+            );
+
+        homePage
+            .clickPeopleSideMenuLink()
+            .getPeopleTableBody()
+            .should('contain', peoplePageData.newUserName);
     });
 });

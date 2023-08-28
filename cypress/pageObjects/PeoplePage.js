@@ -9,6 +9,7 @@ class PeoplePage {
     getPeoplePageUrl = () => cy.url();
     getSortHeaderMenu = () => cy.get('.sortheader');
     getSortArrow = () => cy.get('.sortarrow');
+    getPeopleTableBody = () => cy.get('#people tbody');
 
      clickUserNameLink() {
         this.getUserNameLink().click();
