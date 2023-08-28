@@ -153,6 +153,7 @@ class HomePage {
     getStatusPipelineIcon = (projectName) => cy.get(`#job_${projectName} svg[title="Not built"]`);
     getStatusFreestyleProjectIcon = (projectName) => cy.get(`#job_${projectName} svg[title="Not built"]`);
     getNameMyViewList = () => cy.get('.tabBar a');
+    getHeaderTableJobWArrow = () => cy.get('[tooltip^="Weather"] span');
 
     selectConfigureDrpDwnLink() {
         this.getConfigOrgFolderDrpDwnLink().click();
@@ -575,5 +576,11 @@ class HomePage {
                 .should('be.visible')
             return cy.get(`#tasks > div:nth-child(${ind + 1}) span.task-link-text`)
         }
+
+        clickHeaderTableJobW() {
+            this.getHeaderTableJobW().click();
+            return this;
+        }
+
 }
 export default HomePage;

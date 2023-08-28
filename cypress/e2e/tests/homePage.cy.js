@@ -226,4 +226,12 @@ describe("homePage", () => {
     })
   })
 
+  it('AT_20.07.07 | Verify that after clicking on the table head W arrow appears on the right side of the header', () => {
+    cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+    homePage
+      .clickHeaderTableJobW()
+      .getHeaderTableJobWArrow()
+      .should('exist');
+  })
+
   })
