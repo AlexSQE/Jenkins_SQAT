@@ -37,6 +37,7 @@ class FreestyleProjectPage {
     getBreadcrumbsFreestyleProjectItemLst = () => cy.get('ul.first-of-type li a span')
     getBreadcrumbsFreestyleProjectDropDownMenu = () => cy.get("a[href*=job] .jenkins-menu-dropdown-chevron")
     getBreadcrumbsFreestyleProjectBtn = () => cy.get("#breadcrumbBar a[href*=job]")
+    getChangesLink = () => cy.get('.task a[href*=changes]')
 
 
     clickConfigureSideMenuLink() {
@@ -162,6 +163,19 @@ class FreestyleProjectPage {
         .should('be.visible')
         .invoke('text')
         .then((text) => text.trim())    
+    }
+
+    clickChangesLink(){
+        this.getChangesLink().click()
+        return this
+    }
+
+    checkFullProjectName(){
+        return this.getFullProjectName()
+        .should('be.visible')
+        .invoke('text')
+        .then((text) => text.replace(/\s+/g, ' '))
+        .then((text) => text.replace(/........./, ""))    
     }
 }
 

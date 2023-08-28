@@ -234,4 +234,15 @@ describe('freestyleProject', () => {
         .getFreestyleProjectDescription()
         .should('be.visible').and('contain',freestyleProjectPageData.editDescription)
     })
+
+    it('AT_12.04.01 | <Freestyle project> Verify the message if there were start to build.', () =>{
+        homePage
+        .clickFreestyleProjectNameLink()
+        .clickGetBuildNowLink()
+        .clickChangesLink()
+        .checkFullProjectName()
+          .then((actualText) => {
+            expect(actualText).to.equal(freestyleProjectPageData.messageChanges)
+        })       
+    })
 });
