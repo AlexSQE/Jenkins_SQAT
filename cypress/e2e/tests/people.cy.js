@@ -66,4 +66,11 @@ describe('people', () => {
             .getPeopleTableBody()
             .should('contain', peoplePageData.newUserName);
     });
+
+    it('AT_6.01.03 | People tab should be visible in the left side bar', () => {
+        homePage
+            .getPeopleSideMenuLink()
+            .should("be.visible")
+            .and("contain.text",peoplePageData.peopleTabText)
+    });
 });
