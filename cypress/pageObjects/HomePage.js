@@ -33,7 +33,8 @@ import HeaderAndFooter from "./HeaderAndFooter";
 import NodesPage from "./NodesPage";
 import IconLegendsPage from "../pageObjects/IconLegendsPage";
 import NodeDeletePage from "./NodeDeletePage";
-import OrgFolderConfigurePage from "../pageObjects/OrgFolderConfigurePage"
+import OrgFolderConfigurePage from "../pageObjects/OrgFolderConfigurePage";
+import FreestyleProjectMovePage from "./FreestyleProjectMovePage";
 
 class HomePage {
 
@@ -154,6 +155,7 @@ class HomePage {
     getStatusFreestyleProjectIcon = (projectName) => cy.get(`#job_${projectName} svg[title="Not built"]`);
     getNameMyViewList = () => cy.get('.tabBar a');
     getHeaderTableJobWArrow = () => cy.get('[tooltip^="Weather"] span');
+    getMoveFrProjectDrpDwnMenuLink = () => cy.get('.bd li a[href$="/move"]');
 
     selectConfigureDrpDwnLink() {
         this.getConfigOrgFolderDrpDwnLink().click();
@@ -582,5 +584,12 @@ class HomePage {
             return this;
         }
 
-}
+
+    selectMoveFrProjectDrpDwnMenuLink() {
+        this.getMoveFrProjectDrpDwnMenuLink().click()
+        return new FreestyleProjectMovePage();
+    };
+
+};
+
 export default HomePage;

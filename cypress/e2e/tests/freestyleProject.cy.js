@@ -8,6 +8,7 @@ import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProje
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 import freestyleProjectRenamePageData from "../../fixtures/pom_fixtures/freestyleProjectRenamePage.json";
+import { folderName } from "../../fixtures/pom_fixtures/folderPage.json";
 
 describe('freestyleProject', () => {
 
@@ -245,4 +246,18 @@ describe('freestyleProject', () => {
             expect(actualText).to.equal(freestyleProjectPageData.messageChanges)
         })       
     })
+
+    it('AT_12.18.01 | <Freestyle project> Verify possibility to move project to a folder using dropdown menu next to the project name on dashboard', () => {
+        cy.createFolderProject(folderName)
+
+        homePage
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
+            .selectMoveFrProjectDrpDwnMenuLink()
+            .selectDestinationFolderName(folderName)
+            .clickMoveBtn()
+            .clickHomePageLink()
+            .clickFolderNameLink(folderName)
+            .getFolderPageTable().should('contain', newItemPageData.freestyleProjectName)
+    });
+
 });

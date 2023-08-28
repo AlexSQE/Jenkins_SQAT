@@ -21,6 +21,7 @@ class FolderPage {
     getBreadcrumbsFolderDropDownMenu = () => cy.get("a[href*=job] .jenkins-menu-dropdown-chevron")
     getBreadcrumbsFolderItemsList = () => cy.get("ul.first-of-type li a span") 
     getDeleteFolderDrpDwnLink = () => cy.get('#breadcrumb-menu li a[href*="delete"]');  
+    getFolderPageTable = () => cy.get('table#projectstatus');
     
     clickAddEditDescriptionBtn() {
         this.getAddEditDescriptiotBtn().click();
