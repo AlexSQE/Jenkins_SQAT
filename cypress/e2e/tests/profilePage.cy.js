@@ -86,5 +86,23 @@ describe('profilePage', () => {
             .getUserDescriptionText()
             .should('have.text', userProfilePageData.description);
     });
+
+    it("AT_18.02.04 Verify that the User is able to add the description to the Created User profile", () => {
+        cy.createUser(
+          userProfilePageData.user.name,
+          userProfilePageData.user.password,
+          userProfilePageData.user.confirmPassword,
+          userProfilePageData.user.emailAddress
+        );
     
+        homePage
+          .clickPeopleSideMenuLink()
+          .clickUserNameLink(userProfilePageData.user.name)
+          .checkUserDescriptionTextNotExists()
+          .clickUserDescriptionBtn()
+          .typeUserDescriptionInputField(userProfilePageData.user.description)
+          .clickUserDescriptionSaveBtn()
+          .getUserDescriptionText()
+          .should("have.text", userProfilePageData.user.description);
+      });
 })

@@ -78,5 +78,6 @@ class UserProfilePage {
         this.getUserDescriptionBtn().contains(btnName).click();
         return this;
     }
+
 }
 export default UserProfilePage;

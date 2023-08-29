@@ -2,19 +2,17 @@ import UserProfilePage from "./UserProfilePage";
 import NewItemPage from "./NewItemPage";
 
 class PeoplePage {
-    getUserNameLink = () => cy.get('#people a[href*="/user/"]').contains(Cypress.env('local.admin.username'));
+    getUserNameLink = () => cy.get('#people a[href*="/user/"]');
     getPeoplePageHeader = () => cy.get('.jenkins-app-bar__content h1')
     getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
-    getCreatedUserLink = () => cy.get('#people a[href*="/user/"]');
     getPeoplePageUrl = () => cy.url();
     getSortHeaderMenu = () => cy.get('.sortheader');
     getSortArrow = () => cy.get('.sortarrow');
     getPeopleTab = () => cy.get('a[href="/asynchPeople/"]');
     getPeopleTableBody = () => cy.get('#people tbody');
 
-
-     clickUserNameLink() {
-        this.getUserNameLink().click();
+    clickUserNameLink(name = Cypress.env('local.admin.username')) {
+        this.getUserNameLink().contains(name).click();
         return new UserProfilePage();
     };
 
@@ -29,11 +27,6 @@ class PeoplePage {
         return new NewItemPage();
     };
     
-    clickCreatedUserNameLink(userName) {
-        this.getCreatedUserLink().contains(userName).click();
-        return new UserProfilePage();
-    };
-
     clickSortHeaderMenu() {
         this.getSortHeaderMenu().each(($el) => {
             cy.wrap($el).click()

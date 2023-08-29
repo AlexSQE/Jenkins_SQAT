@@ -5,7 +5,7 @@ class CreateUserPage {
     getPasswordInputField= () => cy.get('input[name="password1"]');
     getConfirmPasswordInputField = () => cy.get('input[name="password2"]');
     getEmailAddressInputField = () => cy.get('input[name="email"]');
-    getCreateUserBtn = () => cy.get('button[name="Submit"]');
+    getCreateUserBtnSubmit = () => cy.get('button[name="Submit"]');
 
     typeUserNameInputField(userName) {
         this.getUserNameInputField().type(userName);
@@ -27,8 +27,8 @@ class CreateUserPage {
         return this;
     }
     
-    clickCreateUserBtn(){
-        this.getCreateUserBtn().click();
+    clickCreateUserBtnSubmit(){
+        this.getCreateUserBtnSubmit().click();
         return new UsersPage();
     }
 }
