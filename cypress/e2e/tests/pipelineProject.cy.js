@@ -6,7 +6,7 @@ import gitHubPage from "../../fixtures/pom_fixtures/gitHubPage.json";
 import pipelineConfigurePageData from "../../fixtures/pom_fixtures/pipelineConfigurePage.json";
 import pipelinePageData from "../../fixtures/pom_fixtures/pipelinePage.json";
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
-
+import pipelineChangesPageData from "../../fixtures/pom_fixtures/pipelineChangesPage.json";
 
 describe('pipelineProject',()=>{
     const homePage= new HomePage()
@@ -123,5 +123,15 @@ describe('pipelineProject',()=>{
             .verifyPipelinePageUrl()
             .getPipelinePageHeadline()
             .should('have.text', `${pipelinePageData.pipelinePageHeaderStart} ${newItemPageData.pipelineName}`);
+    });
+
+    it('AT_13.12.01 | View pipeline project changes using the left-side panel', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickChangesPipelineBtn()
+            .trimPipelineChangesMainPanelText()
+            .should('eq', pipelineChangesPageData.pipelineChangesPageText);
     });
 });

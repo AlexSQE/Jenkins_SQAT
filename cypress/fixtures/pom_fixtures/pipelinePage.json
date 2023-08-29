@@ -2,6 +2,7 @@
     "textDeletePipeline": "Delete Pipeline",
     "confirmationOfDeletingFromSideBar" : "Delete the Pipeline",
     "additionalDescriptionPipeline" : " second",
+    "textChanges": "Changes",
 
     "pipelineName" : "newPipeline",
     "pipelineDropdownItems": [

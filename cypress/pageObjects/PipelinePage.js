@@ -1,4 +1,5 @@
 import HomePage from "./HomePage";
+import PipelineChangesPage from "./PipelineChangesPage";
 import pipelinePageData from "../fixtures/pom_fixtures/pipelinePage.json";
 import newItemPageData from "../fixtures/pom_fixtures/newItemPage.json";
 
@@ -84,7 +85,12 @@ class PipelinePage {
     clickBreadcrumbsPipelineProjectDropDownMenu() {
     this.getBreadcrumbsPipelineMenuListButton().click()
     return this
-    }    
+    };
+    
+    clickChangesPipelineBtn() {
+        this.getPipelineMenuList().contains(pipelinePageData.textChanges).click()
+        return new PipelineChangesPage()
+    };
 };
 
 export default PipelinePage;
