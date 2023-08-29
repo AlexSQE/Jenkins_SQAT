@@ -33,6 +33,11 @@ class NodeConfigurePage {
         return this;
     }
 
+    clearNumberOfExecutorsField() {
+        this.getNumberOfExecutorsField().clear();
+        return this;
+    }
+
     clickLabelsField() {
         this.getLabelsField().click();
         return this;

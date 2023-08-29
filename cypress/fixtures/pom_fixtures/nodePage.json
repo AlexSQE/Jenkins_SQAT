@@ -9,8 +9,9 @@
   "mixedValueNumberOfExecutors" : 12345,
   "defaultValueNumberOfExecutors" : 0,
   "invalidValueNumberOfExecutors" : [-5, 1.1],
-  "errorNumberOfExecutors" : [
+  "errorsNumberOfExecutors" : [
     "Number may not be negative",
     "Not a number"
-  ]
+  ],
+  "errorEmptyNumberOfExecutors" : "Not a number"
 }

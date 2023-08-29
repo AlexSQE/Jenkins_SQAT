@@ -110,9 +110,9 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .should("have.value", nodePageData.defaultValueNumberOfExecutors);
     });
 
-    nodePageData.errorNumberOfExecutors.forEach((errors, idx) => {
-        it('AT 11.08.03 - 04 | Number of executors > Error is displayed for negative or decimal input', () => {
-            const errorMessage=nodePageData.errorNumberOfExecutors[idx].trim()
+    nodePageData.errorsNumberOfExecutors.forEach((errors, idx) => {
+        it('AT 11.08.04-05 | Number of executors > Error is displayed for negative or decimal input', () => {
+            const errorMessage=nodePageData.errorsNumberOfExecutors[idx].trim()
             homePage
                 .clickBuildExecutorStatusLink()
                 .clickBuiltInNodeGearBtn()
@@ -122,5 +122,16 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
                 .should("have.text", errorMessage)
                 .and('be.visible');
         });
+    });
+
+    it('AT 11.08.06 | Number of executors > Error is displayed for negative or decimal input and empty field', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .clearNumberOfExecutorsField()
+            .clickLabelsField()
+            .getErrorMessage()
+            .should("have.text", nodePageData.errorEmptyNumberOfExecutors)
+            .and('be.visible');
     });
 })
