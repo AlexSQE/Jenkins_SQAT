@@ -22,9 +22,21 @@ describe('people', () => {
             .should('have.text', userProfilePageData.editDescription);
     });
 
-    it('AT_06.01_002 | Verify People page tab is redirecting to right page', () => {
+    it('AT_06.02.009 | Verify Possibility to Add Description to a User', () => {
         homePage
             .clickPeopleSideMenuLink()
+            .clickUserNameLink()
+            .clickUserDescriptionBtn()
+            .typeUserDescriptionInputField(userProfilePageData.description)
+            .clickUserDescriptionSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', userProfilePageData.description);
+    });
+
+    it('AT_06.01.02 | People tab is clickable and redirecting to the correct page with the header People and endpoint is /asynchPeople/', () => {
+        homePage
+            .clickPeopleSideMenuLink()
+            .verifyPeoplePagesUrl(peoplePageData.peopleEndPointURL)
             .trimPeoplePageHeader()
             .should('eq', peoplePageData.peoplePageHeader)
     });

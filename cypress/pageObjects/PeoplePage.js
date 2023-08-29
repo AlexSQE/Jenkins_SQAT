@@ -34,6 +34,11 @@ class PeoplePage {
         })
     }
 
+    verifyPeoplePagesUrl(peopleEndPointURL) {
+        cy.url().should('includes', peopleEndPointURL);
+        return this;
+    };
+
     verifyPeopleTabIsHighlighted(highlitedClassName, highlitedTabClassBackGroundColor ) {
         return this.getPeopleTab()
             .should("have.class", highlitedClassName)
