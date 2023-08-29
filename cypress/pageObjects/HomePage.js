@@ -590,6 +590,11 @@ class HomePage {
         return new FreestyleProjectMovePage();
     };
 
+    clickFreestyleProjectName(name) {
+        this.getProjectName(name).click();
+        return new FreestyleProjectPage();
+    }
+
 };
 
 export default HomePage;

@@ -6,6 +6,7 @@ import FreestyleProjectPageData from '../fixtures/pom_fixtures/freestyleProjectP
 import BuildPage from "./BuildPage";
 import HeaderAndFooter from "./HeaderAndFooter";
 import newItemPageData from "../fixtures/pom_fixtures/newItemPage.json";
+import FreestyleProjectMovePage from "./FreestyleProjectMovePage";
 
 class FreestyleProjectPage {
     getConfigureSideMenuLink = () => cy.get('a[href$="configure"]')
@@ -38,6 +39,7 @@ class FreestyleProjectPage {
     getBreadcrumbsFreestyleProjectDropDownMenu = () => cy.get("a[href*=job] .jenkins-menu-dropdown-chevron")
     getBreadcrumbsFreestyleProjectBtn = () => cy.get("#breadcrumbBar a[href*=job]")
     getChangesLink = () => cy.get('.task a[href*=changes]')
+    getMoveSideMenuLink = () => cy.get('a[href$="move"]');
 
 
     clickConfigureSideMenuLink() {
@@ -177,6 +179,12 @@ class FreestyleProjectPage {
         .then((text) => text.replace(/\s+/g, ' '))
         .then((text) => text.replace(/........./, ""))    
     }
-}
+
+    clickMoveSideMenuLink() {
+        this.getMoveSideMenuLink().click()
+        return new FreestyleProjectMovePage();
+    };
+
+};
 
 export default FreestyleProjectPage;

@@ -260,4 +260,17 @@ describe('freestyleProject', () => {
             .getFolderPageTable().should('contain', newItemPageData.freestyleProjectName)
     });
 
+    it('AT_12.18.02 | <Freestyle project> Verify possibility to move project to a folder using side panel "Move" option on the Project page', () => {
+        cy.createFolderProject(folderName)
+
+        homePage
+            .clickFreestyleProjectName(newItemPageData.freestyleProjectName)
+            .clickMoveSideMenuLink()
+            .selectDestinationFolderName(folderName)
+            .clickMoveBtn()
+            .clickHomePageLink()
+            .clickFolderNameLink(folderName)
+            .getFolderPageTable().should('contain', newItemPageData.freestyleProjectName)
+    });
+
 });
