@@ -225,9 +225,18 @@ Cypress.Commands.add('createUserDescription', (description) => {
         .typeUserDescriptionInputField(description)
         .clickUserDescriptionSaveBtn();
     headerAndFooter
-        .clickJenkinsHomeLink();      
-             
-        
+        .clickJenkinsHomeLink(); 
+});
+
+Cypress.Commands.add('deleteUserDescription', () => {
+    homePage
+        .clickPeopleSideMenuLink()
+        .clickUserNameLink()        
+        .clickUserDescriptionBtn()
+        .clearUserStatusDescription()
+        .clickUserDescriptionSaveBtn();
+    headerAndFooter
+        .clickJenkinsHomeLink(); 
 });
 
 Cypress.Commands.add('disableFreestyleProjectOnConfigurePage', () => {

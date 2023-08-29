@@ -6,12 +6,14 @@ import { sidePanelNameLink } from "../../fixtures/pom_fixtures/userConfigurePage
 import UserProfilePage from "../../pageObjects/UserProfilePage";
 import userProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
 import UserBuildsPage from "../../pageObjects/UserBuildsPage";
+import HomePage from "../../pageObjects/HomePage";
 
 describe('profilePage', () => {
 
     const headerAndFooter = new HeaderAndFooter();
     const userProfilePage = new UserProfilePage();
     const userBuildsPage = new UserBuildsPage();
+    const homePage = new HomePage();
 
     it('AT_18.03.001 | <Profile Page> Link to Users Builds', () => {
         headerAndFooter
@@ -69,5 +71,20 @@ describe('profilePage', () => {
             .checkUrlCredentialsPage(userCredentialsPageData.credentialsPageUrl)
             .getCredentialsHeader()
             .should('have.text', userCredentialsPageData.credentialsPageHeader)
-    })
+    });
+
+    it('AT_18.02.03 | Verify that the User is able to add the description to the Admin profile', () => {
+        cy.deleteUserDescription();
+
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickUserNameLink()
+            .checkUserDescriptionTextNotExists()
+            .clickUserDescriptionBtn()
+            .typeUserDescriptionInputField(userProfilePageData.description)
+            .clickUserDescriptionSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', userProfilePageData.description);
+    });
+    
 })

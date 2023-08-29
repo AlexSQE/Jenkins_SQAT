@@ -24,18 +24,5 @@ describe("userProfile", () => {
       .getUserDescriptionText()
       .should("have.text", userProfilePageData.user.description);
   });
-
-  it('AT_06.02_003 | People> Verify save button functionality', () => {
-    homePage
-      .clickPeopleSideMenuLink()
-      .clickUserNameLink()
-      .clickUserDescriptionBtn()
-      .typeUserDescriptionInputField(userProfilePageData.description)
-      .clickUserDescriptionSaveBtn()
-    homePage
-      .clickPeopleSideMenuLink()
-      .clickUserNameLink()
-      .getUserDescriptionText()
-      .should('have.text', userProfilePageData.description)
-  })
+  
 });
