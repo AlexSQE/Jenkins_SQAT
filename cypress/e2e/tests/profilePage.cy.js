@@ -27,15 +27,24 @@ describe('profilePage', () => {
         .should('contain', "Builds for " + Cypress.env("local.admin.username").toLowerCase());
     });
 
-    it('AT_18.02.001 | <Profile Page> Verify that the User can Edit the Status Description', () => {
-        cy.clearUserStatusDescription();
+    it('AT_18.02.001 | <Profile Page> Verify that the User is able to edit the description to the Created User profile', () => {
+        cy.createUser(
+            userProfilePageData.user.name,
+            userProfilePageData.user.password,
+            userProfilePageData.user.confirmPassword,
+            userProfilePageData.user.emailAddress
+          );
 
-        userProfilePage
-        .clickUserDescriptionBtn()
-        .typeUserDescriptionInputField(userProfilePageData.editDescription)
-        .clickUserDescriptionSaveBtn()
-        .getUserDescriptionText()
-        .should('contain', userProfilePageData.editDescription);
+        cy.createUserDescription(userProfilePageData.description, userProfilePageData.user.name);
+
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickUserNameLink(userProfilePageData.user.name)
+            .clickEditUserDescriptionBtn(userProfilePageData.editDescriptionBtnText)
+            .typeUserDescriptionInputField(userProfilePageData.editDescription)
+            .clickUserDescriptionSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', userProfilePageData.editDescription);
     });
 
     it("AT_18.06.001 | Profile Page | Verifying the Credentials link redirects to the user's credentials page", () => {

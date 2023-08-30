@@ -27,22 +27,9 @@
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 import HomePage from "../pageObjects/HomePage";
-import UserProfilePage from "../pageObjects/UserProfilePage";
 import { homePageHeader } from "../fixtures/pom_fixtures/homePage.json";
 import { configurePageHeader } from "../fixtures/pom_fixtures/freestyleProjectConfigure.json";
 import FreestyleProjectConfigurePage from "../pageObjects/FreestyleProjectConfigurePage";
-
-const userProfilePage = new UserProfilePage();
-
-Cypress.Commands.add('clearUserStatusDescription', () => {
-    headerAndFooter
-        .clickUserNameLink();
-
-    userProfilePage
-        .clickUserDescriptionBtn()
-        .clearUserStatusDescription()
-        .clickUserDescriptionSaveBtn();
-});
 
 const homePage = new HomePage();
 const headerAndFooter = new HeaderAndFooter();
