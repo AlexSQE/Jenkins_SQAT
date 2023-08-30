@@ -166,6 +166,15 @@ describe('dashboard', () => {
         .should("contain", homePageData.HeadersTableJobs[3])
         .and("be.visible");
     });
+
+    it("AT_20.07.11 | Dashboard Verify that the table head Last Success is hoverable", () => {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .getLastSuccessBtn()
+            .should("have.css", "cursor", "pointer");
+    });
+    
 })
 
     
