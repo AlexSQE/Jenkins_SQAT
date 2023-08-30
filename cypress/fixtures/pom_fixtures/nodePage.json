@@ -13,5 +13,6 @@
     "Number may not be negative",
     "Not a number"
   ],
-  "errorEmptyNumberOfExecutors" : "Not a number"
+  "errorEmptyNumberOfExecutors" : "Not a number",
+  "valueToCopy": "123"
 }

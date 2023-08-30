@@ -38,6 +38,14 @@ class NodeConfigurePage {
         return this;
     }
 
+    pasteValueNumberOfExecutorsIntoField(clipboardText) {
+        this.getNumberOfExecutorsField()
+            .clear()
+            .invoke('val', clipboardText)
+            .trigger('input');
+        return this;
+    }
+
     clickLabelsField() {
         this.getLabelsField().click();
         return this;

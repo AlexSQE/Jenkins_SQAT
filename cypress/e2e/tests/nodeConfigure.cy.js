@@ -4,7 +4,7 @@ import HomePage from "../../pageObjects/HomePage";
 import NodeConfigurePage from "../../pageObjects/NodeConfigurePage";
 import nodeConfigurePageData from '../../fixtures/pom_fixtures/nodeConfigurePage.json';
 import nodePageData from "../../fixtures/pom_fixtures/nodePage.json";
-
+// import nodePageData from "../../fixtures/pom_fixtures/nodePage.json" as data;
 describe('Build Executor Status > Agent (Node) > Configure', () => {
     const homePage = new HomePage();
     const nodeConfigurePage = new NodeConfigurePage();
@@ -124,7 +124,7 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
         });
     });
 
-    it('AT 11.08.06 | Number of executors > Error is displayed for negative or decimal input and empty field', () => {
+    it('AT 11.08.06 | Number of executors > Error is displayed for empty field', () => {
         homePage
             .clickBuildExecutorStatusLink()
             .clickBuiltInNodeGearBtn()
@@ -133,5 +133,17 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .getErrorMessage()
             .should("have.text", nodePageData.errorEmptyNumberOfExecutors)
             .and('be.visible');
+    });
+
+    it('AT 11.08.07 | Number of executors > User is able to paste data in the field', () => {
+        const valueToPaste = nodePageData.valueToCopy;
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .clickNumberOfExecutorsField()
+            .pasteValueNumberOfExecutorsIntoField(valueToPaste)
+            .clickLabelsField()
+            .getNumberOfExecutorsField()
+            .should("have.value", nodePageData.valueToCopy);
     });
 })
