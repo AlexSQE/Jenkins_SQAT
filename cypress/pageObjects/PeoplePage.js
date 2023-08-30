@@ -10,6 +10,8 @@ class PeoplePage {
     getSortArrow = () => cy.get('.sortarrow');
     getPeopleTab = () => cy.get('a[href="/asynchPeople/"]');
     getPeopleTableBody = () => cy.get('#people tbody');
+    getPeopleNameList = () => cy.get('table#people td:nth-child(3)');
+    getSortHeaderNameBtn = () => cy.get('a.sortheader').contains('Name');
 
     clickUserNameLink(name = Cypress.env('local.admin.username')) {
         this.getUserNameLink().contains(name).click();
@@ -51,5 +53,18 @@ class PeoplePage {
             })
     };
 
+
+    verifySortPeopleListArray() {
+        this.getPeopleNameList().then(($els) => {
+            let actualStates = Cypress.$.makeArray($els).map(($el) => $el.innerText.toLowerCase());
+            this.getSortHeaderNameBtn().click();
+            this.getPeopleNameList().then(($els) => {
+                let expectStates = Cypress.$.makeArray($els).map(($el) => $el.innerText.toLowerCase());
+                console.log(expectStates);
+                console.log(actualStates.sort().slice().reverse());
+                expect(expectStates).to.deep.equal(actualStates.sort().slice().reverse());
+                });
+        });
+    }
 }
 export default PeoplePage;

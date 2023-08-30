@@ -4,11 +4,13 @@ import HomePage from "../../pageObjects/HomePage";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import userProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
 import peoplePageData from "../../fixtures/pom_fixtures/peoplePage.json";
+import PeoplePage from "../../pageObjects/PeoplePage";
 
 describe('people', () => {
 
     const homePage = new HomePage();
     const headerAndFooter = new HeaderAndFooter();
+    const peoplePage = new PeoplePage();
     
     it('AT_06.01.02 | People tab is clickable and redirecting to the correct page with the header People and endpoint is /asynchPeople/', () => {
         homePage
@@ -57,5 +59,14 @@ describe('people', () => {
             .getPeopleSideMenuLink()
             .should("be.visible")
             .and("contain.text",peoplePageData.peopleTabText)
+    });
+
+    it('AT_06.03.06 | <People> Changing the sort order of the people`s list', () => {
+        userProfilePageData.userArray.forEach((el) => {
+            cy.createUser(el.name, el.password, el.confirmPassword, el.emailAddress)
+        });
+        homePage
+            .clickPeopleSideMenuLink()
+            .verifySortPeopleListArray()
     });
 });
