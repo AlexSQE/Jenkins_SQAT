@@ -156,6 +156,7 @@ class HomePage {
     getNameMyViewList = () => cy.get('.tabBar a');
     getHeaderTableJobWArrow = () => cy.get('[tooltip^="Weather"] span');
     getMoveFrProjectDrpDwnMenuLink = () => cy.get('.bd li a[href$="/move"]');
+    getLastFailureBtn = () => cy.get('th:nth-child(5)');
 
     selectConfigureDrpDwnLink() {
         this.getConfigOrgFolderDrpDwnLink().click();

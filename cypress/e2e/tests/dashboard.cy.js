@@ -149,6 +149,14 @@ describe('dashboard', () => {
             .getProjectName(newItemPageData.folderName)
             .should ('be.visible')
             });   
+
+    it('AT 20.07.09 Dashboard|Jenkins Table: heads of the table Last Failure should be visible',()=>{
+        cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName);
+        cy.createPipeline(pipelinePageData.pipelineName);
+        homePage
+       .getLastFailureBtn()
+       .should('contain',homePageData.HeadersTableJobs[4]);           
+     });
              
     })
 
