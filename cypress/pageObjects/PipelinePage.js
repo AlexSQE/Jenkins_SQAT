@@ -16,6 +16,7 @@ class PipelinePage {
     getBreadcrumbsPipelineMenuListButton = () => cy.get ('.jenkins-breadcrumbs__list-item > a[href^="/job/"] button');
     getBreadcrumbsPipelineMenuListItems = () => cy.get('.yuimenuitem a[href^="#"]');
     getBreadcrumbsPipelineMenuItemsList = () => cy.get('ul.first-of-type li a span');
+    getBuildNowOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(3)');
 
     clickGoToDashboard() {
         this.getDashboard().click();

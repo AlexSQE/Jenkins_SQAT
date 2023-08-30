@@ -134,4 +134,13 @@ describe('pipelineProject',()=>{
             .trimPipelineChangesMainPanelText()
             .should('eq', pipelineChangesPageData.pipelineChangesPageText);
     });
+
+    it('AT_13.09.01 | Build Now option is visible', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .getBuildNowOptionLink()
+            .should('contain', pipelinePageData.pipelineDropdownItems[1]);       
+    });
 });
