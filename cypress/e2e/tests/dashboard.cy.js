@@ -157,7 +157,15 @@ describe('dashboard', () => {
        .getLastFailureBtn()
        .should('contain',homePageData.HeadersTableJobs[4]);           
      });
-             
-    })
+    
+    it("AT_20.07.10 | Dashboard Verify that Table head Last Success should be visible", () => {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+      homePage
+        .getHeadersTableJobs()
+        .eq(3)
+        .should("contain", homePageData.HeadersTableJobs[3])
+        .and("be.visible");
+    });
+})
 
     
