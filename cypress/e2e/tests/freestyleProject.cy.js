@@ -273,4 +273,18 @@ describe('freestyleProject', () => {
             .getFolderPageTable().should('contain', newItemPageData.freestyleProjectName)
     });
 
+    it('AT_12.18.03 | <Freestyle project> Verify possibility to move project to a folder using Breadcrumbs dropdown menu on the Project page', () => {
+        cy.createFolderProject(folderName)
+
+        homePage
+            .clickFreestyleProjectName(newItemPageData.freestyleProjectName)
+            .clickBreadcrumbsFreestyleProjectDrpDwnBtn()
+            .selectMoveBreadcrumbsFreestyleProjectDrpDwnLink()
+            .selectDestinationFolderName(folderName)
+            .clickMoveBtn()
+            .clickHomePageLink()
+            .clickFolderNameLink(folderName)
+            .getFolderPageTable().should('contain', newItemPageData.freestyleProjectName)
+    });
+
 });

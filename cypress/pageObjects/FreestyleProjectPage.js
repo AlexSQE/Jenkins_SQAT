@@ -40,6 +40,7 @@ class FreestyleProjectPage {
     getBreadcrumbsFreestyleProjectBtn = () => cy.get("#breadcrumbBar a[href*=job]")
     getChangesLink = () => cy.get('.task a[href*=changes]')
     getMoveSideMenuLink = () => cy.get('a[href$="move"]');
+    getBreadcrumbsFreestyleProjectDrpDwnMoveLink = () => cy.get('#breadcrumb-menu li a[href$="move"]');
 
 
     clickConfigureSideMenuLink() {
@@ -182,6 +183,11 @@ class FreestyleProjectPage {
 
     clickMoveSideMenuLink() {
         this.getMoveSideMenuLink().click()
+        return new FreestyleProjectMovePage();
+    };
+
+    selectMoveBreadcrumbsFreestyleProjectDrpDwnLink() {
+        this.getBreadcrumbsFreestyleProjectDrpDwnMoveLink().click();
         return new FreestyleProjectMovePage();
     };
 
