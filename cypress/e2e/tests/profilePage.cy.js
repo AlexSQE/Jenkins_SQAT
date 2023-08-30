@@ -105,4 +105,17 @@ describe('profilePage', () => {
           .getUserDescriptionText()
           .should("have.text", userProfilePageData.user.description);
       });
+
+      it('AT_18.02.05 | Verify that the User is able to edit the description to the Admin profile', () => {
+        cy.createUserDescription(userProfilePageData.description);
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickUserNameLink()
+            .clickEditUserDescriptionBtn(userProfilePageData.editDescriptionBtnText)
+            .typeUserDescriptionInputField(userProfilePageData.editDescription)
+            .clickUserDescriptionSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', userProfilePageData.editDescription);
+    });
+    
 })

@@ -218,9 +218,10 @@ Cypress.Commands.add('openFreestyleProjectConfigurePage', () => {
         .getPageHeader().should("equal", configurePageHeader);
 });
 
-Cypress.Commands.add('createUserDescription', (description) => {
-    headerAndFooter
-        .clickUserNameLink()
+Cypress.Commands.add('createUserDescription', (description, name) => {
+    homePage
+        .clickPeopleSideMenuLink()
+        .clickUserNameLink(name)
         .clickUserDescriptionBtn()
         .typeUserDescriptionInputField(description)
         .clickUserDescriptionSaveBtn();

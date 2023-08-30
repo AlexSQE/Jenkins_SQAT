@@ -10,18 +10,6 @@ describe('people', () => {
     const homePage = new HomePage();
     const headerAndFooter = new HeaderAndFooter();
     
-    it('AT_06.04.05 | Edit User description', () => {
-        cy.createUserDescription(userProfilePageData.description);
-        homePage
-            .clickPeopleSideMenuLink()
-            .clickUserNameLink()
-            .clickEditUserDescriptionBtn(userProfilePageData.editDescriptionBtnText)
-            .typeUserDescriptionInputField(userProfilePageData.editDescription)
-            .clickUserDescriptionSaveBtn()
-            .getUserDescriptionText()
-            .should('have.text', userProfilePageData.editDescription);
-    });
-
     it('AT_06.01.02 | People tab is clickable and redirecting to the correct page with the header People and endpoint is /asynchPeople/', () => {
         homePage
             .clickPeopleSideMenuLink()
