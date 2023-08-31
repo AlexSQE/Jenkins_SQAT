@@ -33,5 +33,6 @@
     ],
     "myViewsEndPoinURL" : "/my-views/view/all/",
 
-    "myViewsPageTitle": "Dashboard [Jenkins]"
+    "myViewsPageTitle": "Dashboard [Jenkins]",
+    "myViewsEditConfigurePageURL": "/configure"
 }

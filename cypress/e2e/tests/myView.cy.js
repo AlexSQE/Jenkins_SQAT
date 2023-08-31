@@ -8,6 +8,7 @@ import myViewData from "../../fixtures/pom_fixtures/myView.json";
 import newViewData from "../../fixtures/pom_fixtures/newView.json";
 import freestyleProjectConfigureData from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json";
 import ViewPage from "../../pageObjects/ViewPage";
+import MyViewEditConfigurePage from "../../pageObjects/MyViewEditConfigurePage";
 
 
 describe('myView', () => {
@@ -243,6 +244,17 @@ describe('myView', () => {
       .clickCreateNewViewButton(newViewData.viewNames.myView)
       .getEditViewSideMenuLink()
       .should('be.visible')
+  });
+
+  it('AT_09.07.01 | Verify Edit View redirects to configure of the created view', () => {
+    cy.createPipeline(newItemPageData.pipelineName);
+    cy.createNewView(newViewData.viewNames.newView, newViewData.viewTypes.myView);
+    homePage
+    .clickMyViewSideMenuLink()
+    .clickViewName(newViewData.viewNames.newView)
+    viewPage
+    .clickEditViewSideMenuLink()
+    .verifyMyViewEditConfigurePageUrl()
   });
   
   // after('delete view', () => {
