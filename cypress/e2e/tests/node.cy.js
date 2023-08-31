@@ -142,6 +142,23 @@ describe('node', () => {
           .should('not.exist')
 })
 
+     it('AT_11.02.06 | <Build Executor Status> Verify that user is able to delete the agent from Nodes page by clicking on the agents name on the side panel', () => {
+        homePage
+          .clickBuildExecutorStatusLink()
+          .clickNewNodeBtn()
+          .typeNodeNameInputField(newNodePageData.nodeName)
+          .selectPermanentAgentRadioBtn()
+          .clickCreateBtn()
+          .clickSaveBtn()
+
+        nodesPage
+          .clickNodeNameSidePanLink(newNodePageData.nodeName)
+          .clickDeleteAgentLink()
+          .clickDeleteBtn()
+          .getNodeName(newNodePageData.nodeName)
+          .should('not.exist')
+})
+
     it('AT_11.01.01 | <Build Executor Status> Create a new Node', () => {
 
         homePage

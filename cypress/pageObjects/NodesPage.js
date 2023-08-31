@@ -73,6 +73,11 @@ class NodesPage {
         this.getNodeNameSidePanDrpDwnLink().click();
         return this;
     }
+
+    clickNodeNameSidePanLink(nodeName) {
+        this.getNodeNameSidePanLink(nodeName).click();
+        return new AgentPage();
+      }
 }
 
 export default NodesPage;
