@@ -4,12 +4,14 @@ import HomePage from "../../pageObjects/HomePage";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import userProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
 import peoplePageData from "../../fixtures/pom_fixtures/peoplePage.json";
+import UserProfilePage from "../../pageObjects/UserProfilePage";
 import PeoplePage from "../../pageObjects/PeoplePage";
 
 describe('people', () => {
 
     const homePage = new HomePage();
     const headerAndFooter = new HeaderAndFooter();
+    const userProfilePage = new UserProfilePage();
     const peoplePage = new PeoplePage();
     
     it('AT_06.01.02 | People tab is clickable and redirecting to the correct page with the header People and endpoint is /asynchPeople/', () => {
@@ -69,4 +71,23 @@ describe('people', () => {
             .clickPeopleSideMenuLink()
             .verifySortPeopleListArray()
     });
+
+    it('AT_06.01.10 | <People> Ensure the User redirect to User Page by clicking User name on People page.', () => {
+        userProfilePageData.userArray.forEach((el) => {
+            cy.createUser(el.name, el.password, el.confirmPassword, el.emailAddress)
+        });        
+        homePage
+            .clickPeopleSideMenuLink()
+            .getPeopleList()
+            .its('length')
+            .then((n) => Cypress._.random(0, n - 1))
+            .then((k) => {
+            cy.get('#people tbody tr td a').eq(k).click();
+            const userName = Cypress.$('#people tbody tr td a').eq(k).text().trim();            
+            cy.url().should('contain', userName.toLowerCase());         
+            userProfilePage
+                .trimUserPageHeaderName()
+                .should('eq', userName);
+            })
+    })
 });

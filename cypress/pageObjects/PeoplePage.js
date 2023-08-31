@@ -12,6 +12,7 @@ class PeoplePage {
     getPeopleTableBody = () => cy.get('#people tbody');
     getPeopleNameList = () => cy.get('table#people td:nth-child(3)');
     getSortHeaderNameBtn = () => cy.get('a.sortheader').contains('Name');
+    getPeopleList = () => cy.get('#people tbody tr td a');
 
     clickUserNameLink(name = Cypress.env('local.admin.username')) {
         this.getUserNameLink().contains(name).click();
