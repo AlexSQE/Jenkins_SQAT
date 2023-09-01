@@ -153,4 +153,15 @@ describe('pipelineProject',()=>{
             .getBuildNowIndicatorWrap()
             .should('be.visible');       
     });
+    
+    it('AT_13.09.03 | The build details are visible', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickBuildNowOptionLink()
+            .clickBuildNowTimeLink()
+            .getBuildNowTimestampInfoText()
+            .should('be.visible');       
+    });
 });

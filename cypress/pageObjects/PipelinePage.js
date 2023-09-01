@@ -2,6 +2,7 @@ import HomePage from "./HomePage";
 import PipelineChangesPage from "./PipelineChangesPage";
 import pipelinePageData from "../fixtures/pom_fixtures/pipelinePage.json";
 import newItemPageData from "../fixtures/pom_fixtures/newItemPage.json";
+import PipelineBuildNowPage from "./PipelineBuildNowPage";
 
 class PipelinePage {
     getPipelinePageHeadline = () => cy.get('#main-panel > h1');
@@ -17,7 +18,8 @@ class PipelinePage {
     getBreadcrumbsPipelineMenuListItems = () => cy.get('.yuimenuitem a[href^="#"]');
     getBreadcrumbsPipelineMenuItemsList = () => cy.get('ul.first-of-type li a span');
     getBuildNowOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(3)');
-    getBuildNowIndicatorWrap = () => cy.get('.build-name-controls');    
+    getBuildNowIndicatorWrap = () => cy.get('.build-name-controls');
+    getBuildNowTimeLink = () => cy.get('div[time]');
 
     clickGoToDashboard() {
         this.getDashboard().click();
@@ -97,6 +99,11 @@ class PipelinePage {
     clickBuildNowOptionLink() {
         this.getBuildNowOptionLink().click();
         return this;
+    };
+
+    clickBuildNowTimeLink() {
+        this.getBuildNowTimeLink().click();
+        return new PipelineBuildNowPage();
     };
 };
 
