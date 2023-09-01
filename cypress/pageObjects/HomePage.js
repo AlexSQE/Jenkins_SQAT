@@ -596,7 +596,7 @@ class HomePage {
         this.getProjectName(name).click();
         return new FreestyleProjectPage();
     }
-
 };
+
 
 export default HomePage;

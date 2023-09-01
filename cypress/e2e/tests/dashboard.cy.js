@@ -175,6 +175,11 @@ describe('dashboard', () => {
             .should("have.css", "cursor", "pointer");
     });
     
+    it('AT_20.11.03| <Dashboard> Jenkins Table: the arrow of dropdown menu is displayed within Folder Project name', () => {
+        cy.createFolderProject(newItemPageData.folderName)
+        homePage
+             .getProjectDrpDwnBtn(newItemPageData.folderName).realHover()
+             .should('be.visible')
 })
 
-    
+    });        
