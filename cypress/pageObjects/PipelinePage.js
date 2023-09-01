@@ -17,6 +17,7 @@ class PipelinePage {
     getBreadcrumbsPipelineMenuListItems = () => cy.get('.yuimenuitem a[href^="#"]');
     getBreadcrumbsPipelineMenuItemsList = () => cy.get('ul.first-of-type li a span');
     getBuildNowOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(3)');
+    getBuildNowIndicatorWrap = () => cy.get('.build-name-controls');    
 
     clickGoToDashboard() {
         this.getDashboard().click();
@@ -91,6 +92,11 @@ class PipelinePage {
     clickChangesPipelineBtn() {
         this.getPipelineMenuList().contains(pipelinePageData.textChanges).click()
         return new PipelineChangesPage()
+    };
+
+    clickBuildNowOptionLink() {
+        this.getBuildNowOptionLink().click();
+        return this;
     };
 };
 
