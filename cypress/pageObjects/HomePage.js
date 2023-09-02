@@ -158,6 +158,7 @@ class HomePage {
     getMoveFrProjectDrpDwnMenuLink = () => cy.get('.bd li a[href$="/move"]');
     getLastFailureBtn = () => cy.get('th:nth-child(5)');
     getLastSuccessBtn = () => cy.get('#projectstatus tr th:nth-child(4) a')
+    getChangesDrpDwnMenu = () => cy.get('.yuimenuitem a[href*=changes]')
 
     selectConfigureDrpDwnLink() {
         this.getConfigOrgFolderDrpDwnLink().click();
@@ -595,6 +596,11 @@ class HomePage {
     clickFreestyleProjectName(name) {
         this.getProjectName(name).click();
         return new FreestyleProjectPage();
+    }
+
+    selectChangesDrpDwnMenu() {
+        this.getChangesDrpDwnMenu().click()
+        return this
     }
 };
 

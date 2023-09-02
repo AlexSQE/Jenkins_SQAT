@@ -287,4 +287,16 @@ describe('freestyleProject', () => {
             .getFolderPageTable().should('contain', newItemPageData.freestyleProjectName)
     });
 
+    it('AT_12.04.02 | <Freestyle project> Verify message "No builds." if do not start to build.', () =>{
+        homePage
+        .clickProjectDrpDwnBtn()
+        .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
+        .selectChangesDrpDwnMenu()
+
+        freestyleProjectPage
+        .checkFullProjectName()
+          .then((actualText) => {
+            expect(actualText).to.equal(freestyleProjectPageData.massegeChanges2)
+          })
+    })
 });
