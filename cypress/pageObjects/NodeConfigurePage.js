@@ -1,5 +1,6 @@
 import BuiltInNodePage from "./BuiltInNodePage";
 import NodeDeletePage from "./NodeDeletePage";
+import ErrorMessagePage from "./ErrorMessagePage";
 
 class NodeConfigurePage {
 
@@ -55,6 +56,11 @@ class NodeConfigurePage {
         this.getDeleteAgentLink().click();
         return new NodeDeletePage();
     }
+
+    clickNodeConfigureSaveBtnAndNavigateErrorPage() {
+        this.getNodeConfigSaveBtn().click();
+        return new ErrorMessagePage();
+    };
 }
 
 export default NodeConfigurePage;

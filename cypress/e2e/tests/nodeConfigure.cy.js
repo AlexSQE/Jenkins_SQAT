@@ -4,10 +4,13 @@ import HomePage from "../../pageObjects/HomePage";
 import NodeConfigurePage from "../../pageObjects/NodeConfigurePage";
 import nodeConfigurePageData from '../../fixtures/pom_fixtures/nodeConfigurePage.json';
 import nodePageData from "../../fixtures/pom_fixtures/nodePage.json";
-// import nodePageData from "../../fixtures/pom_fixtures/nodePage.json" as data;
+import ErrorMessagePage from "../../pageObjects/ErrorMessagePage";
+import errorPageData from "../../fixtures/pom_fixtures/errorPageData.json";
+
 describe('Build Executor Status > Agent (Node) > Configure', () => {
     const homePage = new HomePage();
     const nodeConfigurePage = new NodeConfigurePage();
+    const errorPage = new ErrorMessagePage();
 
     it('AT 11.03.01 | Clicking Gear Icon on NodesPage navigates to the Node Configure page', () => {
         homePage
@@ -111,7 +114,7 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
     });
 
     nodePageData.errorsNumberOfExecutors.forEach((errors, idx) => {
-        it('AT 11.08.04-05 | Number of executors > Error is displayed for negative or decimal input', () => {
+        it(`AT 11.08.${'04' + idx} | Number of executors > Error is displayed for negative or decimal input`, () => {
             const errorMessage=nodePageData.errorsNumberOfExecutors[idx].trim()
             homePage
                 .clickBuildExecutorStatusLink()
@@ -145,5 +148,21 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .clickLabelsField()
             .getNumberOfExecutorsField()
             .should("have.value", nodePageData.valueToCopy);
+    });
+
+    nodePageData.invalidValuesNumberOfExecutorsToSave.forEach((errorChar, idx) => {
+        it(`AT 11.08.0${9 + idx} | Number of executors > User is redirected to Error Page on saving not allowed ${errorChar} input`, () => {
+            homePage
+                .clickBuildExecutorStatusLink()
+                .clickBuiltInNodeGearBtn()
+                .typeValueNumberOfExecutorsIntoField(nodePageData.invalidValuesNumberOfExecutorsToSave[idx])
+                .clickNodeConfigureSaveBtnAndNavigateErrorPage()
+                .getErrorPageHeader()
+                .should('be.visible')
+                .and("have.text", errorPageData.errorPageHeader);
+            errorPage
+                .getErrorPageUrl()
+                .should('include', errorPageData.nodeErrorPageUrl);
+        });
     });
 })

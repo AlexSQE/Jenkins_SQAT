@@ -1,3 +1,5 @@
 {
-    "errorMessage" : "A problem occurred while processing the request."
+    "errorMessage" : "A problem occurred while processing the request.",
+    "errorPageHeader" : "Error",
+    "nodeErrorPageUrl" : "/manage/computer/(built-in)/configSubmit"
 }
