@@ -20,6 +20,7 @@ class PipelinePage {
     getBuildNowOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(3)');
     getBuildNowIndicatorWrap = () => cy.get('.build-name-controls');
     getBuildNowTimeLink = () => cy.get('div[time]');
+    getBreadcrumbsPipelineProjectMenu = () => cy.get('#breadcrumb-menu');
 
     clickGoToDashboard() {
         this.getDashboard().click();
@@ -104,6 +105,11 @@ class PipelinePage {
     clickBuildNowTimeLink() {
         this.getBuildNowTimeLink().click();
         return new PipelineBuildNowPage();
+    };
+
+    clickBreadcrumbsPipelineChangesBtn() {
+        this.getBreadcrumbsPipelineProjectMenu().contains(pipelinePageData.textChanges).click()
+        return new PipelineChangesPage()    
     };
 };
 

@@ -164,4 +164,15 @@ describe('pipelineProject',()=>{
             .getBuildNowTimestampInfoText()
             .should('be.visible');       
     });
+
+    it('AT_13.12.02 | View pipeline project changes using the dropdown menu from breadcrumb trail', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+        .clickPipelineProjectName(newItemPageData.pipelineName)
+        .clickProjectBreadcrumbsMenu()
+        .clickBreadcrumbsPipelineChangesBtn()
+        .trimPipelineChangesMainPanelText()
+        .should('eq', pipelineChangesPageData.pipelineChangesPageText);
+    });
 });
