@@ -125,8 +125,7 @@ describe('profilePage', () => {
             .clickUserDescriptionSaveBtn()
             .getUserDescriptionText()
             .should('have.text', userProfilePageData.editDescription);
-    });
-
+    });  
 
     it('AT_18.02.06 | Verify that the User is able to see [Plain text] Preview option during printing the desciption', () => {
         homePage
@@ -137,5 +136,14 @@ describe('profilePage', () => {
             .getPreviewLink()            
             .should('have.text', 'Preview');
     });
-    
+
+    it('AT_18.01.03 | Profile Page | Verify Profile Name on the page', () => {
+        headerAndFooter
+        .getUserNameOnThePage().then((userName) => {
+            headerAndFooter
+            .clickUserNameLink()          
+            .trimUserPageHeaderName()
+            .should('eq', userName)
+        })        
+    });    
 })

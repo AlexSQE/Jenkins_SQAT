@@ -214,8 +214,11 @@ class HeaderAndFooter {
     checkNotificationContainertVisible() {
         this.getNotificationContainer().should('have.class', 'visible');;
         return this;
-    };    
-        
+    };
+    
+    getUserNameOnThePage() {
+        return this.getUserNameLink().invoke("text");
+      }        
 }
 
 export default HeaderAndFooter;
