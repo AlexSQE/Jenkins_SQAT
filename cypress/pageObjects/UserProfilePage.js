@@ -17,7 +17,8 @@ class UserProfilePage {
     getStatusBtn = () => cy.get('#tasks>:nth-child(2)');
     getUserDescriptionText = () =>  cy.get('#description div:not(.jenkins-buttons-row)').not("div[class]");
     getBuildsSubMenuLink = () => cy.get('a[href$="/builds"].task-link');
-
+    getPreviewLink = () => cy.get('#description a.textarea-show-preview');
+    getPreviewBox = () => cy.get('#description .textarea-preview-container');
 
     clickOnBuildsSubMenuLink() {
         this.getBuildsSubMenuLink().click();
@@ -76,6 +77,11 @@ class UserProfilePage {
 
     clickEditUserDescriptionBtn(btnName){
         this.getUserDescriptionBtn().contains(btnName).click();
+        return this;
+    }
+
+    verifyPreviewBox(){
+        this.getPreviewBox().should('contain.text', '[Plain text]');
         return this;
     }
 

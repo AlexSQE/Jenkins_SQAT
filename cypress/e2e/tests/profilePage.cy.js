@@ -27,7 +27,7 @@ describe('profilePage', () => {
         .should('contain', "Builds for " + Cypress.env("local.admin.username").toLowerCase());
     });
 
-    it('AT_18.02.001 | <Profile Page> Verify that the User is able to edit the description to the Created User profile', () => {
+    it('AT_18.02.01 | <Profile Page> Verify that the User is able to edit the description to the Created User profile', () => {
         cy.createUser(
             userProfilePageData.user.name,
             userProfilePageData.user.password,
@@ -125,6 +125,17 @@ describe('profilePage', () => {
             .clickUserDescriptionSaveBtn()
             .getUserDescriptionText()
             .should('have.text', userProfilePageData.editDescription);
+    });
+
+
+    it('AT_18.02.06 | Verify that the User is able to see [Plain text] Preview option during printing the desciption', () => {
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickUserNameLink()
+            .clickUserDescriptionBtn()
+            .verifyPreviewBox()
+            .getPreviewLink()            
+            .should('have.text', 'Preview');
     });
     
 })
