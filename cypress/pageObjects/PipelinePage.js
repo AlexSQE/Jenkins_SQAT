@@ -3,6 +3,7 @@ import PipelineChangesPage from "./PipelineChangesPage";
 import pipelinePageData from "../fixtures/pom_fixtures/pipelinePage.json";
 import newItemPageData from "../fixtures/pom_fixtures/newItemPage.json";
 import PipelineBuildNowPage from "./PipelineBuildNowPage";
+import PipelineSyntaxPage from "./PipelineSyntaxPage";
 
 class PipelinePage {
     getPipelinePageHeadline = () => cy.get('#main-panel > h1');
@@ -21,6 +22,7 @@ class PipelinePage {
     getBuildNowIndicatorWrap = () => cy.get('.build-name-controls');
     getBuildNowTimeLink = () => cy.get('div[time]');
     getBreadcrumbsPipelineProjectMenu = () => cy.get('#breadcrumb-menu');
+    getPipelineSyntaxOptionLink = () => cy.get('#side-panel>:nth-child(1)>:last-child');
 
     clickGoToDashboard() {
         this.getDashboard().click();
@@ -110,6 +112,11 @@ class PipelinePage {
     clickBreadcrumbsPipelineChangesBtn() {
         this.getBreadcrumbsPipelineProjectMenu().contains(pipelinePageData.textChanges).click()
         return new PipelineChangesPage()    
+    };
+
+    clickPipelineSyntaxOptionLink() {
+        this.getPipelineSyntaxOptionLink().click();
+        return new PipelineSyntaxPage();
     };
 };
 

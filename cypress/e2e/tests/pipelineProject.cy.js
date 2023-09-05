@@ -7,6 +7,7 @@ import pipelineConfigurePageData from "../../fixtures/pom_fixtures/pipelineConfi
 import pipelinePageData from "../../fixtures/pom_fixtures/pipelinePage.json";
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 import pipelineChangesPageData from "../../fixtures/pom_fixtures/pipelineChangesPage.json";
+import piplineSyntaxPageData from '../../fixtures/pom_fixtures/piplineSyntaxPage.json'
 
 describe('pipelineProject',()=>{
     const homePage= new HomePage()
@@ -174,5 +175,16 @@ describe('pipelineProject',()=>{
         .clickBreadcrumbsPipelineChangesBtn()
         .trimPipelineChangesMainPanelText()
         .should('eq', pipelineChangesPageData.pipelineChangesPageText);
+    });
+
+    it('AT_13.10.04 | Verify clicking on the Declarative Online Documentation option redirects to the Jenkins website', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+        .clickPipelineProjectName(newItemPageData.pipelineName)
+        .clickPipelineSyntaxOptionLink()
+        .clickDeclarativeOnlineDocumentationPageLink()
+        .getDeclarativeOnlineDocumentationPageUrl()
+        .should('contain', piplineSyntaxPageData.declarativeOnlineDocumentationURL)
     });
 });
