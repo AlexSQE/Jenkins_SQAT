@@ -18,6 +18,7 @@ import ResultSearchBoxPage from "../../pageObjects/ResultSearchBoxPage";
 import myViewData from "../../fixtures/pom_fixtures/myView.json";
 import UserCredentialsPage from "../../pageObjects/UserCredentialsPage";
 import MyViewPage from "../../pageObjects/MyViewPage";
+import userCredentialsPageData  from '../../fixtures/pom_fixtures/userCredentialsPage.json';
 
 describe('headerAndFooter', () => {
 
@@ -396,6 +397,15 @@ describe('headerAndFooter', () => {
         headerAndFooter
             .getSecurityBtn()
             .should('be.visible');
+    });
+
+    it('AT_01.07_009 | Verify Redirection to Credential Page from User Dropdown Menu', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserCredentialsMenu()
+            .checkUrlCredentialsPage()
+            .getCredentialsHeader()
+            .should('have.text', userCredentialsPageData.credentialsPageHeader);                           
     });
 
 })
