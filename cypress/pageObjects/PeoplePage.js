@@ -67,5 +67,15 @@ class PeoplePage {
                 });
         });
     }
+
+    getRandomUserFromList() {
+        this.getPeopleList().as("usersList")
+            .its('length')
+            .then((n) => Cypress._.random(0, n - 1))
+            .then((k) => {
+                cy.get("@usersList").eq(k).as("randomUser")
+            })
+        return cy.get("@randomUser");
+    }
 }
 export default PeoplePage;
