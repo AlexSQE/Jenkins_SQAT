@@ -158,4 +158,17 @@ describe('profilePage', () => {
             .should('have.text', userConfigurePageData.userDescription)
     });
 
+    it('AT_18.04.04 | Verify that the User is be able to edit user description', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserConfigureMenu()
+            .typeUserConfigDescription(userConfigurePageData.userDescription)
+            .clickUserConfigSaveBtn()
+            .clickUserDescriptionBtn()
+            .typeUserDescriptionInputField(userProfilePageData.editDescription)
+            .clickUserDescriptionSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', userProfilePageData.editDescription);
+    });
+
 })

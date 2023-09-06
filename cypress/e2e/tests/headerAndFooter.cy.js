@@ -140,19 +140,6 @@ describe('headerAndFooter', () => {
             .should('contain', userBuildsPageData.heading + Cypress.env('local.admin.username'));
     });
    
-    it('AT_01.05_014 | Header> Verify User can change info about the user on the “Configure” page.', () => {
-        headerAndFooter
-            .clickUserDropDownBtn()
-            .selectUserConfigureMenu()
-            .typeUserConfigDescription(userConfigurePageData.userDescription)
-            .clickUserConfigSaveBtn()
-            .clickUserDescriptionBtn()
-            .typeUserDescriptionInputField(UserProfilePageData.editDescription)
-            .clickUserDescriptionSaveBtn()
-            .getUserDescriptionText()
-            .should('have.text', UserProfilePageData.editDescription);
-    });
-
     it('AT_01.03.04 | The users name should be visible in the header', () => {
         headerAndFooter
             .getCurrentUserName()
