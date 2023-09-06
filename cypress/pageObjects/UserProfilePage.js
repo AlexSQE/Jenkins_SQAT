@@ -19,6 +19,7 @@ class UserProfilePage {
     getBuildsSubMenuLink = () => cy.get('a[href$="/builds"].task-link');
     getPreviewLink = () => cy.get('#description a.textarea-show-preview');
     getPreviewBox = () => cy.get('#description .textarea-preview-container');
+    getSideMenuItems = () => cy.get('#tasks .task-link-text');
 
     clickOnBuildsSubMenuLink() {
         this.getBuildsSubMenuLink().click();
@@ -83,6 +84,13 @@ class UserProfilePage {
     verifyPreviewBox(){
         this.getPreviewBox().should('contain.text', '[Plain text]');
         return this;
+    }
+
+    getSideMenuItemsNames() {
+        return this.getSideMenuItems().then($tasks =>
+            $tasks
+                .toArray()
+                .map($task => $task.innerHTML))
     }
 
 }

@@ -171,4 +171,11 @@ describe('profilePage', () => {
             .should('have.text', userProfilePageData.editDescription);
     });
 
+    it('AT_18.01.06 | Left side bar contains 6 elements( People, Status, Builds, Configure, MyViews, Credentials) in Admin Profile page', () => {
+        headerAndFooter
+            .clickUserNameLink()
+            .getSideMenuItemsNames()
+            .should("have.length", userConfigurePageData.SidePanelTasks.amountTasks)
+            .and("deep.equal", userConfigurePageData.SidePanelTasks.Names)
+    })
 })
