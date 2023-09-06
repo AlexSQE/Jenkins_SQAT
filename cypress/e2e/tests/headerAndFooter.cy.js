@@ -99,16 +99,6 @@ describe('headerAndFooter', () => {
             .should('eq', `http://localhost:${Cypress.env('local.port')}/`);
      });
     
-    it('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
-        headerAndFooter
-            .clickUserDropDownBtn()
-            .selectUserConfigureMenu()
-            .typeUserConfigDescription(userConfigurePageData.userDescription)
-            .clickUserConfigSaveBtn()
-            .getUserDescriptionText()
-            .should('have.text', userConfigurePageData.userDescription)
-    });
-
     it('AT_01.03_030 Verify User Dropdown menu has links with specifiс endings.', () => {
         headerAndFooter
             .clickUserDropDownBtn()

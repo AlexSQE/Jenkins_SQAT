@@ -7,6 +7,7 @@ import UserProfilePage from "../../pageObjects/UserProfilePage";
 import userProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
 import UserBuildsPage from "../../pageObjects/UserBuildsPage";
 import HomePage from "../../pageObjects/HomePage";
+import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
 
 describe('profilePage', () => {
 
@@ -145,5 +146,16 @@ describe('profilePage', () => {
             .trimUserPageHeaderName()
             .should('eq', userName)
         })        
-    });    
+    });
+    
+    it('AT_18.04.03 | Verify User is be able to add user description', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserConfigureMenu()
+            .typeUserConfigDescription(userConfigurePageData.userDescription)
+            .clickUserConfigSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', userConfigurePageData.userDescription)
+    });
+
 })
