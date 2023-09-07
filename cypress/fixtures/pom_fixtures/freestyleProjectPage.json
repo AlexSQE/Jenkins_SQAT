@@ -11,6 +11,7 @@
     "changeNameBtnEditDescription": "Edit description",
     "messageChanges": "No changes in any of the builds.",
     "massegeChanges2": "No builds.",
+    "deleteConfirmationWindowMessage": "Delete the Project ‘FreestyleProjectJob’?",
 
   "sidePanel":[
         "Status",
@@ -39,5 +40,5 @@
         "buildsNumbers":{
             "build_1": "#1",
             "build_2": "#2"
-        }
+        } 
 }

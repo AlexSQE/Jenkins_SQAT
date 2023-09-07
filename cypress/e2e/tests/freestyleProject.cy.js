@@ -299,4 +299,14 @@ describe('freestyleProject', () => {
             expect(actualText).to.equal(freestyleProjectPageData.massegeChanges2)
           })
     })
+
+    it('AT_12.02.03 | <Freestyle project> Verify that pop-up dialog window appears while deleting freestyle project', () => {
+        homePage
+         .clickFreestyleProjectName(newItemPageData.freestyleProjectName)
+         .clickDeleteSideMenuLink()
+         
+         cy.on('window:confirm', (str) => {
+            expect(str).to.equal(freestyleProjectPageData.deleteConfirmationWindowMessage)
+         })
+    })
 });
