@@ -19,6 +19,7 @@ class UserProfilePage {
     getBuildsSubMenuLink = () => cy.get('a[href$="/builds"].task-link');
     getPreviewLink = () => cy.get('#description a.textarea-show-preview');
     getPreviewBox = () => cy.get('#description .textarea-preview-container');
+    getUserIcon = () => cy.get("span[class='icon-lg']");
     getSideMenuItems = () => cy.get('#tasks .task-link-text');
 
     clickOnBuildsSubMenuLink() {

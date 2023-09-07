@@ -171,6 +171,13 @@ describe('profilePage', () => {
             .should('have.text', userProfilePageData.editDescription);
     });
 
+    it('AT_18.01.02 | Profile Page | Verify Profile Icon on the page', () => {
+        headerAndFooter
+            .clickUserNameLink()
+            .getUserIcon()
+            .should("be.visible")
+    })
+
     it('AT_18.01.06 | Left side bar contains 6 elements( People, Status, Builds, Configure, MyViews, Credentials) in Admin Profile page', () => {
         headerAndFooter
             .clickUserNameLink()
