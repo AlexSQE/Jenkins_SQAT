@@ -8,6 +8,7 @@ import pipelinePageData from "../../fixtures/pom_fixtures/pipelinePage.json";
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 import pipelineChangesPageData from "../../fixtures/pom_fixtures/pipelineChangesPage.json";
 import piplineSyntaxPageData from '../../fixtures/pom_fixtures/piplineSyntaxPage.json'
+import pipelineDeclarativeDirectiveGeneratorPageData from "../../fixtures/pom_fixtures/pipelineDeclarativeDirectiveGeneratorPage.json";
 
 describe('pipelineProject',()=>{
     const homePage= new HomePage()
@@ -186,5 +187,20 @@ describe('pipelineProject',()=>{
         .clickDeclarativeOnlineDocumentationPageLink()
         .getDeclarativeOnlineDocumentationPageUrl()
         .should('contain', piplineSyntaxPageData.declarativeOnlineDocumentationURL)
+    });
+
+    it('AT_13.10.03 | Verify Declarative Directive can be generated', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+        .clickPipelineProjectName(newItemPageData.pipelineName)
+        .clickPipelineSyntaxOptionLink()
+        .clickDeclarativeDirectiveGeneratorOptionLink()
+        .verifyDeclarativeDirectiveTextAreaIsEmpty()
+        .selectSampleDirectiveOption()
+        .selectAgentOption()
+        .clickGenerateDeclarativeDirectiveBtn()
+        .getGeneratedDeclarativeDirectiveTextArea()
+        .should('not.have.value', pipelineDeclarativeDirectiveGeneratorPageData.generatedDeclarativeDirectiveValue)
     });
 });
