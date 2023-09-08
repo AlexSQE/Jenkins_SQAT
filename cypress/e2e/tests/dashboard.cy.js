@@ -149,6 +149,14 @@ describe('dashboard', () => {
             .getProjectName(newItemPageData.folderName)
             .should ('be.visible')
             });   
+             
+    it('AT_20.07.08 | <Dashboard> Jenkins Table: heads of the table Last Duration should be visible', () => {
+        cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+        homePage
+            .getLastDuration()
+            .should('be.visible')
+            .and('have.text', 'Last Duration')
+            })
 
     it('AT 20.07.09 Dashboard|Jenkins Table: heads of the table Last Failure should be visible',()=>{
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName);
@@ -180,6 +188,6 @@ describe('dashboard', () => {
         homePage
              .getProjectDrpDwnBtn(newItemPageData.folderName).realHover()
              .should('be.visible')
-})
+    });
 
-    });        
+ })        

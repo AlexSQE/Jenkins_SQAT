@@ -154,6 +154,7 @@ class HomePage {
     getStatusPipelineIcon = (projectName) => cy.get(`#job_${projectName} svg[title="Not built"]`);
     getStatusFreestyleProjectIcon = (projectName) => cy.get(`#job_${projectName} svg[title="Not built"]`);
     getNameMyViewList = () => cy.get('.tabBar a');
+    getLastDuration = () => cy.get('th:nth-child(6) a:nth-child(1)');
     getHeaderTableJobWArrow = () => cy.get('[tooltip^="Weather"] span');
     getMoveFrProjectDrpDwnMenuLink = () => cy.get('.bd li a[href$="/move"]');
     getLastFailureBtn = () => cy.get('th:nth-child(5)');
