@@ -9,6 +9,7 @@ import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 import pipelineChangesPageData from "../../fixtures/pom_fixtures/pipelineChangesPage.json";
 import piplineSyntaxPageData from '../../fixtures/pom_fixtures/piplineSyntaxPage.json'
 import pipelineDeclarativeDirectiveGeneratorPageData from "../../fixtures/pom_fixtures/pipelineDeclarativeDirectiveGeneratorPage.json";
+import pipelineStepsReferenceOverviewPageData from "../../fixtures/pom_fixtures/pipelineStepsReferenceOverviewPage.json"
 
 describe('pipelineProject',()=>{
     const homePage= new HomePage()
@@ -202,5 +203,17 @@ describe('pipelineProject',()=>{
         .clickGenerateDeclarativeDirectiveBtn()
         .getGeneratedDeclarativeDirectiveTextArea()
         .should('not.have.value', pipelineDeclarativeDirectiveGeneratorPageData.generatedDeclarativeDirectiveValue)
+    });
+
+    it('AT_13.10.05 | Verify clicking on the Steps Reference option redirects to the Steps Reference Overview page', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+        .clickPipelineProjectName(newItemPageData.pipelineName)
+        .clickPipelineSyntaxOptionLink()
+        .clickStepsReferenceOptionLink()
+        .verifyStepsReferenceOverviewPageHeader()
+        .getStepsReferenceOverviewPageUrl()
+        .should('contain', pipelineStepsReferenceOverviewPageData.stepsReferenceOverviewPageUrl )
     });
 });
