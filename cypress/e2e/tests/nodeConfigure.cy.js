@@ -102,8 +102,7 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .should("have.value", nodePageData.mixedValueNumberOfExecutors);
     });
 
-    it('AT 11.08.03 | Number of executors > Verify that the default value is set to 0 (zero)' +
-        'of digits, spaces, letters, special symbols', () => {
+    it('AT 11.08.03 | Number of executors > Verify that the default value is set to 0 (zero)', () => {
         homePage
             .clickBuildExecutorStatusLink()
             .clickBuiltInNodeGearBtn()
@@ -164,5 +163,13 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
                 .getErrorPageUrl()
                 .should('include', errorPageData.nodeErrorPageUrl);
         });
+    });
+
+    it('AT 11.09.01 | Labels > The Field is empty by default', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .getLabelsField()
+            .should("have.value", "");
     });
 })
