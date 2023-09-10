@@ -15,5 +15,6 @@
     "Not a number"
   ],
   "errorEmptyNumberOfExecutors" : "Not a number",
-  "valueToCopy": "123"
+  "valueToCopy": "123",
+  "validSingleLabel": "Label1"
 }

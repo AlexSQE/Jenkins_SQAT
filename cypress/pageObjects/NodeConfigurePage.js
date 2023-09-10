@@ -52,6 +52,16 @@ class NodeConfigurePage {
         return this;
     }
 
+    typeValueIntoLabelsField(text) {
+        this.getLabelsField().clear().type(text);
+        return this;
+    }
+
+    clearLabelsField() {
+        this.getLabelsField().clear();
+        return this;
+    }
+
     clickDeleteAgentLink() {
         this.getDeleteAgentLink().click();
         return new NodeDeletePage();

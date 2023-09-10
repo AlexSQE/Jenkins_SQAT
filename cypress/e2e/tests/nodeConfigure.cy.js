@@ -6,6 +6,7 @@ import nodeConfigurePageData from '../../fixtures/pom_fixtures/nodeConfigurePage
 import nodePageData from "../../fixtures/pom_fixtures/nodePage.json";
 import ErrorMessagePage from "../../pageObjects/ErrorMessagePage";
 import errorPageData from "../../fixtures/pom_fixtures/errorPageData.json";
+import newNodePageData from "../../fixtures/pom_fixtures/newNodePageData.json";
 
 describe('Build Executor Status > Agent (Node) > Configure', () => {
     const homePage = new HomePage();
@@ -171,5 +172,23 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .clickBuiltInNodeGearBtn()
             .getLabelsField()
             .should("have.value", "");
+    });
+
+    it('AT 11.09.02 | Labels > User is able to add a single-word label', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .typeValueIntoLabelsField(nodePageData.validSingleLabel)
+            .clickNodeConfigureSaveBtn()
+            .getLabelLink(nodePageData.validSingleLabel)
+            .should("have.text", nodePageData.validSingleLabel);
+    });
+
+    after('Labels > Clear labels', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .clearLabelsField()
+            .clickNodeConfigureSaveBtn()
     });
 })
