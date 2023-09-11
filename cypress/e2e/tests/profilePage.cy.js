@@ -175,5 +175,19 @@ describe('profilePage', () => {
             .getSideMenuItemsNames()
             .should("have.length", userConfigurePageData.SidePanelTasks.amountTasks)
             .and("deep.equal", userConfigurePageData.SidePanelTasks.Names)
-    })
+    });
+
+    it('AT_18.04.05 Header>Verify user can visit Configure Page and delete user information', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserConfigureMenu()
+            .typeUserConfigDescription(userConfigurePageData.userDescription)
+            .clickUserConfigSaveBtn()
+            .clickUserDescriptionBtn()
+            .clearUserStatusDescription()
+            .clickUserDescriptionSaveBtn()
+            .getUserDescriptionBtn()
+            .should('contain', userProfilePageData.userAddDescriptionBtn);
+    });
+
 })

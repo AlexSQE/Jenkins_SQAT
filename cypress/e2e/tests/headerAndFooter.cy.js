@@ -11,7 +11,6 @@ import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage
 import HomePage from "../../pageObjects/HomePage";
 import searchBoxDocumentationPageData from "../../fixtures/pom_fixtures/searchBoxDocumentationPage.json";
 import userBuildsPageData from "../../fixtures/pom_fixtures/userBuildsPage.json";
-import UserProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
 import restApiDocPageData from "..//..//fixtures/pom_fixtures/restApiDocPage.json";
 import SystemLogPage from "../../pageObjects/SystemLogPage";
 import ResultSearchBoxPage from "../../pageObjects/ResultSearchBoxPage";
@@ -144,19 +143,6 @@ describe('headerAndFooter', () => {
         headerAndFooter
             .getCurrentUserName()
             .should('be.visible');
-    });
-
-    it('AT_01.05_015 Header>Verify user can visit Configure Page and delete user information', () => {
-        headerAndFooter
-            .clickUserDropDownBtn()
-            .selectUserConfigureMenu()
-            .typeUserConfigDescription(userConfigurePageData.userDescription)
-            .clickUserConfigSaveBtn()
-            .clickUserDescriptionBtn()
-            .clearUserStatusDescription()
-            .clickUserDescriptionSaveBtn()
-            .getUserDescriptionBtn()
-            .should('contain', UserProfilePageData.userAddDescriptionBtn);
     });
 
     it.skip('AT 03.01.03 <Footer>Verify user can open Link The documentation in REST API and can see 10 modules per page',()=>{
