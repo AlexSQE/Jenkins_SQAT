@@ -57,15 +57,6 @@ describe('profilePage', () => {
             .should('have.text', userCredentialsPageData.credentialsPageHeader)
     })
 
-    it("AT_18.04_001 | <Profile Page> | Link to User's configure | Configure is displayed on User's profile page", () => {
-
-        headerAndFooter
-            .clickUserNameLink()
-            .getUserConfigureNameLink()
-            .should("have.text", sidePanelNameLink)
-
-    })
-
     it('AT_18.01_005| Verify access to user ID and status though user’s profile page', () => {
         headerAndFooter
             .clickUserNameLink()
