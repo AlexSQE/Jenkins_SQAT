@@ -216,4 +216,15 @@ describe('pipelineProject',()=>{
         .getStepsReferenceOverviewPageUrl()
         .should('contain', pipelineStepsReferenceOverviewPageData.stepsReferenceOverviewPageUrl )
     });
+
+    it('AT_13.10.07 | Verify clicking on the Online Documentation option redirects to the Jenkins website', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+        .clickPipelineProjectName(newItemPageData.pipelineName)
+        .clickPipelineSyntaxOptionLink()
+        .clickOnlineDocumentationOptionLink()
+        .getOnlineDocumentationPageUrl()
+        .should('contain', piplineSyntaxPageData.onlineDocumentationURL)
+    });
 });

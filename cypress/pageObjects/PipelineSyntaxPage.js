@@ -6,6 +6,8 @@ class PipelineSyntaxPage {
     getDeclarativeOnlineDocumentationPageUrl = () =>cy.url();
     getDeclarativeDirectiveGeneratorOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(3)');
     getStepsReferenceOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(5)');
+    getOnlineDocumentationOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(7)');
+    getOnlineDocumentationPageUrl = () =>cy.url();
 
     clickDeclarativeOnlineDocumentationPageLink() {
         this.getDeclarativeOnlineDocumentationOptionLink().click();
@@ -20,6 +22,11 @@ class PipelineSyntaxPage {
     clickStepsReferenceOptionLink() {
         this.getStepsReferenceOptionLink().click();
         return new PipelineStepsReferenceOverviewPage();
+    }
+
+    clickOnlineDocumentationOptionLink() {
+        this.getOnlineDocumentationOptionLink().click();
+        return this;
     }
 };
 
