@@ -43,7 +43,9 @@ class HeaderAndFooter {
     getSecurityBtn = () => cy.get('#visible-sec-am-button');
     getSecurityNotificationPopUp = () => cy.get('#visible-sec-am-container');
     getSecurityNotificationList = () => cy.get('#visible-sec-am-list');
-    
+    getSecurityNotificationListItems = () => cy.get('#visible-sec-am-list li.am-message'); 
+    getSecurityNotificationCounter = () => cy.get('#visible-sec-am-insertion .am-monitor__count');
+
     clickJenkinsVersionLink() {
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
         return new JenkinsPage;
@@ -218,7 +220,13 @@ class HeaderAndFooter {
     
     getUserNameOnThePage() {
         return this.getUserNameLink().invoke("text");
-      }        
+    };
+    
+    clickSecurityNotificationPopUpBtn() {
+        this.getSecurityNotificationPopUp().click();        
+        return this;
+    };
+    
 }
 
 export default HeaderAndFooter;

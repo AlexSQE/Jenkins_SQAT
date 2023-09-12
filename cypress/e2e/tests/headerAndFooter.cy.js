@@ -371,4 +371,15 @@ describe('headerAndFooter', () => {
             .should('have.text', userCredentialsPageData.credentialsPageHeader);                           
     });
 
-})
+    it('AT_01.11.01 | Verify that Security Popup Window has amount of active security notifications equal to notification counter', () => {
+        headerAndFooter
+            .getSecurityNotificationCounter().then(($btn) => {
+                const counter = $btn.text();
+                headerAndFooter
+                    .clickSecurityNotificationPopUpBtn()
+                    .getSecurityNotificationListItems()
+                    .should('have.length', counter)
+            });            
+    });
+
+});
