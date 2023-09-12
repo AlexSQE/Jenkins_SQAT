@@ -382,4 +382,11 @@ describe('headerAndFooter', () => {
             });            
     });
 
+    it("AT_01.11.02 | Verify that the User can see 'Manage Jenkins' link on Security Popup Window", () => {
+        headerAndFooter
+            .clickSecurityNotificationPopUpBtn()
+            .getManageJenkinsLink()
+            .should('be.visible');         
+    });
+
 });

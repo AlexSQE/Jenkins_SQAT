@@ -45,7 +45,8 @@ class HeaderAndFooter {
     getSecurityNotificationList = () => cy.get('#visible-sec-am-list');
     getSecurityNotificationListItems = () => cy.get('#visible-sec-am-list li.am-message'); 
     getSecurityNotificationCounter = () => cy.get('#visible-sec-am-insertion .am-monitor__count');
-
+    getManageJenkinsLink = () => cy.get('#visible-sec-am-list a[href="/manage"]');
+    
     clickJenkinsVersionLink() {
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
         return new JenkinsPage;
