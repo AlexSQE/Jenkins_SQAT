@@ -7,6 +7,8 @@ import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import BuildHistoryPage from "../../pageObjects/BuildHistoryPage"
 import BuildPage from "../../pageObjects/BuildPage";
 import editBuildInformationPageData from "../../fixtures/pom_fixtures/editBuildInformationPage.json";
+import buildСhangesPageData from "../../fixtures/pom_fixtures/buildСhangesPageData.json"
+import BuildChangesPage from "../../pageObjects/BuildChangesPage";
 
 describe('buildHistory', () => {
 
@@ -14,6 +16,7 @@ describe('buildHistory', () => {
     const headerandFooter = new HeaderAndFooter();
     const buildHistoryPage = new BuildHistoryPage()
     const buildPage = new BuildPage();
+    const buildChangesPage = new BuildChangesPage();
     
     it('AT_07.01_005 | Build History > Verify user can see date and time of build creating in build history calendar', function() {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName);
@@ -234,4 +237,20 @@ describe('buildHistory', () => {
             .getBuildName()
             .should('contain', editBuildInformationPageData.newDisplayName);
     });
+
+    it('AT_07.07.01 | <Build History>Check Build Status', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+
+        homePage
+        .clickOnScheduleBuildBtn() 
+        .clickBuildHistoryLink()
+        .clickBuildNameBtn()
+        .selectChangesLink()
+        .getPageHeader()
+        .should('be.visible')
+       
+        buildChangesPage
+        .verifyBuildChangesPageUrl(buildСhangesPageData.buildChangesPageUrl)
+    });
+
 });

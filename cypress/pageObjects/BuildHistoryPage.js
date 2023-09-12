@@ -2,6 +2,7 @@ import BuildPage from "./BuildPage";
 import IconLegends from "./IconLegendsPage.js";
 import EditBuildInformationPage from "./EditBuildInformationPage";
 import BuildDeletionPage from "./BuildDeletionPage";
+import BuildChangesPage from "./BuildChangesPage"
 
 class BuildHistoryPage {
     getBuildHistoryPageUrl = () => cy.url();
@@ -24,6 +25,7 @@ class BuildHistoryPage {
     getProjectStatusTableTimeSinceElements = () => cy.get('table#projectStatus tbody tr td:nth-child(3)')
     getBuilHistoryTimeLine = () => cy.get('#resizeContainer');
     getDeleteBuildLink = () => cy.get('#breadcrumb-menu a[href$="/confirmDelete"] span');
+    getChangesDrpDwnLink = () => cy.get('.bd a[href*="changes"]');
 
     clickBuildInBuildHistoryCalendar() {
         this.getBuildInBuildHistoryCalendar().click();
@@ -120,6 +122,11 @@ class BuildHistoryPage {
     selectDeleteBuildLink() {
         this.getDeleteBuildLink().click()
         return new BuildDeletionPage();
+    }
+
+    selectChangesLink() {
+        this.getChangesDrpDwnLink().click()
+        return new BuildChangesPage();
     }
 }
 
