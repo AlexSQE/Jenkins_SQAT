@@ -18,6 +18,7 @@ import myViewData from "../../fixtures/pom_fixtures/myView.json";
 import UserCredentialsPage from "../../pageObjects/UserCredentialsPage";
 import MyViewPage from "../../pageObjects/MyViewPage";
 import userCredentialsPageData  from '../../fixtures/pom_fixtures/userCredentialsPage.json';
+import manageJenkinsPageData from '../../fixtures/pom_fixtures/manageJenkinsPage.json';
 
 describe('headerAndFooter', () => {
 
@@ -387,6 +388,15 @@ describe('headerAndFooter', () => {
             .clickSecurityNotificationPopUpBtn()
             .getManageJenkinsLink()
             .should('be.visible');         
+    });
+
+    it("AT_01.11.03 | Verify that the User can  redirect to Manage Jenkins Page (.../manage/) after clicking on 'Manage Jenkins' link.", () => {
+        headerAndFooter
+            .clickSecurityNotificationPopUpBtn()
+            .clickManageJenkinsLink()
+            .verifyManageJenkinsPageUrl()
+            .getManageJenkinsHeader()
+            .should('have.text', manageJenkinsPageData.header);         
     });
 
 });

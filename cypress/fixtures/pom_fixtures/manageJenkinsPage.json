@@ -1,3 +1,4 @@
 {
-    "manageJenkinsEndPoinURL" : "/manage/"
+    "manageJenkinsEndPoinURL" : "/manage/",
+    "header" : "Manage Jenkins"
 }

@@ -12,6 +12,7 @@ import searchBoxDocumentationPage from "./SearchBoxDocumentationPage";
 import SystemLogPage from "./SystemLogPage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
 import BuiltInNodePage from "./BuiltInNodePage";
+import ManageJenkinsPage from "./ManageJenkinsPage";
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -226,6 +227,11 @@ class HeaderAndFooter {
     clickSecurityNotificationPopUpBtn() {
         this.getSecurityNotificationPopUp().click();        
         return this;
+    };
+
+    clickManageJenkinsLink() {
+        this.getManageJenkinsLink().click();
+        return new ManageJenkinsPage();
     };
     
 }
