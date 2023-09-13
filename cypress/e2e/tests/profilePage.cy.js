@@ -190,4 +190,14 @@ describe('profilePage', () => {
             .should('contain', userProfilePageData.userAddDescriptionBtn);
     });
 
+    
+    it('AT_18.06.03 | Verify credantials table has 6 columns with names (T P Store  ↓ Domain, ID, Name)', () => {
+        headerAndFooter
+            .clickUserNameLink()
+            .clickUserCredentialsLink()
+            .verifyCredentialTableColumnNamesText()
+            .should("have.length", userCredentialsPageData.credentialTableColumnNames.length)
+            .and("deep.eq", userCredentialsPageData.credentialTableColumnNames)
+    });
+
 })
