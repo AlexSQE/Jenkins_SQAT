@@ -1,6 +1,8 @@
 import NewItemPage from "./NewItemPage";
 import HomePage from "./HomePage";
-import dashboardBreadcrumbsData from "../fixtures/pom_fixtures/dashboardBreadcrumbs.json"
+import dashboardBreadcrumbsData from "../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
+import MultibranchPipelinePage from "./MultibranchPipelinePage";
+import newItemPageData from "../fixtures/pom_fixtures/newItemPage.json";
 
 class DashboardBreadcrumbs {
 
@@ -54,6 +56,22 @@ class DashboardBreadcrumbs {
     cy.get("@manageJenkinsMenuLinks").eq(ind).click();
     return this;
    }
+
+   clickMultibrPipelineDashboardDropdownBtn(){
+   this.getDashboardDropdownBtn()
+       .contains(newItemPageData.multibranchPipelineName)
+       .realHover()
+       .click('right');
+       return this;
+   }
+
+   clickDeleteMultibrPipelineFromBreadcrumbs(){
+   this.getDashboardDropDownMenuList()
+       .contains(dashboardBreadcrumbsData.breadcrumbsMultibranchPipelineDropdown[3])
+       .click();
+       return new MultibranchPipelinePage();
+   }  
+
 }
 
 export default DashboardBreadcrumbs;

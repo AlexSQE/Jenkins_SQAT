@@ -8,6 +8,7 @@ import multibranchPipelineConfirmRenamePageData from "../../fixtures/pom_fixture
 import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
 import multibranchPipelinePageData from "../../fixtures/pom_fixtures/multiConfProjectPage.json";
 import MultibranchPipelineConfigurePage from "../../pageObjects/MultibranchPipelineConfigurePage";
+import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 
 
 describe('multibranchPipeline', () => {
@@ -17,6 +18,7 @@ describe('multibranchPipeline', () => {
     const folderPage = new FolderPage();
     const multibranchPipelinePage = new MultibranchPipelinePage()
     const multibranchPipelineConfigurePage = new MultibranchPipelineConfigurePage();
+    const dashboardBreadcrumbs = new DashboardBreadcrumbs();
 
     it('AT_16.03.001 | Delete the Multibranch Pipeline using dropdown menu', function () {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
@@ -167,5 +169,21 @@ describe('multibranchPipeline', () => {
             .getMultiBranchPipelineHeader()
             .should('contain', newItemPageData.newpipelineName)
             .and('not.contain', newItemPageData.multibranchPipelineName);
+    });
+
+    it("AT_16.03.05 | Multibranch Pipeline Verify Delete Multibranch Pipeline using breadcrumbs", function () {
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+
+        headerAndFooter
+             .clickJenkinsHomeLink()
+             .clickMultibranchPipelineProjectNameLink(newItemPageData.multibranchPipelineName);
+
+        dashboardBreadcrumbs
+             .clickMultibrPipelineDashboardDropdownBtn()     
+             .clickDeleteMultibrPipelineFromBreadcrumbs()
+             .verifyConfirmDeleteMultibranchPipelineMessage()
+             .clickConfirmDeleteMultibranchPipelineBtn()
+             .getProjectTable()
+             .should("not.exist");
     });
 });
