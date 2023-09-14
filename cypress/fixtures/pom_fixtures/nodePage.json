@@ -8,6 +8,7 @@
   "mixedInputNumberOfExecutors" : "1 2#3a4A5 ",
   "mixedValueNumberOfExecutors" : 12345,
   "defaultValueNumberOfExecutors" : 0,
+  "evenValueNumberOfExecutors" : 2,
   "invalidValueNumberOfExecutors" : [-5, 1.1],
   "invalidValuesNumberOfExecutorsToSave": [" ", "-1", "0.5", "-1000", "a", "ABz", "!@#", "$", "*?", "/", ":"],
   "errorsNumberOfExecutors" : [

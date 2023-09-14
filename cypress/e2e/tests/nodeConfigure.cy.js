@@ -6,7 +6,6 @@ import nodeConfigurePageData from '../../fixtures/pom_fixtures/nodeConfigurePage
 import nodePageData from "../../fixtures/pom_fixtures/nodePage.json";
 import ErrorMessagePage from "../../pageObjects/ErrorMessagePage";
 import errorPageData from "../../fixtures/pom_fixtures/errorPageData.json";
-import newNodePageData from "../../fixtures/pom_fixtures/newNodePageData.json";
 
 describe('Build Executor Status > Agent (Node) > Configure', () => {
     const homePage = new HomePage();
@@ -81,6 +80,24 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .getNodePageUrl()
             .should('include', nodePageData.buildBuiltInUrl)
     });
+
+    it('AT 11.07.04 | Apply configurations changes with Save button', () => {
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .typeValueIntoLabelsField(nodePageData.validSingleLabel)
+            .typeValueNumberOfExecutorsIntoField(nodePageData.evenValueNumberOfExecutors)
+            .clickNodeConfigureSaveBtn()
+            .getLabelLink(nodePageData.validSingleLabel)
+            .should("have.text", nodePageData.validSingleLabel);
+
+        homePage
+            .clickBuildExecutorStatusLink()
+            .clickBuiltInNodeGearBtn()
+            .clearLabelsField()
+            .clickNodeConfigureSaveBtn();
+    });
+
 
     it('AT 11.08.01 | Number of executors > Verify that the field accepts valid digit input', () => {
         homePage
@@ -182,13 +199,14 @@ describe('Build Executor Status > Agent (Node) > Configure', () => {
             .clickNodeConfigureSaveBtn()
             .getLabelLink(nodePageData.validSingleLabel)
             .should("have.text", nodePageData.validSingleLabel);
+
     });
 
-    after('Labels > Clear labels', () => {
+    after('Clear configuration to defaults', () => {
         homePage
             .clickBuildExecutorStatusLink()
             .clickBuiltInNodeGearBtn()
             .clearLabelsField()
-            .clickNodeConfigureSaveBtn()
+            .clickNodeConfigureSaveBtn();
     });
 })
