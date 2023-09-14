@@ -1,5 +1,6 @@
 import PipelineDeclarativeDirectiveGeneratorPage from "./PipelineDeclarativeDirectiveGeneratorPage"
 import PipelineStepsReferenceOverviewPage from "./PipelineStepsReferenceOverviewPage"
+import PipelineGlobalVariablesReferenceOverviewPage from "./PipelineGlobalVariablesReferenceOverviewPage"
 
 class PipelineSyntaxPage {
     getDeclarativeOnlineDocumentationOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(4)');
@@ -8,6 +9,7 @@ class PipelineSyntaxPage {
     getStepsReferenceOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(5)');
     getOnlineDocumentationOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(7)');
     getOnlineDocumentationPageUrl = () =>cy.url();
+    getGlobalVariablesReferenceOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(6)');
 
     clickDeclarativeOnlineDocumentationPageLink() {
         this.getDeclarativeOnlineDocumentationOptionLink().click();
@@ -28,6 +30,12 @@ class PipelineSyntaxPage {
         this.getOnlineDocumentationOptionLink().click();
         return this;
     }
+
+    clickGlobalVariablesReferenceOptionLink() {
+        this.getGlobalVariablesReferenceOptionLink().click();
+        return new PipelineGlobalVariablesReferenceOverviewPage();
+    }
+
 };
 
 export default PipelineSyntaxPage

@@ -10,6 +10,7 @@ import pipelineChangesPageData from "../../fixtures/pom_fixtures/pipelineChanges
 import piplineSyntaxPageData from '../../fixtures/pom_fixtures/piplineSyntaxPage.json'
 import pipelineDeclarativeDirectiveGeneratorPageData from "../../fixtures/pom_fixtures/pipelineDeclarativeDirectiveGeneratorPage.json";
 import pipelineStepsReferenceOverviewPageData from "../../fixtures/pom_fixtures/pipelineStepsReferenceOverviewPage.json"
+import pipelineGlobalVariablesReferenceOverviewPageData from "../../fixtures/pom_fixtures/pipelineGlobalVariablesReferenceOverviewPage.json"
 
 describe('pipelineProject',()=>{
     const homePage= new HomePage()
@@ -227,4 +228,17 @@ describe('pipelineProject',()=>{
         .getOnlineDocumentationPageUrl()
         .should('contain', piplineSyntaxPageData.onlineDocumentationURL)
     });
+
+    it('AT_13.10.06 | Verify clicking on the Global Variables Reference option redirects to the Global Variables Reference Overview page', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+        .clickPipelineProjectName(newItemPageData.pipelineName)
+        .clickPipelineSyntaxOptionLink()
+        .clickGlobalVariablesReferenceOptionLink()
+        .verifyGlobalVariablesReferenceOverviewPageHeader()
+        .getGlobalVariablesReferenceOverviewPageUrl()
+        .should('contain', pipelineGlobalVariablesReferenceOverviewPageData.globalVariablesReferenceOverviewPageUrl)
+    });
+
 });
