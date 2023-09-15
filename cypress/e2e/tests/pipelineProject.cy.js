@@ -241,4 +241,15 @@ describe('pipelineProject',()=>{
         .should('contain', pipelineGlobalVariablesReferenceOverviewPageData.globalVariablesReferenceOverviewPageUrl)
     });
 
+    it('AT_13.10.08 | Verify clicking on the Examples Reference option redirects to the Jenkins website', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+        .clickPipelineProjectName(newItemPageData.pipelineName)
+        .clickPipelineSyntaxOptionLink()
+        .clickExamplesReferenceOptionLink()
+        .getExamplesReferencePageUrl()
+        .should('contain', piplineSyntaxPageData.examplesReferenceUrl)
+    });
+
 });

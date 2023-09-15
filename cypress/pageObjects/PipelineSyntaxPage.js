@@ -10,6 +10,8 @@ class PipelineSyntaxPage {
     getOnlineDocumentationOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(7)');
     getOnlineDocumentationPageUrl = () =>cy.url();
     getGlobalVariablesReferenceOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(6)');
+    getExamplesReferenceOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(8)');
+    getExamplesReferencePageUrl = () =>cy.url();
 
     clickDeclarativeOnlineDocumentationPageLink() {
         this.getDeclarativeOnlineDocumentationOptionLink().click();
@@ -34,6 +36,11 @@ class PipelineSyntaxPage {
     clickGlobalVariablesReferenceOptionLink() {
         this.getGlobalVariablesReferenceOptionLink().click();
         return new PipelineGlobalVariablesReferenceOverviewPage();
+    }
+
+    clickExamplesReferenceOptionLink() {
+        this.getExamplesReferenceOptionLink().click();
+        return this;
     }
 
 };

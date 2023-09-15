@@ -1,4 +1,5 @@
 {
    "declarativeOnlineDocumentationURL": "https://www.jenkins.io/doc/book/pipeline/syntax/",
-   "onlineDocumentationURL": "https://www.jenkins.io/doc/book/pipeline/"
+   "onlineDocumentationURL": "https://www.jenkins.io/doc/book/pipeline/",
+   "examplesReferenceUrl":"https://www.jenkins.io/doc/pipeline/examples/"
 }
