@@ -11,6 +11,7 @@ import piplineSyntaxPageData from '../../fixtures/pom_fixtures/piplineSyntaxPage
 import pipelineDeclarativeDirectiveGeneratorPageData from "../../fixtures/pom_fixtures/pipelineDeclarativeDirectiveGeneratorPage.json";
 import pipelineStepsReferenceOverviewPageData from "../../fixtures/pom_fixtures/pipelineStepsReferenceOverviewPage.json"
 import pipelineGlobalVariablesReferenceOverviewPageData from "../../fixtures/pom_fixtures/pipelineGlobalVariablesReferenceOverviewPage.json"
+import pipelineGlobalScriptScopePageData from "../../fixtures/pom_fixtures/pipelineGlobalScriptScopePage.json";
 
 describe('pipelineProject',()=>{
     const homePage= new HomePage()
@@ -250,6 +251,18 @@ describe('pipelineProject',()=>{
         .clickExamplesReferenceOptionLink()
         .getExamplesReferencePageUrl()
         .should('contain', piplineSyntaxPageData.examplesReferenceUrl)
+    });
+
+    it('AT_13.10.09 | Verify clicking on the IntelliJ IDEA GDSL option redirects to the Global script scope page', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+        .clickPipelineProjectName(newItemPageData.pipelineName)
+        .clickPipelineSyntaxOptionLink()
+        .clickIntellijIdeaGdslOptionLink()
+        .verifyGlobalScriptScopePageText()
+        .getGlobalScriptScopePageUrl()
+        .should('contain', pipelineGlobalScriptScopePageData.globalScriptScopePageUrl)
     });
 
 });

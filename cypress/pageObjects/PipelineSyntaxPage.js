@@ -1,6 +1,7 @@
 import PipelineDeclarativeDirectiveGeneratorPage from "./PipelineDeclarativeDirectiveGeneratorPage"
 import PipelineStepsReferenceOverviewPage from "./PipelineStepsReferenceOverviewPage"
 import PipelineGlobalVariablesReferenceOverviewPage from "./PipelineGlobalVariablesReferenceOverviewPage"
+import PipelineGlobalScriptScopePage from "./PipelineGlobalScriptScopePage"
 
 class PipelineSyntaxPage {
     getDeclarativeOnlineDocumentationOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(4)');
@@ -12,6 +13,7 @@ class PipelineSyntaxPage {
     getGlobalVariablesReferenceOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(6)');
     getExamplesReferenceOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(8)');
     getExamplesReferencePageUrl = () =>cy.url();
+    getIntellijIdeaGdslOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(9)');
 
     clickDeclarativeOnlineDocumentationPageLink() {
         this.getDeclarativeOnlineDocumentationOptionLink().click();
@@ -41,6 +43,11 @@ class PipelineSyntaxPage {
     clickExamplesReferenceOptionLink() {
         this.getExamplesReferenceOptionLink().click();
         return this;
+    }
+
+    clickIntellijIdeaGdslOptionLink() {
+        this.getIntellijIdeaGdslOptionLink().click();
+        return new PipelineGlobalScriptScopePage();
     }
 
 };
