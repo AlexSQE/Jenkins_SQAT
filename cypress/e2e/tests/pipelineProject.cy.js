@@ -13,6 +13,7 @@ import pipelineStepsReferenceOverviewPageData from "../../fixtures/pom_fixtures/
 import pipelineGlobalVariablesReferenceOverviewPageData from "../../fixtures/pom_fixtures/pipelineGlobalVariablesReferenceOverviewPage.json"
 import pipelineGlobalScriptScopePageData from "../../fixtures/pom_fixtures/pipelineGlobalScriptScopePage.json";
 import pipelineStatusPageData from "../../fixtures/pom_fixtures/pipelineStatusPage.json";
+import pipelineFullStageViewPageData from "../../fixtures/pom_fixtures/pipelineFullStageViewPage.json";
 
 describe('pipelineProject',()=>{
     const homePage= new HomePage()
@@ -276,4 +277,14 @@ describe('pipelineProject',()=>{
             .should('eq', pipelineStatusPageData.pipelineStatusStageViewMessage);     
     });
 
+    it('AT_13.11.08 | Pipeline > Status Page: Stage View > Verify clicking on the Full Stage View option redirects to the Full Stage View page', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickPipelineFullStageViewOptionLink()
+            .verifyFullStageViewPageHeader()
+            .getFullStageViewPageUrl()
+            .should('contain', pipelineFullStageViewPageData.fullStageViewPageUrl);
+    });
 });

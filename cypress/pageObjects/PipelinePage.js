@@ -4,6 +4,7 @@ import pipelinePageData from "../fixtures/pom_fixtures/pipelinePage.json";
 import newItemPageData from "../fixtures/pom_fixtures/newItemPage.json";
 import PipelineBuildNowPage from "./PipelineBuildNowPage";
 import PipelineSyntaxPage from "./PipelineSyntaxPage";
+import PipelineFullStageViewPage from "./PipelineFullStageViewPage";
 
 class PipelinePage {
     getPipelinePageHeadline = () => cy.get('#main-panel > h1');
@@ -25,6 +26,7 @@ class PipelinePage {
     getPipelineSyntaxOptionLink = () => cy.get('#side-panel>:nth-child(1)>:last-child');
     getPipelineStatusOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(1)');
     getPipelineStatusStageViewMessage = () => cy.get('.alert.alert-info');
+    getPipelineFullStageViewOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(7)');
 
     clickGoToDashboard() {
         this.getDashboard().click();
@@ -130,6 +132,11 @@ class PipelinePage {
         return this.getPipelineStatusStageViewMessage().then($el => {
             return $el.text().trim();
       })
+    };
+
+    clickPipelineFullStageViewOptionLink() {
+        this.getPipelineFullStageViewOptionLink().click();
+        return new PipelineFullStageViewPage();
     };
 };
 
