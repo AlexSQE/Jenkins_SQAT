@@ -23,6 +23,8 @@ class PipelinePage {
     getBuildNowTimeLink = () => cy.get('div[time]');
     getBreadcrumbsPipelineProjectMenu = () => cy.get('#breadcrumb-menu');
     getPipelineSyntaxOptionLink = () => cy.get('#side-panel>:nth-child(1)>:last-child');
+    getPipelineStatusOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(1)');
+    getPipelineStatusStageViewMessage = () => cy.get('.alert.alert-info');
 
     clickGoToDashboard() {
         this.getDashboard().click();
@@ -117,6 +119,17 @@ class PipelinePage {
     clickPipelineSyntaxOptionLink() {
         this.getPipelineSyntaxOptionLink().click();
         return new PipelineSyntaxPage();
+    };
+
+    clickPipelineStatusOptionLink() {
+        this.getPipelineStatusOptionLink().click();
+        return this;
+    };
+
+    trimPipelineStatusStageViewMessage() {
+        return this.getPipelineStatusStageViewMessage().then($el => {
+            return $el.text().trim();
+      })
     };
 };
 

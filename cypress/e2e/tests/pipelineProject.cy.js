@@ -12,6 +12,7 @@ import pipelineDeclarativeDirectiveGeneratorPageData from "../../fixtures/pom_fi
 import pipelineStepsReferenceOverviewPageData from "../../fixtures/pom_fixtures/pipelineStepsReferenceOverviewPage.json"
 import pipelineGlobalVariablesReferenceOverviewPageData from "../../fixtures/pom_fixtures/pipelineGlobalVariablesReferenceOverviewPage.json"
 import pipelineGlobalScriptScopePageData from "../../fixtures/pom_fixtures/pipelineGlobalScriptScopePage.json";
+import pipelineStatusPageData from "../../fixtures/pom_fixtures/pipelineStatusPage.json";
 
 describe('pipelineProject',()=>{
     const homePage= new HomePage()
@@ -263,6 +264,16 @@ describe('pipelineProject',()=>{
         .verifyGlobalScriptScopePageText()
         .getGlobalScriptScopePageUrl()
         .should('contain', pipelineGlobalScriptScopePageData.globalScriptScopePageUrl)
+    });
+
+    it('AT_13.11.01 | Pipeline > Status Page: Stage View > The stage view message is visible', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickPipelineStatusOptionLink()
+            .trimPipelineStatusStageViewMessage()
+            .should('eq', pipelineStatusPageData.pipelineStatusStageViewMessage);     
     });
 
 });
