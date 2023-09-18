@@ -48,7 +48,7 @@ describe('profilePage', () => {
             .should('have.text', userProfilePageData.editDescription);
     });
 
-    it('AT_18.01_005| Verify access to user ID and status though user’s profile page', () => {
+    it('AT_18.01.05| Verify the User is able to see Admin ID on the User page with his name.', () => {
         headerAndFooter
             .clickUserNameLink()
             .verifyUserPagesUrl(Cypress.env('local.admin.username'))
@@ -189,6 +189,19 @@ describe('profilePage', () => {
             .verifyCredentialTableColumnNamesText()
             .should("have.length", userCredentialsPageData.credentialTableColumnNames.length)
             .and("deep.eq", userCredentialsPageData.credentialTableColumnNames)
+    });
+
+    it('AT_18.01.07 | Verify that the Status Tab in side menu is highlighted after redirection to User page', () => {
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickUserNameLink()
+            .getUserStatusLinks().within(($el) => {
+                cy.window().then((win) => {
+                    const beforeElement = win.getComputedStyle($el[0], "::before");
+                    const background = beforeElement.getPropertyValue("background-color");
+                    expect(background).to.equal("rgba(175, 175, 207, 0.224)");
+                });
+            });            
     });
 
 })
