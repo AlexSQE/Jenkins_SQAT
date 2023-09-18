@@ -11,7 +11,7 @@ class UserProfilePage {
     getUserDescriptionSaveBtn = () => cy.get('button[name="Submit"]');
     getUserDescriptionText = () =>  cy.get('#description div:not(.jenkins-buttons-row)');
     getUserCredentialsLink = () => cy.get(`a[href="/user/${userName}/credentials"]`);
-    getUserConfigureLink = () => cy.get(`a[href="/user/${userName}/configure"]`);
+    getUserConfigureLink = (userName) => cy.get(`a[href="/user/${userName}/configure"]`);
     getUserConfigureNameLink = () => cy.get(`a[href="/user/${userName}/configure"] .task-link-text`)
     getUserId = () => cy.get('#main-panel>div:last-child');
     getStatusBtn = () => cy.get('#tasks>:nth-child(2)');
@@ -59,10 +59,11 @@ class UserProfilePage {
         return new UserCredentialsPage();
     }
 
-    clickUserConfigureLink() {
-        this.getUserConfigureLink.click();
+    clickUserConfigureLink(userName = Cypress.env('local.admin.username')) {
+        this.getUserConfigureLink(userName).click();
         return new UserConfigurePage();
     }
+
     verifyUserPagesUrl(user) {
         cy.url().should('contain', user);
         return this;

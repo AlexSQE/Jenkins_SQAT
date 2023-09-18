@@ -221,4 +221,20 @@ describe('profilePage', () => {
             .and("deep.equal", userConfigurePageData.SidePanelUserTasks.Names);
     });
 
+    it("AT_18.04.06 | Verify that the User is able to redirect to base url .../user/<username>/configure endpoint", () => {
+        cy.createUser(
+          userProfilePageData.user.name,
+          userProfilePageData.user.password,
+          userProfilePageData.user.confirmPassword,
+          userProfilePageData.user.emailAddress
+        );
+    
+        homePage
+          .clickPeopleSideMenuLink()
+          .clickUserNameLink(userProfilePageData.user.name)
+          .clickUserConfigureLink(userProfilePageData.user.name.toLowerCase())
+          .getConfigurePageUrl(userProfilePageData.user.name)
+          .should("contain", userProfilePageData.user.name.toLowerCase());
+      });
+
 })

@@ -10,6 +10,7 @@ class UserConfigurePage {
     getSensitiveSearchCheckbox = () => cy.get('div.setting-main label');
     getBreadcrumbsConfigure = () => cy.get("li[aria-current='page']");
     getUserSidePanelItems = () => cy.get(".task-link-text");
+    getConfigurePageUrl = () => cy.url();
 
     typeFullNameInputField(name) {
         this.getFullNameInputField().clear().type(name);
@@ -37,6 +38,6 @@ class UserConfigurePage {
         .then(($els) => {
             return Cypress.$.makeArray($els).map($el => $el.innerText);
         })
-     }
+    };
 }
 export default UserConfigurePage;
