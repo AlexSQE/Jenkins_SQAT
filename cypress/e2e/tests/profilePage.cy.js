@@ -235,6 +235,22 @@ describe('profilePage', () => {
           .clickUserConfigureLink(userProfilePageData.user.name.toLowerCase())
           .getConfigurePageUrl(userProfilePageData.user.name)
           .should("contain", userProfilePageData.user.name.toLowerCase());
-      });
+    });
+
+    it("AT_18.04.07 | Verify that the user’s name  is displayed in the fullname input field", () => {
+        cy.createUser(
+          userProfilePageData.user.name,
+          userProfilePageData.user.password,
+          userProfilePageData.user.confirmPassword,
+          userProfilePageData.user.emailAddress
+        );
+
+        homePage
+          .clickPeopleSideMenuLink()
+          .clickUserNameLink(userProfilePageData.user.name)
+          .clickUserConfigureLink(userProfilePageData.user.name.toLowerCase())
+          .getFullNameInputField()
+          .should('have.value', userProfilePageData.user.name); 
+    });
 
 })
