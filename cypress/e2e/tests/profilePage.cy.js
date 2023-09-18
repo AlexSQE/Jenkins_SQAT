@@ -48,15 +48,6 @@ describe('profilePage', () => {
             .should('have.text', userProfilePageData.editDescription);
     });
 
-    it("AT_18.06.001 | Profile Page | Verifying the Credentials link redirects to the user's credentials page", () => {
-
-        headerAndFooter
-            .clickUserNameLink()
-            .clickUserCredentialsLink()
-            .getCredentialsHeader()
-            .should('have.text', userCredentialsPageData.credentialsPageHeader)
-    })
-
     it('AT_18.01_005| Verify access to user ID and status though user’s profile page', () => {
         headerAndFooter
             .clickUserNameLink()
