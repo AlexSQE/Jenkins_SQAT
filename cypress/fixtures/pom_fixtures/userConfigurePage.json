@@ -3,7 +3,7 @@
     "userDescription": "I am the best QA",
     "sidePanelNameLink": "Configure",
     "url": "configure",
-    "SidePanelTasks": {
+    "SidePanelAdminTasks": {
         "Names": [
             "People",
             "Status",
@@ -11,6 +11,17 @@
             "Configure",
             "My Views",
             "Credentials"
+        ],
+        "amountTasks" : 6
+    },
+    "SidePanelUserTasks": {
+        "Names": [
+            "People",
+            "Status",
+            "Builds",
+            "Configure",
+            "My Views",
+            "Delete"
         ],
         "amountTasks" : 6
     }

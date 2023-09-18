@@ -164,8 +164,8 @@ describe('profilePage', () => {
         headerAndFooter
             .clickUserNameLink()
             .getSideMenuItemsNames()
-            .should("have.length", userConfigurePageData.SidePanelTasks.amountTasks)
-            .and("deep.equal", userConfigurePageData.SidePanelTasks.Names)
+            .should("have.length", userConfigurePageData.SidePanelAdminTasks.amountTasks)
+            .and("deep.equal", userConfigurePageData.SidePanelAdminTasks.Names)
     });
 
     it('AT_18.04.05 Header>Verify user can visit Configure Page and delete user information', () => {
@@ -202,6 +202,23 @@ describe('profilePage', () => {
                     expect(background).to.equal("rgba(175, 175, 207, 0.224)");
                 });
             });            
+    });
+
+    it('AT_18.01.08 | <Profile Page> Left side bar contains 6 elements(People, Status, Builds, Configure, MyViews, Delete) in User Profile page', () => {
+        
+        cy.createUser(
+            userProfilePageData.user.name,
+            userProfilePageData.user.password,
+            userProfilePageData.user.confirmPassword,
+            userProfilePageData.user.emailAddress
+          );
+          
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickUserNameLink(userProfilePageData.user.name)
+            .getSideMenuItemsNames()
+            .should("have.length", userConfigurePageData.SidePanelUserTasks.amountTasks)
+            .and("deep.equal", userConfigurePageData.SidePanelUserTasks.Names);
     });
 
 })

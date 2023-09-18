@@ -322,7 +322,7 @@ describe('headerAndFooter', () => {
             .clickUserDropDownBtn()
             .selectUserConfigureMenu()
             .listUserSidePanelItems()
-            .should('deep.equal', userConfigurePageData.SidePanelTasks.Names)
+            .should('deep.equal', userConfigurePageData.SidePanelAdminTasks.Names)
     })
 
     it('AT_01.10.04 | Header | Verify that Orange Notifications icon is Visible', function () {
