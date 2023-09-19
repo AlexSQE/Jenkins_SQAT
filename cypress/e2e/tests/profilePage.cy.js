@@ -270,4 +270,15 @@ describe('profilePage', () => {
           .and("deep.equal", userConfigurePageData.configureSectionsList.Names.sort());
     });
 
+    it('AT_18.04.09 | Verify that the User is be able to change user name', () => {        
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickUserNameLink()
+            .clickUserConfigureLink()
+            .typeFullNameInputField(userConfigurePageData.userFullName)
+            .clickUserConfigSaveBtn()
+            .trimUserPageHeaderName()
+            .should('eq', userConfigurePageData.userFullName)
+    });
+
 })
