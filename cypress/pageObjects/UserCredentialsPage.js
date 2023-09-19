@@ -8,6 +8,9 @@ class UserCredentialsPage {
     getCredentialTableColumnNames = () => cy.get('#main-panel table:nth-of-type(1) th')
     getStoreHeaders = () => cy.get("#main-panel h2")
     getStoreUserNames = (idx) => cy.get(`#main-panel table:nth-of-type(${idx}) tbody td a`)
+    getStoreUserNameLinks = () => cy.get('#main-panel tr>td:nth-child(2) a');    
+    getStoreUserNamesChevrons = (idx) => cy.get(`table:nth-of-type(${idx}) tr>td:nth-child(2) button`);
+    getUserNameAddDomain = () => cy.get('#breadcrumb-menu span');
 
     checkUrlCredentialsPage() {
         this.getCredentialsPageUrl()

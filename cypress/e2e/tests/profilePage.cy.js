@@ -294,4 +294,15 @@ describe('profilePage', () => {
 
         });
     })
+  
+      it('AT_18.06.05 | <Profile Page> Ensure that the User is able to see Add Domain button after clicking on User Store chevron button', () => {
+        headerAndFooter
+            .clickUserNameLink()
+            .clickUserCredentialsLink()
+            .getStoreUserNameLinks().each(($el, idx) => {
+                    cy.wrap($el).realHover()
+                    userCredentialsPage.getStoreUserNamesChevrons(idx+2).click()
+                    userCredentialsPage.getUserNameAddDomain().should('be.visible')
+            })
+    })  
 })
