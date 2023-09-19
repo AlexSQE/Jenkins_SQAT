@@ -30,11 +30,13 @@ import HomePage from "../pageObjects/HomePage";
 import { homePageHeader } from "../fixtures/pom_fixtures/homePage.json";
 import { configurePageHeader } from "../fixtures/pom_fixtures/freestyleProjectConfigure.json";
 import FreestyleProjectConfigurePage from "../pageObjects/FreestyleProjectConfigurePage";
+import UserProfilePage from "../pageObjects/UserProfilePage";
 
 const homePage = new HomePage();
 const headerAndFooter = new HeaderAndFooter();
 const dashboard = new DashboardBreadcrumbs();
 const configPage = new FreestyleProjectConfigurePage();
+const userProfilePage = new UserProfilePage();
 
 Cypress.Commands.add('createMultiBranchPipeline', (pipelineName) => {
     homePage
@@ -234,4 +236,11 @@ Cypress.Commands.add('disableFreestyleProjectOnConfigurePage', () => {
             .clickEnableDisableProjectOption()
             .clickSaveBtnAndGoFreestyleProject()
             .clickHomePageLink();
+});
+
+Cypress.Commands.add('returnAdminName', () => {
+    userProfilePage
+        .clickUserConfigureLink()
+        .typeFullNameInputField('admin')
+        .clickUserConfigSaveBtn();
 });

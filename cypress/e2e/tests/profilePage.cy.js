@@ -272,7 +272,9 @@ describe('profilePage', () => {
             .typeFullNameInputField(userConfigurePageData.userFullName)
             .clickUserConfigSaveBtn()
             .trimUserPageHeaderName()
-            .should('eq', userConfigurePageData.userFullName)
+            .should('eq', userConfigurePageData.userFullName);
+
+        cy.returnAdminName();
     });
 
     it('AT_18.06.04 | Ensure that User is able to see 2 stores (his store and from parents).', () => {
