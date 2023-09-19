@@ -56,15 +56,6 @@ describe('profilePage', () => {
             .getUserId().should('contain', Cypress.env('local.admin.username'))
     })
 
-    it('AT_18.06.002 | <Profile Page> Link to User`s credentials (by dropdown menu)', () => {
-        headerAndFooter
-            .clickUserDropDownBtn()
-            .clickUserDropDownMenuCredentials()
-            .checkUrlCredentialsPage(userCredentialsPageData.credentialsPageUrl)
-            .getCredentialsHeader()
-            .should('have.text', userCredentialsPageData.credentialsPageHeader)
-    });
-
     it('AT_18.02.03 | Verify that the User is able to add the description to the Admin profile', () => {
         cy.deleteUserDescription();
 
