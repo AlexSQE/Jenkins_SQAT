@@ -305,4 +305,15 @@ describe('profilePage', () => {
                     userCredentialsPage.getUserNameAddDomain().should('be.visible')
             })
     })  
+
+    it('AT_18.06.06 | <Profile Page> Ensure that the User is able to see Add Credentials button after clicking on User Domains chevron button', () => {
+        headerAndFooter
+            .clickUserNameLink()
+            .clickUserCredentialsLink()
+            .getStoreDomainLinks().each(($el, idx) => {
+                    cy.wrap($el).realHover()
+                    userCredentialsPage.getStoreDomainChevrons(idx+2).click()
+                    userCredentialsPage.getUserNameAddDomain().should('be.visible')
+            })
+    }) 
 })

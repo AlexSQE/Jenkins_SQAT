@@ -10,6 +10,8 @@ class UserCredentialsPage {
     getStoreUserNames = (idx) => cy.get(`#main-panel table:nth-of-type(${idx}) tbody td a`)
     getStoreUserNameLinks = () => cy.get('#main-panel tr>td:nth-child(2) a');    
     getStoreUserNamesChevrons = (idx) => cy.get(`table:nth-of-type(${idx}) tr>td:nth-child(2) button`);
+    getStoreDomainLinks = () => cy.get('#main-panel tr>td:nth-child(3) a')
+    getStoreDomainChevrons = (idx) => cy.get(`table:nth-of-type(${idx}) tr>td:nth-child(3) button`);
     getUserNameAddDomain = () => cy.get('#breadcrumb-menu span');
 
     checkUrlCredentialsPage() {
