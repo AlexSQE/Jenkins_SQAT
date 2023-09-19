@@ -24,5 +24,21 @@
             "Delete"
         ],
         "amountTasks" : 6
+    },
+    "configureSectionsList": {
+        "Names": [
+            "Credentials",
+            "Extended Email Job Watching",
+            "My Views",
+            "Notification URL",
+            "SSH Public Keys",
+            "Session Termination",
+            "Setting for search",
+            "User Defined Time Zone",
+            "E-mail",
+            "Password",
+            "API Token"
+        ],
+        "amountTasks" : 11
     }
 }

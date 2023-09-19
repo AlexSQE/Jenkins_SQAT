@@ -11,6 +11,7 @@ class UserConfigurePage {
     getBreadcrumbsConfigure = () => cy.get("li[aria-current='page']");
     getUserSidePanelItems = () => cy.get(".task-link-text");
     getConfigurePageUrl = () => cy.url();
+    getConfigureSectionsList = () => cy.get('form .jenkins-section__title');
 
     typeFullNameInputField(name) {
         this.getFullNameInputField().clear().type(name);
@@ -33,11 +34,18 @@ class UserConfigurePage {
         return this;
     }
 
-     listUserSidePanelItems() {
+    listUserSidePanelItems() {
         return this.getUserSidePanelItems()
         .then(($els) => {
             return Cypress.$.makeArray($els).map($el => $el.innerText);
         })
     };
+
+    verifyConfigureSectionsList(){
+        return this.getConfigureSectionsList().then($sections =>
+            $sections
+                .toArray()
+                .map($section => $section.innerText).sort());        
+    }
 }
 export default UserConfigurePage;

@@ -253,4 +253,21 @@ describe('profilePage', () => {
           .should('have.value', userProfilePageData.user.name); 
     });
 
+    it("AT_18.04.08 | Verify that  the User's configure page contains 11 sections", () => {
+        cy.createUser(
+            userProfilePageData.user.name,
+            userProfilePageData.user.password,
+            userProfilePageData.user.confirmPassword,
+            userProfilePageData.user.emailAddress
+          );
+
+        homePage
+          .clickPeopleSideMenuLink()
+          .clickUserNameLink(userProfilePageData.user.name)
+          .clickUserConfigureLink(userProfilePageData.user.name.toLowerCase())
+          .verifyConfigureSectionsList()
+          .should("have.length", userConfigurePageData.configureSectionsList.amountTasks)
+          .and("deep.equal", userConfigurePageData.configureSectionsList.Names.sort());
+    });
+
 })
