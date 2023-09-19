@@ -8,6 +8,8 @@ import userProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.jso
 import UserBuildsPage from "../../pageObjects/UserBuildsPage";
 import HomePage from "../../pageObjects/HomePage";
 import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
+import UserCredentialsPage from "../../pageObjects/UserCredentialsPage";
+
 
 describe('profilePage', () => {
 
@@ -15,6 +17,7 @@ describe('profilePage', () => {
     const userProfilePage = new UserProfilePage();
     const userBuildsPage = new UserBuildsPage();
     const homePage = new HomePage();
+    const userCredentialsPage = new UserCredentialsPage()
 
     it('AT_18.03.001 | <Profile Page> Link to Users Builds', () => {
         headerAndFooter
@@ -272,4 +275,21 @@ describe('profilePage', () => {
             .should('eq', userConfigurePageData.userFullName)
     });
 
+    it('AT_18.06.04 | Ensure that User is able to see 2 stores (his store and from parents).', () => {
+        headerAndFooter.getCurrentUserName().then(fullName=>{
+            const userFullName = fullName.text()
+            headerAndFooter
+            .clickUserNameLink()
+            .clickUserCredentialsLink()
+            .getStoreHeaders()
+                .should("have.length", 2)
+                .each(($header, idx) => {
+                    cy.wrap($header).should("have.text", userCredentialsPage.verifyStoreHeader(idx, userFullName))
+                    userCredentialsPage.getStoreUserNames(idx + 2).each(($name, index) => {
+                        cy.wrap($name).should("have.text", userCredentialsPage.verifyStoreTableUserName(idx, index, userFullName))
+                    })
+            })
+
+        });
+    })
 })

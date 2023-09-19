@@ -6,7 +6,8 @@ class UserCredentialsPage {
     getUserCredPageIconBtns = () => cy.get("div[class='jenkins-icon-size__items jenkins-buttons-row'] ol")
     getUserCredPageTables = () => cy.get('.jenkins-table__cell--tight.jenkins-table__icon')
     getCredentialTableColumnNames = () => cy.get('#main-panel table:nth-of-type(1) th')
-
+    getStoreHeaders = () => cy.get("#main-panel h2")
+    getStoreUserNames = (idx) => cy.get(`#main-panel table:nth-of-type(${idx}) tbody td a`)
 
     checkUrlCredentialsPage() {
         this.getCredentialsPageUrl()
@@ -25,6 +26,14 @@ class UserCredentialsPage {
                 arr.push($columnName.text().replace(/&nbsp;/g, " ").replace(/\u00A0/g, " "))
             )     
         return cy.wrap(arr)
+    }
+
+    verifyStoreHeader( idx_store, userFullName){
+        return userCredentialsPageData.Stores[idx_store].header.replace("***user***", userFullName)
+    }
+
+    verifyStoreTableUserName( idx_store, index_table, userFullName){
+        return userCredentialsPageData.Stores[idx_store].name[index_table].replace("***user***", userFullName)
     }
 
 }
