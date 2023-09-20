@@ -190,4 +190,11 @@ describe('dashboard', () => {
              .should('be.visible')
     });
 
- })        
+ it("AT_20.01.12 <Dashboard> Icons S,M,L Verify that 'Icon' panel for table size switching is visible", () => {
+   cy.createFolderProject(newItemPageData.folderName);
+
+     homePage
+         .getIconSizeTable()
+         .should("be.visible");
+ });
+})        
