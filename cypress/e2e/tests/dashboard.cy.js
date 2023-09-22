@@ -21,28 +21,28 @@ describe('dashboard', () => {
             .and('have.length', pipelinePageData.pipelineDropdownItems.length)
     });
 
-    it('AT20.01.007.1|DashbordVerify size of project table S', () => {
+    it('AT_20.01.07 |DashbordVerify size of project table S', () => {
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
         homePage
         .clickTableSizeBtnS()
         .verifyTableSize(homePageData.sRem)
     });
 
-    it('AT20.01.007.2|DashbordVerify size of project table M',() => {
+    it('AT_20.01.13 |DashbordVerify size of project table M',() => {
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
         homePage
         .clickTableSizeBtnM()
         .verifyTableSize(homePageData.mRem)
     });
 
-    it('AT20.01.007.3|DashbordVerify size of project table L',() => {
+    it('AT_20.01.14 |DashbordVerify size of project table L',() => {
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName)
         homePage
         .clickTableSizeBtnL()
         .verifyTableSize(homePageData.lRem)
     });
 
-     it('AT 20.07.01 Dashboard|Icon S be visible in the first column of the title',()=>{
+     it('AT_20.07.01 Dashboard|Icon S be visible in the first column of the title',()=>{
         cy.createFreestyleProject(freestyleProjectPageData.freestyleProjectNewName);
         cy.createPipeline(pipelinePageData.pipelineName);
         cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
