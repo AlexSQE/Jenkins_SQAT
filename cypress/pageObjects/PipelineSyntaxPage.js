@@ -2,6 +2,7 @@ import PipelineDeclarativeDirectiveGeneratorPage from "./PipelineDeclarativeDire
 import PipelineStepsReferenceOverviewPage from "./PipelineStepsReferenceOverviewPage"
 import PipelineGlobalVariablesReferenceOverviewPage from "./PipelineGlobalVariablesReferenceOverviewPage"
 import PipelineGlobalScriptScopePage from "./PipelineGlobalScriptScopePage"
+import pipelineSyntaxPageData from "../fixtures/pom_fixtures/piplineSyntaxPage.json"
 
 class PipelineSyntaxPage {
     getDeclarativeOnlineDocumentationOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(4)');
@@ -14,6 +15,10 @@ class PipelineSyntaxPage {
     getExamplesReferenceOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(8)');
     getExamplesReferencePageUrl = () =>cy.url();
     getIntellijIdeaGdslOptionLink = () => cy.get('#side-panel>:nth-child(1)>:nth-child(9)');
+    getGeneratedPipelineScriptTextArea = () => cy.get('input[name="json"]');
+    getSampleStepOptionDropdownList = () => cy.get('select[class="jenkins-select__input dropdownList"]');
+    getMessageInput = () => cy.get('input[name="_.message"]');
+    getGeneratePipelineScriptBtn = () => cy.get('button[id="yui-gen1-button"]');
 
     clickDeclarativeOnlineDocumentationPageLink() {
         this.getDeclarativeOnlineDocumentationOptionLink().click();
@@ -48,6 +53,26 @@ class PipelineSyntaxPage {
     clickIntellijIdeaGdslOptionLink() {
         this.getIntellijIdeaGdslOptionLink().click();
         return new PipelineGlobalScriptScopePage();
+    }
+
+    verifyPipelineScriptTextAreaIsEmpty() {
+        this.getGeneratedPipelineScriptTextArea().should('have.value', pipelineSyntaxPageData.generatedPipelineScriptValue)
+        return this
+    }
+
+    selectSampleStepOption() {
+        this.getSampleStepOptionDropdownList().select(pipelineSyntaxPageData.sampleStepOption);
+        return this;
+    }
+
+    typeMessage() {
+        this.getMessageInput().type(pipelineSyntaxPageData.snippetGeneratorMessage);
+        return this;
+    }
+
+    clickGeneratePipelineScriptBtn() {
+        this.getGeneratePipelineScriptBtn().click();
+        return this;
     }
 
 };

@@ -287,4 +287,19 @@ describe('pipelineProject',()=>{
             .getFullStageViewPageUrl()
             .should('contain', pipelineFullStageViewPageData.fullStageViewPageUrl);
     });
+
+    it('AT_13.10.02 | Verify Pipeline Script can be generated', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+        .clickPipelineProjectName(newItemPageData.pipelineName)
+        .clickPipelineSyntaxOptionLink()
+        .verifyPipelineScriptTextAreaIsEmpty()
+        .selectSampleStepOption()
+        .typeMessage()
+        .clickGeneratePipelineScriptBtn()
+        .getGeneratedPipelineScriptTextArea()
+        .should('not.have.value', piplineSyntaxPageData.generatedPipelineScriptValue);
+    });
+
 });
