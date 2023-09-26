@@ -302,4 +302,16 @@ describe('pipelineProject',()=>{
         .should('not.have.value', piplineSyntaxPageData.generatedPipelineScriptValue);
     });
 
+    it('AT_13.10.01 | Verify Pipeline Syntax options are visible', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+        .clickPipelineProjectName(newItemPageData.pipelineName)
+        .clickPipelineSyntaxOptionLink()
+        .getPipelineSyntaxPageOptionsList().then(($els) => {
+            let actual = Cypress.$.makeArray($els).map($el => $el.innerText)
+            expect(actual).to.be.deep.equal(piplineSyntaxPageData.pipelineSyntaxOptions)
+        });
+    });
+
 });

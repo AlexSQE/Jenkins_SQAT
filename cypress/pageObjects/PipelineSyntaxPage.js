@@ -19,6 +19,7 @@ class PipelineSyntaxPage {
     getSampleStepOptionDropdownList = () => cy.get('select[class="jenkins-select__input dropdownList"]');
     getMessageInput = () => cy.get('input[name="_.message"]');
     getGeneratePipelineScriptBtn = () => cy.get('button[id="yui-gen1-button"]');
+    getPipelineSyntaxPageOptionsList = () => cy.get('#side-panel .task span a[href]');
 
     clickDeclarativeOnlineDocumentationPageLink() {
         this.getDeclarativeOnlineDocumentationOptionLink().click();
