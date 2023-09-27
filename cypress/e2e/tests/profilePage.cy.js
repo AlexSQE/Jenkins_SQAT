@@ -9,6 +9,7 @@ import UserBuildsPage from "../../pageObjects/UserBuildsPage";
 import HomePage from "../../pageObjects/HomePage";
 import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
 import UserCredentialsPage from "../../pageObjects/UserCredentialsPage";
+import UserStorePage from "../../pageObjects/UserStorePage";
 
 
 describe('profilePage', () => {
@@ -18,6 +19,7 @@ describe('profilePage', () => {
     const userBuildsPage = new UserBuildsPage();
     const homePage = new HomePage();
     const userCredentialsPage = new UserCredentialsPage()
+    const userStorePage = new UserStorePage()
 
     it('AT_18.03.001 | <Profile Page> Link to Users Builds', () => {
         headerAndFooter
@@ -316,4 +318,18 @@ describe('profilePage', () => {
                     userCredentialsPage.getUserNameAddDomain().should('be.visible')
             })
     }) 
+
+    userCredentialsPageData.StoresDomain.forEach((name) => {
+        it('AT_18.06.07 | Ensure that User redirect to any store to see domain list.)', () => {
+            headerAndFooter
+                .clickUserNameLink()
+                .clickUserCredentialsLink()
+                .getStoreDomainLinkByUserName(name.toLowerCase()).click().then(() => {
+                    userStorePage
+                        .verifyUrlUserStorePage(name)
+                        .getUserStorePageHeader().should("have.text", name)
+                })
+        })
+    })
+
 })

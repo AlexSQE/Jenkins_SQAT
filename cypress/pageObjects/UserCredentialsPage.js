@@ -13,6 +13,7 @@ class UserCredentialsPage {
     getStoreDomainLinks = () => cy.get('#main-panel tr>td:nth-child(3) a')
     getStoreDomainChevrons = (idx) => cy.get(`table:nth-of-type(${idx}) tr>td:nth-child(3) button`);
     getUserNameAddDomain = () => cy.get('#breadcrumb-menu span');
+    getStoreDomainLinkByUserName = (name) => cy.get(`a[href$='${name}']`)
 
     checkUrlCredentialsPage() {
         this.getCredentialsPageUrl()
