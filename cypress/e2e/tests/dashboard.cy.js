@@ -197,4 +197,19 @@ describe('dashboard', () => {
          .getIconSizeTable()
          .should("be.visible");
  });
+
+ it('AT_20.01.15 <Dashboard> The panel Icon is highlighted while hovering over the "S","M", or "L" buttons', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName)
+
+    homePage
+      .getPanelIcon()
+      .realHover()
+      .then((obj) => {
+        cy.document().then(() => {
+          cy.wrap(obj).then($el => window.getComputedStyle($el[0], 'before').getPropertyValue('background-color'))
+          .should('contain', 'rgba(175, 175, 207, 0.1')
+        })
+      })
+  });
+
 })        

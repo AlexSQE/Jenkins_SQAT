@@ -161,6 +161,7 @@ class HomePage {
     getLastSuccessBtn = () => cy.get('#projectstatus tr th:nth-child(4) a')
     getChangesDrpDwnMenu = () => cy.get('.yuimenuitem a[href*=changes]')
     getIconSizeTable = () => cy.get('.jenkins-icon-size__items.jenkins-buttons-row')
+    getPanelIcon = () => cy.get('.jenkins-icon-size__items ol')
 
     selectConfigureDrpDwnLink() {
         this.getConfigOrgFolderDrpDwnLink().click();
